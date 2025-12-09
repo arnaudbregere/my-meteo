@@ -15,15 +15,17 @@
 
   <div class="meteo-main">
     <header class="meteo-header">
-      <img data-file="logo_mymeteo.svg" alt="My Meteo" width="183" height="47" class="meteo-logo"/>
-      <img data-file="menu.svg" alt="Menu My Meteo" class="meteo-menu" />
+      <!-- Logo avec src direct + data-file pour JS -->
+      <img src="assets/images/svg/logo_mymeteo.svg" data-file="logo_mymeteo.svg" alt="My Meteo" width="183" height="47" class="meteo-logo">
+      <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Menu My Meteo" class="meteo-menu">
     </header>
 
     <div class="meteo-container">
       <h1 class="meteo-h1">
-        <div class="meteo-h1-localisation">--</div>
-        <div class="meteo-h1-date">--</div>
-        <div class="meteo-h1-temperature">--</div>
+        <!-- Utiliser <span> au lieu de <div> -->
+        <span class="meteo-h1-localisation">--</span>
+        <span class="meteo-h1-date">--</span>
+        <span class="meteo-h1-temperature">--</span>
       </h1>
 
       <div class="meteo-list-random">
@@ -33,13 +35,13 @@
               <p class="meteo-city">
                 <span>--</span>
                 <span>
-                  <img data-file="localisation.svg" alt="localisation" width="20" height="20" class="meteo-icon"/>
+                  <img src="assets/images/svg/localisation.svg" data-file="localisation.svg" alt="Localisation" width="20" height="20" class="meteo-icon">
                 </span>
               </p>
               <p class="meteo-temperature">--</p>
             </div>
             <div class="meteo-weather">
-              <img data-file="sun.svg" alt="Météo" width="20" height="20" class="meteo-icon"/>
+              <img src="assets/images/svg/sun.svg" data-file="sun.svg" alt="Météo ensoleillée" width="20" height="20" class="meteo-icon">
               <p>--</p>
             </div>
           </li>
@@ -49,13 +51,13 @@
               <p class="meteo-city">
                 <span>--</span>
                 <span>
-                  <img data-file="localisation.svg" alt="localisation" width="20" height="20" class="meteo-icon"/>
+                  <img src="assets/images/svg/localisation.svg" data-file="localisation.svg" alt="Localisation" width="20" height="20" class="meteo-icon">
                 </span>
               </p>
               <p class="meteo-temperature">--</p>
             </div>
             <div class="meteo-weather">
-              <img data-file="snow.svg" alt="Météo" width="20" height="20" class="meteo-icon"/>
+              <img src="assets/images/svg/snow.svg" data-file="snow.svg" alt="Météo enneigée" width="20" height="20" class="meteo-icon">
               <p>--</p>
             </div>
           </li>
@@ -65,13 +67,13 @@
               <p class="meteo-city">
                 <span>--</span>
                 <span>
-                  <img data-file="localisation.svg" alt="localisation" width="20" height="20" class="meteo-icon"/>
+                  <img src="assets/images/svg/localisation.svg" data-file="localisation.svg" alt="Localisation" width="20" height="20" class="meteo-icon">
                 </span>
               </p>
               <p class="meteo-temperature">--</p>
             </div>
             <div class="meteo-weather">
-              <img data-file="rain.svg" alt="Météo" width="20" height="20" class="meteo-icon"/>
+              <img src="assets/images/svg/rain.svg" data-file="rain.svg" alt="Météo pluvieuse" width="20" height="20" class="meteo-icon">
               <p>--</p>
             </div>
           </li>
@@ -81,13 +83,13 @@
               <p class="meteo-city">
                 <span>--</span>
                 <span>
-                  <img data-file="localisation.svg" alt="localisation" width="20" height="20" class="meteo-icon"/>
+                  <img src="assets/images/svg/localisation.svg" data-file="localisation.svg" alt="Localisation" width="20" height="20" class="meteo-icon">
                 </span>
               </p>
               <p class="meteo-temperature">--</p>
             </div>
             <div class="meteo-weather">
-              <img data-file="cloud.svg" alt="Météo" width="20" height="20" class="meteo-icon"/>
+              <img src="assets/images/svg/cloud.svg" data-file="cloud.svg" alt="Météo nuageuse" width="20" height="20" class="meteo-icon">
               <p>--</p>
             </div>
           </li>

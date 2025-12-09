@@ -16,4 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-console.log(await getWeather('Paris', 'fr'))
+async function testWeatherAPI() {
+  const data = await getWeather('Paris', 'fr');
+  console.log(data);
+}
+
+ testWeatherAPI();

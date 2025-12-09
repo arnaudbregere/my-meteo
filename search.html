@@ -14,39 +14,44 @@
 </head>
 <body>
   <div class="meteo-main">
-  <header class="meteo-header">
-    <img data-file="logo_mymeteo.svg" alt="My Meteo" width="183" height="47" class="meteo-logo"/>
-    <img data-file="menu.svg" alt="Menu My Meteo" class="meteo-menu" />
-  </header>
-       <div class="meteo-search-main">
-          <h1 class="meteo-search-h1">Ma recherche</h1>
-          <div class="meteo-search-input">
-            <label class="meteo-search-label" for="meteo-search-localisation">Où ?</label>
-          <div class="meteo-search-input-wrapper">
-            <form action="results.html">
-              <img data-file="search.svg" alt="localisation" width="20" height="20" class="meteo-icon meteo-icon-search"/>
-              <input id="meteo-search-localisation"
-                class="meteo-search-main__input"
-                placeholder="Rechercher une ville"
-                autocomplete="off" 
-                name="meteo-search-localisation"/>
+    <header class="meteo-header">
+      <!-- Logo avec src direct + data-file pour JS -->
+      <img src="assets/images/svg/logo_mymeteo.svg" data-file="logo_mymeteo.svg" alt="My Meteo" width="183" height="47" class="meteo-logo">
+      <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Menu My Meteo" class="meteo-menu">
+    </header>
+
+    <div class="meteo-search-main">
+      <h1 class="meteo-search-h1">Ma recherche</h1>
+
+      <div class="meteo-search-input">
+        <label class="meteo-search-label" for="meteo-search-localisation">Où ?</label>
+        <div class="meteo-search-input-wrapper">
+          <form action="results.html">
+            <img src="assets/images/svg/search.svg" data-file="search.svg" alt="Icône recherche" width="20" height="20" class="meteo-icon meteo-icon-search">
+            <input id="meteo-search-localisation"
+              class="meteo-search-main__input"
+              placeholder="Rechercher une ville"
+              autocomplete="off" 
+              name="meteo-search-localisation" type="text">
             <button type="submit" id="meteo-search-city" class="meteo-search-city">Rechercher</button>
           </form>
         </div>
-             </div>
-        <h2 class="meteo-search-h2">Suggestions</h2>
-        <div class="meteo-search-suggestions">
-          <span>Angers</span>
-          <span>Angoulême</span>
-          <span>Nantes</span>
-          <span>Toulouse</span>
-          <span>Londres</span>
-          <span>Bordeaux</span>
-          <span>Lille</span>
-          <span>Lyon</span>
-        </div>
-      
-</div>
+      </div>
+
+      <h2 class="meteo-search-h2">Suggestions</h2>
+      <div class="meteo-search-suggestions">
+        <span>Angers</span>
+        <span>Angoulême</span>
+        <span>Nantes</span>
+        <span>Toulouse</span>
+        <span>Londres</span>
+        <span>Bordeaux</span>
+        <span>Lille</span>
+        <span>Lyon</span>
+      </div>
+    </div>
+  </div>
+
   <script type="module" src="assets/js/meteo.js"></script>
   <script>
     let submitButton = document.getElementById('meteo-search-city')
