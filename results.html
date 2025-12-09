@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Meteo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/meteo.css">
+  <link rel="stylesheet" href="assets/css/results.css">
+</head>
+<body>
+  <div class="meteo-main">
+  <header class="meteo-header">
+    <img data-file="logo_mymeteo.svg" alt="My Meteo" width="183" height="47" class="meteo-logo"/>
+    <img data-file="menu.svg" alt="Menu My Meteo" class="meteo-menu" />
+  </header>
+  <div class="meteo-results-main">
+          <h1 class="meteo-results-h2">Mes résultats pour ma météo à <span id="meteo-results-city">Angers</span></h1>
+            <div class="meteo-results-city">
+              <h2 class="meteo-results-title">
+              <div class="meteo-h2-localisation"></div>
+              <div class="meteo-h2-date"></div>
+              <div class="meteo-h2-temperature"></div>
+              <div class="meteo-h2-weather"></div>
+            </h2>
+            <div class="meteo-results-details">
+              <h2>Détails</h2>
+              <div class="meteo-results-details-content">
+                <div class="meteo-results-details-item">
+                  <img data-file="wind.svg" alt="Vitesse du vent" width="20" height="20" class="meteo-icon"/>
+                  <div class="meteo-results-item-infos">
+                    <p class="meteo-wind-value"></p>
+                    <p>Vent</p>
+                  </div>
+                </div>
+                <div class="meteo-results-details-item">
+                  <img data-file="rain.svg" alt="Précipitations" width="20" height="20" class="meteo-icon"/>
+                    <div class="meteo-results-item-infos">
+                    <p class="meteo-rain-value"></p>
+                    <p>Risque de pluie</p>
+                  </div>
+                </div>
+                <div class="meteo-results-details-item">
+                  <img data-file="pressure.svg" alt="Pression atmosphérique" width="20" height="20" class="meteo-icon"/>
+                  <div class="meteo-results-item-infos">
+                    <p class="meteo-pressure-value"></p>
+                    <p>Pression</p>
+                  </div>
+                </div>
+                <div class="meteo-results-details-item">
+                  <img data-file="humidity.svg" alt="Taux d'humidité" width="20" height="20" class="meteo-icon"/>
+                  <div class="meteo-results-item-infos">
+                    <p class="meteo-humidity-value"></p>
+                    <p>Humidité</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+  </div>
+  <script type="module" src="assets/js/meteo.js"></script>
+  <script type="module" src="assets/js/meteo_results_mock.js"></script>
+</body>
+</html>

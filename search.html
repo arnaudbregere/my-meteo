@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Meteo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/meteo.css">
+  <link rel="stylesheet" href="assets/css/search.css">
+</head>
+<body>
+  <div class="meteo-main">
+  <header class="meteo-header">
+    <img data-file="logo_mymeteo.svg" alt="My Meteo" width="183" height="47" class="meteo-logo"/>
+    <img data-file="menu.svg" alt="Menu My Meteo" class="meteo-menu" />
+  </header>
+       <div class="meteo-search-main">
+          <h1 class="meteo-search-h1">Ma recherche</h1>
+          <div class="meteo-search-input">
+            <label class="meteo-search-label" for="meteo-search-localisation">Où ?</label>
+          <div class="meteo-search-input-wrapper">
+            <form action="results.html">
+              <img data-file="search.svg" alt="localisation" width="20" height="20" class="meteo-icon meteo-icon-search"/>
+              <input id="meteo-search-localisation"
+                class="meteo-search-main__input"
+                placeholder="Rechercher une ville"
+                autocomplete="off" 
+                name="meteo-search-localisation"/>
+            <button type="submit" id="meteo-search-city" class="meteo-search-city">Rechercher</button>
+          </form>
+        </div>
+             </div>
+        <h2 class="meteo-search-h2">Suggestions</h2>
+        <div class="meteo-search-suggestions">
+          <span>Angers</span>
+          <span>Angoulême</span>
+          <span>Nantes</span>
+          <span>Toulouse</span>
+          <span>Londres</span>
+          <span>Bordeaux</span>
+          <span>Lille</span>
+          <span>Lyon</span>
+        </div>
+      
+</div>
+  <script type="module" src="assets/js/meteo.js"></script>
+  <script>
+    let submitButton = document.getElementById('meteo-search-city')
+    let inputSearch = document.getElementById('meteo-search-localisation')
+    submitButton.addEventListener('click', function(event){
+      if(inputSearch.value === '') {
+        event.preventDefault()
+        alert('Veuillez saisir une ville !')
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .meteo-menu-list {
+      width: 100%;
+      padding: 30px;
+      margin-bottom: 2rem;
+      position: relative;
+      text-align: right;
+      color: #ffffff;
+    }
+
+    .meteo-menu-list ul {
+      list-style: none;
+      line-height: 60px;
+    }
+
+     .meteo-menu-list ul li a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 400;
+    }
+

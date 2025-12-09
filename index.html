@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Meteo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/meteo.css">
+</head>
+<body>
+
+  <div class="meteo-main">
+    <header class="meteo-header">
+      <img data-file="logo_mymeteo.svg" alt="My Meteo" width="183" height="47" class="meteo-logo"/>
+      <img data-file="menu.svg" alt="Menu My Meteo" class="meteo-menu" />
+    </header>
+
+    <div class="meteo-container">
+      <h1 class="meteo-h1">
+        <div class="meteo-h1-localisation">--</div>
+        <div class="meteo-h1-date">--</div>
+        <div class="meteo-h1-temperature">--</div>
+      </h1>
+
+      <div class="meteo-list-random">
+        <ul class="meteo-list-random-list">
+          <li>
+            <div class="meteo-content">
+              <p class="meteo-city">
+                <span>--</span>
+                <span>
+                  <img data-file="localisation.svg" alt="localisation" width="20" height="20" class="meteo-icon"/>
+                </span>
+              </p>
+              <p class="meteo-temperature">--</p>
+            </div>
+            <div class="meteo-weather">
+              <img data-file="sun.svg" alt="Météo" width="20" height="20" class="meteo-icon"/>
+              <p>--</p>
+            </div>
+          </li>
+
+          <li>
+            <div class="meteo-content">
+              <p class="meteo-city">
+                <span>--</span>
+                <span>
+                  <img data-file="localisation.svg" alt="localisation" width="20" height="20" class="meteo-icon"/>
+                </span>
+              </p>
+              <p class="meteo-temperature">--</p>
+            </div>
+            <div class="meteo-weather">
+              <img data-file="snow.svg" alt="Météo" width="20" height="20" class="meteo-icon"/>
+              <p>--</p>
+            </div>
+          </li>
+
+          <li>
+            <div class="meteo-content">
+              <p class="meteo-city">
+                <span>--</span>
+                <span>
+                  <img data-file="localisation.svg" alt="localisation" width="20" height="20" class="meteo-icon"/>
+                </span>
+              </p>
+              <p class="meteo-temperature">--</p>
+            </div>
+            <div class="meteo-weather">
+              <img data-file="rain.svg" alt="Météo" width="20" height="20" class="meteo-icon"/>
+              <p>--</p>
+            </div>
+          </li>
+
+          <li>
+            <div class="meteo-content">
+              <p class="meteo-city">
+                <span>--</span>
+                <span>
+                  <img data-file="localisation.svg" alt="localisation" width="20" height="20" class="meteo-icon"/>
+                </span>
+              </p>
+              <p class="meteo-temperature">--</p>
+            </div>
+            <div class="meteo-weather">
+              <img data-file="cloud.svg" alt="Météo" width="20" height="20" class="meteo-icon"/>
+              <p>--</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="assets/js/meteo.js"></script>
+  <script type="module" src="assets/js/meteo_mock.js"></script>
+</body>
+</html>
