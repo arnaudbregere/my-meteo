@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <!-- Métadonnées et configuration -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Meteo</title>
 
+  <!-- Polices Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Feuille de styles -->
   <link rel="stylesheet" href="assets/css/meteo.css">
 </head>
 <body>
 
+  <!-- Conteneur principal -->
   <div class="meteo-main">
+    
+    <!-- En-tête avec logo et menu -->
     <header class="meteo-header">
-      <!-- Logo avec src direct + data-file pour JS -->
       <img src="assets/images/svg/logo_mymeteo.svg" data-file="logo_mymeteo.svg" alt="My Meteo" width="183" height="47" class="meteo-logo">
       <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Menu My Meteo" class="meteo-menu">
     </header>
 
+    <!-- Conteneur du contenu principal -->
     <div class="meteo-container">
+      
+      <!-- Titre principal avec localisation, date et température -->
       <h1 class="meteo-h1">
-        <!-- Utiliser <span> au lieu de <div> -->
         <span class="meteo-h1-localisation">--</span>
         <span class="meteo-h1-date">--</span>
         <span class="meteo-h1-temperature">--</span>
       </h1>
 
+      <!-- Liste des villes avec prévisions météo -->
       <div class="meteo-list-random">
         <ul class="meteo-list-random-list">
+          
+          <!-- Ville 1 -->
           <li>
             <div class="meteo-content">
               <p class="meteo-city">
@@ -46,6 +56,7 @@
             </div>
           </li>
 
+          <!-- Ville 2  -->
           <li>
             <div class="meteo-content">
               <p class="meteo-city">
@@ -62,6 +73,7 @@
             </div>
           </li>
 
+          <!-- Ville 3  -->
           <li>
             <div class="meteo-content">
               <p class="meteo-city">
@@ -78,6 +90,7 @@
             </div>
           </li>
 
+          <!-- Ville 4  -->
           <li>
             <div class="meteo-content">
               <p class="meteo-city">
@@ -98,6 +111,7 @@
     </div>
   </div>
 
+  <!-- Scripts -->
   <script type="module" src="assets/js/meteo.js"></script>
   <script type="module" src="assets/js/meteo_mock.js"></script>
 </body>

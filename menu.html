@@ -1,38 +1,54 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <!-- Métadonnées et configuration -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Meteo</title>
 
+  <!-- Polices Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Feuilles de styles -->
   <link rel="stylesheet" href="assets/css/meteo.css">
   <link rel="stylesheet" href="assets/css/menu.css">
 </head>
 <body>
+  
+  <!-- Conteneur principal -->
   <div class="meteo-main">
+    
+    <!-- Menu avec bouton fermer -->
     <div class="meteo-menu">
       <header class="meteo-header">
         <img src="assets/images/svg/close.svg" data-file="close.svg" alt="Fermer le menu" class="meteo-menu">
       </header>
     </div>
+
+    <!-- Liste de navigation du menu -->
     <div class="meteo-menu-list">
       <ul>
+        <!-- Lien vers l'accueil -->
         <li>
           <a href="index.html" aria-label="Retour à l'accueil">Accueil</a>
         </li>
+
+        <!-- Lien vers la recherche -->
         <li>
           <a href="search.html" aria-label="Faire une nouvelle recherche">Nouvelle recherche</a>
         </li>
+
+        <!-- Lien vers les dernières recherches -->
         <li>
           <a href="last_search.html" aria-label="Consulter mes dernières recherches">Mes dernières recherches</a>
         </li>
       </ul>
     </div>
   </div>
+
+  <!-- Scripts -->
   <script type="module" src="assets/js/meteo.js"></script>
 </body>
 </html>

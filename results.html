@@ -1,29 +1,41 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <!-- Métadonnées et configuration -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Meteo</title>
 
+  <!-- Polices Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Feuilles de styles -->
   <link rel="stylesheet" href="assets/css/meteo.css">
   <link rel="stylesheet" href="assets/css/results.css">
 </head>
 <body>
+  
+  <!-- Conteneur principal -->
   <div class="meteo-main">
+    
+    <!-- En-tête avec logo et menu -->
     <header class="meteo-header">
-      <!-- Logo avec src direct + data-file pour JS -->
       <img src="assets/images/svg/logo_mymeteo.svg" data-file="logo_mymeteo.svg" alt="My Meteo" width="183" height="47" class="meteo-logo">
       <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Menu My Meteo" class="meteo-menu">
     </header>
 
+    <!-- Conteneur principal des résultats -->
     <div class="meteo-results-main">
+      
+      <!-- Titre avec localisation -->
       <h1 class="meteo-results-h2">Mes résultats pour ma météo à <span id="meteo-results-city">Angers</span></h1>
 
+      <!-- Section des résultats de la météo -->
       <div class="meteo-results-city">
+        
+        <!-- En-tête avec localisation, date, température et conditions -->
         <h2 class="meteo-results-title">
           <span class="meteo-h2-localisation">--</span>
           <span class="meteo-h2-date">--</span>
@@ -31,9 +43,14 @@
           <span class="meteo-h2-weather">--</span>
         </h2>
 
+        <!-- Section des détails météorologiques -->
         <div class="meteo-results-details">
           <h3>Détails</h3>
+          
+          <!-- Grille des indicateurs météo -->
           <div class="meteo-results-details-content">
+            
+            <!-- Indicateur 1 : Vitesse du vent -->
             <div class="meteo-results-details-item">
               <img src="assets/images/svg/wind.svg" data-file="wind.svg" alt="Vitesse du vent" width="20" height="20" class="meteo-icon">
               <div class="meteo-results-item-infos">
@@ -42,6 +59,7 @@
               </div>
             </div>
 
+            <!-- Indicateur 2 : Précipitations -->
             <div class="meteo-results-details-item">
               <img src="assets/images/svg/rain.svg" data-file="rain.svg" alt="Précipitations" width="20" height="20" class="meteo-icon">
               <div class="meteo-results-item-infos">
@@ -50,6 +68,7 @@
               </div>
             </div>
 
+            <!-- Indicateur 3 : Pression atmosphérique -->
             <div class="meteo-results-details-item">
               <img src="assets/images/svg/pressure.svg" data-file="pressure.svg" alt="Pression atmosphérique" width="20" height="20" class="meteo-icon">
               <div class="meteo-results-item-infos">
@@ -58,6 +77,7 @@
               </div>
             </div>
 
+            <!-- Indicateur 4 : Taux d'humidité -->
             <div class="meteo-results-details-item">
               <img src="assets/images/svg/humidity.svg" data-file="humidity.svg" alt="Taux d'humidité" width="20" height="20" class="meteo-icon">
               <div class="meteo-results-item-infos">
@@ -71,6 +91,7 @@
     </div>
   </div>
 
+  <!-- Scripts -->
   <script type="module" src="assets/js/meteo.js"></script>
   <script type="module" src="assets/js/meteo_results_mock.js"></script>
 </body>
