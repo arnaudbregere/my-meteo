@@ -29,33 +29,6 @@ Ce projet valide les compétences suivantes du bloc **Développement Front-End**
 - 💾 **Favori** : Sauvegarde des dernières recherches
 - 🎨 **UI Moderne** : Design épuré avec gradient et animations
 
-## 📁 Structure du Projet
-
-```
-my-meteo/
-├── index.html                 # Page d'accueil
-├── search.html                # Page de recherche
-├── results.html               # Résultats de recherche
-├── menu.html                  # Menu de navigation
-├── assets/
-│   ├── css/
-│   │   ├── meteo.css         # Styles principaux
-│   │   ├── search.css        # Styles page recherche
-│   │   ├── results.css       # Styles résultats
-│   │   └── menu.css          # Styles menu
-│   ├── js/
-│   │   ├── meteo.js          # Script principal
-│   │   ├── meteo-api.js      # Requêtes API OpenWeatherMap
-│   │   ├── meteo-config.js   # Configuration (clés API, paths)
-│   │   ├── meteo_mock.js     # Données de test (accueil)
-│   │   └── meteo_results_mock.js  # Données de test (résultats)
-│   └── images/
-│       └── svg/              # Icônes SVG
-├── README.md                  # Ce fichier
-└── .gitignore
-
-```
-
 ## 🛠 Tech Stack
 
 | Technologie | Utilisation |
