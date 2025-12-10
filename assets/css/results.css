@@ -11,7 +11,7 @@
     text-align: center;
 }
 
-.meteo-results-h2 {
+.meteo-results-h1 {
     color: #ffffff;
     font-size: 16px;
     font-weight: 700;
@@ -19,24 +19,26 @@
 
 .meteo-results-city {
     width:100%;
-  text-align: center;
-  color: #ffffff;
-  border-bottom: 1px solid #ffffff;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
+    text-align: center;
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 50px;
 }
 
 .meteo-results-title {
-  color: #ffffff;
-      width:100%;
-  text-align: center;
+    color: #ffffff;
+    width:100%;
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
 }
 
 .meteo-h2-localisation, .meteo-h2-temperature {
-  font-weight: 600;
-  text-transform: uppercase;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-size: 40px;
+    display: block;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 40px;
 }
 
 .meteo-h2-temperature {

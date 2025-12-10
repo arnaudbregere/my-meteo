@@ -72,8 +72,6 @@
 
     .meteo-search-input-wrapper {
       position: relative;
-      display: flex;
-      align-items: center;
     }
 
     .meteo-search-icon {
@@ -82,12 +80,11 @@
       pointer-events: none;
     }
 
-
-
     .meteo-icon-search {
       z-index: 1;
       position: absolute;
-      left: 12px;
+      left: 17px;
+      top: 17px;
       pointer-events: none;
     }
 
