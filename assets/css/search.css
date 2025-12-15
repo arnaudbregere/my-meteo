@@ -17,12 +17,13 @@
     .meteo-search-main {
       width: 100%;
       padding: 30px;
-      max-width: 400px;
+      max-width: 800px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       margin-bottom: 2rem;
       position: relative;
+      margin: 0 auto 2rem;
     }
 
     .meteo-search-main .meteo-search-h1 {
@@ -98,6 +99,7 @@
       width: 100%;
       color: #ffffff;
       line-height: 50px;
+      cursor: pointer;
     }
 
      .meteo-search-suggestions span {
@@ -114,11 +116,11 @@
     }
 
     .meteo-search-city {
-      margin: 20px auto;
-      background-color: transparent;
-      border: 1px solid #ffffff;
+      margin: 0px auto 20px;
+      background-color: #ffffff;
+      border: 1px solid #6E65C6;
       border-radius: 16px;
-      color: #ffffff;
+      color: #6E65C6;
       font-weight: 600;
       font-size: 20px;
       width: 100%;
@@ -126,7 +128,15 @@
       position: relative;
       padding: 15px;
       text-align: center;
+      text-decoration: none;
+      cursor: pointer;
     }
+
+    .meteo-search-city:hover{
+      color: #ffffff;
+      background-color: #6E65C6;
+      border-color: #ffffff;
+  }
 
 
     /* Styles pour l'autocomplétion */
@@ -165,7 +175,7 @@
     }
     
     .meteo-autocomplete-item:hover {
-      background: #f9f9f9;
+      background: #d1cfcf;
     }
     
     .meteo-autocomplete-item:last-child {

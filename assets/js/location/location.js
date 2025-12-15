@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fonction pour récupérer les suggestions depuis Nominatim
     async function fetchSuggestions(query) {
+
+        let limitResponse = 50
+        let france = 'fr'
       if (query.length < 2) {
         autocompleteContainer.classList.remove('active');
         return;
@@ -13,18 +16,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
       try {
         const response = await fetch(
-          `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=50&countrycodes=fr`
+          `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=${limitResponse}&countrycodes=${france}`
         );
+
+        // On convertit en json (response arrive en string)
         const data = await response.json();
         
         displaySuggestions(data);
+
       } catch (error) {
         console.error('Erreur lors de la récupération des suggestions:', error);
         autocompleteContainer.classList.remove('active');
       }
     }
 
-    // Fonction pour filtrer les suggestions (villes et communes principales)
+    // Fonction pour filtrer les suggestions (villes/communes, villages) // TODO : rajouter les hameaux ? (hamlet)
     function filterCities(suggestions) {
       const validTypes = ['city', 'town', 'village'];
       return suggestions.filter(suggestion => validTypes.includes(suggestion.addresstype));
@@ -33,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fonction pour afficher les suggestions
     function displaySuggestions(suggestions) {
       autocompleteContainer.innerHTML = '';
-      
+      // si aucune reponse, la div des suggestions est masquée
       if (suggestions.length === 0) {
         autocompleteContainer.classList.remove('active');
         return;
@@ -76,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-    // Validation du formulaire
+    // Validation du formulaire côté client // Click sur le button submit "Rechercher"
     submitButton.addEventListener('click', function(event){
       if(inputSearch.value === '') {
         event.preventDefault();
@@ -90,5 +96,4 @@ document.addEventListener('DOMContentLoaded', function() {
         inputSearch.value = e.target.textContent;
       }
     });
-
 })

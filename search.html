@@ -77,17 +77,5 @@
 
   <!-- Scripts -->
   <script type="module" src="assets/js/location/location.js"></script>
-    
-  <!-- Validation du formulaire côté client // Click sur le button submit "Rechercher"-->
-  <script>
-    let submitButton = document.getElementById('meteo-search-city')
-    let inputSearch = document.getElementById('meteo-search-localisation')
-    submitButton.addEventListener('click', function(event){
-      if(inputSearch.value === '') {
-        event.preventDefault()
-        alert('Veuillez saisir une ville !')
-      }
-    })
-  </script>
 </body>
 </html>
