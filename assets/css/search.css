@@ -152,6 +152,8 @@
     
     .meteo-autocomplete.active {
       display: block;
+      position: absolute;
+      top: 55px;
     }
     
     .meteo-autocomplete-item {

@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       try {
         const response = await fetch(
-          `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=8`
+          `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=50&countrycodes=fr`
         );
         const data = await response.json();
         
@@ -24,9 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
-    // Fonction pour filtrer les suggestions (seulement les villes)
+    // Fonction pour filtrer les suggestions (villes et communes principales)
     function filterCities(suggestions) {
-      return suggestions.filter(suggestion => suggestion.addresstype === 'city');
+      const validTypes = ['city', 'town', 'village'];
+      return suggestions.filter(suggestion => validTypes.includes(suggestion.addresstype));
     }
 
     // Fonction pour afficher les suggestions
