@@ -1,4 +1,4 @@
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     const inputSearch = document.getElementById('meteo-search-localisation');
     const submitButton = document.getElementById('meteo-search-city');
     const autocompleteContainer = document.getElementById('meteo-autocomplete');
@@ -24,6 +24,11 @@
       }
     }
 
+    // Fonction pour filtrer les suggestions (seulement les villes)
+    function filterCities(suggestions) {
+      return suggestions.filter(suggestion => suggestion.addresstype === 'city');
+    }
+
     // Fonction pour afficher les suggestions
     function displaySuggestions(suggestions) {
       autocompleteContainer.innerHTML = '';
@@ -33,19 +38,22 @@
         return;
       }
 
-      suggestions.forEach(suggestion => {
+      // Filtrer les doublons
+      const uniqueSuggestions = filterCities(suggestions);
+
+      uniqueSuggestions.forEach(suggestion => {
         const div = document.createElement('div');
         div.className = 'meteo-autocomplete-item';
         
-        // Extraire le nom de la ville et du pays
-        const displayName = suggestion.name;
-        const country = suggestion.address?.country || '';
+        // Utiliser display_name pour avoir ville, région, pays
+        const displayName = suggestion.display_name;
+        const cityName = suggestion.name;
         
-        div.textContent = `${displayName}${country ? ', ' + country : ''}`;
+        div.textContent = displayName;
         
-        // Au clic, remplir l'input avec la ville sélectionnée
+        // Au clic, remplir l'input avec seulement le nom de la ville
         div.addEventListener('click', () => {
-          inputSearch.value = displayName;
+          inputSearch.value = cityName;
           autocompleteContainer.classList.remove('active');
         });
         
