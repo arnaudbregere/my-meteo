@@ -54,12 +54,15 @@
             <!-- Bouton de recherche -->
             <button type="submit" id="meteo-search-city" class="meteo-search-city">Rechercher</button>
           </form>
+          
+          <!-- ÉLÉMENT MANQUANT - Dropdown d'autocomplétion -->
+          <div id="meteo-autocomplete" class="meteo-autocomplete"></div>
         </div>
       </div>
 
       <!-- Section des suggestions de recherche -->
       <h2 class="meteo-search-h2">Suggestions</h2>
-      <div class="meteo-search-suggestions">
+      <div class="meteo-search-suggestions" id="meteo-suggestions">
         <span>Angers</span>
         <span>Angoulême</span>
         <span>Nantes</span>
@@ -73,8 +76,8 @@
   </div>
 
   <!-- Scripts -->
-  <script type="module" src="assets/js/meteo.js"></script>
-  
+  <script type="module" src="assets/js/location/location.js"></script>
+    
   <!-- Validation du formulaire côté client // Click sur le button submit "Rechercher"-->
   <script>
     let submitButton = document.getElementById('meteo-search-city')

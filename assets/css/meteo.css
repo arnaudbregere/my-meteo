@@ -49,7 +49,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  animation: float 4s ease-in-out infinite;
+  animation: float 4s ease-in-out infinite; /* TODO : amÃ©liorer l'animation => Scroll, effet paralax, animation fin / dÃ©but..  */
   z-index: 0;
   pointer-events: none;
 }
@@ -80,7 +80,6 @@ body {
   .meteo-h1 {
     flex: 1;
     border-bottom: none;
-    border-right: 1px solid #ffffff;
     padding: 20px 0;
   }
 }
@@ -99,7 +98,7 @@ body {
 }
 
 .meteo-h1-temperature::after {
-  content:'°';
+  content:'Â°';
   font-size: 24px;
   position: absolute;
   top: 10px;
@@ -127,6 +126,20 @@ body {
     flex-direction: row;
     gap: 30px;
     align-items: flex-start;
+  }
+}
+
+.meteo-left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+@media (min-width:768px) {
+  .meteo-left-column {
+    border-right: 1px solid #ffffff;
+    padding-right: 30px;
   }
 }
 
@@ -176,8 +189,14 @@ input[type="text"]:focus {
 }
 
 .meteo-list-random {
-  flex: 1;
   display: flex;
+  flex: 1;
+}
+
+@media (min-width:768px) {
+  .meteo-list-random {
+    display: block;
+  }
 }
 
 .meteo-list-random-list {
@@ -236,4 +255,32 @@ input[type="text"]:focus {
 .meteo-weather {
   font-size: 12px;
   text-align: center;
+}
+
+#meteo-new-search {
+    margin: 0px auto 20px;
+    background-color: #ffffff;
+    border: 1px solid #6E65C6;
+    border-radius: 16px;
+    color: #6E65C6;
+    font-weight: 600;
+    font-size: 20px;
+    width: 100%;
+    min-height: 55px;
+    position: relative;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+}
+
+#meteo-new-search:hover{
+  color: #ffffff;
+  background-color: #6E65C6;
+  border-color: #ffffff;
+}
+
+
+.meteo-h2 {
+  color: #ffffff;
+  margin-bottom: 20px;
 }

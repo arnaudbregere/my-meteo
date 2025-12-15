@@ -28,15 +28,20 @@
     <!-- Conteneur du contenu principal -->
     <div class="meteo-container">
       
-      <!-- Titre principal avec localisation, date et température -->
-      <h1 class="meteo-h1">
-        <span class="meteo-h1-localisation">--</span>
-        <span class="meteo-h1-date">--</span>
-        <span class="meteo-h1-temperature">--</span>
-      </h1>
+      <!-- Colonne de gauche : Titre principal + CTA -->
+      <div class="meteo-left-column">
+        <!-- Titre principal avec localisation, date et température -->
+        <h1 class="meteo-h1">
+          <span class="meteo-h1-localisation">--</span>
+          <span class="meteo-h1-date">--</span>
+          <span class="meteo-h1-temperature">--</span>
+        </h1>
+        <a id="meteo-new-search" href="search.html" target="_self">Nouvelle recherche</a>
+      </div>
 
-      <!-- Liste des villes avec prévisions météo -->
+      <!-- Colonne de droite : Liste des villes avec prévisions météo -->
       <div class="meteo-list-random">
+        <h2 class="meteo-h2">Suggestions</h2>
         <ul class="meteo-list-random-list">
           
           <!-- Ville 1 -->
