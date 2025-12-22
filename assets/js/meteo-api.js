@@ -48,16 +48,20 @@ const WEATHER_ICON_MAP = {
  */
 export async function getWeather(city, country = "FR") {
   try {
-    const res = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&lang=fr&APPID=${apiKey}`
-    );
+    
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&lang=fr&APPID=${apiKey}`;
 
+    const res = await fetch(url);
+    
     if (!res.ok) {
-      throw new Error("Ville introuvable");
+      throw new Error(`HTTP ${res.status}: Ville introuvable`);
     }
 
     const data = await res.json();
-    return transformMainWeatherData(data);
+    
+    const transformed = transformMainWeatherData(data);
+    
+    return transformed;
   } catch (err) {
     console.error("Erreur API :", err.message);
     return getMockMainWeatherData(city);
@@ -66,16 +70,13 @@ export async function getWeather(city, country = "FR") {
 
 /**
  * Récupère les données météo pour une liste de villes en batch
- * Utilise les coordonnées pour éviter les problèmes de noms de villes
  */
 export async function getWeatherBatch(cities, lang = "fr") {
   try {
-    const promises = cities.map(city =>
-      fetch(
-        `https://api.openweathermap.org/data/2.5/weather?` +
-        `lat=${city.lat}&lon=${city.lon}&` +
-        `appid=${apiKey}&lang=${lang}&units=metric`
-      )
+    const promises = cities.map(city => {
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&appid=${apiKey}&lang=${lang}&units=metric`
+      
+      return fetch(url)
         .then(res => {
           if (!res.ok) throw new Error(`API Error: ${res.status}`);
           return res.json();
@@ -85,12 +86,15 @@ export async function getWeatherBatch(cities, lang = "fr") {
           console.error(`Erreur pour ${city.name}:`, err);
           return null;
         })
-    );
+    });
 
     const results = await Promise.all(promises);
-    return results.filter(Boolean);
+    const filtered = results.filter(Boolean);
+    console.log("📋 Résultats filtrés:", filtered);
+    
+    return filtered;
   } catch (err) {
-    console.error("Erreur batch météo:", err);
+    console.error("❌ Erreur batch météo:", err);
     return getMockWeatherData(cities);
   }
 }
@@ -100,27 +104,41 @@ export async function getWeatherBatch(cities, lang = "fr") {
  */
 export function getRandomCities(count = 4) {
   const shuffled = [...AVAILABLE_CITIES].sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, count);
+  const selected = shuffled.slice(0, count);
+  console.log("🎲 Villes aléatoires sélectionnées:", selected.map(c => c.name));
+  return selected;
 }
 
 /**
  * Transforme les données brutes OpenWeather en format utilisable
  */
 function transformWeatherData(data, cityName) {
+  if (!data || !data.weather || !data.main) {
+    console.error("Données invalides reçues:", data);
+    return null;
+  }
+  
   const weather = data.weather[0];
-  return {
+  const transformed = {
     name: cityName,
     temperature: Math.round(data.main.temp),
-    description: weather.main,
+    description: weather.description,
     icon: WEATHER_ICON_MAP[weather.icon] || "cloud.svg",
     humidity: data.main.humidity,
   };
+  
+  return transformed;
 }
 
 /**
  * Transforme les données principales
  */
 function transformMainWeatherData(data) {
+  if (!data || !data.weather || !data.main) {
+    console.error("Données principales invalides:", data);
+    return null;
+  }
+  
   const weather = data.weather[0];
   return {
     main: {
@@ -128,15 +146,23 @@ function transformMainWeatherData(data) {
       date: formatDate(new Date()),
       temperature: Math.round(data.main.temp),
       humidity: data.main.humidity,
-      description: weather.main,
+      description: weather.description,
       icon: WEATHER_ICON_MAP[weather.icon] || "cloud.svg",
     },
+    wind: data.wind,
+    clouds: data.clouds,
+    pressure: data.main.pressure,
+    visibility: data.visibility,
   };
 }
 
 /**
- * Formate la date au format français
+ * Traduit les conditions météo en français
  */
+function translateWeather(weatherMain) {
+  const lower = weatherMain.toLowerCase();
+  return WEATHER_TRANSLATIONS[lower] || weatherMain;
+}
 function formatDate(date) {
   const jours = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
   const mois = ["Jan.", "Févr.", "Mars", "Avr.", "Mai", "Juin", "Juil.", "Août", "Sept.", "Oct.", "Nov.", "Déc."];
@@ -148,6 +174,7 @@ function formatDate(date) {
  * Données mock pour le développement
  */
 function getMockWeatherData(cities) {
+  console.log("📦 Utilisation des données MOCK (batch)");
   return cities.map(city => ({
     name: city.name,
     temperature: Math.floor(Math.random() * 30) + 5,
@@ -158,6 +185,7 @@ function getMockWeatherData(cities) {
 }
 
 function getMockMainWeatherData(city) {
+  console.log("📦 Utilisation des données MOCK (principale)");
   return {
     main: {
       city: city,

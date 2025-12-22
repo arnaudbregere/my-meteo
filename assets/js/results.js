@@ -42,7 +42,7 @@ async function loadCityWeather(cityName) {
     console.log(`📍 Chargement météo pour: ${cityName}`);
     
     const data = await getWeather(cityName, 'FR');
-    
+      console.log('----------',data)
     if (!data || !data.main) {
       console.error("Données invalides reçues");
       displayError();
