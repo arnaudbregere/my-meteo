@@ -30,7 +30,7 @@
     <div class="meteo-results-main">
       
       <!-- Titre avec localisation -->
-      <h1 class="meteo-results-h1">Mes résultats pour ma météo à <span id="meteo-results-city">Angers</span></h1>
+      <h1 class="meteo-results-h1">Mes résultats pour ma météo à <span id="meteo-results-city">--</span></h1>
 
       <!-- Section des résultats de la météo -->
       <div class="meteo-results-city">
@@ -54,17 +54,17 @@
             <div class="meteo-results-details-item">
               <img src="assets/images/svg/wind.svg" data-file="wind.svg" alt="Vitesse du vent" width="20" height="20" class="meteo-icon">
               <div class="meteo-results-item-infos">
-                <p class="meteo-wind-value"></p>
+                <p class="meteo-wind-value">--</p>
                 <p>Vent</p>
               </div>
             </div>
 
-            <!-- Indicateur 2 : Précipitations -->
+            <!-- Indicateur 2 : Couverture nuageuse (Cloudiness) -->
             <div class="meteo-results-details-item">
-              <img src="assets/images/svg/rain.svg" data-file="rain.svg" alt="Précipitations" width="20" height="20" class="meteo-icon">
+              <img src="assets/images/svg/rain.svg" data-file="rain.svg" alt="Couverture nuageuse" width="20" height="20" class="meteo-icon">
               <div class="meteo-results-item-infos">
-                <p class="meteo-rain-value"></p>
-                <p>Risque de pluie</p>
+                <p class="meteo-rain-value">--</p>
+                <p>Couverture nuageuse</p>
               </div>
             </div>
 
@@ -72,7 +72,7 @@
             <div class="meteo-results-details-item">
               <img src="assets/images/svg/pressure.svg" data-file="pressure.svg" alt="Pression atmosphérique" width="20" height="20" class="meteo-icon">
               <div class="meteo-results-item-infos">
-                <p class="meteo-pressure-value"></p>
+                <p class="meteo-pressure-value">--</p>
                 <p>Pression</p>
               </div>
             </div>
@@ -81,7 +81,7 @@
             <div class="meteo-results-details-item">
               <img src="assets/images/svg/humidity.svg" data-file="humidity.svg" alt="Taux d'humidité" width="20" height="20" class="meteo-icon">
               <div class="meteo-results-item-infos">
-                <p class="meteo-humidity-value"></p>
+                <p class="meteo-humidity-value">--</p>
                 <p>Humidité</p>
               </div>
             </div>
@@ -92,7 +92,6 @@
   </div>
 
   <!-- Scripts -->
-  <script type="module" src="assets/js/meteo.js"></script>
-  <script type="module" src="assets/js/meteo_results_mock.js"></script>
+  <script type="module" src="assets/js/results.js"></script>
 </body>
 </html>
