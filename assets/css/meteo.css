@@ -277,3 +277,18 @@ input[type="text"]:focus {
   color: #ffffff;
   margin-bottom: 20px;
 }
+
+.meteo-list-random-list li.swipe-remove {
+  animation: slideOut 0.3s ease-in forwards;
+}
+
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
