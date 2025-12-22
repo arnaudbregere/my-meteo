@@ -1,0 +1,168 @@
+/**
+ * popin.css
+ * Styles pour la modal d'erreur de validation
+ */
+
+/* Overlay sombre */
+.popin-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.popin-overlay.active {
+  display: block;
+}
+
+/* Container principal de la popin */
+.popin-container {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  max-width: 90%;
+  width: 400px;
+  animation: slideUp 0.3s ease-in-out;
+}
+
+.popin-container.active {
+  display: block;
+}
+
+/* Contenu de la popin */
+.popin-content {
+  padding: 30px;
+  text-align: center;
+}
+
+/* Icône d'erreur */
+.popin-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  background-color: #ff6b6b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bounce 0.5s ease-in-out;
+}
+
+.popin-icon::before {
+  content: '!';
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* Titre de la popin */
+.popin-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #3b3d3d;
+  margin-bottom: 12px;
+}
+
+/* Message de la popin */
+.popin-message {
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+/* Bouton de fermeture */
+.popin-button {
+  background-color: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 30px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  min-height: 45px;
+}
+
+.popin-button:hover {
+  background-color: #5568d3;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.popin-button:active {
+  transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .popin-container {
+    width: 100%;
+    margin: 20px auto;
+  }
+
+  .popin-content {
+    padding: 20px;
+  }
+
+  .popin-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .popin-icon::before {
+    font-size: 28px;
+  }
+
+  .popin-title {
+    font-size: 18px;
+  }
+
+  .popin-message {
+    font-size: 13px;
+  }
+}

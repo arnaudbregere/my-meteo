@@ -14,6 +14,7 @@
   <!-- Feuilles de styles -->
   <link rel="stylesheet" href="assets/css/meteo.css">
   <link rel="stylesheet" href="assets/css/search.css">
+  <link rel="stylesheet" href="assets/css/popin.css">
 </head>
 <body>
   
@@ -72,6 +73,17 @@
         <span>Lille</span>
         <span>Lyon</span>
       </div>
+    </div>
+  </div>
+
+  <!-- Popin d'erreur de validation -->
+  <div class="popin-overlay" id="popin-overlay"></div>
+  <div class="popin-container" id="popin-container">
+    <div class="popin-content">
+      <div class="popin-icon"></div>
+      <h2 class="popin-title">Champ obligatoire</h2>
+      <p class="popin-message">Veuillez saisir le nom d'une ville pour continuer.</p>
+      <button class="popin-button" id="popin-close">Fermer</button>
     </div>
   </div>
 
