@@ -4,11 +4,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const autocompleteContainer = document.getElementById('meteo-autocomplete');
     const suggestionsContainer = document.getElementById('meteo-suggestions');
 
-    // Fonction pour récupérer les suggestions depuis Nominatim
+    // Fonction pour récupérer les suggestions depuis Nominatim // coté Client (saisie user dans l'input Search de search.html)
     async function fetchSuggestions(query) {
 
-        let limitResponse = 50
-        let france = 'fr'
+      const options = {
+        limitResponse : 50,
+        france: 'fr',
+        jsonFormat : 'json'
+
+      }
+
       if (query.length < 2) {
         autocompleteContainer.classList.remove('active');
         return;
@@ -16,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       try {
         const response = await fetch(
-          `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=${limitResponse}&countrycodes=${france}`
+          `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=${options.jsonFormat}&limit=${options.limitResponse}&countrycodes=${options.france}`
         );
 
         // On convertit en json (response arrive en string)
@@ -86,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
     submitButton.addEventListener('click', function(event){
       if(inputSearch.value === '') {
         event.preventDefault();
-        alert('Veuillez saisir une ville !');
+        alert('Veuillez saisir une ville !'); // TODO => Mettre l'input bordure rouge + message sous l'input
       }
     });
 
