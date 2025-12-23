@@ -53,7 +53,7 @@ export function renderWeatherResults(data, cityName) {
   
   const windSpeed = data.wind?.speed ? `${Math.round(data.wind.speed * 3.6)} km/h` : '--';
   const cloudiness = data.clouds?.all ? `${data.clouds.all}%` : '--';
-  const pressure = data.main?.pressure ? `${data.main.pressure} hPa` : '--';
+  const pressure = data.pressure ? `${data.pressure} hPa` : '--';
   const humidity = data.main?.humidity ? `${data.main.humidity}%` : '--';
   
   const windEl = document.querySelector('.meteo-wind-value');
@@ -69,12 +69,12 @@ export function renderWeatherResults(data, cityName) {
   console.log("✅ Résultats affichés");
 }
 
-export function renderError() {
+export function renderError(message = "Impossible de charger les résultats") {
   const resultsCityEl = document.getElementById('meteo-results-city');
-  if (resultsCityEl) resultsCityEl.textContent = "Non trouvée";
+  if (resultsCityEl) resultsCityEl.textContent = message || "Non trouvée";
   
   const locEl = document.querySelector('.meteo-h2-localisation');
   if (locEl) locEl.textContent = "Erreur";
   
-  console.error("❌ Impossible de charger les résultats");
+  console.error(`❌ ${message}`);
 }

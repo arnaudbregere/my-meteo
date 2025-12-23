@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   /**
-   * Affiche les suggestions d'autocomplétation
+   * Affiche les suggestions d'autocomplétion
    */
   function displaySuggestions(suggestions) {
     autocompleteContainer.innerHTML = '';
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return true;
   }
 
-  // Écouteur sur l'input pour l'autocomplétation
+  // Écouteur sur l'input pour l'autocomplétion
   inputSearch.addEventListener('input', (e) => {
     fetchSuggestions(e.target.value);
   });

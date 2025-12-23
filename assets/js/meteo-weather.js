@@ -140,3 +140,27 @@ export function getRandomCities(count = 4) {
   console.log("🎲 Villes aléatoires sélectionnées:", selected.map(c => c.name));
   return selected;
 }
+
+/**
+ * Récupère la météo pour des coordonnées (lat/lon)
+ * Utilisé pour la recherche de ville
+ */
+export async function getWeatherByCoordinates(lat, lon, cityName) {
+  try {
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=fr&appid=${apiKey}`;
+    const res = await fetch(url);
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}: Impossible de récupérer la météo`);
+
+    const data = await res.json();
+    
+    // Utiliser le nom de la ville passé en paramètre (depuis Nominatim)
+    // Cela garantit cohérence entre la recherche et le résultat
+    data.name = cityName;
+    
+    return transformMainWeatherData(data);
+  } catch (err) {
+    console.error("Erreur API météo:", err.message);
+    return null;
+  }
+}
