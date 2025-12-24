@@ -39,6 +39,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Étape 3: Afficher les résultats
     renderWeatherResults(data, location.displayName);
+
+    // Etape 4 : Stocker dans le local Storage
+    const getSavedSearch = JSON.parse(localStorage.getItem('saved_search'))
+     
+    if(getSavedSearch === null) {
+      const saved_searchs = []
+      saved_searchs.push(cityName)
+      localStorage.setItem('saved_search', JSON.stringify(saved_searchs))
+    } else {
+      getSavedSearch.push(cityName)
+      JSON.stringify(localStorage.setItem('saved_search', JSON.stringify(getSavedSearch)))
+    }
+    
   } catch (err) {
     console.error("❌ Erreur lors du chargement:", err);
     renderError();

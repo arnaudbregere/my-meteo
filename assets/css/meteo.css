@@ -181,14 +181,10 @@ input[type="text"]:focus {
   background: #5568d3;
 }
 
-.meteo-list-random {
-  display: flex;
-  flex: 1;
-}
-
 @media (min-width:768px) {
   .meteo-list-random {
     display: block;
+    flex: 1;
   }
 }
 
