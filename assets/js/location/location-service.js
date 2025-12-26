@@ -1,7 +1,9 @@
 /**
  * Récupère les coordonnées d'une ville via Nominatim
- * @param {string} cityName - Nom de la ville
- * @returns {Object|null} { lat, lon, displayName } ou null
+ * Utilise les coordonnées (lat/lon) plutôt que le nom car :
+ * - Unicité garantie (évite les ambiguïtés de noms)
+ * - Standard universel accepté par toutes les APIs
+ * - Indépendant des accents/encodages
  */
 export async function getLocationCoordinates(cityName) {
   try {

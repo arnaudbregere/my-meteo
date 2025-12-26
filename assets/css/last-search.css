@@ -1,0 +1,156 @@
+/* last-search.css */
+
+.meteo-last-search-main {
+  padding: 2rem 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.meteo-last-search-h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.meteo-last-search-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* État vide */
+.meteo-empty-state {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: #f5f5f5;
+  border-radius: 12px;
+}
+
+.meteo-empty-state p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.meteo-empty-state-link {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: #007AFF;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.meteo-empty-state-link:hover {
+  background: #0051D5;
+}
+
+/* Liste des recherches */
+.meteo-search-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.meteo-search-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.meteo-search-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-color: #007AFF;
+}
+
+.meteo-search-item.removing {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.meteo-search-item-link {
+  flex: 1;
+  color: #007AFF;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.meteo-search-item-link:hover {
+  color: #0051D5;
+  text-decoration: underline;
+}
+
+.meteo-search-item-delete {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+  margin-left: 1rem;
+}
+
+.meteo-search-item-delete:hover {
+  color: #FF3B30;
+}
+
+/* Actions de suppression */
+.meteo-clear-actions {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.meteo-clear-all-btn {
+  padding: 0.75rem 2rem;
+  background: #FF3B30;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.meteo-clear-all-btn:hover {
+  background: #CC2F24;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .meteo-last-search-main {
+    padding: 1.5rem 1rem;
+  }
+
+  .meteo-last-search-h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .meteo-search-item {
+    padding: 0.875rem;
+  }
+
+  .meteo-search-item-link {
+    font-size: 0.95rem;
+  }
+}

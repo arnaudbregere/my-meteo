@@ -2,6 +2,7 @@ import { updateImageSources, getCityFromURL } from "./utils/utils.js";
 import { getWeatherByCoordinates } from "./meteo-weather.js";
 import { getLocationCoordinates } from "./location/location-service.js";
 import { renderWeatherResults, renderError } from "./meteo-dom.js";
+import { addToSearchHistory } from "./search-history.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   updateImageSources();
@@ -40,17 +41,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Étape 3: Afficher les résultats
     renderWeatherResults(data, location.displayName);
 
-    // Etape 4 : Stocker dans le local Storage
-    const getSavedSearch = JSON.parse(localStorage.getItem('saved_search'))
-     
-    if(getSavedSearch === null) {
-      const saved_searchs = []
-      saved_searchs.push(cityName)
-      localStorage.setItem('saved_search', JSON.stringify(saved_searchs))
-    } else {
-      getSavedSearch.push(cityName)
-      JSON.stringify(localStorage.setItem('saved_search', JSON.stringify(getSavedSearch)))
-    }
+    // Étape 4: Ajouter à l'historique
+    addToSearchHistory(cityName);
     
   } catch (err) {
     console.error("❌ Erreur lors du chargement:", err);

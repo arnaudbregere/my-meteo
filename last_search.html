@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Métadonnées et configuration -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes recherches - My Meteo</title>
+
+  <!-- Polices Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Feuilles de styles -->
+  <link rel="stylesheet" href="assets/css/meteo.css">
+  <link rel="stylesheet" href="assets/css/last-search.css">
+</head>
+<body>
+  
+  <!-- Conteneur principal -->
+  <div class="meteo-main">
+    
+    <!-- En-tête avec logo et menu -->
+    <header class="meteo-header">
+      <img src="assets/images/svg/logo_mymeteo.svg" data-file="logo_mymeteo.svg" alt="My Meteo" width="183" height="47" class="meteo-logo">
+      <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Menu My Meteo" class="meteo-menu">
+    </header>
+
+    <!-- Conteneur principal des recherches -->
+    <div class="meteo-last-search-main">
+      
+      <!-- Titre -->
+      <h1 class="meteo-last-search-h1">Mes dernières recherches</h1>
+
+      <!-- Container des recherches -->
+      <div class="meteo-last-search-container">
+        
+        <!-- Message vide -->
+        <div id="meteo-empty-state" class="meteo-empty-state">
+          <p>Aucune recherche enregistrée pour le moment.</p>
+          <a href="search.html" class="meteo-empty-state-link">Faire une recherche</a>
+        </div>
+
+        <!-- Liste des recherches -->
+        <ul id="meteo-search-list" class="meteo-search-list"></ul>
+
+        <!-- Bouton pour effacer tout -->
+        <div id="meteo-clear-actions" class="meteo-clear-actions" style="display: none;">
+          <button id="meteo-clear-all" class="meteo-clear-all-btn">Effacer tout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="assets/js/last-search.js"></script>
+</body>
+</html>
