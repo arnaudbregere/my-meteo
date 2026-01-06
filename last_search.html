@@ -32,7 +32,7 @@
 <body>
   
   <!-- Conteneur principal -->
-  <div class="meteo-main">
+  <div class="meteo-main" id="top">
     
     <!-- En-tête avec logo et menu de navigation -->
     <header class="meteo-header" role="banner">
@@ -57,8 +57,15 @@
       <!-- Titre -->
       <h1 class="meteo-last-search-h1">Mes <strong>dernières recherches</strong> météo</h1>
 
+      <!-- Ancre interne -->
+      <p>
+        <a href="#history" title="Aller à l'historique des recherches">
+          Aller à l’historique
+        </a>
+      </p>
+
       <!-- Container des recherches -->
-      <section class="meteo-last-search-container">
+      <section id="history" class="meteo-last-search-container">
         
         <!-- Message vide -->
         <div id="meteo-empty-state" class="meteo-empty-state" role="status" aria-live="polite">
@@ -71,9 +78,17 @@
 
         <!-- Bouton pour effacer tout -->
         <div id="meteo-clear-actions" class="meteo-clear-actions" style="display: none;">
-          <button id="meteo-clear-all" class="meteo-clear-all-btn" title="Supprimer toutes vos recherches enregistrées">Effacer tout l'historique</button>
+          <button id="meteo-clear-all" class="meteo-clear-all-btn" title="Supprimer toutes vos recherches enregistrées">
+            Effacer tout l'historique
+          </button>
         </div>
       </section>
+
+      <!-- Retour haut de page -->
+      <p>
+        <a href="#top" title="Retour en haut de la page">Retour en haut</a>
+      </p>
+
     </main>
   </div>
 

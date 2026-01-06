@@ -59,7 +59,7 @@
 <body>
 
   <!-- Conteneur principal -->
-  <div class="meteo-main">
+  <div class="meteo-main" id="top">
     
     <!-- En-tête avec logo et menu de navigation -->
     <header class="meteo-header" role="banner">
@@ -90,10 +90,15 @@
           <span class="meteo-h1-temperature" title="Température actuelle">--</span>
         </h1>
         <a id="meteo-new-search" href="search.html" title="Rechercher la météo d'une autre ville">Nouvelle recherche</a>
+
+        <!-- Ancre interne -->
+        <p>
+          <a href="#suggestions" title="Aller aux suggestions météo">Voir les suggestions météo</a>
+        </p>
       </article>
 
       <!-- Section droite : Suggestions de villes -->
-      <aside class="meteo-list-random" role="complementary" aria-label="Suggestions météo">
+      <aside id="suggestions" class="meteo-list-random" role="complementary" aria-label="Suggestions météo">
         <h2 class="meteo-h2">Suggestions de météo</h2>
         <ul class="meteo-list-random-list" role="list">
           
@@ -114,7 +119,7 @@
             </div>
           </li>
 
-          <!-- Ville 2  -->
+          <!-- Ville 2 -->
           <li role="listitem">
             <article class="meteo-content">
               <p class="meteo-city">
@@ -131,7 +136,7 @@
             </div>
           </li>
 
-          <!-- Ville 3  -->
+          <!-- Ville 3 -->
           <li role="listitem">
             <article class="meteo-content">
               <p class="meteo-city">
@@ -148,7 +153,7 @@
             </div>
           </li>
 
-          <!-- Ville 4  -->
+          <!-- Ville 4 -->
           <li role="listitem">
             <article class="meteo-content">
               <p class="meteo-city">
@@ -164,7 +169,13 @@
               <p title="Conditions météorologiques">--</p>
             </div>
           </li>
+
         </ul>
+
+        <!-- Retour haut de page -->
+        <p>
+          <a href="#top" title="Retour en haut de la page">Retour en haut</a>
+        </p>
       </aside>
     </main>
   </div>
