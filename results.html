@@ -4,91 +4,146 @@
   <!-- Métadonnées et configuration -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Meteo</title>
+  <meta name="description" content="Résultats météo en temps réel - Consultez la température, le vent, la pression atmosphérique et l'humidité pour votre ville.">
+  <meta name="keywords" content="résultats météo, prévisions météorologiques, température, conditions météo, vent, humidité, pression">
+  <meta name="author" content="My Meteo">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="canonical" href="https://mymeteo.fr/results.html">
+  
+  <title>Résultats Météo - My Meteo | Prévisions en temps réel</title>
 
   <!-- Polices Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Favicons multiples formats -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/svg/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="assets/images/site.webmanifest">
+
   <!-- Feuilles de styles -->
   <link rel="stylesheet" href="assets/css/meteo.css">
   <link rel="stylesheet" href="assets/css/results.css">
+
+  <!-- Schema.org - Prévisions météorologiques -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WeatherForecast",
+    "location": {
+      "@type": "Place",
+      "name": ""
+    },
+    "forecastDate": "",
+    "temporalCoverage": "PT24H",
+    "weatherCondition": ""
+  }
+  </script>
+
+  <!-- Schema.org - Prévisions météorologiques -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WeatherForecast",
+    "location": {
+      "@type": "Place",
+      "name": ""
+    },
+    "forecastDate": "",
+    "temporalCoverage": "PT24H",
+    "weatherCondition": ""
+  }
+  </script>
 </head>
 <body>
   
   <!-- Conteneur principal -->
   <div class="meteo-main">
     
-    <!-- En-tête avec logo et menu -->
-    <header class="meteo-header">
-      <img src="assets/images/svg/logo_mymeteo.svg" data-file="logo_mymeteo.svg" alt="My Meteo" width="183" height="47" class="meteo-logo">
-      <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Menu My Meteo" class="meteo-menu">
+    <!-- En-tête avec logo et menu de navigation -->
+    <header class="meteo-header" role="banner">
+      <img src="assets/images/svg/logo_mymeteo.svg" data-file="logo_mymeteo.svg" alt="Logo My Meteo - Application météo" width="183" height="47" class="meteo-logo">
+      <button aria-label="Ouvrir le menu de navigation" class="meteo-menu-button">
+        <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Menu" class="meteo-menu">
+      </button>
     </header>
 
+    <!-- Navigation principale -->
+    <nav aria-label="Navigation principale" style="display: none;">
+      <ul>
+        <li><a href="index.html" title="Retour à l'accueil météo">Accueil</a></li>
+        <li><a href="search.html" title="Effectuer une nouvelle recherche de ville">Nouvelle recherche</a></li>
+        <li><a href="last_search.html" title="Consulter l'historique de vos recherches">Mes dernières recherches</a></li>
+      </ul>
+    </nav>
+
     <!-- Conteneur principal des résultats -->
-    <div class="meteo-results-main">
+    <main class="meteo-results-main" role="main">
       
       <!-- Titre avec localisation -->
-      <h1 class="meteo-results-h1">Mes résultats pour ma météo à <span id="meteo-results-city">--</span></h1>
+      <h1 class="meteo-results-h1">Résultats de <strong>météo</strong> pour <span id="meteo-results-city" title="Ville recherchée">--</span></h1>
 
       <!-- Section des résultats de la météo -->
-      <div class="meteo-results-city">
+      <article class="meteo-results-city">
         
         <!-- En-tête avec localisation, date, température et conditions -->
         <h2 class="meteo-results-title">
-          <span class="meteo-h2-localisation">--</span>
-          <span class="meteo-h2-date">--</span>
-          <span class="meteo-h2-temperature">--</span>
-          <span class="meteo-h2-weather">--</span>
+          <span class="meteo-h2-localisation" title="Localisation">--</span>
+          <span class="meteo-h2-date" title="Date et heure">--</span>
+          <span class="meteo-h2-temperature" title="Température en degrés Celsius">--</span>
+          <span class="meteo-h2-weather" title="Conditions météorologiques">--</span>
         </h2>
 
         <!-- Section des détails météorologiques -->
-        <div class="meteo-results-details">
-          <h3>Détails</h3>
+        <section class="meteo-results-details">
+          <h3>Détails des <strong>conditions météorologiques</strong></h3>
           
           <!-- Grille des indicateurs météo -->
           <div class="meteo-results-details-content">
             
             <!-- Indicateur 1 : Vitesse du vent -->
-            <div class="meteo-results-details-item">
-              <img src="assets/images/svg/wind.svg" data-file="wind.svg" alt="Vitesse du vent" width="20" height="20" class="meteo-icon">
+            <div class="meteo-results-details-item" role="region" aria-label="Vitesse du vent">
+              <img src="assets/images/svg/wind.svg" data-file="wind.svg" alt="Icône vitesse du vent" width="20" height="20" class="meteo-icon">
               <div class="meteo-results-item-infos">
-                <p class="meteo-wind-value">--</p>
-                <p>Vent</p>
+                <p class="meteo-wind-value" title="Vitesse du vent en km/h">--</p>
+                <p>Vitesse du vent</p>
               </div>
             </div>
 
             <!-- Indicateur 2 : Couverture nuageuse (Cloudiness) -->
-            <div class="meteo-results-details-item">
-              <img src="assets/images/svg/rain.svg" data-file="rain.svg" alt="Couverture nuageuse" width="20" height="20" class="meteo-icon">
+            <div class="meteo-results-details-item" role="region" aria-label="Couverture nuageuse">
+              <img src="assets/images/svg/rain.svg" data-file="rain.svg" alt="Icône couverture nuageuse" width="20" height="20" class="meteo-icon">
               <div class="meteo-results-item-infos">
-                <p class="meteo-rain-value">--</p>
-                <p>Couverture nuageuse</p>
+                <p class="meteo-rain-value" title="Pourcentage de couverture nuageuse">--</p>
+                <p><strong>Couverture</strong> nuageuse</p>
               </div>
             </div>
 
             <!-- Indicateur 3 : Pression atmosphérique -->
-            <div class="meteo-results-details-item">
-              <img src="assets/images/svg/pressure.svg" data-file="pressure.svg" alt="Pression atmosphérique" width="20" height="20" class="meteo-icon">
+            <div class="meteo-results-details-item" role="region" aria-label="Pression atmosphérique">
+              <img src="assets/images/svg/pressure.svg" data-file="pressure.svg" alt="Icône pression atmosphérique" width="20" height="20" class="meteo-icon">
               <div class="meteo-results-item-infos">
-                <p class="meteo-pressure-value">--</p>
-                <p>Pression</p>
+                <p class="meteo-pressure-value" title="Pression atmosphérique en hPa">--</p>
+                <p><strong>Pression</strong> atmosphérique</p>
               </div>
             </div>
 
             <!-- Indicateur 4 : Taux d'humidité -->
-            <div class="meteo-results-details-item">
-              <img src="assets/images/svg/humidity.svg" data-file="humidity.svg" alt="Taux d'humidité" width="20" height="20" class="meteo-icon">
+            <div class="meteo-results-details-item" role="region" aria-label="Taux d'humidité">
+              <img src="assets/images/svg/humidity.svg" data-file="humidity.svg" alt="Icône taux d'humidité" width="20" height="20" class="meteo-icon">
               <div class="meteo-results-item-infos">
-                <p class="meteo-humidity-value">--</p>
-                <p>Humidité</p>
+                <p class="meteo-humidity-value" title="Taux d'humidité en pourcentage">--</p>
+                <p><strong>Taux</strong> d'humidité</p>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </section>
+      </article>
+    </main>
   </div>
 
   <!-- Scripts -->

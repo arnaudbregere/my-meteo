@@ -97,19 +97,20 @@
 
     .meteo-search-suggestions {
       width: 100%;
-      color: #ffffff;
       line-height: 50px;
       cursor: pointer;
     }
 
-     .meteo-search-suggestions span {
+     .meteo-search-suggestions a {
       border: 1px solid #ffffff;
+      color: #ffffff;
       font-weight: 400;
       border-radius: 5px;
       margin-right: 10px;
       padding: 5px;
+      text-decoration: none;
     }
-      .meteo-search-suggestions span:hover {
+      .meteo-search-suggestions a:hover {
       border: 1px solid #ffffff;
       background-color: #ffffff;
       color: #3b3d3d;

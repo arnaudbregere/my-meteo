@@ -4,42 +4,80 @@
   <!-- Métadonnées et configuration -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Meteo</title>
+  <meta name="description" content="Recherchez la météo d'une ville française. Accès rapide aux prévisions météorologiques, température, vent, pression et humidité en temps réel.">
+  <meta name="keywords" content="recherche météo, prévisions météorologiques, météo France, température ville, application météo">
+  <meta name="author" content="My Meteo">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="canonical" href="https://mymeteo.fr/search.html">
+  
+  <title>Recherche Météo - My Meteo | Consultez la météo de votre ville</title>
 
   <!-- Polices Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Favicons multiples formats -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/svg/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="assets/images/site.webmanifest">
+
   <!-- Feuilles de styles -->
   <link rel="stylesheet" href="assets/css/meteo.css">
   <link rel="stylesheet" href="assets/css/search.css">
   <link rel="stylesheet" href="assets/css/popin.css">
+
+  <!-- Schema.org - Formulaire de recherche -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://mymeteo.fr/results.html?city={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+  </script>
 </head>
 <body>
   
   <!-- Conteneur principal -->
   <div class="meteo-main">
     
-    <!-- En-tête avec logo et menu -->
-    <header class="meteo-header">
-      <img src="assets/images/svg/logo_mymeteo.svg" data-file="logo_mymeteo.svg" alt="My Meteo" width="183" height="47" class="meteo-logo">
-      <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Menu My Meteo" class="meteo-menu">
+    <!-- En-tête avec logo et menu de navigation -->
+    <header class="meteo-header" role="banner">
+      <img src="assets/images/svg/logo_mymeteo.svg" data-file="logo_mymeteo.svg" alt="Logo My Meteo - Application météo" width="183" height="47" class="meteo-logo">
+      <button aria-label="Ouvrir le menu de navigation" class="meteo-menu-button">
+        <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Menu" class="meteo-menu">
+      </button>
     </header>
 
+    <!-- Navigation principale -->
+    <nav aria-label="Navigation principale" style="display: none;">
+      <ul>
+        <li><a href="index.html" title="Retour à l'accueil météo">Accueil</a></li>
+        <li><a href="search.html" title="Effectuer une nouvelle recherche de ville" aria-current="page">Nouvelle recherche</a></li>
+        <li><a href="last_search.html" title="Consulter l'historique de vos recherches">Mes dernières recherches</a></li>
+      </ul>
+    </nav>
+
     <!-- Conteneur de recherche principal -->
-    <div class="meteo-search-main">
+    <main class="meteo-search-main" role="main">
       
       <!-- Titre de la section recherche -->
-      <h1 class="meteo-search-h1">Ma recherche</h1>
+      <h1 class="meteo-search-h1">Recherchez la <strong>météo</strong> de votre ville</h1>
 
       <!-- Section de saisie -->
-      <div class="meteo-search-input">
-        <label class="meteo-search-label" for="meteo-search-localisation">Où ?</label>
+      <article class="meteo-search-input">
+        <label class="meteo-search-label" for="meteo-search-localisation">Où souhaitez-vous consulter la <strong>météo</strong> ?</label>
         
         <!-- Wrapper pour l'icône et l'input -->
         <div class="meteo-search-input-wrapper">
-          <form action="results.html">
+          <form action="results.html" method="GET">
             <!-- Icône de recherche -->
             <img src="assets/images/svg/search.svg" data-file="search.svg" alt="Icône recherche" width="20" height="20" class="meteo-icon meteo-icon-search">
             
@@ -47,43 +85,47 @@
             <input 
               id="meteo-search-localisation"
               class="meteo-search-main__input"
-              placeholder="Rechercher une ville"
+              placeholder="Entrez le nom d'une ville (ex: Paris, Lyon)"
               autocomplete="off" 
               name="meteo-search-localisation" 
-              type="text">
+              type="text"
+              required
+              title="Saisissez le nom d'une ville française">
             
             <!-- Bouton de recherche -->
-            <button type="submit" id="meteo-search-city" class="meteo-search-city">Rechercher</button>
+            <button type="submit" id="meteo-search-city" class="meteo-search-city" title="Lancer la recherche météo">Rechercher</button>
           </form>
           
           <!-- Dropdown d'autocomplétion -->
-          <div id="meteo-autocomplete" class="meteo-autocomplete"></div>
+          <div id="meteo-autocomplete" class="meteo-autocomplete" role="listbox" aria-label="Suggestions de villes"></div>
         </div>
-      </div>
+      </article>
 
       <!-- Section des suggestions de recherche -->
-      <h2 class="meteo-search-h2">Suggestions</h2>
-      <div class="meteo-search-suggestions" id="meteo-suggestions">
-        <span>Angers</span>
-        <span>Angoulême</span>
-        <span>Nantes</span>
-        <span>Toulouse</span>
-        <span>Londres</span>
-        <span>Bordeaux</span>
-        <span>Lille</span>
-        <span>Lyon</span>
-      </div>
-    </div>
+      <section class="meteo-search-suggestions-section">
+        <h2 class="meteo-search-h2">Villes suggérées</h2>
+        <div class="meteo-search-suggestions" id="meteo-suggestions" role="list">
+          <a href="#" role="listitem" title="Consulter la météo d'Angers">Angers</a>
+          <a href="#" role="listitem" title="Consulter la météo d'Angoulême">Angoulême</a>
+          <a href="#" role="listitem" title="Consulter la météo de Nantes">Nantes</a>
+          <a href="#" role="listitem" title="Consulter la météo de Toulouse">Toulouse</a>
+          <a href="#" role="listitem" title="Consulter la météo de Londres">Londres</a>
+          <a href="#" role="listitem" title="Consulter la météo de Bordeaux">Bordeaux</a>
+          <a href="#" role="listitem" title="Consulter la météo de Lille">Lille</a>
+          <a href="#" role="listitem" title="Consulter la météo de Lyon">Lyon</a>
+        </div>
+      </section>
+    </main>
   </div>
 
   <!-- Popin d'erreur de validation -->
-  <div class="popin-overlay" id="popin-overlay"></div>
-  <div class="popin-container" id="popin-container">
+  <div class="popin-overlay" id="popin-overlay" role="presentation"></div>
+  <div class="popin-container" id="popin-container" role="dialog" aria-labelledby="popin-title" aria-modal="true">
     <div class="popin-content">
-      <div class="popin-icon"></div>
-      <h2 class="popin-title">Champ obligatoire</h2>
-      <p class="popin-message">Veuillez saisir le nom d'une ville pour continuer.</p>
-      <button class="popin-button" id="popin-close">Fermer</button>
+      <div class="popin-icon" aria-hidden="true"></div>
+      <h2 class="popin-title" id="popin-title">Champ obligatoire</h2>
+      <p class="popin-message">Veuillez saisir le nom d'une ville pour continuer votre recherche <strong>météo</strong>.</p>
+      <button class="popin-button" id="popin-close" title="Fermer la fenêtre d'erreur">Fermer</button>
     </div>
   </div>
 

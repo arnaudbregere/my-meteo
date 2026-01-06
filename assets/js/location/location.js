@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Charger les suggestions statiques au chargement
   suggestionsContainer.addEventListener('click', (e) => {
-    if (e.target.tagName === 'SPAN') {
+    if (e.target.tagName === 'A') {
       inputSearch.value = e.target.textContent;
     }
   });

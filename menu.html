@@ -4,12 +4,24 @@
   <!-- Métadonnées et configuration -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Meteo</title>
+  <meta name="description" content="Menu de navigation - My Meteo | Accédez rapidement à l'accueil, à la recherche et à votre historique.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="canonical" href="https://mymeteo.fr/menu.html">
+  
+  <title>Menu - My Meteo</title>
 
   <!-- Polices Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicons multiples formats -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/svg/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="assets/images/site.webmanifest">
 
   <!-- Feuilles de styles -->
   <link rel="stylesheet" href="assets/css/meteo.css">
@@ -20,32 +32,32 @@
   <!-- Conteneur principal -->
   <div class="meteo-main">
     
-    <!-- Menu avec bouton fermer -->
-    <div class="meteo-menu">
-      <header class="meteo-header">
-        <img src="assets/images/svg/close.svg" data-file="close.svg" alt="Fermer le menu" class="meteo-menu">
-      </header>
-    </div>
+    <!-- En-tête avec logo et bouton fermer -->
+    <header class="meteo-header" role="banner">
+      <button aria-label="Fermer le menu de navigation" class="meteo-menu-close-button">
+        <img src="assets/images/svg/close.svg" data-file="close.svg" alt="Fermer le menu" class="meteo-menu-close">
+      </button>
+    </header>
 
     <!-- Liste de navigation du menu -->
-    <div class="meteo-menu-list">
-      <ul>
+    <nav class="meteo-menu-list" role="navigation" aria-label="Menu de navigation principal">
+      <ul role="list">
         <!-- Lien vers l'accueil -->
-        <li>
-          <a href="index.html" aria-label="Retour à l'accueil">Accueil</a>
+        <li role="listitem">
+          <a href="index.html" title="Retour à l'accueil - Consultez la météo actuelle">Accueil</a>
         </li>
 
         <!-- Lien vers la recherche -->
-        <li>
-          <a href="search.html" aria-label="Faire une nouvelle recherche">Nouvelle recherche</a>
+        <li role="listitem">
+          <a href="search.html" title="Effectuer une nouvelle recherche de ville pour connaître sa météo">Nouvelle recherche</a>
         </li>
 
         <!-- Lien vers les dernières recherches -->
-        <li>
-          <a href="last_search.html" aria-label="Consulter mes dernières recherches">Mes dernières recherches</a>
+        <li role="listitem">
+          <a href="last_search.html" title="Consulter votre historique de recherches météorologiques">Mes dernières recherches</a>
         </li>
       </ul>
-    </div>
+    </nav>
   </div>
 
   <!-- Scripts -->

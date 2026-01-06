@@ -4,116 +4,169 @@
   <!-- Métadonnées et configuration -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Meteo</title>
+  <meta name="description" content="My Meteo - Application météo en temps réel pour Paris et villes françaises. Consultez la température, le vent, la pression et l'humidité.">
+  <meta name="keywords" content="météo, météo France, température, prévisions météo, Paris, application météo">
+  <meta name="author" content="My Meteo">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="canonical" href="https://mymeteo.fr/index.html">
+  
+  <title>My Meteo - Météo en temps réel pour Paris et villes françaises</title>
 
   <!-- Polices Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Favicons multiples formats -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/svg/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="assets/images/site.webmanifest">
+
   <!-- Feuille de styles -->
   <link rel="stylesheet" href="assets/css/meteo.css">
+
+  <!-- Schema.org - Application météo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "My Meteo",
+    "description": "Application météo en temps réel pour consulter les prévisions météorologiques en France",
+    "url": "https://mymeteo.fr",
+    "applicationCategory": "WeatherApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    }
+  }
+  </script>
+
+  <!-- Schema.org - Organisation -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "My Meteo",
+    "url": "https://mymeteo.fr",
+    "logo": "https://mymeteo.fr/assets/images/svg/logo_mymeteo.svg"
+  }
+  </script>
 </head>
 <body>
 
   <!-- Conteneur principal -->
   <div class="meteo-main">
     
-    <!-- En-tête avec logo et menu -->
-    <header class="meteo-header">
-      <img src="assets/images/svg/logo_mymeteo.svg" data-file="logo_mymeteo.svg" alt="My Meteo" width="183" height="47" class="meteo-logo">
-      <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Menu My Meteo" class="meteo-menu">
+    <!-- En-tête avec logo et menu de navigation -->
+    <header class="meteo-header" role="banner">
+      <img src="assets/images/svg/logo_mymeteo.svg" data-file="logo_mymeteo.svg" alt="Logo My Meteo - Application météo" width="183" height="47" class="meteo-logo">
+      <button aria-label="Ouvrir le menu de navigation" class="meteo-menu-button">
+        <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Menu" class="meteo-menu">
+      </button>
     </header>
 
+    <!-- Navigation principale -->
+    <nav aria-label="Navigation principale" style="display: none;">
+      <ul>
+        <li><a href="index.html" title="Retour à l'accueil météo">Accueil</a></li>
+        <li><a href="search.html" title="Effectuer une nouvelle recherche de ville">Nouvelle recherche</a></li>
+        <li><a href="last_search.html" title="Consulter l'historique de vos recherches">Mes dernières recherches</a></li>
+      </ul>
+    </nav>
+
     <!-- Conteneur du contenu principal -->
-    <div class="meteo-container">
+    <main class="meteo-container" role="main">
       
-      <!-- Colonne de gauche : Titre principal + CTA -->
-      <div class="meteo-left-column">
+      <!-- Section gauche : Titre principal + CTA -->
+      <article class="meteo-left-column">
         <!-- Titre principal avec localisation, date et température -->
         <h1 class="meteo-h1">
-          <span class="meteo-h1-localisation">--</span>
-          <span class="meteo-h1-date">--</span>
-          <span class="meteo-h1-temperature">--</span>
+          Météo à <span class="meteo-h1-localisation" title="Localisation actuelle">--</span>
+          <span class="meteo-h1-date" title="Date du jour">--</span>
+          <span class="meteo-h1-temperature" title="Température actuelle">--</span>
         </h1>
-        <a id="meteo-new-search" href="search.html" target="_self">Nouvelle recherche</a>
-      </div>
+        <a id="meteo-new-search" href="search.html" title="Rechercher la météo d'une autre ville">Nouvelle recherche</a>
+      </article>
 
-      <!-- Colonne de droite : Liste des villes avec prévisions météo -->
-      <div class="meteo-list-random">
-        <h2 class="meteo-h2">Suggestions</h2>
-        <ul class="meteo-list-random-list">
+      <!-- Section droite : Suggestions de villes -->
+      <aside class="meteo-list-random" role="complementary" aria-label="Suggestions météo">
+        <h2 class="meteo-h2">Suggestions de météo</h2>
+        <ul class="meteo-list-random-list" role="list">
           
           <!-- Ville 1 -->
-          <li>
-            <div class="meteo-content">
+          <li role="listitem">
+            <article class="meteo-content">
               <p class="meteo-city">
-                <span>--</span>
+                <span title="Nom de la ville">--</span>
                 <span>
-                  <img src="assets/images/svg/localisation.svg" data-file="localisation.svg" alt="Localisation" width="20" height="20" class="meteo-icon">
+                  <img src="assets/images/svg/localisation.svg" data-file="localisation.svg" alt="Icône de localisation" width="20" height="20" class="meteo-icon">
                 </span>
               </p>
-              <p class="meteo-temperature">--</p>
-            </div>
+              <p class="meteo-temperature" title="Température en degrés Celsius">--</p>
+            </article>
             <div class="meteo-weather">
               <img src="assets/images/svg/sun.svg" data-file="sun.svg" alt="Météo ensoleillée" width="20" height="20" class="meteo-icon">
-              <p>--</p>
+              <p title="Conditions météorologiques">--</p>
             </div>
           </li>
 
           <!-- Ville 2  -->
-          <li>
-            <div class="meteo-content">
+          <li role="listitem">
+            <article class="meteo-content">
               <p class="meteo-city">
-                <span>--</span>
+                <span title="Nom de la ville">--</span>
                 <span>
-                  <img src="assets/images/svg/localisation.svg" data-file="localisation.svg" alt="Localisation" width="20" height="20" class="meteo-icon">
+                  <img src="assets/images/svg/localisation.svg" data-file="localisation.svg" alt="Icône de localisation" width="20" height="20" class="meteo-icon">
                 </span>
               </p>
-              <p class="meteo-temperature">--</p>
-            </div>
+              <p class="meteo-temperature" title="Température en degrés Celsius">--</p>
+            </article>
             <div class="meteo-weather">
               <img src="assets/images/svg/snow.svg" data-file="snow.svg" alt="Météo enneigée" width="20" height="20" class="meteo-icon">
-              <p>--</p>
+              <p title="Conditions météorologiques">--</p>
             </div>
           </li>
 
           <!-- Ville 3  -->
-          <li>
-            <div class="meteo-content">
+          <li role="listitem">
+            <article class="meteo-content">
               <p class="meteo-city">
-                <span>--</span>
+                <span title="Nom de la ville">--</span>
                 <span>
-                  <img src="assets/images/svg/localisation.svg" data-file="localisation.svg" alt="Localisation" width="20" height="20" class="meteo-icon">
+                  <img src="assets/images/svg/localisation.svg" data-file="localisation.svg" alt="Icône de localisation" width="20" height="20" class="meteo-icon">
                 </span>
               </p>
-              <p class="meteo-temperature">--</p>
-            </div>
+              <p class="meteo-temperature" title="Température en degrés Celsius">--</p>
+            </article>
             <div class="meteo-weather">
               <img src="assets/images/svg/rain.svg" data-file="rain.svg" alt="Météo pluvieuse" width="20" height="20" class="meteo-icon">
-              <p>--</p>
+              <p title="Conditions météorologiques">--</p>
             </div>
           </li>
 
           <!-- Ville 4  -->
-          <li>
-            <div class="meteo-content">
+          <li role="listitem">
+            <article class="meteo-content">
               <p class="meteo-city">
-                <span>--</span>
+                <span title="Nom de la ville">--</span>
                 <span>
-                  <img src="assets/images/svg/localisation.svg" data-file="localisation.svg" alt="Localisation" width="20" height="20" class="meteo-icon">
+                  <img src="assets/images/svg/localisation.svg" data-file="localisation.svg" alt="Icône de localisation" width="20" height="20" class="meteo-icon">
                 </span>
               </p>
-              <p class="meteo-temperature">--</p>
-            </div>
+              <p class="meteo-temperature" title="Température en degrés Celsius">--</p>
+            </article>
             <div class="meteo-weather">
               <img src="assets/images/svg/cloud.svg" data-file="cloud.svg" alt="Météo nuageuse" width="20" height="20" class="meteo-icon">
-              <p>--</p>
+              <p title="Conditions météorologiques">--</p>
             </div>
           </li>
         </ul>
-      </div>
-    </div>
+      </aside>
+    </main>
   </div>
 
   <!-- Scripts -->

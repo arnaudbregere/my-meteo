@@ -102,8 +102,11 @@ body {
   font-weight: 400;
 }
 
-.meteo-menu {
+.meteo-menu-button {
   margin-left: auto;
+  background-color: transparent;
+  outline: none;
+  border: none;
 }
 
 .meteo-container {
