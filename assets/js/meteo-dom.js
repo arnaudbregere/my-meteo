@@ -65,8 +65,18 @@ export function renderWeatherResults(data, cityName) {
   if (rainEl) rainEl.textContent = cloudiness;
   if (pressureEl) pressureEl.textContent = pressure;
   if (humidityEl) humidityEl.textContent = humidity;
+
+  // === AFFICHAGE DE L'ICÔNE OFFICIELLE OPENWEATHERMAP ===
+  const iconCode = data.main?.iconCode || '01d'; // fallback très rare
+  const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
   
-  console.log("✅ Résultats affichés");
+  const iconEl = document.querySelector('.meteo-h2-weather-icon');
+  if (iconEl) {
+    iconEl.src = iconUrl;
+    iconEl.alt = data.main?.description || 'Conditions météo';
+  }
+
+  console.log("✅ Résultats affichés avec icône OpenWeatherMap :", iconCode);
 }
 
 export function renderError(message = "Impossible de charger les résultats") {

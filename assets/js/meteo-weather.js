@@ -59,6 +59,7 @@ function transformMainWeatherData(data) {
       humidity: data.main.humidity,
       description: weather.description,
       icon: WEATHER_ICON_MAP[weather.icon] || "cloud.svg",
+      iconCode: weather.icon  
     },
     wind: data.wind,
     clouds: data.clouds,
@@ -87,6 +88,7 @@ function getMockMainWeatherData(city) {
       humidity: Math.floor(Math.random() * 40) + 40,
       description: ["Ensoleillé", "Nuageux", "Pluvieux"][Math.floor(Math.random() * 3)],
       icon: ["sun.svg", "cloud.svg", "rain.svg"][Math.floor(Math.random() * 3)],
+      iconCode: "04d" // fallback mock
     },
   };
 }
