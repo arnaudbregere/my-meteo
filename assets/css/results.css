@@ -33,6 +33,30 @@
     padding-bottom: 30px;
 }
 
+/* Skeleton réaliste avec plusieurs lignes pour le titre */
+.meteo-results-title.skeleton::before,
+.meteo-results-title.skeleton::after {
+  content: '';
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  height: 32px;
+  background: inherit;
+  border-radius: 8px;
+  animation: inherit;
+}
+
+.meteo-results-title.skeleton::before {
+  top: 20px;
+  width: 75%;   /* Ligne longue : ville */
+}
+
+.meteo-results-title.skeleton::after {
+  top: 68px;
+  width: 55%;   /* Ligne moyenne : temp + condition */
+}
+
+
 .meteo-h2-localisation, .meteo-h2-temperature {
     display: block;
     font-weight: 600;
@@ -85,9 +109,47 @@
     gap: 12px;
 }
 
+.meteo-results-details-item.skeleton::before {
+  content: '';
+  position: absolute;
+  left: 60px;   /* Après l'icône */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60%;
+  height: 24px;
+  background: inherit;
+  border-radius: 8px;
+  animation: inherit;
+}
+
 .meteo-results-item-infos {
     display: flex;
     flex-direction: column;
     font-size: 12px;
     text-align: left;
+}
+
+/* Shimmer de base (garde ce que tu as déjà) */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, 
+    #a0c4ff 25%,   /* Base bleue foncée pour plus de profondeur */
+    #ffffff 37.5%, /* Pic blanc hyper lumineux (étendu pour plus d'impact) */
+    #ffffff 50%, 
+    #ffffff 62.5%,
+    #a0c4ff 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton * {
+  visibility: hidden !important;
 }

@@ -46,12 +46,18 @@ body {
   width: 100%;
   height: 100%;
   background-image: url('../images/svg/meteo-background.svg');
-  background-size: cover;
+  background-size: 80%;
   background-position: center;
   background-repeat: no-repeat;
   animation: float 4s ease-in-out infinite; /* TODO : amÃ©liorer l'animation => Scroll, effet paralax, animation fin / dÃ©but..  */
   z-index: 0;
   pointer-events: none;
+}
+
+@media (min-width:768px) { 
+  .meteo-main::before {
+    background-size: contain;
+  }
 }
 
 .meteo-main > * {
