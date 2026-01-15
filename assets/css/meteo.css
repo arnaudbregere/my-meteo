@@ -297,3 +297,16 @@ input[type="text"]:focus {
     transform: translateX(100%);
   }
 }
+
+
+/* 
+  Respect des préférences utilisateur :
+  désactivation des animations si prefers-reduced-motion activé
+  (WCAG + compatibilité OS / navigateur)
+*/
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

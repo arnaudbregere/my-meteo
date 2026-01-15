@@ -103,6 +103,16 @@
     padding: 15px;
 }
 
+/* Fallback navigateur : si CSS Grid non supporté, retour en Flexbox */
+@supports not (display: grid) {
+  .meteo-results-details-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+
 .meteo-results-details-item {
     display: flex;
     align-items: center;

@@ -127,16 +127,30 @@
     </main>
   </div>
 
-  <!-- ===== DIALOG D'ERREUR DE VALIDATION (MODAL ACCESSIBLE) ===== -->
+<!-- ===== DIALOG D'ERREUR DE VALIDATION (MODAL ACCESSIBLE) ===== -->
+<!-- 
+  Utilisation de <dialog> (HTML Living Standard)
+  Fallback prévu côté JS si non supporté (aria-modal + role="dialog")
+  Compatibilité documentée via MDN.
+-->
   <div class="popin-overlay" id="popin-overlay"></div>
-  <dialog class="popin-container" id="popin-container">
+
+  <dialog class="popin-container" id="popin-container"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="popin-title">
     <div class="popin-content">
       <div class="popin-icon" aria-hidden="true"></div>
       <h2 class="popin-title" id="popin-title">Champ obligatoire</h2>
-      <p class="popin-message">Veuillez saisir le nom d'une ville pour continuer votre recherche <strong>météo</strong>.</p>
-      <button class="popin-button" id="popin-close" title="Fermer la fenêtre d'erreur">Fermer</button>
+      <p class="popin-message">
+        Veuillez saisir le nom d'une ville pour continuer votre recherche <strong>météo</strong>.
+      </p>
+      <button class="popin-button" id="popin-close" title="Fermer la fenêtre d'erreur">
+        Fermer
+      </button>
     </div>
   </dialog>
+
 
   <!-- ===== SCRIPTS ===== -->
   <script type="module" src="assets/js/location/location.js"></script>

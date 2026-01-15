@@ -154,3 +154,12 @@
     font-size: 0.95rem;
   }
 }
+
+/* Fallback si transitions CSS non supportées */
+@supports not (transition: all 0.3s ease) {
+  .meteo-search-item,
+  .meteo-search-item-link,
+  .meteo-clear-all-btn {
+    transition: none;
+  }
+}

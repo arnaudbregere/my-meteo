@@ -166,3 +166,12 @@
     font-size: 13px;
   }
 }
+
+/* Sécurité navigateur : animations non bloquantes */
+@media (prefers-reduced-motion: reduce) {
+  .popin-overlay,
+  .popin-container,
+  .popin-icon {
+    animation: none !important;
+  }
+}
