@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- Métadonnées et configuration -->
+  <!-- ===== MÉTADONNÉES ET CONFIGURATION ===== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="My Meteo - Application météo en temps réel pour Paris et villes françaises. Consultez la température, le vent, la pression et l'humidité.">
@@ -13,27 +13,26 @@
   
   <title>My Meteo - Météo en temps réel pour Paris et villes françaises</title>
 
-  <!-- Polices Google -->
+  <!-- ===== POLICES GOOGLE ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Police OpenDyslexic (chargée via CDN pour le mode dyslexie) -->
+  <!-- ===== POLICE OPENDYSLEXIC (ACCESSIBILITÉ) ===== -->
   <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/open-dyslexic">
 
-  <!-- Favicons multiples formats -->
+  <!-- ===== FAVICONS MULTIPLES FORMATS ===== -->
   <link rel="icon" type="image/svg+xml" href="assets/images/svg/favicon.svg">
   <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
   <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <link rel="manifest" href="assets/images/site.webmanifest">
 
-  <!-- Feuilles de styles -->
+  <!-- ===== FEUILLES DE STYLES ===== -->
   <link rel="stylesheet" href="assets/css/meteo.css">
-  <!-- CSS dédié à l’accessibilité (skip link, toggle dyslexie, police OpenDyslexic) -->
   <link rel="stylesheet" href="assets/css/accessibility.css">
 
-  <!-- Schema.org - Application météo -->
+  <!-- ===== SCHEMA.ORG - APPLICATION MÉTÉO ===== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -50,7 +49,7 @@
   }
   </script>
 
-  <!-- Schema.org - Organisation -->
+  <!-- ===== SCHEMA.ORG - ORGANISATION ===== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -63,27 +62,28 @@
 </head>
 <body>
 
-  <!-- Lien d’évitement pour une navigation clavier optimale (critère RGAA important) -->
+  <!-- ===== LIEN D'ÉVITEMENT (ACCESSIBILITÉ CLAVIER) ===== -->
   <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
-  <!-- Conteneur principal -->
+  <!-- ===== CONTENEUR PRINCIPAL ===== -->
   <div class="meteo-main" id="top">
     
-    <!-- En-tête avec logo et menu de navigation -->
-    <header class="meteo-header" role="banner">
+    <!-- ===== EN-TÊTE (HEADER) ===== -->
+    <header class="meteo-header">
       <img src="assets/images/svg/logo_mymeteo.svg" data-file="logo_mymeteo.svg" alt="Logo My Meteo - Application météo" width="183" height="47" class="meteo-logo">
 
-      <!-- Bouton pour activer/désactiver la police adaptée aux personnes dyslexiques -->
+      <!-- Bouton toggle police dyslexique -->
       <button id="dyslexia-toggle" class="accessibility-toggle" aria-label="Activer ou désactiver la police adaptée aux personnes dyslexiques" title="Activer/désactiver la police adaptée aux dyslexiques">
         Police adaptée aux dyslexiques : <span id="dyslexia-status">désactivée</span>
       </button>
 
+      <!-- Bouton menu -->
       <button aria-label="Ouvrir le menu de navigation" class="meteo-menu-button">
-        <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="" class="meteo-menu">
+        <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Icône du menu" class="meteo-menu">
       </button>
     </header>
 
-    <!-- Navigation principale -->
+    <!-- ===== NAVIGATION PRINCIPALE ===== -->
     <nav aria-label="Navigation principale" style="display: none;">
       <ul>
         <li><a href="index.html" title="Retour à l'accueil météo">Accueil</a></li>
@@ -92,12 +92,12 @@
       </ul>
     </nav>
 
-    <!-- Conteneur du contenu principal -->
-    <main class="meteo-container" role="main" id="main-content">
+    <!-- ===== CONTENU PRINCIPAL (MAIN) ===== -->
+    <main class="meteo-container" id="main-content">
       
-      <!-- Section gauche : Titre principal + CTA -->
-      <article class="meteo-left-column">
-        <!-- Titre principal avec localisation, date et température -->
+      <!-- ===== SECTION GAUCHE : TITRE PRINCIPAL + CTA ===== -->
+      <section class="meteo-left-column">
+        <!-- Titre principal -->
         <h1 class="meteo-h1">
           Météo à <span class="meteo-h1-localisation" title="Localisation actuelle">--</span>
           <span class="meteo-h1-date" title="Date du jour">--</span>
@@ -105,19 +105,19 @@
         </h1>
         <a id="meteo-new-search" href="search.html" title="Rechercher la météo d'une autre ville">Nouvelle recherche</a>
 
-        <!-- Ancre interne -->
+        <!-- Ancre interne pour navigation -->
         <p>
           <a href="#suggestions" title="Aller aux suggestions météo">Voir les suggestions météo</a>
         </p>
-      </article>
+      </section>
 
-      <!-- Section droite : Suggestions de villes -->
-      <aside id="suggestions" class="meteo-list-random" role="complementary" aria-label="Suggestions météo">
+      <!-- ===== SUGGESTIONS DE VILLES (ASIDE) ===== -->
+      <aside id="suggestions" class="meteo-list-random" aria-label="Suggestions météo">
         <h2 class="meteo-h2">Suggestions de météo</h2>
-        <ul class="meteo-list-random-list" role="list">
+        <ul class="meteo-list-random-list">
           
           <!-- Ville 1 -->
-          <li role="listitem">
+          <li>
             <article class="meteo-content">
               <p class="meteo-city">
                 <span title="Nom de la ville">--</span>
@@ -134,7 +134,7 @@
           </li>
 
           <!-- Ville 2 -->
-          <li role="listitem">
+          <li>
             <article class="meteo-content">
               <p class="meteo-city">
                 <span title="Nom de la ville">--</span>
@@ -151,7 +151,7 @@
           </li>
 
           <!-- Ville 3 -->
-          <li role="listitem">
+          <li>
             <article class="meteo-content">
               <p class="meteo-city">
                 <span title="Nom de la ville">--</span>
@@ -168,7 +168,7 @@
           </li>
 
           <!-- Ville 4 -->
-          <li role="listitem">
+          <li>
             <article class="meteo-content">
               <p class="meteo-city">
                 <span title="Nom de la ville">--</span>
@@ -194,9 +194,8 @@
     </main>
   </div>
 
-  <!-- Scripts -->
+  <!-- ===== SCRIPTS ===== -->
   <script type="module" src="./assets/js/meteo.js"></script>
-  <!-- Script gérant le toggle de la police dyslexique (persistance via localStorage) -->
   <script src="assets/js/accessibility.js"></script>
   
 </body>

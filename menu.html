@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- Métadonnées et configuration -->
+  <!-- ===== MÉTADONNÉES ET CONFIGURATION ===== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Menu de navigation - My Meteo | Accédez rapidement à l'accueil, à la recherche et à votre historique.">
@@ -11,37 +11,37 @@
   
   <title>Menu - My Meteo</title>
 
-  <!-- Polices Google -->
+  <!-- ===== POLICES GOOGLE ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Favicons multiples formats -->
+  <!-- ===== FAVICONS MULTIPLES FORMATS ===== -->
   <link rel="icon" type="image/svg+xml" href="assets/images/svg/favicon.svg">
   <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
   <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <link rel="manifest" href="assets/images/site.webmanifest">
 
-  <!-- Feuilles de styles -->
+  <!-- ===== FEUILLES DE STYLES ===== -->
   <link rel="stylesheet" href="assets/css/meteo.css">
   <link rel="stylesheet" href="assets/css/menu.css">
 </head>
 <body>
   
-  <!-- Conteneur principal -->
+  <!-- ===== CONTENEUR PRINCIPAL ===== -->
   <div class="meteo-main">
     
-    <!-- En-tête avec logo et bouton fermer -->
-    <header class="meteo-header" role="banner">
+    <!-- ===== EN-TÊTE (HEADER) ===== -->
+    <header class="meteo-header">
       <button aria-label="Fermer le menu de navigation" class="meteo-menu-close-button">
-        <img src="assets/images/svg/close.svg" data-file="close.svg" alt="Fermer le menu" class="meteo-menu-close">
+        <img src="assets/images/svg/close.svg" data-file="close.svg" alt="Icône fermer le menu" class="meteo-menu-close">
       </button>
     </header>
 
-    <!-- Liste de navigation du menu -->
-    <nav class="meteo-menu-list" role="navigation" aria-label="Menu de navigation principal">
-      <ul role="list">
+    <!-- ===== NAVIGATION DU MENU PRINCIPAL ===== -->
+    <nav class="meteo-menu-list" aria-label="Menu de navigation principal">
+      <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="search.html">Nouvelle recherche</a></li>
         <li><a href="last_search.html">Mes dernières recherches</a></li>
@@ -49,7 +49,7 @@
     </nav>
   </div>
 
-  <!-- Scripts -->
+  <!-- ===== SCRIPTS ===== -->
   <script type="module" src="assets/js/meteo.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- Métadonnées et configuration -->
+  <!-- ===== MÉTADONNÉES ET CONFIGURATION ===== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Consulter votre historique de recherches météo. Accédez rapidement à vos dernières consultations de prévisions météorologiques.">
@@ -13,36 +13,36 @@
   
   <title>Mes dernières recherches - My Meteo | Historique météo</title>
 
-  <!-- Polices Google -->
+  <!-- ===== POLICES GOOGLE ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Favicons multiples formats -->
+  <!-- ===== FAVICONS MULTIPLES FORMATS ===== -->
   <link rel="icon" type="image/svg+xml" href="assets/images/svg/favicon.svg">
   <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
   <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <link rel="manifest" href="assets/images/site.webmanifest">
 
-  <!-- Feuilles de styles -->
+  <!-- ===== FEUILLES DE STYLES ===== -->
   <link rel="stylesheet" href="assets/css/meteo.css">
   <link rel="stylesheet" href="assets/css/last-search.css">
 </head>
 <body>
   
-  <!-- Conteneur principal -->
+  <!-- ===== CONTENEUR PRINCIPAL ===== -->
   <div class="meteo-main" id="top">
     
-    <!-- En-tête avec logo et menu de navigation -->
-    <header class="meteo-header" role="banner">
+    <!-- ===== EN-TÊTE (HEADER) ===== -->
+    <header class="meteo-header">
       <img src="assets/images/svg/logo_mymeteo.svg" data-file="logo_mymeteo.svg" alt="Logo My Meteo - Application météo" width="183" height="47" class="meteo-logo">
       <button aria-label="Ouvrir le menu de navigation" class="meteo-menu-button">
-        <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Menu" class="meteo-menu">
+        <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Icône du menu" class="meteo-menu">
       </button>
     </header>
 
-    <!-- Navigation principale -->
+    <!-- ===== NAVIGATION PRINCIPALE ===== -->
     <nav aria-label="Navigation principale" style="display: none;">
       <ul>
         <li><a href="index.html" title="Retour à l'accueil météo">Accueil</a></li>
@@ -51,32 +51,32 @@
       </ul>
     </nav>
 
-    <!-- Conteneur principal des recherches -->
-    <main class="meteo-last-search-main" role="main">
+    <!-- ===== CONTENU PRINCIPAL (MAIN) ===== -->
+    <main class="meteo-last-search-main">
       
-      <!-- Titre -->
+      <!-- Titre principal -->
       <h1 class="meteo-last-search-h1">Mes <strong>dernières recherches</strong> météo</h1>
 
-      <!-- Ancre interne -->
+      <!-- Lien d'accès rapide -->
       <p>
         <a href="#history" title="Aller à l'historique des recherches">
-          Aller à l’historique
+          Aller à l'historique
         </a>
       </p>
 
-      <!-- Container des recherches -->
+      <!-- ===== SECTION HISTORIQUE DES RECHERCHES ===== -->
       <section id="history" class="meteo-last-search-container">
         
-        <!-- Message vide -->
+        <!-- État vide : message quand aucune recherche n'existe -->
         <div id="meteo-empty-state" class="meteo-empty-state" role="status" aria-live="polite">
           <p>Aucune recherche <strong>météo</strong> enregistrée pour le moment.</p>
           <a href="search.html" class="meteo-empty-state-link" title="Effectuer une recherche de météo">Effectuer une recherche</a>
         </div>
 
-        <!-- Liste des recherches -->
-        <ul id="meteo-search-list" class="meteo-search-list" role="list" aria-label="Historique de vos recherches"></ul>
+        <!-- Liste des recherches historisées -->
+        <ul id="meteo-search-list" class="meteo-search-list" aria-label="Historique de vos recherches"></ul>
 
-        <!-- Bouton pour effacer tout -->
+        <!-- Actions : bouton pour effacer tout l'historique -->
         <div id="meteo-clear-actions" class="meteo-clear-actions" style="display: none;">
           <button id="meteo-clear-all" class="meteo-clear-all-btn" title="Supprimer toutes vos recherches enregistrées">
             Effacer tout l'historique
@@ -84,7 +84,7 @@
         </div>
       </section>
 
-      <!-- Retour haut de page -->
+      <!-- Lien retour haut de page -->
       <p>
         <a href="#top" title="Retour en haut de la page">Retour en haut</a>
       </p>
@@ -92,7 +92,7 @@
     </main>
   </div>
 
-  <!-- Scripts -->
+  <!-- ===== SCRIPTS ===== -->
   <script type="module" src="assets/js/last-search.js"></script>
 </body>
 </html>

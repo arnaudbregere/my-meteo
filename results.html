@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- Métadonnées et configuration -->
+  <!-- ===== MÉTADONNÉES ET CONFIGURATION ===== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Résultats météo en temps réel - Consultez la température, le vent, la pression atmosphérique et l'humidité pour votre ville.">
@@ -13,38 +13,23 @@
   
   <title>Résultats Météo - My Meteo | Prévisions en temps réel</title>
 
-  <!-- Polices Google -->
+  <!-- ===== POLICES GOOGLE ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Favicons multiples formats -->
+  <!-- ===== FAVICONS MULTIPLES FORMATS ===== -->
   <link rel="icon" type="image/svg+xml" href="assets/images/svg/favicon.svg">
   <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
   <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <link rel="manifest" href="assets/images/site.webmanifest">
 
-  <!-- Feuilles de styles -->
+  <!-- ===== FEUILLES DE STYLES ===== -->
   <link rel="stylesheet" href="assets/css/meteo.css">
   <link rel="stylesheet" href="assets/css/results.css">
 
-  <!-- Schema.org - Prévisions météorologiques -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WeatherForecast",
-    "location": {
-      "@type": "Place",
-      "name": ""
-    },
-    "forecastDate": "",
-    "temporalCoverage": "PT24H",
-    "weatherCondition": ""
-  }
-  </script>
-
-  <!-- Schema.org - Prévisions météorologiques -->
+  <!-- ===== SCHEMA.ORG - PRÉVISIONS MÉTÉOROLOGIQUES ===== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -61,18 +46,18 @@
 </head>
 <body>
   
-  <!-- Conteneur principal -->
+  <!-- ===== CONTENEUR PRINCIPAL ===== -->
   <div class="meteo-main">
     
-    <!-- En-tête avec logo et menu de navigation -->
-    <header class="meteo-header" role="banner">
+    <!-- ===== EN-TÊTE (HEADER) ===== -->
+    <header class="meteo-header">
       <img src="assets/images/svg/logo_mymeteo.svg" data-file="logo_mymeteo.svg" alt="Logo My Meteo - Application météo" width="183" height="47" class="meteo-logo">
       <button aria-label="Ouvrir le menu de navigation" class="meteo-menu-button">
-        <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Menu" class="meteo-menu">
+        <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Icône du menu" class="meteo-menu">
       </button>
     </header>
 
-    <!-- Navigation principale -->
+    <!-- ===== NAVIGATION PRINCIPALE ===== -->
     <nav aria-label="Navigation principale" style="display: none;">
       <ul>
         <li><a href="index.html" title="Retour à l'accueil météo">Accueil</a></li>
@@ -81,13 +66,13 @@
       </ul>
     </nav>
 
-    <!-- Conteneur principal des résultats -->
-    <main class="meteo-results-main" role="main">
+    <!-- ===== CONTENU PRINCIPAL (MAIN) ===== -->
+    <main class="meteo-results-main">
       
       <!-- Titre avec localisation -->
       <h1 class="meteo-results-h1">Résultats de <strong>météo</strong> pour <span id="meteo-results-city" title="Ville recherchée">--</span></h1>
 
-      <!-- Section des résultats de la météo -->
+      <!-- ===== ARTICLE RÉSULTATS MÉTÉO ===== -->
       <article class="meteo-results-city">
         
         <!-- En-tête avec localisation, date, température et conditions -->
@@ -95,12 +80,14 @@
           <span class="meteo-h2-localisation" title="Localisation">--</span>
           <span class="meteo-h2-date" title="Date et heure">--</span>
           <span class="meteo-h2-temperature" title="Température en degrés Celsius">--</span>
-          <!-- AJOUT DE L'ICÔNE MÉTÉO OPENWEATHER -->
-          <img src="" alt="" class="meteo-h2-weather-icon" width="50" height="50">
+
+          <!-- ✅ correction W3C : src non vide -->
+          <img src="assets/images/svg/weather-placeholder.svg" alt="" class="meteo-h2-weather-icon" width="50" height="50">
+
           <span class="meteo-h2-weather" title="Conditions météorologiques">--</span>
         </h2>
 
-        <!-- Section des détails météorologiques -->
+        <!-- ===== SECTION DÉTAILS MÉTÉOROLOGIQUES ===== -->
         <section class="meteo-results-details">
           <h3>Détails des <strong>conditions météorologiques</strong></h3>
           
@@ -116,7 +103,7 @@
               </div>
             </div>
 
-            <!-- Indicateur 2 : Couverture nuageuse (Cloudiness) -->
+            <!-- Indicateur 2 : Couverture nuageuse -->
             <div class="meteo-results-details-item" role="region" aria-label="Couverture nuageuse">
               <img src="assets/images/svg/rain.svg" data-file="rain.svg" alt="Icône couverture nuageuse" width="20" height="20" class="meteo-icon">
               <div class="meteo-results-item-infos">
@@ -148,7 +135,7 @@
     </main>
   </div>
 
-  <!-- Scripts -->
+  <!-- ===== SCRIPTS ===== -->
   <script type="module" src="assets/js/results.js"></script>
 </body>
 </html>
