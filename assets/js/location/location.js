@@ -66,8 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
    */
   function displaySuggestions(suggestions) {
     autocompleteContainer.innerHTML = '';
-    
-    if (suggestions.length === 0) {
+    if (!suggestions.length) {
       autocompleteContainer.classList.remove('active');
       return;
     }
@@ -95,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   /**
-   * Valide le formulaire
+   * Validation du formulaire
    */
   function validateForm() {
     if (inputSearch.value.trim() === '') {
@@ -129,6 +128,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Fermer la popin en cliquant sur l'overlay
   popinOverlay.addEventListener('click', closePopin);
+
+  // Fermer la popin avec la touche Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePopin();
+  });
 
   // Charger les suggestions statiques au chargement
   suggestionsContainer.addEventListener('click', (e) => {

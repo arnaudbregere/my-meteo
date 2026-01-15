@@ -20,4 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
     status.textContent = isOn ? 'activée' : 'désactivée';
     localStorage.setItem('dyslexiaMode', isOn ? 'on' : 'off');
   });
+
+  // Gestion clavier Enter / Space
+  toggleBtn.setAttribute('tabindex', '0');
+  toggleBtn.addEventListener('keydown', (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      toggleBtn.click();
+    }
+  });
 });
