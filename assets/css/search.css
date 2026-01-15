@@ -71,9 +71,16 @@
       outline: none;
     }
 
-    .meteo-search-input-wrapper {
+
+     .meteo-search-input-wrapper fieldset {
       position: relative;
-    }
+      border: none;
+     }
+
+     .meteo-search-input-wrapper legend, .meteo-search-input-wrapper p {
+      margin: 10px 0px;
+      color: #ffffff;
+     }
 
     .meteo-search-icon {
       position: absolute;
@@ -85,7 +92,7 @@
       z-index: 1;
       position: absolute;
       left: 17px;
-      top: 17px;
+      top: 45px;
       pointer-events: none;
     }
 
@@ -96,7 +103,9 @@
     }
 
     .meteo-search-suggestions {
-      width: 100%;
+      display: flex;
+      flex-wrap: wrap; 
+      list-style: none;
       line-height: 50px;
       cursor: pointer;
     }
@@ -141,9 +150,6 @@
 
 
     /* Styles pour l'autocomplétion */
-    .meteo-search-input-wrapper {
-      position: relative;
-    }
     
     .meteo-autocomplete {
       display: none;

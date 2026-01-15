@@ -277,6 +277,19 @@ input[type="text"]:focus {
   border-color: #ffffff;
 }
 
+.meteo-see-suggestions, .meteo-back-top {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.meteo-see-suggestions a, .meteo-back-top a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.meteo-see-suggestions a:hover, .meteo-back-top a:hover {
+  text-decoration: underline;
+}
 
 .meteo-h2 {
   color: #ffffff;
