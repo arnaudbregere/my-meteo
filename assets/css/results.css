@@ -1,3 +1,4 @@
+/* ===== Page de résultats ===== */
 .meteo-results-main {
     width: 100%;
     padding: 30px;
@@ -5,9 +6,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 2rem;
     position: relative;
-    margin: 0 auto;
+    margin: 6rem auto 0;
     text-align: center;
 }
 

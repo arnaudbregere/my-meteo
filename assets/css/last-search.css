@@ -1,16 +1,15 @@
-/* last-search.css */
+/* ===== Page Dernières recherches ===== */
 
 .meteo-last-search-main {
   padding: 2rem 1.5rem;
-  max-width: 600px;
-  margin: 0 auto;
+  margin: 6rem auto 0;
 }
 
 .meteo-last-search-h1 {
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 2rem;
-  color: #333;
+  color: #ffffff;
 }
 
 .meteo-last-search-container {

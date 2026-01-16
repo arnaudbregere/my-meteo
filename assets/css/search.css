@@ -1,19 +1,4 @@
-  * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #ffffff;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    
+/* ===== Page de recherche ===== */
     .meteo-search-main {
       width: 100%;
       padding: 30px;
@@ -23,7 +8,7 @@
       align-items: flex-start;
       margin-bottom: 2rem;
       position: relative;
-      margin: 0 auto 2rem;
+      margin: 6rem auto 2rem;
     }
 
     .meteo-search-main .meteo-search-h1 {
@@ -40,6 +25,7 @@
       text-align: left;
       font-weight: 400;
     }
+
     .meteo-search-input {
       width: 100%;
       border-bottom: 1px solid #ffffff;
@@ -51,6 +37,10 @@
       z-index: 0;
       align-items: center;
       background-color: #fff;
+      background-image:  url('../images/svg/search.svg');
+      background-repeat: no-repeat;
+      background-position: 15px center;
+      background-size: 20px 20px;
       border-radius: 16px;
       display: flex;
       flex-wrap: wrap;
@@ -60,7 +50,6 @@
       position: relative;
       border: none;
       padding: 15px 15px 15px 50px;
-
     }
 
     .meteo-search-main input:hover,
@@ -71,29 +60,23 @@
       outline: none;
     }
 
+    .meteo-search-input-wrapper {
+      position: relative;
+      width: 100%;
+    }
 
-     .meteo-search-input-wrapper fieldset {
+    .meteo-search-input-wrapper fieldset {
       position: relative;
       border: none;
-     }
+    }
 
-     .meteo-search-input-wrapper legend, .meteo-search-input-wrapper p {
+    .meteo-search-input-wrapper legend, .meteo-search-input-wrapper p {
       margin: 10px 0px;
       color: #ffffff;
-     }
-
-    .meteo-search-icon {
-      position: absolute;
-      left: 20px;
-      pointer-events: none;
     }
 
     .meteo-icon-search {
-      z-index: 1;
-      position: absolute;
-      left: 17px;
-      top: 45px;
-      pointer-events: none;
+      display: none;
     }
 
     .meteo-search-h2 {
@@ -110,7 +93,7 @@
       cursor: pointer;
     }
 
-     .meteo-search-suggestions a {
+    .meteo-search-suggestions a {
       border: 1px solid #ffffff;
       color: #ffffff;
       font-weight: 400;
@@ -119,7 +102,8 @@
       padding: 5px;
       text-decoration: none;
     }
-      .meteo-search-suggestions a:hover {
+
+    .meteo-search-suggestions a:hover {
       border: 1px solid #ffffff;
       background-color: #ffffff;
       color: #3b3d3d;
@@ -146,8 +130,7 @@
       color: #ffffff;
       background-color: #6E65C6;
       border-color: #ffffff;
-  }
-
+    }
 
     /* Styles pour l'autocomplétion */
     
