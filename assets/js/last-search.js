@@ -36,30 +36,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /**
    * Crée un élément de recherche
-   * @param {string} cityName - Nom de la ville
+   * @param {Object} entry - L'objet {city, id}
    * @returns {HTMLElement} L'élément de liste
    */
-  function createSearchItem(cityName) {
+  function createSearchItem(entry) {
     const li = document.createElement('li');
     li.className = 'meteo-search-item';
+    li.setAttribute('data-id', entry.id); // Ajouter l'id comme attribut data
 
     // Contenu du lien
     const link = document.createElement('a');
-    link.href = `results.html?meteo-search-localisation=${encodeURIComponent(cityName)}`;
+    link.href = `results.html?meteo-search-localisation=${encodeURIComponent(entry.city)}`;
     link.className = 'meteo-search-item-link';
-   // const getLS = JSON.parse(localStorage.getItem('meteo_search_history'))
-     link.textContent = cityName;
+    link.textContent = entry.city;
 
     // Bouton de suppression
     const deleteBtn = document.createElement('button');
     deleteBtn.type = 'button';
     deleteBtn.className = 'meteo-search-item-delete';
-    deleteBtn.setAttribute('aria-label', `Supprimer la recherche: ${cityName}`);
+    deleteBtn.setAttribute('aria-label', `Supprimer la recherche: ${entry.city}`);
     deleteBtn.innerHTML = '&times;'; // Croix
 
     deleteBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      handleDeleteSearch(cityName, li);
+      handleDeleteSearch(entry.id, li);
     });
 
     li.appendChild(link);
@@ -70,11 +70,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /**
    * Gère la suppression d'une recherche
-   * @param {string} cityName - Nom de la ville
+   * @param {number} entryId - L'id (timestamp) de l'entrée à supprimer
    * @param {HTMLElement} element - L'élément HTML à supprimer
    */
-  function handleDeleteSearch(cityName, element) {
-    removeFromSearchHistory(cityName);
+  function handleDeleteSearch(entryId, element) {
+    removeFromSearchHistory(entryId);
     
     // Animation de suppression
     element.classList.add('removing');

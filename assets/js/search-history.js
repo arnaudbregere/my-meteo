@@ -1,5 +1,4 @@
 /**
- * search-history.js
  * Service de gestion de l'historique des recherches
  * Utilise localStorage pour persister les données
  */
@@ -9,7 +8,7 @@ const MAX_SEARCHES = 50; // Limite du nombre de recherches stockées
 
 /**
  * Récupère tout l'historique des recherches
- * @returns {Array} Tableau de villes recherchées
+ * @returns {Array} Tableau d'objets {city, id}
  */
 export function getSearchHistory() {
   try {
@@ -22,8 +21,10 @@ export function getSearchHistory() {
 }
 
 /**
- * Ajoute une ville à l'historique
+ * Ajoute une ville à l'historique avec un timestamp comme id
+ * Supprime les anciens doublons avant d'ajouter la nouvelle entrée
  * @param {string} cityName - Nom de la ville à ajouter
+ * @returns {boolean} Succès de l'opération
  */
 export function addToSearchHistory(cityName) {
   if (!cityName || typeof cityName !== 'string') {
@@ -33,16 +34,28 @@ export function addToSearchHistory(cityName) {
 
   try {
     let history = getSearchHistory();
+    const trimmedCityName = cityName.trim();
     
-    // Ajouter la recherche au début du tableau (autant avoir la dernière recherche en première position, différent du .push() qui rajoute à la fin)
-    history.unshift({city : cityName, id: Date.now()});
+    // Supprimer tous les doublons avec le même nom de ville (insensible à la casse)
+    history = history.filter(entry => 
+      entry.city.toLowerCase() !== trimmedCityName.toLowerCase()
+    );
+    
+    // Créer un nouvel objet avec city et id (timestamp)
+    const newEntry = {
+      city: trimmedCityName,
+      id: Date.now()
+    };
+    
+    // Ajouter la recherche au début du tableau
+    history.unshift(newEntry);
     
     // Limiter à MAX_SEARCHES entries
     history = history.slice(0, MAX_SEARCHES);
     
     // Sauvegarder
     localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
-    console.log(`✅ Recherche ajoutée: ${cityName}`);
+    console.log(`Recherche ajoutée: ${trimmedCityName}`);
     return true;
   } catch (err) {
     console.error('Erreur lors de l\'ajout à l\'historique:', err);
@@ -65,15 +78,16 @@ export function clearSearchHistory() {
 }
 
 /**
- * Supprime une ville spécifique de l'historique
- * @param {string} cityName - Nom de la ville à supprimer
+ * Supprime une ville spécifique de l'historique par son id (timestamp)
+ * @param {number} entryId - L'id (timestamp) de l'entrée à supprimer
+ * @returns {boolean} Succès de l'opération
  */
-export function removeFromSearchHistory(cityName) {
+export function removeFromSearchHistory(entryId) {
   try {
     let history = getSearchHistory();
-    history = history.filter(city => city !== cityName); // TODO => supprimer les doublons via une nouvelle entrée : id: {timestamp} dans mon Object (LS)
+    history = history.filter(entry => entry.id !== entryId);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
-    console.log(`✅ Recherche supprimée: ${cityName}`);
+    console.log(`Recherche supprimée (id: ${entryId})`);
     return true;
   } catch (err) {
     console.error('Erreur lors de la suppression:', err);
