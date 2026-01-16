@@ -47,7 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const link = document.createElement('a');
     link.href = `results.html?meteo-search-localisation=${encodeURIComponent(cityName)}`;
     link.className = 'meteo-search-item-link';
-    link.textContent = cityName;
+   // const getLS = JSON.parse(localStorage.getItem('meteo_search_history'))
+     link.textContent = cityName;
 
     // Bouton de suppression
     const deleteBtn = document.createElement('button');

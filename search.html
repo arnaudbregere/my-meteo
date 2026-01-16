@@ -42,6 +42,9 @@
     "query-input": "required name=search_term_string"
   }
   </script>
+
+  <!-- ===== MENU BURGER SCRIPT ===== -->
+  <script src="assets/js/menu.js"></script>
 </head>
 <body>
   
@@ -51,8 +54,15 @@
     <!-- ===== EN-TÊTE (HEADER) ===== -->
     <header class="meteo-header">
       <img src="assets/images/svg/logo_mymeteo.svg" data-file="logo_mymeteo.svg" alt="Logo My Meteo - Application météo" width="183" height="47" class="meteo-logo">
+      
+      <!-- Burger button -->
       <button aria-label="Ouvrir le menu de navigation" class="meteo-menu-button">
         <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Icône du menu" class="meteo-menu">
+      </button>
+
+      <!-- Close button (caché au départ) -->
+      <button aria-label="Fermer le menu de navigation" class="meteo-menu-close-button" style="display: none;">
+        <img src="assets/images/svg/close.svg" data-file="close.svg" alt="Icône fermer le menu" class="meteo-menu-close">
       </button>
     </header>
 

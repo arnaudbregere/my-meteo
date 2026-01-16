@@ -1,36 +1,67 @@
-  * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+/* ===== RESET DE BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #ffffff;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+/* ===== BASE ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .meteo-menu-list {
-      width: 100%;
-      padding: 30px;
-      margin-bottom: 2rem;
-      position: relative;
-      text-align: right;
-      color: #ffffff;
-    }
+/* ===== CONTENEUR MENU (NAV) ===== */
+.meteo-nav {
+  position: fixed;
+  inset: 0;
+  background-color: #0b1c2d; /* garde un fond plein (modifiable) */
+  z-index: 1000;
+  padding: 30px;
+}
 
-    .meteo-menu-list ul {
-      list-style: none;
-      line-height: 60px;
-    }
+/* Menu caché */
+.meteo-nav[aria-hidden="true"] {
+  display: none;
+}
 
-     .meteo-menu-list ul li a {
-      text-decoration: none;
-      color: #ffffff;
-      font-size: 20px;
-      font-weight: 400;
-    }
+/* ===== LISTE MENU ===== */
+.meteo-menu-list {
+  width: 100%;
+  padding: 30px;
+  margin-bottom: 2rem;
+  position: relative;
+  text-align: right;
+  color: #ffffff;
+}
 
+.meteo-menu-list ul {
+  list-style: none;
+  line-height: 60px;
+}
+
+.meteo-menu-list ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+/* ===== BOUTON FERMETURE ===== */
+.meteo-menu-close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.meteo-menu-close {
+  width: 24px;
+  height: 24px;
+}

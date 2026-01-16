@@ -34,8 +34,8 @@ export function addToSearchHistory(cityName) {
   try {
     let history = getSearchHistory();
     
-    // Ajouter la recherche au début du tableau
-    history.unshift(cityName);
+    // Ajouter la recherche au début du tableau (autant avoir la dernière recherche en première position, différent du .push() qui rajoute à la fin)
+    history.unshift({city : cityName, id: Date.now()});
     
     // Limiter à MAX_SEARCHES entries
     history = history.slice(0, MAX_SEARCHES);
@@ -71,7 +71,7 @@ export function clearSearchHistory() {
 export function removeFromSearchHistory(cityName) {
   try {
     let history = getSearchHistory();
-    history = history.filter(city => city !== cityName);
+    history = history.filter(city => city !== cityName); // TODO => supprimer les doublons via une nouvelle entrée : id: {timestamp} dans mon Object (LS)
     localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
     console.log(`✅ Recherche supprimée: ${cityName}`);
     return true;

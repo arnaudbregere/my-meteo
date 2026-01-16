@@ -17,21 +17,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    console.log(`🔍 Recherche de: ${cityName}`);
+    console.log(` Recherche de: ${cityName}`);
 
-    // ✅ AFFICHER LE SKELETON LOADER
+    // AFFICHER LE SKELETON LOADER
     showSkeletonLoading();
 
     // Étape 1: Récupérer les coordonnées via Nominatim
     const location = await getLocationCoordinates(cityName);
 
     if (!location) {
-      console.error("❌ Ville non trouvée");
+      console.error("Ville non trouvée");
       renderError("Ville non trouvée");
       return;
     }
 
-    console.log(`✅ Coordonnées trouvées: ${location.lat}, ${location.lon}`);
+    console.log(`Coordonnées trouvées: ${location.lat}, ${location.lon}`);
 
     // Étape 2: Récupérer la météo avec ces coordonnées
     const data = await getWeatherByCoordinates(location.lat, location.lon, location.displayName);
@@ -45,14 +45,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Étape 3: Afficher les résultats
     renderWeatherResults(data, location.displayName);
 
-    // ✅ MASQUER LE SKELETON LOADER (remplacé par le contenu réel)
+    // MASQUER LE SKELETON LOADER (remplacé par le contenu réel)
     hideSkeletonLoading();
 
     // Étape 4: Ajouter à l'historique
     addToSearchHistory(cityName);
     
   } catch (err) {
-    console.error("❌ Erreur lors du chargement:", err);
+    console.error("Erreur lors du chargement:", err);
     renderError();
   }
 });
