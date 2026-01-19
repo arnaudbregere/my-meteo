@@ -44,7 +44,8 @@ body {
 .meteo-main::before {
   content: '';
   position: absolute;
-  top: 0;  margin-top: 60px;
+  top: 0;
+  margin-top: 60px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -52,7 +53,7 @@ body {
   background-size: 80%;
   background-position: center;
   background-repeat: no-repeat;
-  animation: float 4s ease-in-out infinite; /* TODO : amÃ©liorer l'animation => Scroll, effet paralax, animation fin / dÃ©but..  */
+  animation: float 4s ease-in-out infinite;
   z-index: 0;
   pointer-events: none;
 }
@@ -81,6 +82,10 @@ body {
   padding-bottom: 20px;
 }
 
+.meteo-intro {
+  color: #ffffff;
+}
+
 @media (min-width:768px) { 
   .meteo-h1 {
     flex: 1;
@@ -89,22 +94,12 @@ body {
   }
 }
 
-.meteo-h1-localisation, .meteo-h1-temperature {
+.meteo-subtitle {
   display: block;
-  font-weight: 600;
-  text-transform: uppercase;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-size: 72px;
-}
-
-.meteo-h1-temperature {
-  text-shadow: none;
-  position: relative;
-}
-
-.meteo-h1-date {
-  font-size: 16px;
   font-weight: 400;
+  font-size: 18px;
+  margin-top: 10px;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
 }
 
 .meteo-menu-button {
@@ -143,6 +138,40 @@ body {
     border-right: 1px solid #ffffff;
     padding-right: 30px;
   }
+}
+
+.meteo-intro {
+  font-size: 16px;
+  color: #ffffff;
+  line-height: 1.6;
+  text-align: justify;
+  margin-bottom: 10px;
+}
+
+.meteo-cta-button {
+  margin: 10px auto 20px;
+  background-color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 16px;
+  color: #667eea;
+  font-weight: 600;
+  font-size: 16px;
+  width: 100%;
+  min-height: 55px;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.meteo-cta-button:hover {
+  color: #ffffff;
+  background-color: #667eea;
+  border-color: #ffffff;
 }
 
 .meteo-title {
@@ -255,28 +284,6 @@ input[type="text"]:focus {
   text-align: center;
 }
 
-#meteo-new-search {
-    margin: 0px auto 20px;
-    background-color: #ffffff;
-    border: 1px solid #6E65C6;
-    border-radius: 16px;
-    color: #6E65C6;
-    font-weight: 600;
-    font-size: 20px;
-    width: 100%;
-    min-height: 55px;
-    position: relative;
-    padding: 15px;
-    text-align: center;
-    text-decoration: none;
-}
-
-#meteo-new-search:hover{
-  color: #ffffff;
-  background-color: #6E65C6;
-  border-color: #ffffff;
-}
-
 .meteo-see-suggestions, .meteo-back-top {
   margin: 20px auto;
   text-align: center;
@@ -311,10 +318,9 @@ input[type="text"]:focus {
   }
 }
 
-
 /* 
   Respect des préférences utilisateur :
-  désactivation des animations si prefers-reduced-motion activé
+  désactivation des animations si prefers-reduced-motion activée
   (WCAG + compatibilité OS / navigateur)
 */
 @media (prefers-reduced-motion: reduce) {
@@ -323,7 +329,6 @@ input[type="text"]:focus {
     transition: none !important;
   }
 }
-
 
 /* ===== NAVIGATION MENU OVERLAY ===== */
 nav {

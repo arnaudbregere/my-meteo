@@ -1,25 +1,29 @@
 import { updateImageSources } from "./utils/utils.js";
-import { getWeather, getWeatherBatch, getRandomCities } from "./meteo-weather.js";
-import { renderMainWeather, renderCitiesList } from "./meteo-dom.js";
+import { getWeatherBatch, getRandomCities } from "./meteo-weather.js";
+import { renderCitiesList } from "./meteo-dom.js";
 import { initSwipeGestures } from "./swipe.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   updateImageSources();
   
   try {
-    console.log("🔄 Chargement météo Paris...");
-    const mainWeather = await getWeather("Paris");
-    console.log("✅ Données reçues:", mainWeather); // AFFICHE LES DONNÉES
+    console.log("Chargement des suggestions météo...");
     
-    renderMainWeather(mainWeather);
-    
+    // Récupération de 4 villes aléatoires
     const randomCities = getRandomCities(4);
+    
+    // Récupération des données météo pour ces villes
     const weatherData = await getWeatherBatch(randomCities, 'fr');
+    
+    // Affichage des suggestions
     renderCitiesList(weatherData);
     
+    // Initialisation des gestes de swipe pour la liste
     const listItems = document.querySelectorAll('.meteo-list-random-list li');
     await initSwipeGestures(listItems);
+    
+    console.log("Suggestions météo chargées OK !");
   } catch (err) {
-    console.error("❌ Erreur initialisation:", err);
+    console.error("Erreur initialisation:", err);
   }
 });

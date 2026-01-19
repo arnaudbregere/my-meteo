@@ -1,17 +1,5 @@
 import { svgPath } from "./meteo-config.js";
 
-export function renderMainWeather(data) {
-  if (!data || !data.main) return;
-
-  const locEl = document.querySelector('.meteo-h1-localisation');
-  const dateEl = document.querySelector('.meteo-h1-date');
-  const tempEl = document.querySelector('.meteo-h1-temperature');
-  
-  if (locEl) locEl.textContent = data.main.city;
-  if (dateEl) dateEl.textContent = data.main.date;
-  if (tempEl) tempEl.textContent = `${data.main.temperature}°`;
-}
-
 export function renderCitiesList(weatherData) {
   const listItems = document.querySelectorAll('.meteo-list-random-list li');
   
@@ -76,7 +64,7 @@ export function renderWeatherResults(data, cityName) {
     iconEl.alt = data.main?.description || 'Conditions météo';
   }
 
-  console.log("✅ Résultats affichés avec icône OpenWeatherMap :", iconCode);
+  console.log("Résultats affichés avec icône OW OK ! :", iconCode);
 }
 
 export function renderError(message = "Impossible de charger les résultats") {
@@ -86,5 +74,5 @@ export function renderError(message = "Impossible de charger les résultats") {
   const locEl = document.querySelector('.meteo-h2-localisation');
   if (locEl) locEl.textContent = "Erreur";
   
-  console.error(`❌ ${message}`);
+  console.error(`${message}`);
 }

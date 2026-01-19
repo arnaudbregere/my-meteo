@@ -68,7 +68,7 @@ function transformMainWeatherData(data) {
 }
 
 function getMockWeatherData(cities) {
-  console.log("🔦 Utilisation des données MOCK (batch)");
+  console.log("📦 Utilisation des données MOCK (batch)");
   return cities.map(city => ({
     name: city.name,
     temperature: Math.floor(Math.random() * 30) + 5,
@@ -76,36 +76,6 @@ function getMockWeatherData(cities) {
     icon: ["sun.svg", "cloud.svg", "rain.svg", "snow.svg"][Math.floor(Math.random() * 4)],
     humidity: Math.floor(Math.random() * 40) + 40,
   }));
-}
-
-function getMockMainWeatherData(city) {
-  console.log("🔦 Utilisation des données MOCK (principale)");
-  return {
-    main: {
-      city: city,
-      date: formatDate(new Date()),
-      temperature: Math.floor(Math.random() * 30) + 5,
-      humidity: Math.floor(Math.random() * 40) + 40,
-      description: ["Ensoleillé", "Nuageux", "Pluvieux"][Math.floor(Math.random() * 3)],
-      icon: ["sun.svg", "cloud.svg", "rain.svg"][Math.floor(Math.random() * 3)],
-      iconCode: "04d" // fallback mock
-    },
-  };
-}
-
-export async function getWeather(city, country = "FR") {
-  try {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&lang=fr&APPID=${apiKey}`;
-    const res = await fetch(url);
-    
-    if (!res.ok) throw new Error(`HTTP ${res.status}: Ville introuvable`);
-    const data = await res.json();
-    
-    return transformMainWeatherData(data);
-  } catch (err) {
-    console.error("Erreur API :", err.message);
-    return getMockMainWeatherData(city);
-  }
 }
 
 export async function getWeatherBatch(cities, lang = "fr") {
@@ -127,11 +97,11 @@ export async function getWeatherBatch(cities, lang = "fr") {
 
     const results = await Promise.all(promises);
     const filtered = results.filter(Boolean);
-    console.log("🔋 Résultats filtrés:", filtered);
+    console.log(" Résultats filtrés:", filtered);
     
     return filtered;
   } catch (err) {
-    console.error("❌ Erreur batch météo:", err);
+    console.error(" Erreur batch météo:", err);
     return getMockWeatherData(cities);
   }
 }
@@ -139,7 +109,7 @@ export async function getWeatherBatch(cities, lang = "fr") {
 export function getRandomCities(count = 4) {
   const shuffled = [...AVAILABLE_CITIES].sort(() => Math.random() - 0.5);
   const selected = shuffled.slice(0, count);
-  console.log("🎲 Villes aléatoires sélectionnées:", selected.map(c => c.name));
+  console.log("Villes aléatoires sélectionnées:", selected.map(c => c.name));
   return selected;
 }
 
