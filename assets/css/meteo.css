@@ -72,6 +72,27 @@ body {
   border-bottom: 1px solid #ffffff;
   margin-bottom: 30px;
   padding: 20px;
+  gap: 15px;
+}
+
+.meteo-logo-link {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.meteo-logo-link:focus {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
+.meteo-logo-link:hover {
+  transform: scale(1.05);
+}
+
+.meteo-logo {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .meteo-h1 {
@@ -80,10 +101,6 @@ body {
   border-bottom: 1px solid #ffffff;
   margin-bottom: 30px;
   padding-bottom: 20px;
-}
-
-.meteo-intro {
-  color: #ffffff;
 }
 
 @media (min-width:768px) { 
@@ -107,6 +124,13 @@ body {
   background-color: transparent;
   outline: none;
   border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.meteo-menu-button:hover,
+.meteo-menu-button:focus {
+  opacity: 0.8;
 }
 
 .meteo-container {
@@ -174,6 +198,11 @@ body {
   border-color: #ffffff;
 }
 
+.meteo-cta-button:focus {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
 .meteo-title {
   font-size: 24px;
   font-weight: 600;
@@ -201,6 +230,7 @@ input[type="text"] {
 input[type="text"]:focus {
   outline: none;
   border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
 .search {
@@ -217,6 +247,11 @@ input[type="text"]:focus {
 
 .search:hover {
   background: #5568d3;
+}
+
+.search:focus {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
 }
 
 @media (min-width:768px) {
@@ -243,10 +278,16 @@ input[type="text"]:focus {
   background: #f8f9fa;
   border-radius: 12px;
   transition: background 0.3s ease;
+  cursor: pointer;
 }
 
 .meteo-list-random-list li:hover {
   background: #f0f2f5;
+}
+
+.meteo-list-random-list li:focus-within {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
 }
 
 .meteo-icon {
@@ -292,10 +333,16 @@ input[type="text"]:focus {
 .meteo-see-suggestions a, .meteo-back-top a {
   color: #ffffff;
   text-decoration: none;
+  transition: text-decoration 0.2s ease;
 }
 
 .meteo-see-suggestions a:hover, .meteo-back-top a:hover {
   text-decoration: underline;
+}
+
+.meteo-see-suggestions a:focus, .meteo-back-top a:focus {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
 }
 
 .meteo-h2 {
