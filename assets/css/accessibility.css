@@ -1,6 +1,14 @@
 /* Police dyslexique : appliquée à body et tous les enfants pour override complet */
 /* Fallback police :
    si OpenDyslexic non chargée, retour sur Poppins / sans-serif */
+
+  @font-face {
+  font-family: 'Open-Dyslexic';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open-Dyslexic'), url('https://fonts.cdnfonts.com/s/29616/open-dyslexic.woff') format('woff');
+}
+
 .dyslexic-font,
 .dyslexic-font * {
   font-family: 'Open-Dyslexic', 'Poppins', sans-serif !important;
@@ -9,21 +17,6 @@
   letter-spacing: 0.5px !important;
 }
 
-/* Lien d'évitement (skip link) */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 6px;
-  background: #000;
-  color: #fff;
-  padding: 8px 12px;
-  z-index: 1000;
-  border-radius: 4px;
-  text-decoration: none;
-}
-.skip-link:focus {
-  top: 6px;
-}
 
 /* Conteneur toggle + label */
 .accessibility-container {
@@ -32,6 +25,17 @@
   gap: 8px;
   margin-left: auto;
   margin-right: 10px;
+}
+
+/* Masquer le label en mobile */
+.accessibility-label {
+  display: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
 }
 
 /* Bouton toggle police dyslexique - Style moderne */
@@ -46,15 +50,15 @@
   transition: background 0.3s ease;
   padding: 0;
   flex-shrink: 0;
+  outline: none;
 }
 
 .accessibility-toggle:hover {
   background: #d0d0d0;
 }
 
-.accessibility-toggle:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
+.accessibility-toggle:active {
+  outline: none;
 }
 
 /* Cercle du toggle */
@@ -84,12 +88,18 @@
   left: 29px;
 }
 
-/* Label du toggle */
-.accessibility-label {
-  font-size: 14px;
-  font-weight: 500;
-  color: white;
-  white-space: nowrap;
-  cursor: pointer;
-  user-select: none;
+/* ===== DESKTOP - Media query ===== */
+@media (min-width: 768px) {
+  .accessibility-container {
+    margin-left: 0;
+    margin-right: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 12px;
+  }
+
+  .accessibility-label {
+    display: block;
+  }
 }

@@ -65,6 +65,16 @@
           loading="lazy"
         >
       </a>
+      <!-- Bouton toggle police dyslexique + Label -->
+      <div class="accessibility-container">
+        <button 
+          id="dyslexia-toggle" 
+          class="accessibility-toggle" 
+          aria-label="Activer ou désactiver la police adaptée aux personnes dyslexiques" 
+          title="Police dyslexique"
+        ></button>
+        <label for="dyslexia-toggle" class="accessibility-label">Police dyslexique</label>
+      </div>
       
       <!-- Burger button -->
       <button aria-label="Ouvrir le menu de navigation" class="meteo-menu-button">
@@ -122,7 +132,7 @@
               <div class="meteo-results-item-infos">
                 <p class="meteo-wind-value" title="Vitesse du vent en km/h">--</p>
                 <p>Vitesse du vent</p>
-              </div>
+              </div>  <script src="assets/js/accessibility.js"></script>
             </div>
 
             <!-- Indicateur 2 : Couverture nuageuse -->
@@ -203,5 +213,6 @@
 
   <!-- ===== SCRIPTS ===== -->
   <script type="module" src="assets/js/results.js"></script>
+  <script src="assets/js/accessibility.js"></script>
 </body>
 </html>

@@ -64,6 +64,16 @@
           loading="lazy"
         >
       </a>
+      <!-- Bouton toggle police dyslexique + Label -->
+      <div class="accessibility-container">
+        <button 
+          id="dyslexia-toggle" 
+          class="accessibility-toggle" 
+          aria-label="Activer ou désactiver la police adaptée aux personnes dyslexiques" 
+          title="Police dyslexique"
+        ></button>
+        <label for="dyslexia-toggle" class="accessibility-label">Police dyslexique</label>
+      </div>
       
       <!-- Burger button -->
       <button aria-label="Ouvrir le menu de navigation" class="meteo-menu-button">
@@ -220,5 +230,6 @@
 
   <!-- ===== SCRIPTS ===== -->
   <script type="module" src="assets/js/location/location.js"></script>
+  <script src="assets/js/accessibility.js"></script>
 </body>
 </html>
