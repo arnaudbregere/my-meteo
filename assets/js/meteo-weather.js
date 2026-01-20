@@ -68,7 +68,7 @@ function transformMainWeatherData(data) {
 }
 
 function getMockWeatherData(cities) {
-  console.log("📦 Utilisation des données MOCK (batch)");
+  console.log("Utilisation des données MOCK (batch)");
   return cities.map(city => ({
     name: city.name,
     temperature: Math.floor(Math.random() * 30) + 5,

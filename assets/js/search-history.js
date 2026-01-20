@@ -69,7 +69,7 @@ export function addToSearchHistory(cityName) {
 export function clearSearchHistory() {
   try {
     localStorage.removeItem(STORAGE_KEY);
-    console.log('🗑️ Historique supprimé');
+    console.log('Historique supprimé');
     return true;
   } catch (err) {
     console.error('Erreur lors de la suppression de l\'historique:', err);

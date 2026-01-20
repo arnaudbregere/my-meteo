@@ -32,7 +32,7 @@ export async function initSwipeGestures(elements) {
     return;
   }
   
-  console.log(`✅ Hammer.js chargé - initialisation ${elements.length} éléments`);
+  console.log(`Hammer.js chargé - initialisation ${elements.length} éléments`);
   
   // Ajouter les gestes à chaque élément
   elements.forEach((item, index) => {
@@ -40,7 +40,7 @@ export async function initSwipeGestures(elements) {
     
     // Écouter les swipes (gauche et droite)
     hammer.on('swipeleft swiperight', (event) => {
-      console.log(`🔄 Swipe détecté sur ville ${index}: ${event.type}`);
+      console.log(`Swipe détecté sur ville ${index}: ${event.type}`);
       removeCity(item);
     });
   });
@@ -57,6 +57,6 @@ function removeCity(element) {
   // Supprimer du DOM après l'animation (300ms)
   setTimeout(() => {
     element.remove();
-    console.log("🗑️ Ville supprimée du DOM");
+    console.log("Ville supprimée du DOM");
   }, 300);
 }

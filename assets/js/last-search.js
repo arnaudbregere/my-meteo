@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const clearActionsDiv = document.getElementById('meteo-clear-actions');
   const clearAllBtn = document.getElementById('meteo-clear-all');
 
+  // Initialisation du gestionnaire de popin de confirmation
+  PopinManager.init('popin-overlay-clear', 'popin-container-clear', 'popin-cancel-clear');
+
   /**
    * Affiche l'historique des recherches
    */
@@ -31,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
       searchList.appendChild(li);
     });
 
-    console.log(`📋 ${history.length} recherche(s) affichée(s)`);
+    console.log(`${history.length} recherche(s) affichée(s)`);
   }
 
   /**
@@ -84,20 +87,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300);
   }
 
-  /**
-   * Gère le vidage complet de l'historique
-   */
+   // Gère le vidage complet de l'historique
   function handleClearAll() {
-    const confirmed = confirm('Êtes-vous sûr ? Cette action est irréversible.');
-    if (confirmed) {
-      clearSearchHistory();
-      displaySearchHistory();
-      console.log('🗑️ Historique complètement effacé');
-    }
+    // Affiche la popin de confirmation
+    PopinManager.show();
+  }
+
+
+   // Confirme la suppression complète de l'historique
+
+  function handleConfirmClearAll() {
+    clearSearchHistory();
+    displaySearchHistory();
+    console.log('Historique complètement effacé');
+    PopinManager.close();
   }
 
   // Événements
   clearAllBtn.addEventListener('click', handleClearAll);
+  
+  // Bouton de confirmation dans la popin
+  const confirmBtn = document.getElementById('popin-confirm-clear');
+  confirmBtn.addEventListener('click', handleConfirmClearAll);
 
   // Affichage initial
   displaySearchHistory();

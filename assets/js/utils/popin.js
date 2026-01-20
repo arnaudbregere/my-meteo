@@ -10,6 +10,9 @@ const PopinManager = (() => {
 
   /**
    * Initialise les éléments et les écouteurs d'événements
+   * @param {string} overlayId - ID de l'overlay de la popin
+   * @param {string} containerId - ID du conteneur de la popin
+   * @param {string} closeButtonId - ID du bouton de fermeture
    */
   function init(overlayId = 'popin-overlay', containerId = 'popin-container', closeButtonId = 'popin-close') {
     overlay = document.getElementById(overlayId);
@@ -21,7 +24,7 @@ const PopinManager = (() => {
       return false;
     }
 
-    // Fermer la popin en cliquant le bouton "Fermer"
+    // Fermer la popin en cliquant le bouton "Fermer" ou "Annuler"
     closeButton.addEventListener('click', close);
 
     // Fermer la popin en cliquant sur l'overlay
@@ -35,19 +38,18 @@ const PopinManager = (() => {
     return true;
   }
 
-  /**
-   * Affiche la popin d'erreur
-   */
+
+   // Affiche la popin
+
   function show() {
     overlay.classList.add('active');
     container.classList.add('active');
-    // Focus sur le bouton de fermeture pour l'accessibilité
+    // Focus sur le bouton de fermeture/annulation pour l'accessibilité
     closeButton.focus();
   }
 
-  /**
-   * Ferme la popin
-   */
+   // Ferme la popin
+
   function close() {
     overlay.classList.remove('active');
     container.classList.remove('active');

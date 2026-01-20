@@ -28,6 +28,7 @@
   <!-- ===== FEUILLES DE STYLES ===== -->
   <link rel="stylesheet" href="assets/css/meteo.css">
   <link rel="stylesheet" href="assets/css/last-search.css">
+  <link rel="stylesheet" href="assets/css/popin.css">
 
   <!-- ===== MENU BURGER SCRIPT ===== -->
   <script src="assets/js/menu.js"></script>
@@ -167,7 +168,37 @@
     </footer>
   </div>
 
+  <!-- ===== DIALOG DE CONFIRMATION DE SUPPRESSION (MODAL ACCESSIBLE) ===== -->
+  <!-- 
+    Utilisation de <dialog> (HTML Living Standard)
+    Fallback prévu côté JS si non supporté (aria-modal + role="dialog")
+    Compatibilité documentée via MDN.
+  -->
+  <div class="popin-overlay" id="popin-overlay-clear"></div>
+
+  <dialog class="popin-container" id="popin-container-clear"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="popin-title-clear">
+    <div class="popin-content">
+      <div class="popin-icon" aria-hidden="true"></div>
+      <h2 class="popin-title" id="popin-title-clear">Supprimer l'historique</h2>
+      <p class="popin-message">
+        Voulez-vous supprimer tout l'historique de recherche ? Cette action est <strong>irréversible</strong>.
+      </p>
+      <div class="popin-actions">
+        <button class="popin-button popin-button-cancel" id="popin-cancel-clear" title="Annuler la suppression">
+          Annuler
+        </button>
+        <button class="popin-button popin-button-confirm" id="popin-confirm-clear" title="Confirmer la suppression de l'historique">
+          Supprimer
+        </button>
+      </div>
+    </div>
+  </dialog>
+
   <!-- ===== SCRIPTS ===== -->
+  <script src="assets/js/utils/popin.js"></script>
   <script type="module" src="assets/js/last-search.js"></script>
   <script src="assets/js/accessibility.js"></script>
 </body>
