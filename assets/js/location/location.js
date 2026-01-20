@@ -1,29 +1,13 @@
+
+
 document.addEventListener('DOMContentLoaded', function() {
   const inputSearch = document.getElementById('meteo-search-localisation');
   const submitButton = document.getElementById('meteo-search-city');
   const autocompleteContainer = document.getElementById('meteo-autocomplete');
   const suggestionsContainer = document.getElementById('meteo-suggestions');
   
-  // Éléments de la popin
-  const popinOverlay = document.getElementById('popin-overlay');
-  const popinContainer = document.getElementById('popin-container');
-  const popinCloseButton = document.getElementById('popin-close');
-
-  /**
-   * Affiche la popin d'erreur
-   */
-  function showPopin() {
-    popinOverlay.classList.add('active');
-    popinContainer.classList.add('active');
-  }
-
-  /**
-   * Ferme la popin
-   */
-  function closePopin() {
-    popinOverlay.classList.remove('active');
-    popinContainer.classList.remove('active');
-  }
+  // Initialisation du gestionnaire de popin
+  PopinManager.init('popin-overlay', 'popin-container', 'popin-close');
 
   /**
    * Récupère les suggestions depuis Nominatim
@@ -98,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
    */
   function validateForm() {
     if (inputSearch.value.trim() === '') {
-      showPopin();
+      PopinManager.show();
       return false;
     }
     return true;
@@ -121,17 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!validateForm()) {
       event.preventDefault();
     }
-  });
-
-  // Fermer la popin en cliquant le bouton "Fermer"
-  popinCloseButton.addEventListener('click', closePopin);
-
-  // Fermer la popin en cliquant sur l'overlay
-  popinOverlay.addEventListener('click', closePopin);
-
-  // Fermer la popin avec la touche Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closePopin();
   });
 
   // Charger les suggestions statiques au chargement
