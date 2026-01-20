@@ -114,6 +114,7 @@
 .meteo-clear-actions {
   display: flex;
   justify-content: center;
+  margin: 0 auto;
   padding-top: 1rem;
   border-top: 1px solid #e0e0e0;
 }
