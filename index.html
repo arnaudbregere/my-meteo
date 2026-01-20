@@ -30,6 +30,7 @@
 
   <!-- ===== FEUILLES DE STYLES ===== -->
   <link rel="stylesheet" href="assets/css/meteo.css">
+  <link rel="stylesheet" href="assets/css/accessibility.css">
 
   <!-- ===== SCHEMA.ORG - APPLICATION MÉTÉO ===== -->
   <script type="application/ld+json">
@@ -65,7 +66,7 @@
 <body>
 
   <!-- ===== LIEN D'ÉVITEMENT (ACCESSIBILITÉ CLAVIER) ===== -->
-  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+<!--   <a href="#main-content" class="skip-link">Aller au contenu principal</a> -->
 
   <!-- ===== CONTENEUR PRINCIPAL ===== -->
   <div class="meteo-main" id="top">
@@ -84,10 +85,16 @@
         >
       </a>
 
-      <!-- Bouton toggle police dyslexique -->
-      <button id="dyslexia-toggle" class="accessibility-toggle" aria-label="Activer ou désactiver la police adaptée aux personnes dyslexiques" title="Activer/désactiver la police adaptée aux dyslexiques">
-        Police adaptée aux dyslexiques : <span id="dyslexia-status">désactivée</span>
-      </button>
+      <!-- Bouton toggle police dyslexique + Label -->
+      <div class="accessibility-container">
+        <button 
+          id="dyslexia-toggle" 
+          class="accessibility-toggle" 
+          aria-label="Activer ou désactiver la police adaptée aux personnes dyslexiques" 
+          title="Police dyslexique"
+        ></button>
+        <label for="dyslexia-toggle" class="accessibility-label">Police dyslexique</label>
+      </div>
 
       <!-- Burger button -->
       <button aria-label="Ouvrir le menu de navigation" class="meteo-menu-button">
