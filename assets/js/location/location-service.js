@@ -16,7 +16,7 @@ export async function getLocationCoordinates(cityName) {
     const data = await response.json();
 
     if (data.length === 0) {
-      console.warn(`❌ Aucune ville trouvée pour: ${cityName}`);
+      console.warn(`Aucune ville trouvée pour: ${cityName}`);
       return null;
     }
 

@@ -28,7 +28,7 @@ export async function initSwipeGestures(elements) {
   await loadHammerLibrary();
   
   if (typeof Hammer === 'undefined') {
-    console.error("❌ Hammer.js n'a pas pu être chargé");
+    console.error("Hammer.js n'a pas pu être chargé");
     return;
   }
   

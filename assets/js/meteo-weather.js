@@ -101,7 +101,7 @@ export async function getWeatherBatch(cities, lang = "fr") {
     
     return filtered;
   } catch (err) {
-    console.error(" Erreur batch météo:", err);
+    console.error("Erreur batch météo:", err);
     return getMockWeatherData(cities);
   }
 }

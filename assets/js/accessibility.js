@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     saveDyslexiaMode(newState);
     
     // Log pour debug
-    console.log(`✓ Mode dyslexique: ${newState ? 'ACTIVÉ' : 'DÉSACTIVÉ'}`);
+    console.log(`Mode dyslexique: ${newState ? 'ACTIVÉ' : 'DÉSACTIVÉ'}`);
   });
 
   // ===== GESTION CLAVIER (Enter / Space) =====
