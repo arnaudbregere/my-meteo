@@ -1,7 +1,7 @@
 /* ===== Page de résultats ===== */
 .meteo-results-main {
     width: 100%;
-    padding: 30px;
+    padding: var(--spacing-xl);
     max-width: 400px;
     display: flex;
     flex-direction: column;
@@ -10,9 +10,9 @@
     margin: 6rem auto 0;
     text-align: center;
 }
-
+ 
 .meteo-results-h1 {
-    color: #ffffff;
+    color: var(--color-white);
     font-size: 16px;
     font-weight: 700;
 }
@@ -20,19 +20,19 @@
 .meteo-results-city {
     width:100%;
     text-align: center;
-    color: #ffffff;
-    border-bottom: 1px solid #ffffff;
+    color: var(--color-white);
+    border-bottom: 1px solid var(--color-white);
     padding-bottom: 50px;
 }
-
+ 
 .meteo-results-title {
-    color: #ffffff;
+    color: var(--color-white); /* Optimisé : variable color */
     width:100%;
     text-align: center;
-    margin-bottom: 30px;
-    padding-bottom: 30px;
+    margin-bottom: var(--spacing-xl); /* Optimisé : variable spacing */
+    padding-bottom: var(--spacing-xl); /* Optimisé : variable spacing */
 }
-
+ 
 /* Skeleton réaliste avec plusieurs lignes pour le titre */
 .meteo-results-title.skeleton::before,
 .meteo-results-title.skeleton::after {
@@ -42,21 +42,21 @@
   right: 20px;
   height: 32px;
   background: inherit;
-  border-radius: 8px;
+  border-radius: var(--radius-sm); /* Optimisé : variable radius */
   animation: inherit;
 }
-
+ 
 .meteo-results-title.skeleton::before {
   top: 20px;
-  width: 75%;   /* Ligne longue : ville */
+  width: 75%; /* Ligne longue : ville */
 }
-
+ 
 .meteo-results-title.skeleton::after {
   top: 68px;
-  width: 55%;   /* Ligne moyenne : temp + condition */
+  width: 55%; /* Ligne moyenne : temp + condition */
 }
-
-
+ 
+ 
 .meteo-h2-localisation, .meteo-h2-temperature {
     display: block;
     font-weight: 600;
@@ -64,102 +64,102 @@
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-size: 40px;
 }
-
+ 
 .meteo-h2-temperature {
   text-shadow: none;
   position: relative;
 }
-
-
+ 
+ 
 .meteo-h2-date {
   font-size: 16px;
   font-weight: 400;
 }
-
+ 
 .meteo-h2-weather {
     font-size: 14px;
   font-weight: 400;
 }
-
+ 
 .meteo-results-details {
     width: 100%;
-    background-color: #ffffff;
-    border-radius: 16px;
+    background-color: var(--color-white); /* Optimisé : variable color */
+    border-radius: var(--radius-lg); /* Optimisé : variable radius */
     color: #8B6BC8;
 }
-
+ 
 .meteo-results-details h2 {
-    padding: 15px;
+    padding: var(--spacing-md); /* Optimisé : variable spacing */
     font-size: 20px;
     font-weight: 400;
     text-align: left;
     border-bottom: 1px solid #8B6BC8;
 }
-
+ 
 .meteo-results-details-content {
     display: grid;
     grid-template-columns: 2fr 2fr;
-    gap: 20px;
-    padding: 15px;
+    gap: var(--spacing-lg); /* Optimisé : variable spacing */
+    padding: var(--spacing-md); /* Optimisé : variable spacing */
 }
-
+ 
 /* Fallback navigateur : si CSS Grid non supporté, retour en Flexbox */
 @supports not (display: grid) {
   .meteo-results-details-content {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: var(--spacing-lg); /* Optimisé : variable spacing */
   }
 }
-
-
+ 
+ 
 .meteo-results-details-item {
     display: flex;
     align-items: center;
     gap: 12px;
 }
-
+ 
 .meteo-results-details-item.skeleton::before {
   content: '';
   position: absolute;
-  left: 60px;   /* Après l'icône */
+  left: 60px; /* Après l'icône */
   top: 50%;
   transform: translateY(-50%);
   width: 60%;
   height: 24px;
   background: inherit;
-  border-radius: 8px;
+  border-radius: var(--radius-sm); /* Optimisé : variable radius */
   animation: inherit;
 }
-
+ 
 .meteo-results-item-infos {
     display: flex;
     flex-direction: column;
     font-size: 12px;
     text-align: left;
 }
-
+ 
 /* Shimmer de base (garde ce que tu as déjà) */
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
-
+ 
 .skeleton {
-  background: linear-gradient(90deg, 
-    #a0c4ff 25%,   /* Base bleue foncée pour plus de profondeur */
+  background: linear-gradient(90deg,
+    #a0c4ff 25%, /* Base bleue foncée pour plus de profondeur */
     #ffffff 37.5%, /* Pic blanc hyper lumineux (étendu pour plus d'impact) */
-    #ffffff 50%, 
+    #ffffff 50%,
     #ffffff 62.5%,
     #a0c4ff 75%
   );
   background-size: 200% 100%;
   animation: shimmer 3s infinite linear;
-  border-radius: 12px;
+  border-radius: var(--radius-md); /* Optimisé : variable radius */
   position: relative;
   overflow: hidden;
 }
-
+ 
 .skeleton * {
   visibility: hidden !important;
 }

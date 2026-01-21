@@ -2,7 +2,7 @@
 @import url('./accessibility.css');
 @import url('./footer.css');
 
-/* ===== VARIABLES CSS (NOUVELLES) ===== */
+/* ===== VARIABLES CSS ===== */
 :root {
   --color-primary: #667eea;
   --color-secondary: #764ba2;
@@ -14,7 +14,13 @@
   --color-text-light: rgba(255, 255, 255, 0.9);
   --color-error: #FF3B30;
   --color-success: #34C759;
-  
+  --color-blue-primary: #007AFF;
+  --color-blue-dark: #0051D5;
+  --color-purple-accent: #6E65C6;
+  --color-red-error-light: #ff6b6b;
+  --color-red-delete: #CC2F24;
+  --color-gray-hover: #d1cfcf;
+
   --spacing-xs: 5px;
   --spacing-sm: 10px;
   --spacing-md: 15px;
@@ -58,6 +64,26 @@ body {
 @-webkit-keyframes float {
   0%, 100% { -webkit-transform: translateY(0px); }
   50% { -webkit-transform: translateY(-100px); }
+}
+
+/* Composants réutilisables */
+.btn-primary {
+  background-color: var(--color-blue-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition-normal), transform var(--transition-fast);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-blue-dark);
+  transform: translateY(-1px);
 }
 
 .meteo-main {
@@ -313,7 +339,7 @@ body {
 }
 
 .meteo-list-random-list li.swipe-remove {
-  animation: slideOut 0.3s ease-in forwards;
+  animation: slideOut var(--transition-normal);
 }
 
 @keyframes slideOut {
@@ -344,7 +370,7 @@ nav {
   z-index: 999;
   padding: 80px 30px 30px 30px;
   overflow-y: auto;
-  animation: slideInFromTop 0.3s ease-out;
+  animation: slideInFromTop var(--transition-normal);
 }
 
 @keyframes slideInFromTop {

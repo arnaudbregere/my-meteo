@@ -1,7 +1,7 @@
-/* ===== Page de recherche ===== */
+    /* ===== Page de recherche ===== */
     .meteo-search-main {
       width: 100%;
-      padding: 30px;
+      padding: var(--spacing-xl);
       max-width: 800px;
       display: flex;
       flex-direction: column;
@@ -12,13 +12,13 @@
     }
 
     .meteo-search-main .meteo-search-h1 {
-      color: #ffffff;
+      color: var(--color-white);
       font-size: 20px;
       font-weight: 700;
     }
 
     .meteo-search-main label {
-      color: #ffffff;
+      color: var(--color-white);
       font-size: 20px;
       font-weight: bolder;
       margin: 0 0 5px;
@@ -28,7 +28,7 @@
 
     .meteo-search-input {
       width: 100%;
-      border-bottom: 1px solid #ffffff;
+      border-bottom: 1px solid var(--color-white);
       margin-bottom: 40px;
       padding-bottom: 40px;
     }
@@ -41,7 +41,7 @@
       background-repeat: no-repeat;
       background-position: 15px center;
       background-size: 20px 20px;
-      border-radius: 16px;
+      border-radius: var(--radius-lg);
       display: flex;
       flex-wrap: wrap;
       font-size: 16px;
@@ -70,9 +70,10 @@
       border: none;
     }
 
-    .meteo-search-input-wrapper legend, .meteo-search-input-wrapper p {
-      margin: 10px 0px;
-      color: #ffffff;
+    .meteo-search-input-wrapper legend, 
+    .meteo-search-input-wrapper p {
+      margin: var(--spacing-sm) 0px; 
+      color: var(--color-white);
     }
 
     .meteo-icon-search {
@@ -80,7 +81,7 @@
     }
 
     .meteo-search-h2 {
-      color: #ffffff;
+      color: var(--color-white);
       font-size: 20px;
       font-weight: 700;
     }
@@ -94,42 +95,43 @@
     }
 
     .meteo-search-suggestions a {
-      border: 1px solid #ffffff;
-      color: #ffffff;
+      border: 1px solid var(--color-white);
+      color: var(--color-white); 
       font-weight: 400;
       border-radius: 5px;
-      margin-right: 10px;
+      margin-right: var(--spacing-sm);
       padding: 5px;
       text-decoration: none;
     }
 
     .meteo-search-suggestions a:hover {
-      border: 1px solid #ffffff;
-      background-color: #ffffff;
-      color: #3b3d3d;
+      border: 1px solid var(--color-white);
+      background-color: var(--color-white);
+      color: var(--color-dark-gray);
     }
 
     .meteo-search-city {
-      margin: 0px auto 20px;
-      background-color: #ffffff;
-      border: 1px solid #6E65C6;
-      border-radius: 16px;
-      color: #6E65C6;
-      font-weight: 600;
-      font-size: 20px;
+      margin: 0 auto var(--spacing-lg);
       width: 100%;
       min-height: 55px;
-      position: relative;
-      padding: 15px;
-      text-align: center;
-      text-decoration: none;
+      background-color: var(--color-white);
+      color: var(--color-purple-accent);
+      border: 1px solid var(--color-purple-accent);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
       cursor: pointer;
+      transition: background var(--transition-normal), transform var(--transition-fast);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .meteo-search-city:hover{
-      color: #ffffff;
-      background-color: #6E65C6;
-      border-color: #ffffff;
+    .meteo-search-city:hover {
+      background-color: var(--color-purple-accent);
+      color: var(--color-white);
+      border-color: var(--color-white);
+      transform: translateY(-1px);
     }
 
     /* Styles pour l'autocomplétion */
@@ -143,11 +145,11 @@
       background: white;
       border: 1px solid #ddd;
       border-top: none;
-      border-radius: 0 0 8px 8px;
+      border-radius: 0 0 var(--radius-sm) var(--radius-sm);
       max-height: 300px;
       overflow-y: auto;
       z-index: 10;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: var(--shadow-sm); 
     }
     
     .meteo-autocomplete.active {
@@ -160,12 +162,12 @@
       padding: 12px 16px;
       cursor: pointer;
       border-bottom: 1px solid #f0f0f0;
-      transition: background 0.2s ease;
+      transition: background var(--transition-fast);
       font-size: 14px;
     }
     
     .meteo-autocomplete-item:hover {
-      background: #d1cfcf;
+      background: var(--color-gray-hover);
     }
     
     .meteo-autocomplete-item:last-child {

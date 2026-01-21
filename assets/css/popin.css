@@ -12,7 +12,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 99;
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn var(--transition-normal);
 }
 
 .popin-overlay.active {
@@ -27,12 +27,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-lg); 
+  box-shadow: var(--shadow-lg); 
   z-index: 100;
   max-width: 90%;
   width: 400px;
-  animation: slideUp 0.3s ease-in-out;
+  animation: slideUp var(--transition-normal);
 }
 
 .popin-container.active {
@@ -41,7 +41,7 @@
 
 /* Contenu de la popin */
 .popin-content {
-  padding: 30px;
+  padding: var(--spacing-xl);
   text-align: center;
 }
 
@@ -49,9 +49,9 @@
 .popin-icon {
   width: 60px;
   height: 60px;
-  margin: 0 auto 20px;
+  margin: 0 auto var(--spacing-lg);
   background-color: #ff6b6b;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,7 +70,7 @@
 .popin-title {
   font-size: 20px;
   font-weight: 700;
-  color: #3b3d3d;
+  color: var(--color-dark-gray);
   margin-bottom: 12px;
 }
 
@@ -78,21 +78,21 @@
 .popin-message {
   font-size: 14px;
   color: #666666;
-  margin-bottom: 30px;
+  margin-bottom: var(--spacing-xl);
   line-height: 1.5;
 }
 
 /* Bouton de fermeture */
 .popin-button {
-  background-color: #667eea;
+  background-color: var(--color-primary);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 12px 30px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
   width: 100%;
   min-height: 45px;
 }
@@ -141,11 +141,11 @@
 @media (max-width: 480px) {
   .popin-container {
     width: 100%;
-    margin: 20px auto;
+    margin: var(--spacing-lg) auto;
   }
 
   .popin-content {
-    padding: 20px;
+    padding: var(--spacing-lg);
   }
 
   .popin-icon {

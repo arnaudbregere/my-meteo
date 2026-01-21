@@ -22,9 +22,9 @@
 .accessibility-container {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-sm); 
   margin-left: auto;
-  margin-right: 10px;
+  margin-right: var(--spacing-sm);
 }
 
 /* Masquer le label en mobile */
@@ -32,7 +32,7 @@
   display: none;
   font-size: 14px;
   font-weight: 500;
-  color: white;
+  color: var(--color-white); 
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
@@ -47,7 +47,7 @@
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background var(--transition-normal); 
   padding: 0;
   flex-shrink: 0;
   outline: none;
@@ -68,20 +68,20 @@
   width: 24px;
   height: 24px;
   background: white;
-  border-radius: 50%;
-  transition: left 0.3s ease;
+  border-radius: var(--radius-full);
+  transition: left var(--transition-normal); 
   left: 3px;
   top: 3px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-sm); 
 }
 
 /* État activé */
 .accessibility-toggle.active {
-  background: #667eea;
+  background: var(--color-primary); 
 }
 
 .accessibility-toggle.active:hover {
-  background: #764ba2;
+  background: var(--color-secondary); 
 }
 
 .accessibility-toggle.active::before {

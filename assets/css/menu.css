@@ -8,9 +8,9 @@
   height: 25vh;
   background-color: #0b1c2d;
   z-index: 1000;
-  padding: 20px;
+  padding: var(--spacing-lg);
   overflow-y: auto;
-  animation: slideInFromTop 0.3s ease-out;
+  animation: slideInFromTop var(--transition-normal); 
   overflow: hidden;
 }
 
@@ -35,7 +35,7 @@
   width: 100%;
   margin-bottom: 2rem;
   position: relative;
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .meteo-menu-list ul {
@@ -45,7 +45,7 @@
 
 .meteo-menu-list ul li a {
   text-decoration: none;
-  color: #ffffff;
+  color: var(--color-white);
   font-size: 20px;
   font-weight: 400;
 }
