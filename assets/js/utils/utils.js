@@ -8,7 +8,7 @@ export function updateImageSources() {
 
 export function formatDate(date) {
   const jours = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
-  const mois = ["Jan.", "Févr.", "Mars", "Avr.", "Mai", "Juin", "Juil.", "Août", "Sept.", "Oct.", "Nov.", "Déc."];
+  const mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juilet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
   return `${jours[date.getDay()]} | ${date.getDate()} ${mois[date.getMonth()]}.`;
 }
 

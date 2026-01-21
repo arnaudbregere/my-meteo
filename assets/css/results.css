@@ -2,13 +2,19 @@
 .meteo-results-main {
     width: 100%;
     padding: var(--spacing-xl);
-    max-width: 400px;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     position: relative;
     margin: 6rem auto 0;
     text-align: center;
+}
+
+@media (max-width: 767px) {
+  .meteo-results-main {
+    max-width: 100%;
+  }
 }
  
 .meteo-results-h1 {
@@ -77,19 +83,25 @@
 }
  
 .meteo-h2-weather {
-    font-size: 14px;
+  font-size: 18px;
   font-weight: 400;
+}
+
+.meteo-h2-weather-icon {
+  display: block;
+  margin: 0 auto;
 }
  
 .meteo-results-details {
     width: 100%;
-    background-color: var(--color-white); /* Optimisé : variable color */
-    border-radius: var(--radius-lg); /* Optimisé : variable radius */
+    padding: var(--spacing-lg);
+    background-color: var(--color-white); 
+    border-radius: var(--radius-lg);
     color: #8B6BC8;
 }
  
 .meteo-results-details h2 {
-    padding: var(--spacing-md); /* Optimisé : variable spacing */
+    padding: var(--spacing-md); 
     font-size: 20px;
     font-weight: 400;
     text-align: left;
@@ -99,8 +111,8 @@
 .meteo-results-details-content {
     display: grid;
     grid-template-columns: 2fr 2fr;
-    gap: var(--spacing-lg); /* Optimisé : variable spacing */
-    padding: var(--spacing-md); /* Optimisé : variable spacing */
+    gap: var(--spacing-lg); 
+    padding: var(--spacing-md); 
 }
  
 /* Fallback navigateur : si CSS Grid non supporté, retour en Flexbox */
@@ -108,7 +120,7 @@
   .meteo-results-details-content {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-lg); /* Optimisé : variable spacing */
+    gap: var(--spacing-lg);
   }
 }
  

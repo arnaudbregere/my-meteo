@@ -37,10 +37,14 @@ export function renderWeatherResults(data, cityName) {
   if (locEl) locEl.textContent = data.main.city;
   if (dateEl) dateEl.textContent = data.main.date;
   if (tempEl) tempEl.textContent = `${data.main.temperature}°`;
-  if (weatherEl) weatherEl.textContent = data.main.description;
+  if (weatherEl) {
+    weatherEl.style.textTransform = 'capitalize'
+    weatherEl.textContent = data.main.description;
+
+  }
   
   const windSpeed = data.wind?.speed ? `${Math.round(data.wind.speed * 3.6)} km/h` : '--';
-  const cloudiness = data.clouds?.all ? `${data.clouds.all}%` : '--';
+  const cloudiness = data.clouds?.all >= 0 ? `${data.clouds.all}%` : '--';
   const pressure = data.pressure ? `${data.pressure} hPa` : '--';
   const humidity = data.main?.humidity ? `${data.main.humidity}%` : '--';
   
@@ -55,7 +59,7 @@ export function renderWeatherResults(data, cityName) {
   if (humidityEl) humidityEl.textContent = humidity;
 
   // === AFFICHAGE DE L'ICÔNE OFFICIELLE OPENWEATHERMAP ===
-  const iconCode = data.main?.iconCode || '01d'; // fallback très rare
+  const iconCode = data.main?.iconCode || '01d'; 
   const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
   
   const iconEl = document.querySelector('.meteo-h2-weather-icon');
