@@ -4,31 +4,45 @@
  */
 
 const STORAGE_KEY = 'meteo_search_history';
-const MAX_SEARCHES = 50; // Limite du nombre de recherches stockées
+const MAX_SEARCHES = 50;
 
 /**
- * Récupère tout l'historique des recherches
- * @returns {Array} Tableau d'objets {city, id}
+ * Test si localStorage est disponible
+ */
+function isLocalStorageAvailable() {
+  try {
+    const test = '__test__';
+    localStorage.setItem(test, test);
+    localStorage.removeItem(test);
+    return true;
+  } catch (e) {
+    console.warn('localStorage indisponible');
+    return false;
+  }
+}
+
+/**
+ * Récupère tout l'historique
  */
 export function getSearchHistory() {
+  if (!isLocalStorageAvailable()) return [];
+  
   try {
     const data = localStorage.getItem(STORAGE_KEY);
     return data ? JSON.parse(data) : [];
   } catch (err) {
-    console.error('Erreur lors de la lecture de l\'historique:', err);
+    console.error('Erreur lecture historique:', err);
     return [];
   }
 }
 
 /**
- * Ajoute une ville à l'historique avec un timestamp comme id
- * Supprime les anciens doublons avant d'ajouter la nouvelle entrée
- * @param {string} cityName - Nom de la ville à ajouter
- * @returns {boolean} Succès de l'opération
+ * Ajoute une ville à l'historique
  */
 export function addToSearchHistory(cityName) {
-  if (!cityName || typeof cityName !== 'string') {
-    console.warn('Nom de ville invalide');
+  if (!cityName || typeof cityName !== 'string') return false;
+  if (!isLocalStorageAvailable()) {
+    console.warn('Historique non sauvegardé (localStorage indisponible)');
     return false;
   }
 
@@ -36,24 +50,20 @@ export function addToSearchHistory(cityName) {
     let history = getSearchHistory();
     const trimmedCityName = cityName.trim();
     
-    // Supprimer tous les doublons avec le même nom de ville (insensible à la casse)
+    // Supprimer tous les doublons avec le même nom de ville 
     history = history.filter(entry => 
       entry.city.toLowerCase() !== trimmedCityName.toLowerCase()
     );
     
-    // Créer un nouvel objet avec city et id (timestamp)
-    const newEntry = {
+    // Ajouter au début
+    history.unshift({
       city: trimmedCityName,
       id: Date.now()
-    };
+    });
     
-    // Ajouter la recherche au début du tableau
-    history.unshift(newEntry);
-    
-    // Limiter à MAX_SEARCHES entries
+    // Limiter à 50
     history = history.slice(0, MAX_SEARCHES);
     
-    // Sauvegarder
     localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
     console.log(`Recherche ajoutée: ${trimmedCityName}`);
     return true;
@@ -64,9 +74,11 @@ export function addToSearchHistory(cityName) {
 }
 
 /**
- * Vide complètement l'historique
+ * Vide l'historique
  */
 export function clearSearchHistory() {
+  if (!isLocalStorageAvailable()) return false;
+  
   try {
     localStorage.removeItem(STORAGE_KEY);
     console.log('Historique supprimé');
@@ -78,11 +90,11 @@ export function clearSearchHistory() {
 }
 
 /**
- * Supprime une ville spécifique de l'historique par son id (timestamp)
- * @param {number} entryId - L'id (timestamp) de l'entrée à supprimer
- * @returns {boolean} Succès de l'opération
+ * Supprime une entrée par ID
  */
 export function removeFromSearchHistory(entryId) {
+  if (!isLocalStorageAvailable()) return false;
+  
   try {
     let history = getSearchHistory();
     history = history.filter(entry => entry.id !== entryId);

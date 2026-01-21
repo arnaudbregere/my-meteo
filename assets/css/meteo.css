@@ -2,6 +2,39 @@
 @import url('./accessibility.css');
 @import url('./footer.css');
 
+/* ===== VARIABLES CSS (NOUVELLES) ===== */
+:root {
+  --color-primary: #667eea;
+  --color-secondary: #764ba2;
+  --color-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --color-white: #ffffff;
+  --color-light-gray: #f8f9fa;
+  --color-dark-gray: #3b3d3d;
+  --color-border: #e0e0e0;
+  --color-text-light: rgba(255, 255, 255, 0.9);
+  --color-error: #FF3B30;
+  --color-success: #34C759;
+  
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+  --spacing-xl: 30px;
+  --spacing-2xl: 40px;
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 50%;
+  
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +43,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #ffffff;
+  background-color: var(--color-white);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -18,24 +51,25 @@ body {
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-100px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-100px); }
+}
+
+@-webkit-keyframes float {
+  0%, 100% { -webkit-transform: translateY(0px); }
+  50% { -webkit-transform: translateY(-100px); }
 }
 
 .meteo-main {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 20px;
+  background: var(--color-gradient);
+  border-radius: var(--radius-lg);
   width: 100%;
   min-height: 100vh;
   position: relative;
   overflow: hidden;
 }
 
-@media (min-width:768px) { 
+@media (min-width: 768px) { 
   .meteo-main {
     max-width: 1120px;
     width: 1120px;
@@ -59,30 +93,24 @@ body {
   pointer-events: none;
 }
 
-@media (min-width:768px) { 
-  .meteo-main::before {
-    background-size: contain;
-  }
-}
-
 .meteo-header {
   position: absolute;
   display: flex;
   align-items: center;
   width: 100%;
-  border-bottom: 1px solid #ffffff;
-  margin-bottom: 30px;
-  padding: 20px;
-  gap: 15px;
+  border-bottom: 1px solid var(--color-white);
+  margin-bottom: var(--spacing-2xl);
+  padding: var(--spacing-lg);
+  gap: var(--spacing-md);
 }
 
 .meteo-logo-link {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform var(--transition-fast);
   text-decoration: none;
 }
 
 .meteo-logo-link:focus {
-  outline: 2px solid #ffffff;
+  outline: 2px solid var(--color-white);
   outline-offset: 4px;
 }
 
@@ -98,18 +126,10 @@ body {
 
 .meteo-h1 {
   text-align: center;
-  color: #ffffff;
-  border-bottom: 1px solid #ffffff;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-}
-
-@media (min-width:768px) { 
-  .meteo-h1 {
-    flex: 1;
-    border-bottom: none;
-    padding: 20px 0;
-  }
+  color: var(--color-white);
+  border-bottom: 1px solid var(--color-white);
+  margin-bottom: var(--spacing-2xl);
+  padding-bottom: var(--spacing-lg);
 }
 
 .meteo-subtitle {
@@ -126,7 +146,7 @@ body {
   outline: none;
   border: none;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: opacity var(--transition-fast);
 }
 
 .meteo-menu-button:hover,
@@ -136,17 +156,17 @@ body {
 
 .meteo-container {
   width: 100%;
-  padding: 30px;
+  padding: var(--spacing-2xl);
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: var(--spacing-2xl);
   margin-top: 120px;
 }
 
-@media (min-width:768px) { 
+@media (min-width: 768px) { 
   .meteo-container {
     flex-direction: row;
-    gap: 30px;
+    gap: var(--spacing-2xl);
     align-items: flex-start;
   }
 }
@@ -154,112 +174,54 @@ body {
 .meteo-left-column {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--spacing-lg);
   flex: 1;
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
   .meteo-left-column {
-    border-right: 1px solid #ffffff;
-    padding-right: 30px;
+    border-right: 1px solid var(--color-white);
+    padding-right: var(--spacing-2xl);
   }
 }
 
 .meteo-intro {
   font-size: 16px;
-  color: #ffffff;
+  color: var(--color-white);
   line-height: 1.6;
   text-align: justify;
-  margin-bottom: 10px;
+  margin-bottom: var(--spacing-md);
 }
 
 .meteo-cta-button {
-  margin: 10px auto 20px;
-  background-color: #ffffff;
-  border: 2px solid #ffffff;
-  border-radius: 16px;
-  color: #667eea;
+  margin: var(--spacing-md) auto var(--spacing-lg);
+  background-color: var(--color-white);
+  border: 2px solid var(--color-white);
+  border-radius: var(--radius-lg);
+  color: var(--color-primary);
   font-weight: 600;
   font-size: 16px;
   width: 100%;
   min-height: 55px;
-  padding: 15px;
+  padding: var(--spacing-md);
   text-align: center;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
   cursor: pointer;
 }
 
 .meteo-cta-button:hover {
-  color: #ffffff;
-  background-color: #667eea;
-  border-color: #ffffff;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-color: var(--color-white);
 }
 
 .meteo-cta-button:focus {
-  outline: 2px solid #ffffff;
+  outline: 2px solid var(--color-white);
   outline-offset: 4px;
-}
-
-.meteo-title {
-  font-size: 24px;
-  font-weight: 600;
-  color: #3b3d3d;
-  margin-bottom: 25px;
-  text-align: center;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 30px;
-}
-
-input[type="text"] {
-  width: 100%;
-  padding: 12px 15px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 14px;
-  font-family: 'Roboto', sans-serif;
-}
-
-input[type="text"]:focus {
-  outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-}
-
-.search {
-  padding: 12px 25px;
-  background: #667eea;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.search:hover {
-  background: #5568d3;
-}
-
-.search:focus {
-  outline: 2px solid #ffffff;
-  outline-offset: 4px;
-}
-
-@media (min-width:768px) {
-  .meteo-list-random {
-    display: block;
-    flex: 1;
-  }
 }
 
 .meteo-list-random-list {
@@ -267,7 +229,7 @@ input[type="text"]:focus {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: var(--spacing-md);
   width: 100%;
 }
 
@@ -275,20 +237,15 @@ input[type="text"]:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 15px;
-  background: #f8f9fa;
-  border-radius: 12px;
-  transition: background 0.3s ease;
+  padding: var(--spacing-md);
+  background: var(--color-light-gray);
+  border-radius: var(--radius-md);
+  transition: background var(--transition-normal);
   cursor: pointer;
 }
 
 .meteo-list-random-list li:hover {
   background: #f0f2f5;
-}
-
-.meteo-list-random-list li:focus-within {
-  outline: 2px solid #667eea;
-  outline-offset: 2px;
 }
 
 .meteo-icon {
@@ -301,15 +258,15 @@ input[type="text"]:focus {
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin-left: 15px;
+  margin-left: var(--spacing-md);
 }
 
 .meteo-city {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-xs);
   font-size: 14px;
-  color: #000000;
+  color: var(--color-dark-gray);
   font-weight: 400;
   line-height: 1;
 }
@@ -317,7 +274,7 @@ input[type="text"]:focus {
 .meteo-temperature {
   font-size: 12px;
   font-weight: 400;
-  color: #3b3d3d;
+  color: var(--color-dark-gray);
   margin-top: 5px;
 }
 
@@ -326,29 +283,33 @@ input[type="text"]:focus {
   text-align: center;
 }
 
-.meteo-see-suggestions, .meteo-back-top {
-  margin: 20px auto;
+.meteo-see-suggestions, 
+.meteo-back-top {
+  margin: var(--spacing-lg) auto;
   text-align: center;
 }
 
-.meteo-see-suggestions a, .meteo-back-top a {
-  color: #ffffff;
+.meteo-see-suggestions a, 
+.meteo-back-top a {
+  color: var(--color-white);
   text-decoration: none;
-  transition: text-decoration 0.2s ease;
+  transition: text-decoration var(--transition-fast);
 }
 
-.meteo-see-suggestions a:hover, .meteo-back-top a:hover {
+.meteo-see-suggestions a:hover, 
+.meteo-back-top a:hover {
   text-decoration: underline;
 }
 
-.meteo-see-suggestions a:focus, .meteo-back-top a:focus {
-  outline: 2px solid #ffffff;
+.meteo-see-suggestions a:focus, 
+.meteo-back-top a:focus {
+  outline: 2px solid var(--color-white);
   outline-offset: 4px;
 }
 
 .meteo-h2 {
-  color: #ffffff;
-  margin-bottom: 20px;
+  color: var(--color-white);
+  margin-bottom: var(--spacing-lg);
 }
 
 .meteo-list-random-list li.swipe-remove {
@@ -366,11 +327,6 @@ input[type="text"]:focus {
   }
 }
 
-/* 
-  Respect des préférences utilisateur :
-  désactivation des animations si prefers-reduced-motion activée
-  (WCAG + compatibilité OS / navigateur)
-*/
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
@@ -378,7 +334,6 @@ input[type="text"]:focus {
   }
 }
 
-/* ===== NAVIGATION MENU OVERLAY ===== */
 nav {
   position: fixed;
   top: 0;
@@ -409,10 +364,10 @@ nav ul {
 
 nav ul li a {
   text-decoration: none;
-  color: #ffffff;
+  color: var(--color-white);
   font-size: 20px;
   font-weight: 500;
-  transition: opacity 0.2s ease;
+  transition: opacity var(--transition-fast);
 }
 
 nav ul li a:hover,
