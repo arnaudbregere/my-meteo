@@ -41,7 +41,7 @@
 /* Bouton toggle police dyslexique - Style moderne */
 .accessibility-toggle {
   position: relative;
-  width: 56px;
+  width: 180px;
   height: 30px;
   background: #e0e0e0;
   border: none;
@@ -85,7 +85,7 @@
 }
 
 .accessibility-toggle.active::before {
-  left: 29px;
+  left: 90%;
 }
 
 /* ===== DESKTOP - Media query ===== */

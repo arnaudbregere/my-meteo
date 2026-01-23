@@ -42,9 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isEnabled) {
       body.classList.add('dyslexic-font');
       toggleBtn.classList.add('active');
+      toggleBtn.textContent = 'DYS Police'
     } else {
       body.classList.remove('dyslexic-font');
       toggleBtn.classList.remove('active');
+       toggleBtn.textContent = 'CLASSIQUE Police'
     }
   }
 
