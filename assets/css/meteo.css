@@ -295,6 +295,13 @@ body {
   height: 20px;
   flex-shrink: 0;
 }
+.meteo-illustration-hero {
+  margin: 0 auto;
+}
+.meteo-icon-main {
+width: 167px; 
+height: 113px;
+}
 
 .meteo-content {
   flex: 1;
