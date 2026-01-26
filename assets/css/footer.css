@@ -1,13 +1,12 @@
 /* ===== FOOTER COLLÉ AU BAS - SOLUTION SIMPLE ===== */
 
 .meteo-footer {
-  position: sticky;
-  bottom: 0;
   background: var(--color-gradient);
   color: var(--color-white);
   padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-lg); 
   width: 100%;
-  margin-top: 0;
+  margin-top: auto;
+  flex-shrink: 0;
 }
 
 .meteo-footer-container {

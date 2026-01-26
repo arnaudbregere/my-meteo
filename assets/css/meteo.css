@@ -87,10 +87,12 @@ body {
 }
 
 .meteo-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   background: var(--color-gradient);
   border-radius: var(--radius-lg);
   width: 100%;
-  min-height: 100vh;
   position: relative;
   overflow: hidden;
 }
