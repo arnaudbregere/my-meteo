@@ -1,17 +1,16 @@
 /* ===== CONTENEUR MENU (NAV) ===== */
 .meteo-nav {
-  z-index: 1;
+  z-index: 1000;
   position: absolute;
-  top: 105px;
+  top: 85px;
   left: 0;
   right: 0;
-  height: 25vh;
-  background-color: #0b1c2d;
-  z-index: 1000;
-  padding: var(--spacing-lg);
+  background: linear-gradient(180deg, #5b7cff 0%, #6b8dff 100%);
+  padding: 1.5rem 2rem;
   overflow-y: auto;
-  animation: slideInFromTop var(--transition-normal); 
-  overflow: hidden;
+  animation: slideInFromTop 0.3s ease-out;
+  height: auto;
+  max-height: fit-content;
 }
 
 @keyframes slideInFromTop {
@@ -25,7 +24,6 @@
   }
 }
 
-/* Menu caché */
 .meteo-nav[aria-hidden="true"] {
   display: none;
 }
@@ -33,21 +31,28 @@
 /* ===== LISTE MENU ===== */
 .meteo-menu-list {
   width: 100%;
-  margin-bottom: 2rem;
-  position: relative;
-  color: var(--color-white);
 }
 
 .meteo-menu-list ul {
   list-style: none;
-  line-height: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .meteo-menu-list ul li a {
   text-decoration: none;
-  color: var(--color-white);
-  font-size: 20px;
-  font-weight: 400;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: block;
+  padding: 0.6rem 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.meteo-menu-list ul li a:hover {
+  border-bottom-color: #ffffff;
 }
 
 /* ===== BOUTON FERMETURE ===== */
@@ -55,13 +60,14 @@
   background: none;
   border: none;
   cursor: pointer;
-  margin-bottom: 2rem;
-  display: flex;
-  justify-content: flex-end;
-  margin-left: auto;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  padding: 0;
 }
 
 .meteo-menu-close {
   width: 24px;
   height: 24px;
+  filter: brightness(0) invert(1);
 }

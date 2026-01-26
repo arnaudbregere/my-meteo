@@ -108,7 +108,7 @@
 }
 
 .accessibility-toggle.active::before {
-  left: 90%;
+  left: 85%;
 }
 
 /* ===== DESKTOP - Media query ===== */
