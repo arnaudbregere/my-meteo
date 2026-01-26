@@ -2,7 +2,7 @@
 /* Fallback police :
    si OpenDyslexic non chargée, retour sur Poppins / sans-serif */
 
-  @font-face {
+@font-face {
   font-family: 'Open-Dyslexic';
   font-style: normal;
   font-weight: 400;
@@ -17,6 +17,24 @@
   letter-spacing: 0.5px !important;
 }
 
+/* ===== CONTRASTE ===== */
+.dyslexic-font .meteo-city,
+.dyslexic-font .meteo-temperature,
+.dyslexic-font .meteo-weather p {
+  color: #1a1a1a !important;
+}
+
+.meteo-city {
+  color: #1a1a1a;
+}
+
+.meteo-temperature {
+  color: #1a1a1a;
+}
+
+.meteo-weather p {
+  color: #1a1a1a;
+}
 
 /* Conteneur toggle + label */
 .accessibility-container {
@@ -59,6 +77,11 @@
 
 .accessibility-toggle:active {
   outline: none;
+}
+
+.accessibility-toggle:focus {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
 }
 
 /* Cercle du toggle */
