@@ -4,58 +4,64 @@
  */
 
 const PopinManager = (() => {
-  let overlay;
-  let container;
-  let closeButton;
+  let currentOverlay;
+  let currentContainer;
+  let currentCloseButton;
 
   /**
-   * Initialise les éléments et les écouteurs d'événements
-   * @param {string} overlayId - ID de l'overlay de la popin
-   * @param {string} containerId - ID du conteneur de la popin
+   * Initialise une popin avec ses éléments
+   * @param {string} overlayId - ID de l'overlay
+   * @param {string} containerId - ID du conteneur
    * @param {string} closeButtonId - ID du bouton de fermeture
+   * @returns {boolean} Succès de l'initialisation
    */
   function init(overlayId = 'popin-overlay', containerId = 'popin-container', closeButtonId = 'popin-close') {
-    overlay = document.getElementById(overlayId);
-    container = document.getElementById(containerId);
-    closeButton = document.getElementById(closeButtonId);
+    currentOverlay = document.getElementById(overlayId);
+    currentContainer = document.getElementById(containerId);
+    currentCloseButton = document.getElementById(closeButtonId);
 
-    if (!overlay || !container || !closeButton) {
-      console.error('Erreur : Les éléments de la popin n\'ont pas pu être trouvés.');
+    if (!currentOverlay || !currentContainer || !currentCloseButton) {
+      console.error(`Erreur popin: éléments manquants (${overlayId}, ${containerId}, ${closeButtonId})`);
       return false;
     }
 
-    // Fermer la popin en cliquant le bouton "Fermer" ou "Annuler"
-    closeButton.addEventListener('click', close);
+    // Fermer en cliquant le bouton
+    currentCloseButton.addEventListener('click', close);
 
-    // Fermer la popin en cliquant sur l'overlay
-    overlay.addEventListener('click', close);
+    // Fermer en cliquant sur l'overlay
+    currentOverlay.addEventListener('click', close);
 
-    // Fermer la popin avec la touche Escape
+    // Fermer avec Escape
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') close();
+      if (e.key === 'Escape' && currentOverlay.classList.contains('active')) {
+        close();
+      }
     });
 
     return true;
   }
 
-
-   // Affiche la popin
-
+  /**
+   * Affiche la popin
+   */
   function show() {
-    overlay.classList.add('active');
-    container.classList.add('active');
-    // Focus sur le bouton de fermeture/annulation pour l'accessibilité
-    closeButton.focus();
+    if (!currentOverlay || !currentContainer) {
+      console.error('Popin non initialisée');
+      return;
+    }
+    currentOverlay.classList.add('active');
+    currentContainer.classList.add('active');
+    currentCloseButton?.focus();
   }
 
-   // Ferme la popin
-
+  /**
+   * Ferme la popin
+   */
   function close() {
-    overlay.classList.remove('active');
-    container.classList.remove('active');
+    if (currentOverlay) currentOverlay.classList.remove('active');
+    if (currentContainer) currentContainer.classList.remove('active');
   }
 
-  // API publique
   return {
     init,
     show,

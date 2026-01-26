@@ -4,8 +4,6 @@ import { renderCitiesList } from "./meteo-dom.js";
 import { initSwipeGestures } from "./animations/swipe.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  updateImageSources();
-  
   try {
     console.log("Chargement des suggestions météo...");
     
@@ -18,9 +16,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Affichage des suggestions
     renderCitiesList(weatherData);
     
-    // Initialisation des gestes de swipe pour la liste
+    // Initialisation des gestes de swipe
     const listItems = document.querySelectorAll('.meteo-list-random-list li');
     await initSwipeGestures(listItems);
+    
+    // UPDATE DES IMAGES (une seule fois au chargement global)
+    updateImageSources();
     
     console.log("Suggestions météo chargées OK !");
   } catch (err) {

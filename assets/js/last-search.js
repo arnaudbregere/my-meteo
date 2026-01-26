@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const clearActionsDiv = document.getElementById('meteo-clear-actions');
   const clearAllBtn = document.getElementById('meteo-clear-all');
 
-  // Initialisation du gestionnaire de popin de confirmation
+  // Initialisation de la popin de confirmation
   PopinManager.init('popin-overlay-clear', 'popin-container-clear', 'popin-cancel-clear');
 
   /**
@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
     clearActionsDiv.style.display = 'block';
     searchList.innerHTML = '';
 
-    history.forEach(cityName => {
-      const li = createSearchItem(cityName);
+    history.forEach(entry => {
+      const li = createSearchItem(entry);
       searchList.appendChild(li);
     });
 
@@ -39,15 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /**
    * Crée un élément de recherche
-   * @param {Object} entry - L'objet {city, id}
-   * @returns {HTMLElement} L'élément de liste
    */
   function createSearchItem(entry) {
     const li = document.createElement('li');
     li.className = 'meteo-search-item';
-    li.setAttribute('data-id', entry.id); // Ajouter l'id comme attribut data
+    li.setAttribute('data-id', entry.id);
 
-    // Contenu du lien
+    // Lien vers la page résultat
     const link = document.createElement('a');
     link.href = `results.html?meteo-search-localisation=${encodeURIComponent(entry.city)}`;
     link.className = 'meteo-search-item-link';
@@ -58,57 +56,37 @@ document.addEventListener("DOMContentLoaded", () => {
     deleteBtn.type = 'button';
     deleteBtn.className = 'meteo-search-item-delete';
     deleteBtn.setAttribute('aria-label', `Supprimer la recherche: ${entry.city}`);
-    deleteBtn.innerHTML = '&times;'; // Croix
+    deleteBtn.innerHTML = '&times;';
 
     deleteBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      handleDeleteSearch(entry.id, li);
+      removeFromSearchHistory(entry.id);
+      li.classList.add('removing');
+      setTimeout(() => {
+        li.remove();
+        displaySearchHistory();
+      }, 300);
     });
 
     li.appendChild(link);
     li.appendChild(deleteBtn);
-
     return li;
   }
 
-  /**
-   * Gère la suppression d'une recherche
-   * @param {number} entryId - L'id (timestamp) de l'entrée à supprimer
-   * @param {HTMLElement} element - L'élément HTML à supprimer
-   */
-  function handleDeleteSearch(entryId, element) {
-    removeFromSearchHistory(entryId);
-    
-    // Animation de suppression
-    element.classList.add('removing');
-    setTimeout(() => {
-      element.remove();
-      displaySearchHistory();
-    }, 300);
-  }
+  // === ÉCOUTEURS ===
 
-   // Gère le vidage complet de l'historique
-  function handleClearAll() {
-    // Affiche la popin de confirmation
+  clearAllBtn.addEventListener('click', () => {
     PopinManager.show();
-  }
-
-
-   // Confirme la suppression complète de l'historique
-
-  function handleConfirmClearAll() {
+  });
+  
+  // Confirmation du vidage complet
+  const confirmBtn = document.getElementById('popin-confirm-clear');
+  confirmBtn?.addEventListener('click', () => {
     clearSearchHistory();
     displaySearchHistory();
     console.log('Historique complètement effacé');
     PopinManager.close();
-  }
-
-  // Événements
-  clearAllBtn.addEventListener('click', handleClearAll);
-  
-  // Bouton de confirmation dans la popin
-  const confirmBtn = document.getElementById('popin-confirm-clear');
-  confirmBtn.addEventListener('click', handleConfirmClearAll);
+  });
 
   // Affichage initial
   displaySearchHistory();

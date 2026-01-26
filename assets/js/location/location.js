@@ -1,4 +1,6 @@
-
+/**
+ * Gestion de la recherche et autocomplétition de villes
+ */
 
 document.addEventListener('DOMContentLoaded', function() {
   const inputSearch = document.getElementById('meteo-search-localisation');
@@ -6,19 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const autocompleteContainer = document.getElementById('meteo-autocomplete');
   const suggestionsContainer = document.getElementById('meteo-suggestions');
   
-  // Initialisation du gestionnaire de popin
+  // Initialisation de la popin de validation
   PopinManager.init('popin-overlay', 'popin-container', 'popin-close');
 
   /**
    * Récupère les suggestions depuis Nominatim
    */
   async function fetchSuggestions(query) {
-    const options = {
-      limitResponse: 50,
-      france: 'fr',
-      jsonFormat: 'json'
-    };
-
     if (query.length < 2) {
       autocompleteContainer.classList.remove('active');
       return;
@@ -26,23 +22,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     try {
       const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=${options.jsonFormat}&limit=${options.limitResponse}&countrycodes=${options.france}`
+        `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=50&countrycodes=fr`
       );
 
       const data = await response.json();
       displaySuggestions(data);
     } catch (error) {
-      console.error('Erreur lors de la récupération des suggestions:', error);
+      console.error('Erreur suggestions:', error);
       autocompleteContainer.classList.remove('active');
     }
   }
 
   /**
-   * Filtre les suggestions (villes/communes, villages)
+   * Filtre les suggestions (villes/communes uniquement)
    */
   function filterCities(suggestions) {
     const validTypes = ['city', 'town', 'village'];
-    return suggestions.filter(suggestion => validTypes.includes(suggestion.addresstype));
+    return suggestions.filter(s => validTypes.includes(s.addresstype));
   }
 
   /**
@@ -60,14 +56,10 @@ document.addEventListener('DOMContentLoaded', function() {
     uniqueSuggestions.forEach(suggestion => {
       const div = document.createElement('div');
       div.className = 'meteo-autocomplete-item';
-      
-      const displayName = suggestion.display_name;
-      const cityName = suggestion.name;
-      
-      div.textContent = displayName;
+      div.textContent = suggestion.display_name;
       
       div.addEventListener('click', () => {
-        inputSearch.value = cityName;
+        inputSearch.value = suggestion.name;
         autocompleteContainer.classList.remove('active');
       });
       
@@ -77,38 +69,30 @@ document.addEventListener('DOMContentLoaded', function() {
     autocompleteContainer.classList.add('active');
   }
 
-  /**
-   * Validation du formulaire
-   */
-  function validateForm() {
-    if (inputSearch.value.trim() === '') {
-      PopinManager.show();
-      return false;
-    }
-    return true;
-  }
+  // === ÉCOUTEURS ===
 
-  // Écouteur sur l'input pour l'autocomplétion
+  // Autocomplétation au typing
   inputSearch.addEventListener('input', (e) => {
     fetchSuggestions(e.target.value);
   });
 
-  // Fermer les suggestions quand on clique ailleurs
+  // Fermer suggestions au clic ailleurs
   document.addEventListener('click', (e) => {
     if (e.target !== inputSearch) {
       autocompleteContainer.classList.remove('active');
     }
   });
 
-  // Validation du formulaire au clic du bouton
-  submitButton.addEventListener('click', function(event) {
-    if (!validateForm()) {
+  // Validation au submit (directement ici, pas de fonction séparée)
+  submitButton.addEventListener('click', (event) => {
+    if (!inputSearch.value.trim()) {
       event.preventDefault();
+      PopinManager.show();
     }
   });
 
-  // Charger les suggestions statiques au chargement
-  suggestionsContainer.addEventListener('click', (e) => {
+  // Suggestions statiques au clic
+  suggestionsContainer?.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') {
       inputSearch.value = e.target.textContent;
     }

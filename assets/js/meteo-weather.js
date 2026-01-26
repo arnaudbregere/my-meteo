@@ -22,20 +22,33 @@ const AVAILABLE_CITIES = [
   { name: "Le Havre", lat: 49.4944, lon: 0.1079, country: "FR" },
 ];
 
+// Icônes par catégorie 
 const WEATHER_ICON_MAP = {
-  "01d": "sun.svg", "01n": "sun.svg",
-  "02d": "cloud.svg", "02n": "cloud.svg",
-  "03d": "cloud.svg", "03n": "cloud.svg",
-  "04d": "cloud.svg", "04n": "cloud.svg",
-  "09d": "rain.svg", "09n": "rain.svg",
-  "10d": "rain.svg", "10n": "rain.svg",
-  "11d": "rain.svg", "11n": "rain.svg",
-  "13d": "snow.svg", "13n": "snow.svg",
-  "50d": "cloud.svg", "50n": "cloud.svg",
+  "01d": "sun.svg",
+  "01n": "sun.svg",
+  "02d": "cloud.svg",
+  "02n": "cloud.svg",
+  "03d": "cloud.svg",
+  "03n": "cloud.svg",
+  "04d": "cloud.svg",
+  "04n": "cloud.svg",
+  "09d": "rain.svg",
+  "09n": "rain.svg",
+  "10d": "rain.svg",
+  "10n": "rain.svg",
+  "11d": "rain.svg",
+  "11n": "rain.svg",
+  "13d": "snow.svg",
+  "13n": "snow.svg",
+  "50d": "cloud.svg",
+  "50n": "cloud.svg",
 };
 
+/**
+ * Transforme les données API en objet simple
+ */
 function transformWeatherData(data, cityName) {
-  if (!data || !data.weather || !data.main) return null;
+  if (!data?.weather?.[0] || !data?.main) return null;
   
   const weather = data.weather[0];
   return {
@@ -47,8 +60,11 @@ function transformWeatherData(data, cityName) {
   };
 }
 
+/**
+ * Transforme les données pour la page résultats 
+ */
 function transformMainWeatherData(data) {
-  if (!data || !data.weather || !data.main) return null;
+  if (!data?.weather?.[0] || !data?.main) return null;
   
   const weather = data.weather[0];
   return {
@@ -67,17 +83,26 @@ function transformMainWeatherData(data) {
   };
 }
 
+/**
+ * Données mock pour fallback
+ */
 function getMockWeatherData(cities) {
-  console.log("Utilisation des données MOCK (batch)");
+  console.log("Utilisation des données MOCK (fallback batch)");
+  const descriptions = ["Ensoleillé", "Nuageux", "Pluvieux", "Neigeux"];
+  const icons = ["sun.svg", "cloud.svg", "rain.svg", "snow.svg"];
+  
   return cities.map(city => ({
     name: city.name,
     temperature: Math.floor(Math.random() * 30) + 5,
-    description: ["Ensoleillé", "Nuageux", "Pluvieux", "Neigeux"][Math.floor(Math.random() * 4)],
-    icon: ["sun.svg", "cloud.svg", "rain.svg", "snow.svg"][Math.floor(Math.random() * 4)],
+    description: descriptions[Math.floor(Math.random() * 4)],
+    icon: icons[Math.floor(Math.random() * 4)],
     humidity: Math.floor(Math.random() * 40) + 40,
   }));
 }
 
+/**
+ * Récupère la météo pour plusieurs villes en parallèle
+ */
 export async function getWeatherBatch(cities, lang = "fr") {
   try {
     const promises = cities.map(city => {
@@ -90,26 +115,28 @@ export async function getWeatherBatch(cities, lang = "fr") {
         })
         .then(data => transformWeatherData(data, city.name))
         .catch(err => {
-          console.error(`Erreur pour ${city.name}:`, err);
+          console.error(`Erreur pour ${city.name}:`, err.message);
           return null;
         });
     });
 
     const results = await Promise.all(promises);
     const filtered = results.filter(Boolean);
-    console.log(" Résultats filtrés:", filtered);
     
-    return filtered;
+    return filtered.length > 0 ? filtered : getMockWeatherData(cities);
   } catch (err) {
     console.error("Erreur batch météo:", err);
     return getMockWeatherData(cities);
   }
 }
 
+/**
+ * Sélectionne N villes aléatoires
+ */
 export function getRandomCities(count = 4) {
   const shuffled = [...AVAILABLE_CITIES].sort(() => Math.random() - 0.5);
-  const selected = shuffled.slice(0, count);
-  console.log("Villes aléatoires sélectionnées:", selected.map(c => c.name));
+  const selected = shuffled.slice(0, Math.min(count, AVAILABLE_CITIES.length));
+  console.log("Villes aléatoires:", selected.map(c => c.name).join(", "));
   return selected;
 }
 
@@ -125,10 +152,7 @@ export async function getWeatherByCoordinates(lat, lon, cityName) {
     if (!res.ok) throw new Error(`HTTP ${res.status}: Impossible de récupérer la météo`);
 
     const data = await res.json();
-    
-    // Utiliser le nom de la ville passé en paramètre (depuis Nominatim)
-    // Cela garantit cohérence entre la recherche et le résultat
-    data.name = cityName;
+    data.name = cityName; // Cohérence avec le nom recherché
     
     return transformMainWeatherData(data);
   } catch (err) {

@@ -6,8 +6,6 @@ import { addToSearchHistory } from "./search-history.js";
 import { showSkeletonLoading, hideSkeletonLoading } from "./animations/animations.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  updateImageSources();
-
   const cityName = getCityFromURL();
 
   if (!cityName) {
@@ -17,9 +15,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    console.log(` Recherche de: ${cityName}`);
+    console.log(`Recherche de: ${cityName}`);
 
-    // AFFICHER LE SKELETON LOADER
+    // Afficher le skeleton loader
     showSkeletonLoading();
 
     // Étape 1: Récupérer les coordonnées via Nominatim
@@ -36,7 +34,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Étape 2: Récupérer la météo avec ces coordonnées
     const data = await getWeatherByCoordinates(location.lat, location.lon, location.displayName);
 
-    if (!data || !data.main) {
+    if (!data?.main) {
       console.error("Données météo invalides");
       renderError();
       return;
@@ -45,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Étape 3: Afficher les résultats
     renderWeatherResults(data, location.displayName);
 
-    // MASQUER LE SKELETON LOADER (remplacé par le contenu réel)
+    // Masquer le skeleton loader
     hideSkeletonLoading();
 
     // Étape 4: Ajouter à l'historique
