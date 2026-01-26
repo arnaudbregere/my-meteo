@@ -17,11 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isEnabled) {
       body.classList.add('dyslexic-font');
       toggleBtn.classList.add('active');
-      toggleBtn.textContent = 'DYS Police'
+      toggleBtn.setAttribute('aria-pressed', 'true');
+      toggleBtn.title = 'Police dyslexique activée - Cliquez pour désactiver';
     } else {
       body.classList.remove('dyslexic-font');
       toggleBtn.classList.remove('active');
-       toggleBtn.textContent = 'CLASSIQUE Police'
+      toggleBtn.setAttribute('aria-pressed', 'false');
+      toggleBtn.title = 'Police dyslexique désactivée - Cliquez pour activer';
     }
   }
 
@@ -36,8 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     applyDyslexiaMode(newState);
     saveToStorage('dyslexiaMode', newState);
-    
-    console.log(`Mode dyslexique: ${newState ? 'ACTIVÉ' : 'DÉSACTIVÉ'}`);
   });
 
   // ===== GESTION CLAVIER (Enter / Space) =====

@@ -13,7 +13,7 @@
 .dyslexic-font * {
   font-family: 'Open-Dyslexic', 'Poppins', sans-serif !important;
   font-weight: normal !important;
-  line-height: 1.6 !important;
+  line-height: 2.2 !important;
   letter-spacing: 0.5px !important;
 }
 
@@ -36,7 +36,7 @@
   color: #1a1a1a;
 }
 
-/* Conteneur toggle + label */
+/* ===== CONTENEUR TOGGLE + LABEL ===== */
 .accessibility-container {
   display: flex;
   align-items: center;
@@ -59,20 +59,20 @@
 /* Bouton toggle police dyslexique - Style moderne */
 .accessibility-toggle {
   position: relative;
-  width: 180px;
+  width: 50px;
   height: 30px;
-  background: #e0e0e0;
-  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid var(--color-white);
   border-radius: 15px;
   cursor: pointer;
-  transition: background var(--transition-normal); 
+  transition: background var(--transition-normal), border-color var(--transition-normal);
   padding: 0;
   flex-shrink: 0;
   outline: none;
 }
 
 .accessibility-toggle:hover {
-  background: #d0d0d0;
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .accessibility-toggle:active {
@@ -88,38 +88,53 @@
 .accessibility-toggle::before {
   content: '';
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   background: white;
   border-radius: var(--radius-full);
-  transition: left var(--transition-normal); 
+  transition: left var(--transition-normal);
   left: 3px;
   top: 3px;
-  box-shadow: var(--shadow-sm); 
+  box-shadow: var(--shadow-sm);
 }
 
 /* État activé */
 .accessibility-toggle.active {
-  background: var(--color-primary); 
+  background: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .accessibility-toggle.active:hover {
-  background: var(--color-secondary); 
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
 }
 
 .accessibility-toggle.active::before {
-  left: 85%;
+  left: calc(100% - 23px);
 }
 
 /* ===== DESKTOP - Media query ===== */
 @media (min-width: 768px) {
   .accessibility-container {
-    margin-left: 0;
-    margin-right: 0;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    gap: 12px;
+    margin-left: auto;
+    flex-shrink: 0;
+    gap: var(--spacing-md);
+  }
+
+  .accessibility-toggle {
+    width: 60px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid var(--color-white);
+  }
+
+  .accessibility-toggle::before {
+    width: 28px;
+    height: 28px;
+  }
+
+  .accessibility-toggle.active::before {
+    left: calc(100% - 31px);
   }
 
   .accessibility-label {
