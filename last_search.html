@@ -4,8 +4,8 @@
   <!-- ===== MÉTADONNÉES ET CONFIGURATION ===== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Consulter votre historique de recherches météo. Accédez rapidement à vos dernières consultations de prévisions météorologiques.">
-  <meta name="keywords" content="historique recherche, dernières recherches, météo consultée, prévisions sauvegardées">
+  <meta name="description" content="Consultez votre historique de recherches météorologiques. Accédez rapidement à vos dernières consultations de prévisions météo, température et conditions météorologiques avec My Meteo.">
+  <meta name="keywords" content="historique recherche, dernières recherches, météo consultée, prévisions sauvegardées, historique météo, application météo">
   <meta name="author" content="My Meteo">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#FFFFFF">
@@ -30,6 +30,18 @@
   <link rel="stylesheet" href="assets/css/last-search.css">
   <link rel="stylesheet" href="assets/css/popin.css">
 
+  <!-- ===== SCHEMA.ORG - APPLICATION MÉTÉO ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "My Meteo - Historique de Recherches",
+    "description": "Accédez à votre historique de recherches météorologiques et consultez vos dernières prévisions météo",
+    "url": "https://mymeteo.fr/last_search.html",
+    "applicationCategory": "WeatherApplication"
+  }
+  </script>
+
   <!-- ===== MENU BURGER SCRIPT ===== -->
   <script src="assets/js/menu.js"></script>
 </head>
@@ -40,7 +52,7 @@
    
     <!-- ===== EN-TÊTE (HEADER) ===== -->
      <header class="meteo-header">
-      <a href="index.html" class="meteo-logo-link" aria-label="Retour à l'accueil My Meteo - Application météo en temps réel" title="Retour à l'accueil">
+      <a href="index.html" class="meteo-logo-link" aria-label="Retour à l'accueil My Meteo - Application météo en temps réel" title="Retour à l'accueil My Meteo">
         <img 
           src="assets/images/svg/logo_mymeteo.svg" 
           data-file="logo_mymeteo.svg" 
@@ -65,12 +77,12 @@
       
       <!-- Burger button -->
       <button aria-label="Ouvrir le menu de navigation" class="meteo-menu-button">
-        <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Icône du menu" class="meteo-menu">
+        <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Icône du menu de navigation" class="meteo-menu" loading="lazy">
       </button>
 
       <!-- Close button (caché au départ) -->
       <button aria-label="Fermer le menu de navigation" class="meteo-menu-close-button" style="display: none;">
-        <img src="assets/images/svg/close.svg" data-file="close.svg" alt="Icône fermer le menu" class="meteo-menu-close">
+        <img src="assets/images/svg/close.svg" data-file="close.svg" alt="Icône fermer le menu" class="meteo-menu-close" loading="lazy">
       </button>
     </header>
 
@@ -78,10 +90,10 @@
     <nav class="meteo-nav" style="display: none;">
       <div class="meteo-menu-list">
         <ul>
-          <li><a href="index.html" title="Retour à l'accueil météo">Accueil</a></li>
-          <li><a href="search.html" title="Effectuer une nouvelle recherche de ville">Nouvelle recherche</a></li>
-          <li><a href="last_search.html" title="Consulter l'historique de vos recherches">Mes dernières recherches</a></li>
-          <li><a href="#meteo-footer" title="A propos de MyMeteo et e-mail de contact">A propos - Navigation - Contact</a></li>
+          <li><a href="index.html" title="Retour à l'accueil de l'application météo">Accueil</a></li>
+          <li><a href="search.html" title="Effectuer une nouvelle recherche de ville pour connaître la météo">Nouvelle recherche</a></li>
+          <li><a href="last_search.html" title="Consulter l'historique de vos recherches météorologiques">Mes dernières recherches</a></li>
+          <li><a href="#meteo-footer" title="Informations à propos de MyMeteo et coordonnées de contact">À propos - Navigation - Contact</a></li>
         </ul>
       </div>
     </nav>
@@ -90,11 +102,11 @@
     <main class="meteo-last-search-main">
       
       <!-- Titre principal -->
-      <h1 class="meteo-last-search-h1">Mes <strong>dernières recherches</strong> météo</h1>
+      <h1 class="meteo-last-search-h1">Mes <strong>dernières recherches</strong> <strong>météo</strong></h1>
 
       <!-- Lien d'accès rapide -->
       <p class="meteo-back-top">
-        <a href="#history" title="Aller à l'historique des recherches">
+        <a href="#history" title="Aller à l'historique des recherches de météo">
           Aller à l'historique
         </a>
       </p>
@@ -109,14 +121,14 @@
         </div>
 
         <!-- Liste des recherches historisées -->
-        <ul id="meteo-search-list" class="meteo-search-list" aria-label="Historique de vos recherches"></ul>
+        <ul id="meteo-search-list" class="meteo-search-list" aria-label="Historique de vos recherches de prévisions météorologiques"></ul>
 
         <!-- Actions : bouton pour effacer tout l'historique -->
         <div id="meteo-clear-actions" class="meteo-clear-actions" style="display: none;">
           <button 
             id="meteo-clear-all" 
             class="meteo-clear-all-btn btn-danger" 
-            title="Supprimer toutes vos recherches enregistrées"
+            title="Supprimer toutes vos recherches météo enregistrées"
           >
             Effacer tout l'historique
           </button>
@@ -135,7 +147,7 @@
         <!-- Section 1 : À propos -->
         <section class="meteo-footer-section">
           <h3>À propos</h3>
-          <p>My Meteo est une application météo en temps réel créée en 2026 pour consulter les prévisions météorologiques de plus de 18 villes françaises.</p>
+          <p>My Meteo est une <strong>application météo</strong> en temps réel créée en 2026 pour consulter les <strong>prévisions météorologiques</strong> de plus de 18 villes françaises. Découvrez la <strong>température</strong>, les <strong>conditions météorologiques</strong> et d'autres données en temps réel.</p>
         </section>
 
         <!-- Section 2 : Navigation -->
@@ -153,13 +165,13 @@
           <h3>Contact</h3>
           <ul>
             <li>
-              <a href="mailto:arnaud.bregere@gmail.com" aria-label="Envoyer un email à arnaud.bregere@gmail.com">
+              <a href="mailto:arnaud.bregere@gmail.com" aria-label="Envoyer un email à arnaud.bregere@gmail.com pour contacter My Meteo">
                 arnaud.bregere@gmail.com
               </a>
             </li>
             <li>
-              <a href="https://github.com/arnaudbregere/my-meteo" target="_blank" rel="noopener noreferrer" aria-label="Voir le projet sur GitHub (ouverture dans un nouvel onglet)">
-                GitHub
+              <a href="https://github.com/arnaudbregere/my-meteo" target="_blank" rel="noopener noreferrer" aria-label="Voir le projet My Meteo sur GitHub (ouverture dans un nouvel onglet)">
+                GitHub - Projet My Meteo
               </a>
             </li>
           </ul>
@@ -169,7 +181,7 @@
 
       <!-- Copyright -->
       <div class="meteo-footer-bottom">
-        <p>2026 My Meteo. Tous droits réservés.</p>
+        <p>&copy; 2026 My Meteo. Tous droits réservés. Application de prévisions météorologiques en temps réel.</p>
       </div>
     </footer>
   </div>
@@ -190,13 +202,13 @@
       <div class="popin-icon" aria-hidden="true"></div>
       <h2 class="popin-title" id="popin-title-clear">Supprimer l'historique</h2>
       <p class="popin-message">
-        Voulez-vous supprimer tout l'historique de recherche ? Cette action est <strong>irréversible</strong>.
+        Voulez-vous supprimer tout l'historique de recherche <strong>météo</strong> ? Cette action est <strong>irréversible</strong>.
       </p>
       <div class="popin-actions">
-        <button class="popin-button popin-button-cancel" id="popin-cancel-clear" title="Annuler la suppression">
+        <button class="popin-button popin-button-cancel" id="popin-cancel-clear" title="Annuler la suppression de l'historique">
           Annuler
         </button>
-        <button class="popin-button popin-button-confirm" id="popin-confirm-clear" title="Confirmer la suppression de l'historique">
+        <button class="popin-button popin-button-confirm" id="popin-confirm-clear" title="Confirmer la suppression de tout l'historique météo">
           Supprimer
         </button>
       </div>
@@ -204,8 +216,8 @@
   </dialog>
 
   <!-- ===== SCRIPTS ===== -->
-  <script src="assets/js/utils/popin.js"></script>
-  <script type="module" src="assets/js/last-search.js"></script>
-  <script type="module" src="assets/js/accessibility.js"></script>
+  <script src="assets/js/utils/popin.js" defer></script>
+  <script type="module" src="assets/js/last-search.js" defer></script>
+  <script type="module" src="assets/js/accessibility.js" defer></script>
 </body>
 </html>

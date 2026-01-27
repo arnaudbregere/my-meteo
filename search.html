@@ -4,8 +4,8 @@
   <!-- ===== MÉTADONNÉES ET CONFIGURATION ===== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Recherchez la météo d'une ville française. Accès rapide aux prévisions météorologiques, température, vent, pression et humidité en temps réel.">
-  <meta name="keywords" content="recherche météo, prévisions météorologiques, météo France, température ville, application météo">
+  <meta name="description" content="Recherchez la météo d'une ville française avec My Meteo. Accès rapide aux prévisions météorologiques, température actuelle, vent, pression et humidité en temps réel. Application météo gratuite.">
+  <meta name="keywords" content="recherche météo, prévisions météorologiques, météo France, température ville, application météo, météo en temps réel, conditions météorologiques">
   <meta name="author" content="My Meteo">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#FFFFFF">
@@ -39,7 +39,20 @@
       "@type": "EntryPoint",
       "urlTemplate": "https://mymeteo.fr/results.html?city={search_term_string}"
     },
-    "query-input": "required name=search_term_string"
+    "query-input": "required name=search_term_string",
+    "description": "Recherchez la météo d'une ville française"
+  }
+  </script>
+
+  <!-- ===== SCHEMA.ORG - APPLICATION MÉTÉO ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "My Meteo - Recherche Météo",
+    "description": "Recherchez et consultez les prévisions météorologiques en temps réel pour villes françaises",
+    "url": "https://mymeteo.fr/search.html",
+    "applicationCategory": "WeatherApplication"
   }
   </script>
 
@@ -53,7 +66,7 @@
     
     <!-- ===== EN-TÊTE (HEADER) ===== -->
      <header class="meteo-header">
-      <a href="index.html" class="meteo-logo-link" aria-label="Retour à l'accueil My Meteo - Application météo en temps réel" title="Retour à l'accueil">
+      <a href="index.html" class="meteo-logo-link" aria-label="Retour à l'accueil My Meteo - Application météo en temps réel" title="Retour à l'accueil My Meteo">
         <img 
           src="assets/images/svg/logo_mymeteo.svg" 
           data-file="logo_mymeteo.svg" 
@@ -78,12 +91,12 @@
       
       <!-- Burger button -->
       <button aria-label="Ouvrir le menu de navigation" class="meteo-menu-button">
-        <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Icône du menu" class="meteo-menu">
+        <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Icône du menu de navigation" class="meteo-menu" loading="lazy">
       </button>
 
       <!-- Close button (caché au départ) -->
       <button aria-label="Fermer le menu de navigation" class="meteo-menu-close-button" style="display: none;">
-        <img src="assets/images/svg/close.svg" data-file="close.svg" alt="Icône fermer le menu" class="meteo-menu-close">
+        <img src="assets/images/svg/close.svg" data-file="close.svg" alt="Icône fermer le menu" class="meteo-menu-close" loading="lazy">
       </button>
     </header>
 
@@ -91,10 +104,10 @@
     <nav class="meteo-nav" style="display: none;">
       <div class="meteo-menu-list">
         <ul>
-          <li><a href="index.html" title="Retour à l'accueil météo">Accueil</a></li>
-          <li><a href="search.html" title="Effectuer une nouvelle recherche de ville">Nouvelle recherche</a></li>
-          <li><a href="last_search.html" title="Consulter l'historique de vos recherches">Mes dernières recherches</a></li>
-          <li><a href="#meteo-footer" title="A propos de MyMeteo et e-mail de contact">A propos - Navigation - Contact</a></li>
+          <li><a href="index.html" title="Retour à l'accueil de l'application météo">Accueil</a></li>
+          <li><a href="search.html" title="Effectuer une nouvelle recherche de ville pour connaître la météo">Nouvelle recherche</a></li>
+          <li><a href="last_search.html" title="Consulter l'historique de vos recherches météorologiques">Mes dernières recherches</a></li>
+          <li><a href="#meteo-footer" title="Informations à propos de MyMeteo et coordonnées de contact">À propos - Navigation - Contact</a></li>
         </ul>
       </div>
     </nav>
@@ -114,7 +127,7 @@
           <form action="results.html" method="get">
             <!-- Fieldset pour accessibilité : regroupe logiquement les champs -->
             <fieldset>
-              <legend>Rechercher une ville</legend>
+              <legend>Rechercher une ville pour consulter sa météo</legend>
               <label class="meteo-search-label" for="meteo-search-localisation">Où souhaitez-vous consulter la <strong>météo</strong> ?</label>
      
               
@@ -128,17 +141,17 @@
                 type="text"
                 required
                 aria-describedby="search-help"
-                title="Saisissez le nom d'une ville française"
+                title="Saisissez le nom d'une ville française pour obtenir ses prévisions météorologiques"
                 >
 
               <!-- Dropdown d'autocomplétion (ARIA accessible) -->
-              <div id="meteo-autocomplete" class="meteo-autocomplete" role="listbox" aria-label="Suggestions de villes"></div>
+              <div id="meteo-autocomplete" class="meteo-autocomplete" role="listbox" aria-label="Suggestions de villes pour la recherche météo"></div>
 
               <!-- Aide contextuelle pour l'input -->
-              <p id="search-help" class="meteo-search-help">Exemple: Paris, Lyon, Marseille</p>
+              <p id="search-help" class="meteo-search-help">Exemple: Paris, Lyon, Marseille, Toulouse, Bordeaux, Lille</p>
               
               <!-- Bouton de recherche -->
-              <button type="submit" id="meteo-search-city" class="meteo-search-city" title="Lancer la recherche météo">Rechercher</button>
+              <button type="submit" id="meteo-search-city" class="meteo-search-city" title="Lancer la recherche de météo pour la ville saisie">Rechercher</button>
             </fieldset>
           </form>
         </div>
@@ -146,16 +159,16 @@
 
       <!-- ===== SECTION SUGGESTIONS DE RECHERCHE ===== -->
       <section class="meteo-search-suggestions-section">
-        <h2 class="meteo-search-h2">Villes suggérées</h2>
+        <h2 class="meteo-search-h2">Villes <strong>suggérées</strong> pour consulter la <strong>météo</strong></h2>
         <ul class="meteo-search-suggestions" id="meteo-suggestions">
-          <li><a href="#" title="Consulter la météo d'Angers">Angers</a></li>
-          <li><a href="#" title="Consulter la météo d'Angoulême">Angoulême</a></li>
-          <li><a href="#" title="Consulter la météo de Nantes">Nantes</a></li>
-          <li><a href="#" title="Consulter la météo de Toulouse">Toulouse</a></li>
-          <li><a href="#" title="Consulter la météo de Londres">Londres</a></li>
-          <li><a href="#" title="Consulter la météo de Bordeaux">Bordeaux</a></li>
-          <li><a href="#" title="Consulter la météo de Lille">Lille</a></li>
-          <li><a href="#" title="Consulter la météo de Lyon">Lyon</a></li>
+          <li><a href="#" title="Consulter les prévisions météorologiques d'Angers">Angers</a></li>
+          <li><a href="#" title="Consulter les prévisions météorologiques d'Angoulême">Angoulême</a></li>
+          <li><a href="#" title="Consulter les prévisions météorologiques de Nantes">Nantes</a></li>
+          <li><a href="#" title="Consulter les prévisions météorologiques de Toulouse">Toulouse</a></li>
+          <li><a href="#" title="Consulter les prévisions météorologiques de Londres">Londres</a></li>
+          <li><a href="#" title="Consulter les prévisions météorologiques de Bordeaux">Bordeaux</a></li>
+          <li><a href="#" title="Consulter les prévisions météorologiques de Lille">Lille</a></li>
+          <li><a href="#" title="Consulter les prévisions météorologiques de Lyon">Lyon</a></li>
         </ul>
       </section>
     </main>
@@ -166,7 +179,7 @@
         <!-- Section 1 : À propos -->
         <section class="meteo-footer-section">
           <h3>À propos</h3>
-          <p>My Meteo est une application météo en temps réel créée en 2026 pour consulter les prévisions météorologiques de plus de 18 villes françaises.</p>
+          <p>My Meteo est une <strong>application météo</strong> en temps réel créée en 2026 pour consulter les <strong>prévisions météorologiques</strong> de plus de 18 villes françaises. Découvrez la <strong>température</strong>, les <strong>conditions météorologiques</strong> et d'autres données en temps réel.</p>
         </section>
 
         <!-- Section 2 : Navigation -->
@@ -184,13 +197,13 @@
           <h3>Contact</h3>
           <ul>
             <li>
-              <a href="mailto:arnaud.bregere@gmail.com" aria-label="Envoyer un email à arnaud.bregere@gmail.com">
+              <a href="mailto:arnaud.bregere@gmail.com" aria-label="Envoyer un email à arnaud.bregere@gmail.com pour contacter My Meteo">
                 arnaud.bregere@gmail.com
               </a>
             </li>
             <li>
-              <a href="https://github.com/arnaudbregere/my-meteo" target="_blank" rel="noopener noreferrer" aria-label="Voir le projet sur GitHub (ouverture dans un nouvel onglet)">
-                GitHub
+              <a href="https://github.com/arnaudbregere/my-meteo" target="_blank" rel="noopener noreferrer" aria-label="Voir le projet My Meteo sur GitHub (ouverture dans un nouvel onglet)">
+                GitHub - Projet My Meteo
               </a>
             </li>
           </ul>
@@ -200,7 +213,7 @@
 
       <!-- Copyright -->
       <div class="meteo-footer-bottom">
-        <p>2026 My Meteo. Tous droits réservés.</p>
+        <p>&copy; 2026 My Meteo. Tous droits réservés. Application de prévisions météorologiques en temps réel.</p>
       </div>
     </footer>
   </div>
@@ -231,8 +244,8 @@
 
 
   <!-- ===== SCRIPTS ===== -->
-  <script src="assets/js/utils/popin.js"></script>
-  <script type="module" src="assets/js/location/location.js"></script>
-  <script type="module" src="assets/js/accessibility.js"></script>
+  <script src="assets/js/utils/popin.js" defer></script>
+  <script type="module" src="assets/js/location/location.js" defer></script>
+  <script type="module" src="assets/js/accessibility.js" defer></script>
 </body>
 </html>
