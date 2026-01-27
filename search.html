@@ -131,6 +131,9 @@
                 title="Saisissez le nom d'une ville française"
                 >
 
+              <!-- Dropdown d'autocomplétion (ARIA accessible) -->
+              <div id="meteo-autocomplete" class="meteo-autocomplete" role="listbox" aria-label="Suggestions de villes"></div>
+
               <!-- Aide contextuelle pour l'input -->
               <p id="search-help" class="meteo-search-help">Exemple: Paris, Lyon, Marseille</p>
               
@@ -138,9 +141,6 @@
               <button type="submit" id="meteo-search-city" class="meteo-search-city" title="Lancer la recherche météo">Rechercher</button>
             </fieldset>
           </form>
-          
-          <!-- Dropdown d'autocomplétion (ARIA accessible) -->
-          <div id="meteo-autocomplete" class="meteo-autocomplete" role="listbox" aria-label="Suggestions de villes"></div>
         </div>
       </article>
 

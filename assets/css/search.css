@@ -41,7 +41,7 @@
       background-repeat: no-repeat;
       background-position: 15px center;
       background-size: 20px 20px;
-      border-radius: var(--radius-lg);
+      border-radius: var( --spacing-xs);
       display: flex;
       flex-wrap: wrap;
       font-size: 16px;
@@ -139,13 +139,13 @@
     .meteo-autocomplete {
       display: none;
       position: absolute;
-      top: 100%;
+      top: 85px;
       left: 0;
       right: 0;
       background: white;
       border: 1px solid #ddd;
       border-top: none;
-      border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+      border-radius: var( --spacing-xs);
       max-height: 300px;
       overflow-y: auto;
       z-index: 10;
@@ -154,8 +154,6 @@
     
     .meteo-autocomplete.active {
       display: block;
-      position: absolute;
-      top: 55px;
     }
     
     .meteo-autocomplete-item {
