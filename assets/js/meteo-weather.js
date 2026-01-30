@@ -87,7 +87,6 @@ function transformMainWeatherData(data) {
  * Données mock pour fallback
  */
 function getMockWeatherData(cities) {
-  console.log("Utilisation des données MOCK (fallback batch)");
   const descriptions = ["Ensoleillé", "Nuageux", "Pluvieux", "Neigeux"];
   const icons = ["sun.svg", "cloud.svg", "rain.svg", "snow.svg"];
   
@@ -110,12 +109,14 @@ export async function getWeatherBatch(cities, lang = "fr") {
       
       return fetch(url)
         .then(res => {
-          if (!res.ok) throw new Error(`API Error: ${res.status}`);
+          //  Vérifier réponse HTTP
+          if (!res.ok) throw new Error(`API OpenWeather: ${res.status}`);
           return res.json();
         })
         .then(data => transformWeatherData(data, city.name))
         .catch(err => {
-          console.error(`Erreur pour ${city.name}:`, err.message);
+          // Erreur gérée sans bloquer (null = continue)
+          console.error(`Erreur ${city.name}: ${err.message}`);
           return null;
         });
     });
@@ -123,9 +124,10 @@ export async function getWeatherBatch(cities, lang = "fr") {
     const results = await Promise.all(promises);
     const filtered = results.filter(Boolean);
     
+    // Fallback gracieux
     return filtered.length > 0 ? filtered : getMockWeatherData(cities);
   } catch (err) {
-    console.error("Erreur batch météo:", err);
+    console.error("Erreur batch météo:", err.message);
     return getMockWeatherData(cities);
   }
 }
@@ -142,20 +144,24 @@ export function getRandomCities(count = 4) {
 
 /**
  * Récupère la météo pour des coordonnées (lat/lon)
- * Utilisé pour la recherche de ville
+
  */
 export async function getWeatherByCoordinates(lat, lon, cityName) {
   try {
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=fr&appid=${apiKey}`;
     const res = await fetch(url);
 
-    if (!res.ok) throw new Error(`HTTP ${res.status}: Impossible de récupérer la météo`);
+    // Vérifier réponse HTTP
+    if (!res.ok) {
+      throw new Error(`Erreur OpenWeather: ${res.status}`);
+    }
 
     const data = await res.json();
-    data.name = cityName; // Cohérence avec le nom recherché
+    data.name = cityName;
     
     return transformMainWeatherData(data);
   } catch (err) {
+    // Erreur gérée, ne bloque pas (return null)
     console.error("Erreur API météo:", err.message);
     return null;
   }

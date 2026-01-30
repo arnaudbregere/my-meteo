@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   /**
-   * Valide le format de la saisie en temps réel
+   * Valide le format
    */
   function validateInput(value) {
     const trimmed = value.trim();
@@ -89,27 +89,33 @@ document.addEventListener('DOMContentLoaded', function() {
         `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=50&countrycodes=fr`
       );
 
+      // Vérifier que réponse HTTP est OK
+      if (!response.ok) {
+        throw new Error(`Erreur serveur: ${response.status}`);
+      }
+
       const data = await response.json();
+
+      // Vérifier format réponse
+      if (!Array.isArray(data)) {
+        throw new Error("Format de réponse invalide");
+      }
+
       displaySuggestions(data, query);
     } catch (error) {
-      console.error('Erreur suggestions:', error);
+      // Erreur gérée, masque div suggestions et continue
+      console.error(`Erreur suggestions: ${error.message}`);
       autocompleteContainer.classList.remove('active');
     }
   }
 
   /**
    * Filtre : accepte les villes et lieux habités
-   * Utilise addresstype comme critère principal
-   */
-  function filterCities(suggestions, query) {
+   */  function filterCities(suggestions, query) {
     const queryLower = query.toLowerCase();
-    
-    // AddressTypes acceptables (villes, villages, quartiers habités)
     const acceptedAddressTypes = ['city', 'town', 'village', 'hamlet', 'locality', 'suburb'];
     
-    // Filtre : rejette les types non-pertinents
     let cities = suggestions.filter(s => {
-      // Doit avoir un addresstype accepté
       if (!acceptedAddressTypes.includes(s.addresstype)) {
         return false;
       }
@@ -134,9 +140,8 @@ document.addEventListener('DOMContentLoaded', function() {
       return true;
     });
     
-    console.log(`Recherche: "${query}" | Résultats Nominatim: ${suggestions.length} | Après filtre: ${cities.length}`);
+    console.log(`Recherche: "${query}" | Résultats: ${suggestions.length} | Filtrés: ${cities.length}`);
     
-    // Tri : villes qui commencent EXACTEMENT par la recherche EN PREMIER
     return cities.sort((a, b) => {
       const aStartsWith = a.name.toLowerCase().startsWith(queryLower);
       const bStartsWith = b.name.toLowerCase().startsWith(queryLower);
@@ -170,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    // Des suggestions trouvées : activer le bouton
+    // Suggestions trouvées => activer le bouton
     hasSuggestions = true;
     submitButton.disabled = false;
 
@@ -223,7 +228,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Suggestions statiques au clic
   suggestionsContainer?.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') {
       inputSearch.value = e.target.textContent;
