@@ -12,8 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   let debounceTimer;
   let isValidInput = false;
+  let hasSuggestions = false;
 
-  // Regex : accepte lettres (avec ou sans accents), tirets, apostrophes, espaces
+  // Regex : minimum 2 caractères, lettres (avec accents)/tirets/apostrophes/espaces uniquement (PAS de chiffres)
   const cityPattern = /^[a-zA-Z\u00C0-\u024F\s\-']{2,}$/;
 
   /**
@@ -154,16 +155,24 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (!suggestions.length) {
       autocompleteContainer.classList.remove('active');
+      hasSuggestions = false;
+      submitButton.disabled = true;
       return;
     }
 
     const cities = filterCities(suggestions, query);
 
-    // Si aucune ville après filtrage, ne rien afficher
+    // Si aucune ville après filtrage, ne rien afficher et bloquer le bouton
     if (!cities.length) {
       autocompleteContainer.classList.remove('active');
+      hasSuggestions = false;
+      submitButton.disabled = true;
       return;
     }
+
+    // Des suggestions trouvées : activer le bouton
+    hasSuggestions = true;
+    submitButton.disabled = false;
 
     cities.forEach(city => {
       const div = document.createElement('div');
