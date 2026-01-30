@@ -28,6 +28,7 @@
   <!-- ===== FEUILLES DE STYLES ===== -->
   <link rel="stylesheet" href="assets/css/meteo.css">
   <link rel="stylesheet" href="assets/css/search.css">
+  <link rel="stylesheet" href="assets/css/validation.css">
   <link rel="stylesheet" href="assets/css/popin.css">
 
   <!-- ===== SCHEMA.ORG - FORMULAIRE DE RECHERCHE ===== -->
@@ -131,7 +132,7 @@
               <label class="meteo-search-label" for="meteo-search-localisation">Où souhaitez-vous consulter la <strong>météo</strong> ?</label>
      
               
-              <!-- Champ de saisie -->
+              <!-- Champ de saisie avec validation en temps réel -->
               <input 
                 id="meteo-search-localisation"
                 class="meteo-search-main__input"
@@ -140,8 +141,11 @@
                 name="meteo-search-localisation" 
                 type="text"
                 required
-                aria-describedby="search-help"
-                title="Saisissez le nom d'une ville française pour obtenir ses prévisions météorologiques"
+                minlength="2"
+                maxlength="100"
+                pattern="[a-zA-Zàâäéèêëïîôöùûüœæçç\s\-']+"
+                aria-describedby="search-help validation-message"
+                title="Saisissez le nom d'une ville française (minimum 2 caractères, lettres et tirets uniquement)"
                 >
 
               <!-- Dropdown d'autocomplétion (ARIA accessible) -->

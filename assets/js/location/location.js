@@ -11,6 +11,68 @@ document.addEventListener('DOMContentLoaded', function() {
   PopinManager.init('popin-overlay', 'popin-container', 'popin-close');
 
   let debounceTimer;
+  let isValidInput = false;
+
+  // Regex : accepte lettres (avec ou sans accents), tirets, apostrophes, espaces
+  const cityPattern = /^[a-zA-Z\u00C0-\u024F\s\-']{2,}$/;
+
+  /**
+   * Crée ou met à jour le message d'erreur/succès
+   */
+  function updateValidationMessage(message, isValid) {
+    let errorMsg = document.getElementById('validation-message');
+    
+    if (!errorMsg) {
+      errorMsg = document.createElement('p');
+      errorMsg.id = 'validation-message';
+      errorMsg.className = 'meteo-validation-message';
+      errorMsg.setAttribute('role', 'status');
+      errorMsg.setAttribute('aria-live', 'polite');
+      inputSearch.parentNode.insertBefore(errorMsg, inputSearch.nextSibling);
+    }
+
+    errorMsg.textContent = message;
+    errorMsg.className = `meteo-validation-message ${isValid ? 'valid' : 'invalid'}`;
+    inputSearch.classList.toggle('has-error', !isValid);
+    inputSearch.classList.toggle('has-success', isValid);
+    inputSearch.setAttribute('aria-invalid', !isValid);
+  }
+
+  /**
+   * Valide le format de la saisie en temps réel
+   */
+  function validateInput(value) {
+    const trimmed = value.trim();
+
+    // Vide
+    if (!trimmed) {
+      updateValidationMessage('Veuillez saisir une ville', false);
+      isValidInput = false;
+      submitButton.disabled = true;
+      return;
+    }
+
+    // Moins de 2 caractères
+    if (trimmed.length < 2) {
+      updateValidationMessage('Minimum 2 caractères requis', false);
+      isValidInput = false;
+      submitButton.disabled = true;
+      return;
+    }
+
+    // Caractères invalides
+    if (!cityPattern.test(trimmed)) {
+      updateValidationMessage('Caractères non autorisés. Lettres et tirets uniquement (pas de chiffres)', false);
+      isValidInput = false;
+      submitButton.disabled = true;
+      return;
+    }
+
+    // Format valide
+    updateValidationMessage('✓ Format valide', true);
+    isValidInput = true;
+    submitButton.disabled = false;
+  }
 
   /**
    * Récupère les suggestions depuis Nominatim
@@ -111,6 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
       div.addEventListener('click', () => {
         inputSearch.value = city.name;
         autocompleteContainer.classList.remove('active');
+        validateInput(city.name);
       });
       
       autocompleteContainer.appendChild(div);
@@ -122,9 +185,15 @@ document.addEventListener('DOMContentLoaded', function() {
   // Autocomplétion avec debounce
   inputSearch.addEventListener('input', (e) => {
     clearTimeout(debounceTimer);
+    const query = e.target.value;
+    
+    // Validation en temps réel (saisie)
+    validateInput(query);
+    
     debounceTimer = setTimeout(() => {
-      const query = e.target.value;
-      fetchSuggestions(query);
+      if (isValidInput) {
+        fetchSuggestions(query);
+      }
     }, 300);
   });
 
@@ -135,9 +204,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Validation au submit
+  // Validation au submit (bloque si format invalide)
   submitButton.addEventListener('click', (event) => {
-    if (!inputSearch.value.trim()) {
+    validateInput(inputSearch.value);
+    
+    if (!isValidInput) {
       event.preventDefault();
       PopinManager.show();
     }
@@ -147,6 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
   suggestionsContainer?.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') {
       inputSearch.value = e.target.textContent;
+      validateInput(e.target.textContent);
     }
   });
 });

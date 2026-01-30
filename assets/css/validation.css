@@ -1,0 +1,53 @@
+/* ===== VALIDATION FORM ===== */
+
+/**
+ * Message de validation
+ */
+.meteo-validation-message {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+/**
+ * Sucess message
+ */
+.meteo-validation-message.valid {
+  color: #22863a;
+  background-color: #f0f8f4;
+  border-left: 3px solid #22863a;
+}
+
+/**
+ * Error message
+ */
+.meteo-validation-message.invalid {
+  color: #cb2431;
+  background-color: #ffeef0;
+  border-left: 3px solid #cb2431;
+}
+
+.meteo-search-main__input {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/**
+  Input Error
+ */
+.meteo-search-main__input.has-error {
+  border-color: #cb2431 !important;
+  border-width: 2px !important;
+  box-shadow: 0 0 0 3px rgba(203, 36, 49, 0.2) !important;
+}
+
+/**
+  Input success
+ */
+.meteo-search-main__input.has-success {
+  border-color: #22863a !important;
+  border-width: 2px !important;
+  box-shadow: 0 0 0 3px rgba(34, 134, 58, 0.2) !important;
+}
