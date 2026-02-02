@@ -33,18 +33,44 @@ Puis ouvre `http://localhost:8080`
 ## Architecture
 
 ```
-assets/
-├── css/meteo.css
-├── images/svg/          # Icônes SVG
-└── js/
-    ├── meteo.js         # Accueil
-    ├── results.js       # Résultats recherche
-    ├── location.js      # Recherche + autocomplétion
-    ├── meteo-weather.js # API OpenWeatherMap
-    ├── location-service.js # API Nominatim
-    ├── swipe.js         # Gestes tactiles
-    ├── accessibility.js # Police dyslexique
-    └── ...
+my-meteo/
+├── assets/
+│   ├── css/
+│   │   ├── accessibility.css
+│   │   ├── footer.css
+│   │   ├── last-search.css
+│   │   ├── menu.css
+│   │   ├── meteo.css
+│   │   ├── popin.css
+│   │   ├── results.css
+│   │   ├── search.css
+│   │   └── validation.css
+│   ├── images/svg/          # Icônes SVG
+│   └── js/
+│       ├── animations/
+│       │   ├── animations.js
+│       │   └── swipe.js
+│       ├── location/
+│       │   ├── location-service.js
+│       │   └── location.js
+│       ├── utils/
+│       │   ├── popin.js
+│       │   ├── storage-service.js
+│       │   └── utils.js
+│       ├── accessibility.js
+│       ├── last-search.js
+│       ├── menu.js
+│       ├── meteo-config.js
+│       ├── meteo-dom.js
+│       ├── meteo-weather.js
+│       ├── meteo.js
+│       ├── results.js
+│       └── search-history.js
+├── index.html
+├── last_search.html
+├── results.html
+├── search.html
+└── README.md
 ```
 
 ## Design
