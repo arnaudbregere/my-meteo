@@ -1,59 +1,63 @@
 # My Meteo 🌤️
 
-Application météo simple et moderne.
+Application météo simple pour consulter les conditions en France.
 
 ## Installation
 
-```bash
-# Aucune dépendance à installer
-npm install http-server -g
-```
-
-## Lancer l'app
+Aucune dépendance à installer. Juste un serveur HTTP :
 
 ```bash
 npx http-server
 ```
 
-Ouvre `http://localhost:8080` dans ton navigateur.
+Puis ouvre `http://localhost:8080`
 
 ## Fonctionnalités
 
-- 🏠 **Accueil** : Météo de Paris + 4 villes aléatoires
-- 🔍 **Recherche** : Cherche une ville française (autocomplétion Nominatim)
-- 📍 **Résultats** : Affiche température, vent, pression, humidité
-- 📱 **Swipe** : Supprimer les villes en glissant (mobile)
+- **Accueil** : Météo actuelle + 4 villes aléatoires
+- **Recherche** : Autocomplétion intelligente avec Nominatim/OSM
+- **Résultats** : Température, vent, pression, humidité
+- **Historique** : Sauvegarde en localStorage
+- **Mobile** : Swipe pour supprimer les suggestions (Hammer.js)
+- **Accessible** : Police dyslexique, navigation clavier, aria-labels
 
-## Tech Stack
+## Stack technique
 
 - HTML5 / CSS3
-- JavaScript (ES6 Modules)
-- **APIs** :
-  - OpenWeather (météo)
-  - Nominatim / OSM (géolocalisation)
+- JavaScript ES6 Modules (pas de build tool)
+- **APIs externes** :
+  - OpenWeatherMap (données météo)
+  - Nominatim/OSM (géolocalisation)
+- **Librairie** : Hammer.js pour gestes tactiles (CDN)
 
-
-## Librairie
-- Hammer.js (swipe en mode mobile) chargée côté client en CDN
-## Structure
+## Architecture
 
 ```
 assets/
-├── css/
-├── images/
+├── css/meteo.css
+├── images/svg/          # Icônes SVG
 └── js/
-    ├── meteo.js (page d'accueil)
-    ├── results.js (résultats recherche)
-    ├── meteo-weather.js (API OpenWeather)
-    ├── location-service.js (API Nominatim)
-    ├── meteo-dom.js (affichage DOM)
-    ├── swipe.js (gestes tactiles)
-    ├── meteo-config.js (config)
-    ├── utils/
-    │   └── utils.js (utilitaires)
-    └── location/
-        └── location.js (recherche)
+    ├── meteo.js         # Accueil
+    ├── results.js       # Résultats recherche
+    ├── location.js      # Recherche + autocomplétion
+    ├── meteo-weather.js # API OpenWeatherMap
+    ├── location-service.js # API Nominatim
+    ├── swipe.js         # Gestes tactiles
+    ├── accessibility.js # Police dyslexique
+    └── ...
 ```
 
-## Notes
-- Compatible mobile/desktop
+## Design
+
+- ✅ Responsive (mobile, tablet, desktop)
+- ✅ Accessible (WCAG, ARIA, clavier)
+- ✅ SEO optimisé (schema.org, meta tags)
+- ✅ Performance (SVG, lazy loading)
+
+## Navigateurs
+
+Chrome, Firefox, Safari, Edge (versions récentes).
+
+---
+
+**Notes** : Application légère sans npm, facile à déployer. Code modulaire et commenté.
