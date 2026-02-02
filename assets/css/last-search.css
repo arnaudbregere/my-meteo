@@ -80,15 +80,15 @@
 
 .meteo-search-item-link {
   flex: 1;
-  color: var(--color-blue-primary);
+  color: var(--color-purple-accent);
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
-  transition: color var(--transition-normal);
+  transition: color var(--color-purple-accent);
 }
 
 .meteo-search-item-link:hover {
-  color: var(--color-blue-dark);
+  color: var(--color-secondary);
   text-decoration: underline;
 }
 
