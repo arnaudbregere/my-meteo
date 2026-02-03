@@ -1,7 +1,4 @@
-/**
- * Styles pour la modal d'erreur de validation
- */
-
+/* Styles modal d'erreur */
 /* Overlay sombre */
 .popin-overlay {
   display: none;
@@ -89,6 +86,7 @@
   border: none;
   border-radius: var(--radius-sm);
   padding: 12px 30px;
+  margin-bottom: 20px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;

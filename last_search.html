@@ -51,8 +51,10 @@
   <div class="meteo-main" id="top">
    
     <!-- ===== EN-TÊTE (HEADER) ===== -->
-     <header class="meteo-header" role="banner">
-      <a href="index.html" class="meteo-logo-link" aria-label="Retour à l'accueil My Meteo - Application météo en temps réel" title="Retour à l'accueil My Meteo">
+    <header class="meteo-header" role="banner">
+      <a href="index.html" class="meteo-logo-link hover-scale focus-outline transition-transform" 
+         aria-label="Retour à l'accueil My Meteo - Application météo en temps réel" 
+         title="Retour à l'accueil My Meteo">
         <img 
           src="assets/images/svg/logo_mymeteo.svg" 
           data-file="logo_mymeteo.svg" 
@@ -68,20 +70,19 @@
         <label for="dyslexia-toggle" class="accessibility-label">Police dyslexique</label>
         <button 
           id="dyslexia-toggle" 
-          class="accessibility-toggle" 
+          class="accessibility-toggle focus-outline" 
           aria-label="Activer ou désactiver la police adaptée aux personnes dyslexiques" 
           aria-pressed="false"
           title="Toggle police dyslexique"
         ></button>
       </div>
-      
       <!-- Burger button -->
-      <button aria-label="Ouvrir le menu de navigation" class="meteo-menu-button">
+      <button aria-label="Ouvrir le menu de navigation" class="meteo-menu-button hover-opacity focus-outline">
         <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Icône du menu de navigation" class="meteo-menu" loading="lazy">
       </button>
 
       <!-- Close button (caché au départ) -->
-      <button aria-label="Fermer le menu de navigation" class="meteo-menu-close-button" style="display: none;">
+      <button aria-label="Fermer le menu de navigation" class="meteo-menu-close-button hover-opacity focus-outline" style="display: none;">
         <img src="assets/images/svg/close.svg" data-file="close.svg" alt="Icône fermer le menu" class="meteo-menu-close" loading="lazy">
       </button>
     </header>
@@ -90,10 +91,10 @@
     <nav class="meteo-nav" style="display: none;" role="navigation" aria-label="Menu principal de navigation">
       <div class="meteo-menu-list">
         <ul>
-          <li><a href="index.html" title="Retour à l'accueil de l'application météo">Accueil</a></li>
-          <li><a href="search.html" title="Effectuer une nouvelle recherche de ville pour connaître la météo">Nouvelle recherche</a></li>
-          <li><a href="last_search.html" title="Consulter l'historique de vos recherches météorologiques">Mes dernières recherches</a></li>
-          <li><a href="#meteo-footer" title="Informations à propos de MyMeteo et coordonnées de contact">À propos - Navigation - Contact</a></li>
+          <li><a href="index.html" class="hover-underline focus-outline transition-text-decoration" title="Retour à l'accueil de l'application météo">Accueil</a></li>
+          <li><a href="search.html" class="hover-underline focus-outline transition-text-decoration" title="Effectuer une nouvelle recherche de ville pour connaître la météo">Nouvelle recherche</a></li>
+          <li><a href="last_search.html" class="hover-underline focus-outline transition-text-decoration" title="Consulter l'historique de vos recherches météorologiques">Mes dernières recherches</a></li>
+          <li><a href="#meteo-footer" class="hover-underline focus-outline transition-text-decoration" title="Informations à propos de MyMeteo et coordonnées de contact">À propos - Navigation - Contact</a></li>
         </ul>
       </div>
     </nav>
@@ -106,7 +107,7 @@
 
       <!-- Lien d'accès rapide -->
       <p class="meteo-back-top">
-        <a href="#history" title="Aller à l'historique des recherches de météo">
+        <a href="#history" class="hover-underline focus-outline transition-text-decoration" title="Aller à l'historique des recherches de météo">
           Aller à l'historique
         </a>
       </p>
@@ -123,7 +124,7 @@
         <!-- État vide : message quand aucune recherche n'existe -->
         <div id="meteo-empty-state" class="meteo-empty-state" role="status" aria-live="polite">
           <p>Aucune recherche <strong>météo</strong> enregistrée pour le moment.</p>
-          <a href="search.html" class="meteo-empty-state-link" title="Effectuer une recherche de météo">Effectuer une recherche</a>
+          <a href="search.html" class="meteo-empty-state-link hover-translate-up transition-all focus-outline" title="Effectuer une recherche de météo">Effectuer une recherche</a>
         </div>
 
         <!-- Liste des recherches historisées -->
@@ -133,7 +134,7 @@
         <div id="meteo-clear-actions" class="meteo-clear-actions" style="display: none;">
           <button 
             id="meteo-clear-all" 
-            class="meteo-clear-all-btn btn-danger" 
+            class="meteo-clear-all-btn btn-danger hover-translate-up transition-all focus-outline" 
             title="Supprimer toutes vos recherches météo enregistrées"
           >
             Effacer tout l'historique
@@ -143,26 +144,50 @@
 
       <!-- Lien retour haut de page -->
       <p class="meteo-back-top">
-        <a href="#top" title="Retour en haut de la page">Retour en haut</a>
+        <a href="#top" class="hover-underline focus-outline transition-text-decoration" title="Retour en haut de la page">Retour en haut</a>
       </p>
     </main>
-      <!-- ===== FOOTER ===== -->
+    <!-- ===== FOOTER ===== -->
     <footer class="meteo-footer" id="meteo-footer" role="contentinfo">
       <div class="meteo-footer-container">
         
         <!-- Section 1 : À propos -->
         <section class="meteo-footer-section" role="region" aria-label="À propos de My Meteo">
           <h3>À propos</h3>
-          <p>My Meteo est une <strong>application météo</strong> en temps réel créée en 2026 pour consulter les <strong>prévisions météorologiques</strong> de plus de 18 villes françaises. Découvrez la <strong>température</strong>, les <strong>conditions météorologiques</strong> et d'autres données en temps réel.</p>
+          <p>My Meteo est une <strong>application météo</strong> en temps réel créée en 2026 pour consulter les <strong>prévisions météorologiques</strong> de plus de 18 villes françaises. Découvrez des informations complètes sur la <strong>température</strong>, les <strong>conditions météorologiques</strong> et d'autres indicateurs météorologiques.</p>
         </section>
 
         <!-- Section 2 : Navigation -->
         <section class="meteo-footer-section" role="region" aria-label="Navigation du site">
           <h3>Navigation</h3>
           <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="search.html">Nouvelle recherche</a></li>
-            <li><a href="last_search.html">Mes dernières recherches</a></li>
+            <li>
+              <a
+              href="index.html"
+              class="hover-underline focus-outline transition-text-decoration"
+              title="Page d'accueil"
+              >
+              Accueil
+            </a>
+          </li>
+            <li>
+              <a
+              href="search.html"
+              class="hover-underline focus-outline transition-text-decoration"
+              title="Nouvelle recherche"
+              >
+              Nouvelle recherche
+            </a>
+          </li>
+            <li>
+              <a
+              href="last_search.html"
+              class="hover-underline focus-outline transition-text-decoration"
+              title="Mes dernière recherches"
+              >
+              Mes dernières recherches
+            </a>
+          </li>
           </ul>
         </section>
 
@@ -171,12 +196,19 @@
           <h3>Contact</h3>
           <ul>
             <li>
-              <a href="mailto:arnaud.bregere@gmail.com" aria-label="Envoyer un email à arnaud.bregere@gmail.com pour contacter My Meteo">
+              <a href="mailto:arnaud.bregere@gmail.com"
+              class="hover-underline focus-outline transition-text-decoration"
+              aria-label="Envoyer un email à arnaud.bregere@gmail.com pour contacter My Meteo"
+              title="Envoyer un email à arnaud.bregere@gmail.com pour contacter My Meteo">
                 arnaud.bregere@gmail.com
               </a>
             </li>
             <li>
-              <a href="https://github.com/arnaudbregere/my-meteo" target="_blank" rel="noopener noreferrer" aria-label="Voir le projet My Meteo sur GitHub (ouverture dans un nouvel onglet)">
+              <a href="https://github.com/arnaudbregere/my-meteo"
+              target="_blank"
+              class="hover-underline focus-outline transition-text-decoration"
+              aria-label="Voir le projet My Meteo sur GitHub (ouverture dans un nouvel onglet)"
+              title="Voir le projet My Meteo sur GitHub (ouverture dans un nouvel onglet)">
                 GitHub - Projet My Meteo
               </a>
             </li>
@@ -192,12 +224,6 @@
     </footer>
   </div>
 
-  <!-- ===== DIALOG DE CONFIRMATION DE SUPPRESSION (MODAL ACCESSIBLE) ===== -->
-  <!-- 
-    Utilisation de <dialog> (HTML Living Standard)
-    Fallback prévu côté JS si non supporté (aria-modal + role="dialog")
-    Compatibilité documentée via MDN.
-  -->
   <div class="popin-overlay" id="popin-overlay-clear"></div>
 
   <dialog class="popin-container" id="popin-container-clear"
@@ -211,11 +237,11 @@
         Voulez-vous supprimer tout l'historique de recherche <strong>météo</strong> ? Cette action est <strong>irréversible</strong>.
       </p>
       <div class="popin-actions">
-        <button class="popin-button popin-button-cancel" id="popin-cancel-clear" title="Annuler la suppression de l'historique">
-          Annuler
-        </button>
-        <button class="popin-button popin-button-confirm" id="popin-confirm-clear" title="Confirmer la suppression de tout l'historique météo">
+        <button class="popin-button popin-button-confirm hover-translate-up transition-all focus-outline" id="popin-confirm-clear" title="Confirmer la suppression de tout l'historique météo">
           Supprimer
+        </button>
+        <button class="popin-button popin-button-cancel hover-translate-up transition-all focus-outline" id="popin-cancel-clear" title="Annuler la suppression de l'historique">
+          Annuler
         </button>
       </div>
     </div>

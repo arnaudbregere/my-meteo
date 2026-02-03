@@ -75,8 +75,10 @@
   <div class="meteo-main" id="top">
     
     <!-- ===== EN-TÊTE (HEADER) ===== -->
-     <header class="meteo-header" role="banner">
-      <a href="index.html" class="meteo-logo-link" aria-label="Retour à l'accueil My Meteo - Application météo en temps réel" title="Retour à l'accueil My Meteo">
+    <header class="meteo-header" role="banner">
+      <a href="index.html" class="meteo-logo-link hover-scale focus-outline transition-transform" 
+         aria-label="Retour à l'accueil My Meteo - Application météo en temps réel" 
+         title="Retour à l'accueil My Meteo">
         <img 
           src="assets/images/svg/logo_mymeteo.svg" 
           data-file="logo_mymeteo.svg" 
@@ -93,7 +95,7 @@
         <label for="dyslexia-toggle" class="accessibility-label">Police dyslexique</label>
         <button 
           id="dyslexia-toggle" 
-          class="accessibility-toggle" 
+          class="accessibility-toggle focus-outline" 
           aria-label="Activer ou désactiver la police adaptée aux personnes dyslexiques" 
           aria-pressed="false"
           title="Toggle police dyslexique"
@@ -106,7 +108,7 @@
       </button>
 
       <!-- Close button (caché au départ) -->
-      <button aria-label="Fermer le menu de navigation" class="meteo-menu-close-button" style="display: none;">
+      <button aria-label="Fermer le menu de navigation" class="meteo-menu-close-button hover-opacity focus-outline" style="display: none;">
         <img src="assets/images/svg/close.svg" data-file="close.svg" alt="Icône fermer le menu" class="meteo-menu-close" loading="lazy">
       </button>
     </header>
@@ -115,10 +117,10 @@
     <nav class="meteo-nav" style="display: none;" role="navigation" aria-label="Menu principal de navigation">
       <div class="meteo-menu-list">
         <ul>
-          <li><a href="index.html" title="Retour à l'accueil de l'application météo">Accueil</a></li>
-          <li><a href="search.html" title="Effectuer une nouvelle recherche de ville pour connaître la météo">Nouvelle recherche</a></li>
-          <li><a href="last_search.html" title="Consulter l'historique de vos recherches météorologiques">Mes dernières recherches</a></li>
-          <li><a href="#meteo-footer" title="Informations à propos de MyMeteo et coordonnées de contact">À propos - Navigation - Contact</a></li>
+          <li><a href="index.html" class="hover-underline focus-outline transition-text-decoration" title="Retour à l'accueil de l'application météo">Accueil</a></li>
+          <li><a href="search.html" class="hover-underline focus-outline transition-text-decoration" title="Effectuer une nouvelle recherche de ville pour connaître la météo">Nouvelle recherche</a></li>
+          <li><a href="last_search.html" class="hover-underline focus-outline transition-text-decoration" title="Consulter l'historique de vos recherches météorologiques">Mes dernières recherches</a></li>
+          <li><a href="#meteo-footer" class="hover-underline focus-outline transition-text-decoration" title="Informations à propos de MyMeteo et coordonnées de contact">À propos - Navigation - Contact</a></li>
         </ul>
       </div>
     </nav>
@@ -143,11 +145,11 @@
           Découvrez la <strong>température</strong>, le <strong>vent</strong>, la <strong>pression atmosphérique</strong> et l'<strong>humidité</strong> en quelques clics.
         </p>
         
-        <a id="meteo-new-search" href="search.html" class="meteo-cta-button" title="Rechercher la météo d'une ville">Rechercher une ville</a>
+        <a id="meteo-new-search" href="search.html" class="meteo-cta-button hover-translate-up transition-all focus-outline" title="Rechercher la météo d'une ville">Rechercher une ville</a>
 
         <!-- Ancre interne pour navigation -->
         <p class="meteo-see-suggestions">
-          <a href="#suggestions" title="Aller aux suggestions météorologiques">Ou consultez nos suggestions ci-dessous</a>
+          <a href="#suggestions" class="hover-underline focus-outline transition-text-decoration" title="Aller aux suggestions météorologiques">Ou consultez nos suggestions ci-dessous</a>
         </p>
       </section>
 
@@ -161,9 +163,8 @@
         aria-atomic="true">
         <h2 class="meteo-h2">Suggestions de <strong>météo</strong></h2>
         <ul class="meteo-list-random-list" role="list">
-          
           <!-- Ville 1 -->
-          <li role="listitem">
+          <li role="listitem" class="hover-bg-change transition-opacity">
             <article class="meteo-content">
               <p class="meteo-city">
                 <span title="Nom de la ville">--</span>
@@ -178,9 +179,8 @@
               <p title="Conditions météorologiques actuelles">--</p>
             </div>
           </li>
-
           <!-- Ville 2 -->
-          <li role="listitem">
+          <li role="listitem" class="hover-bg-change transition-opacity">
             <article class="meteo-content">
               <p class="meteo-city">
                 <span title="Nom de la ville">--</span>
@@ -197,7 +197,7 @@
           </li>
 
           <!-- Ville 3 -->
-          <li role="listitem">
+          <li role="listitem" class="hover-bg-change transition-opacity">
             <article class="meteo-content">
               <p class="meteo-city">
                 <span title="Nom de la ville">--</span>
@@ -214,7 +214,7 @@
           </li>
 
           <!-- Ville 4 -->
-          <li role="listitem">
+          <li role="listitem" class="hover-bg-change transition-opacity">
             <article class="meteo-content">
               <p class="meteo-city">
                 <span title="Nom de la ville">--</span>
@@ -234,7 +234,7 @@
 
         <!-- Retour haut de page -->
         <p class="meteo-back-top">
-          <a href="#top" title="Retour en haut de la page">Retour en haut</a>
+          <a href="#top" class="hover-underline focus-outline transition-text-decoration" title="Retour en haut de la page">Retour en haut</a>
         </p>
       </aside>
     </main>
@@ -253,9 +253,9 @@
         <section class="meteo-footer-section" role="region" aria-label="Navigation du site">
           <h3>Navigation</h3>
           <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="search.html">Nouvelle recherche</a></li>
-            <li><a href="last_search.html">Mes dernières recherches</a></li>
+            <li><a href="index.html" class="hover-underline focus-outline transition-text-decoration">Accueil</a></li>
+            <li><a href="search.html" class="hover-underline focus-outline transition-text-decoration">Nouvelle recherche</a></li>
+            <li><a href="last_search.html" class="hover-underline focus-outline transition-text-decoration">Mes dernières recherches</a></li>
           </ul>
         </section>
 
@@ -264,12 +264,12 @@
           <h3>Contact</h3>
           <ul>
             <li>
-              <a href="mailto:arnaud.bregere@gmail.com" aria-label="Envoyer un email à arnaud.bregere@gmail.com pour contacter My Meteo">
+              <a href="mailto:arnaud.bregere@gmail.com" class="hover-underline focus-outline transition-text-decoration" aria-label="Envoyer un email à arnaud.bregere@gmail.com pour contacter My Meteo">
                 arnaud.bregere@gmail.com
               </a>
             </li>
             <li>
-              <a href="https://github.com/arnaudbregere/my-meteo" target="_blank" rel="noopener noreferrer" aria-label="Voir le projet My Meteo sur GitHub (ouverture dans un nouvel onglet)">
+              <a href="https://github.com/arnaudbregere/my-meteo" target="_blank" rel="noopener noreferrer" class="hover-underline focus-outline transition-text-decoration" aria-label="Voir le projet My Meteo sur GitHub (ouverture dans un nouvel onglet)">
                 GitHub - Projet My Meteo
               </a>
             </li>

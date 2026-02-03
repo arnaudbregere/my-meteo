@@ -56,17 +56,124 @@ body {
   align-items: center;
 }
 
+/* ===== ANIMATIONS GLOBALES ===== */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-100px); }
+  0%, 100% { transform: translateY(0px); -webkit-transform: translateY(0px); }
+  50% { transform: translateY(-100px); -webkit-transform: translateY(-100px); }
 }
 
-@-webkit-keyframes float {
-  0%, 100% { -webkit-transform: translateY(0px); }
-  50% { -webkit-transform: translateY(-100px); }
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
 }
 
-/* Composants réutilisables */
+@-webkit-keyframes slideOut {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slideInFromTop {
+  from {
+    -webkit-transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ===== CLASSES TRANSITION RÉUTILISABLES ===== */
+.transition-transform {
+  transition: transform var(--transition-fast);
+  -webkit-transition: transform var(--transition-fast);
+}
+
+.transition-opacity {
+  transition: opacity var(--transition-fast);
+  -webkit-transition: opacity var(--transition-fast);
+}
+
+.transition-all {
+  transition: all var(--transition-normal);
+  -webkit-transition: all var(--transition-normal);
+}
+
+.transition-color {
+  transition: color var(--transition-fast), background var(--transition-normal);
+  -webkit-transition: color var(--transition-fast), background var(--transition-normal);
+}
+
+.transition-text-decoration {
+  transition: text-decoration var(--transition-fast);
+  -webkit-transition: text-decoration var(--transition-fast);
+}
+
+/* ===== CLASSES HOVER RÉUTILISABLES ===== */
+.hover-scale {
+  transform-origin: center;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+}
+
+.hover-opacity {
+  opacity: 1;
+}
+
+.hover-opacity:hover {
+  opacity: 0.8;
+}
+
+.hover-underline:hover {
+  text-decoration: underline;
+}
+
+.hover-translate-up:hover {
+  transform: translateY(-1px);
+}
+
+.hover-bg-change:hover {
+  background: #f0f2f5;
+}
+
+/* ===== CLASSES FOCUS RÉUTILISABLES ===== */
+.focus-outline:focus {
+  outline: 2px solid var(--color-white);
+  outline-offset: 4px;
+}
+
+.focus-outline-dark:focus {
+  outline: 2px solid var(--color-dark-gray);
+  outline-offset: 4px;
+}
+
+/* ===== COMPOSANTS GLOBAUX ===== */
 .btn-primary {
   background-color: var(--color-blue-primary);
   color: white;
@@ -74,7 +181,6 @@ body {
   border-radius: var(--radius-sm);
   font-weight: 600;
   cursor: pointer;
-  transition: background var(--transition-normal), transform var(--transition-fast);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -86,6 +192,7 @@ body {
   transform: translateY(-1px);
 }
 
+/* ===== LAYOUT PRINCIPAL ===== */
 .meteo-main {
   display: flex;
   flex-direction: column;
@@ -117,10 +224,12 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   animation: float 4s ease-in-out infinite;
+  -webkit-animation: float 4s ease-in-out infinite;
   z-index: 0;
   pointer-events: none;
 }
 
+/* ===== HEADER ===== */
 .meteo-header {
   position: relative;
   display: flex;
@@ -133,20 +242,10 @@ body {
 }
 
 .meteo-logo-link {
-  transition: transform var(--transition-fast);
   text-decoration: none;
   display: flex;
   align-items: center;
   flex-shrink: 0;
-}
-
-.meteo-logo-link:focus {
-  outline: 2px solid var(--color-white);
-  outline-offset: 4px;
-}
-
-.meteo-logo-link:hover {
-  transform: scale(1.05);
 }
 
 .meteo-logo {
@@ -177,18 +276,10 @@ body {
   outline: none;
   border: none;
   cursor: pointer;
-  transition: opacity var(--transition-fast);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-}
-
-.meteo-menu-button:hover,
-.meteo-menu-button:focus,
-.meteo-menu-close-button:hover,
-.meteo-menu-close-button:focus {
-  opacity: 0.8;
 }
 
 .meteo-menu,
@@ -197,6 +288,7 @@ body {
   height: 24px;
 }
 
+/* ===== CONTENU PRINCIPAL ===== */
 .meteo-container {
   width: 100%;
   padding: var(--spacing-2xl);
@@ -251,7 +343,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all var(--transition-normal);
   cursor: pointer;
 }
 
@@ -282,12 +373,7 @@ body {
   padding: var(--spacing-md);
   background: var(--color-light-gray);
   border-radius: var(--radius-md);
-  transition: background var(--transition-normal);
   cursor: pointer;
-}
-
-.meteo-list-random-list li:hover {
-  background: #f0f2f5;
 }
 
 .meteo-icon {
@@ -295,12 +381,14 @@ body {
   height: 20px;
   flex-shrink: 0;
 }
+
 .meteo-illustration-hero {
   margin: 0 auto;
 }
+
 .meteo-icon-main {
-width: 167px; 
-height: 113px;
+  width: 167px; 
+  height: 113px;
 }
 
 .meteo-content {
@@ -342,18 +430,6 @@ height: 113px;
 .meteo-back-top a {
   color: var(--color-white);
   text-decoration: none;
-  transition: text-decoration var(--transition-fast);
-}
-
-.meteo-see-suggestions a:hover, 
-.meteo-back-top a:hover {
-  text-decoration: underline;
-}
-
-.meteo-see-suggestions a:focus, 
-.meteo-back-top a:focus {
-  outline: 2px solid var(--color-white);
-  outline-offset: 4px;
 }
 
 .meteo-h2 {
@@ -363,17 +439,7 @@ height: 113px;
 
 .meteo-list-random-list li.swipe-remove {
   animation: slideOut var(--transition-normal);
-}
-
-@keyframes slideOut {
-  0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(100%);
-  }
+  -webkit-animation: slideOut var(--transition-normal);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -383,6 +449,7 @@ height: 113px;
   }
 }
 
+/* ===== NAVIGATION MOBILE ===== */
 nav {
   position: fixed;
   top: 0;
@@ -394,17 +461,7 @@ nav {
   padding: 80px 30px 30px 30px;
   overflow-y: auto;
   animation: slideInFromTop var(--transition-normal);
-}
-
-@keyframes slideInFromTop {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  -webkit-animation: slideInFromTop var(--transition-normal);
 }
 
 nav ul {
@@ -416,7 +473,6 @@ nav ul li a {
   color: var(--color-white);
   font-size: 20px;
   font-weight: 500;
-  transition: opacity var(--transition-fast);
 }
 
 nav ul li a:hover,

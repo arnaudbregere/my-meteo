@@ -172,6 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
       autocompleteContainer.classList.remove('active');
       hasSuggestions = false;
       submitButton.disabled = true;
+      updateValidationMessage('Veuillez saisir un nom de ville valide', false);
       return;
     }
 
