@@ -1,4 +1,4 @@
-import { svgPath } from "../meteo-config.js";
+import { svgPath } from "../config/meteo-config.js";
 
 /**
  * Met à jour les sources des images basées sur data-file

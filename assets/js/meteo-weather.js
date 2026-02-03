@@ -1,4 +1,4 @@
-import { apiKey } from "./meteo-config.js";
+import { apiKey } from "./config/meteo-config.js";
 import { formatDate } from "./utils/utils.js";
 
 const AVAILABLE_CITIES = [

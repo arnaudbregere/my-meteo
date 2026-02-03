@@ -1,6 +1,6 @@
-@import url('./menu.css');
-@import url('./accessibility.css');
-@import url('./footer.css');
+@import url('../layout/menu.css');
+@import url('../base/accessibility.css');
+@import url('../layout/footer.css');
 
 /* ===== VARIABLES CSS ===== */
 :root {
@@ -219,7 +219,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../images/svg/meteo-background.svg');
+  background-image: url('../../images/svg/meteo-background.svg');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
