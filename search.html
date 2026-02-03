@@ -66,7 +66,7 @@
   <div class="meteo-main">
     
     <!-- ===== EN-TÊTE (HEADER) ===== -->
-     <header class="meteo-header">
+     <header class="meteo-header" role="banner">
       <a href="index.html" class="meteo-logo-link" aria-label="Retour à l'accueil My Meteo - Application météo en temps réel" title="Retour à l'accueil My Meteo">
         <img 
           src="assets/images/svg/logo_mymeteo.svg" 
@@ -79,7 +79,7 @@
         >
       </a>
       <!-- Bouton toggle police dyslexique + Label -->
-      <div class="accessibility-container">
+      <div class="accessibility-container" role="region" aria-label="Accessibilité - Paramètres de police">
         <label for="dyslexia-toggle" class="accessibility-label">Police dyslexique</label>
         <button 
           id="dyslexia-toggle" 
@@ -102,7 +102,7 @@
     </header>
 
     <!-- ===== NAVIGATION PRINCIPALE ===== -->
-    <nav class="meteo-nav" style="display: none;">
+    <nav class="meteo-nav" style="display: none;" role="navigation" aria-label="Menu principal de navigation">
       <div class="meteo-menu-list">
         <ul>
           <li><a href="index.html" title="Retour à l'accueil de l'application météo">Accueil</a></li>
@@ -120,7 +120,7 @@
       <h1 class="meteo-search-h1">Recherchez la <strong>météo</strong> de votre ville</h1>
 
       <!-- ===== SECTION SAISIE ET FORMULAIRE ===== -->
-      <article class="meteo-search-input">
+      <article class="meteo-search-input" role="region" aria-label="Formulaire de recherche de météo">
 
         
         <!-- Wrapper pour l'icône et l'input -->
@@ -143,13 +143,20 @@
                 required
                 minlength="2"
                 maxlength="100"
-                pattern="[a-zA-Zàâäéèêëïîôöùûüœæçç\s\-']+"
+                pattern="[a-zA-ZÀ-ÿ\s\-']+"
                 aria-describedby="search-help validation-message"
                 title="Saisissez le nom d'une ville française (minimum 2 caractères, lettres et tirets uniquement)"
                 >
 
-              <!-- Dropdown d'autocomplétion (ARIA accessible) -->
-              <div id="meteo-autocomplete" class="meteo-autocomplete" role="listbox" aria-label="Suggestions de villes pour la recherche météo"></div>
+              <!-- Dropdown d'autocomplétion (ARIA accessible) avec aria-live -->
+              <div 
+                id="meteo-autocomplete" 
+                class="meteo-autocomplete" 
+                role="listbox" 
+                aria-label="Suggestions de villes pour la recherche météo"
+                aria-live="polite"
+                aria-atomic="true">
+              </div>
 
               <!-- Aide contextuelle pour l'input -->
               <p id="search-help" class="meteo-search-help">Exemple: Paris, Lyon, Marseille, Toulouse, Bordeaux, Lille</p>
@@ -162,7 +169,7 @@
       </article>
 
       <!-- ===== SECTION SUGGESTIONS DE RECHERCHE ===== -->
-      <section class="meteo-search-suggestions-section">
+      <section class="meteo-search-suggestions-section" role="region" aria-label="Villes suggérées">
         <h2 class="meteo-search-h2">Villes <strong>suggérées</strong> pour consulter la <strong>météo</strong></h2>
         <ul class="meteo-search-suggestions" id="meteo-suggestions">
           <li><a href="#" title="Consulter les prévisions météorologiques d'Angers">Angers</a></li>
@@ -181,17 +188,17 @@
       </p>
     </main>
       <!-- ===== FOOTER ===== -->
-    <footer class="meteo-footer" id="meteo-footer">
+    <footer class="meteo-footer" id="meteo-footer" role="contentinfo">
       <div class="meteo-footer-container">
         
         <!-- Section 1 : À propos -->
-        <section class="meteo-footer-section">
+        <section class="meteo-footer-section" role="region" aria-label="À propos de My Meteo">
           <h3>À propos</h3>
           <p>My Meteo est une <strong>application météo</strong> en temps réel créée en 2026 pour consulter les <strong>prévisions météorologiques</strong> de plus de 18 villes françaises. Découvrez la <strong>température</strong>, les <strong>conditions météorologiques</strong> et d'autres données en temps réel.</p>
         </section>
 
         <!-- Section 2 : Navigation -->
-        <section class="meteo-footer-section">
+        <section class="meteo-footer-section" role="region" aria-label="Navigation du site">
           <h3>Navigation</h3>
           <ul>
             <li><a href="index.html">Accueil</a></li>
@@ -201,7 +208,7 @@
         </section>
 
         <!-- Section 3 : Contact et réseaux -->
-        <section class="meteo-footer-section">
+        <section class="meteo-footer-section" role="region" aria-label="Contact et ressources">
           <h3>Contact</h3>
           <ul>
             <li>

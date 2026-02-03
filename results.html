@@ -66,7 +66,7 @@
   <div class="meteo-main">
     
     <!-- ===== EN-TÊTE (HEADER) ===== -->
-    <header class="meteo-header">
+    <header class="meteo-header" role="banner">
       <a href="index.html" class="meteo-logo-link" aria-label="Retour à l'accueil My Meteo - Application météo en temps réel" title="Retour à l'accueil My Meteo">
         <img 
           src="assets/images/svg/logo_mymeteo.svg" 
@@ -79,7 +79,7 @@
         >
       </a>
       <!-- Bouton toggle police dyslexique + Label -->
-      <div class="accessibility-container">
+      <div class="accessibility-container" role="region" aria-label="Accessibilité - Paramètres de police">
         <label for="dyslexia-toggle" class="accessibility-label">Police dyslexique</label>
         <button 
           id="dyslexia-toggle" 
@@ -102,7 +102,7 @@
     </header>
 
     <!-- ===== NAVIGATION PRINCIPALE ===== -->
-    <nav class="meteo-nav" style="display: none;">
+    <nav class="meteo-nav" style="display: none;" role="navigation" aria-label="Menu principal de navigation">
       <div class="meteo-menu-list">
         <ul>
           <li><a href="index.html" title="Retour à l'accueil de l'application météo">Accueil</a></li>
@@ -114,13 +114,18 @@
     </nav>
 
     <!-- ===== CONTENU PRINCIPAL (MAIN) ===== -->
-    <main class="meteo-results-main"  id="top">
+    <main class="meteo-results-main" id="top">
       
       <!-- Titre avec localisation -->
       <h1 class="meteo-results-h1">Résultats de <strong>météo</strong> pour <span id="meteo-results-city" title="Ville pour laquelle les prévisions sont affichées">--</span></h1>
 
       <!-- ===== ARTICLE RÉSULTATS MÉTÉO ===== -->
-      <article class="meteo-results-city">
+      <article 
+        class="meteo-results-city"
+        role="region"
+        aria-label="Résultats météorologiques détaillés"
+        aria-live="polite"
+        aria-atomic="true">
         
         <!-- En-tête avec localisation, date, température et conditions -->
         <h2 class="meteo-results-title">
@@ -135,7 +140,7 @@
         </h2>
 
         <!-- ===== SECTION DÉTAILS MÉTÉOROLOGIQUES ===== -->
-        <section class="meteo-results-details">
+        <section class="meteo-results-details" role="region" aria-label="Détails des conditions météorologiques">
           <h3>Détails des <strong>conditions météorologiques</strong> actuelles</h3>
           
           <!-- Grille des indicateurs météo -->
@@ -185,17 +190,17 @@
       </p>
     </main>
       <!-- ===== FOOTER ===== -->
-    <footer class="meteo-footer" id="meteo-footer">
+    <footer class="meteo-footer" id="meteo-footer" role="contentinfo">
       <div class="meteo-footer-container">
         
         <!-- Section 1 : À propos -->
-        <section class="meteo-footer-section">
+        <section class="meteo-footer-section" role="region" aria-label="À propos de My Meteo">
           <h3>À propos</h3>
           <p>My Meteo est une <strong>application météo</strong> en temps réel créée en 2026 pour consulter les <strong>prévisions météorologiques</strong> de plus de 18 villes françaises. Découvrez la <strong>température</strong>, les <strong>conditions météorologiques</strong> et d'autres données en temps réel.</p>
         </section>
 
         <!-- Section 2 : Navigation -->
-        <section class="meteo-footer-section">
+        <section class="meteo-footer-section" role="region" aria-label="Navigation du site">
           <h3>Navigation</h3>
           <ul>
             <li><a href="index.html">Accueil</a></li>
@@ -205,7 +210,7 @@
         </section>
 
         <!-- Section 3 : Contact et réseaux -->
-        <section class="meteo-footer-section">
+        <section class="meteo-footer-section" role="region" aria-label="Contact et ressources">
           <h3>Contact</h3>
           <ul>
             <li>

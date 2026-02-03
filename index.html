@@ -75,7 +75,7 @@
   <div class="meteo-main" id="top">
     
     <!-- ===== EN-TÊTE (HEADER) ===== -->
-     <header class="meteo-header">
+     <header class="meteo-header" role="banner">
       <a href="index.html" class="meteo-logo-link" aria-label="Retour à l'accueil My Meteo - Application météo en temps réel" title="Retour à l'accueil My Meteo">
         <img 
           src="assets/images/svg/logo_mymeteo.svg" 
@@ -89,7 +89,7 @@
       </a>
 
       <!-- Bouton toggle police dyslexique + Label -->
-      <div class="accessibility-container">
+      <div class="accessibility-container" role="region" aria-label="Accessibilité - Paramètres de police">
         <label for="dyslexia-toggle" class="accessibility-label">Police dyslexique</label>
         <button 
           id="dyslexia-toggle" 
@@ -112,7 +112,7 @@
     </header>
 
     <!-- ===== NAVIGATION PRINCIPALE ===== -->
-    <nav class="meteo-nav" style="display: none;">
+    <nav class="meteo-nav" style="display: none;" role="navigation" aria-label="Menu principal de navigation">
       <div class="meteo-menu-list">
         <ul>
           <li><a href="index.html" title="Retour à l'accueil de l'application météo">Accueil</a></li>
@@ -127,7 +127,7 @@
     <main class="meteo-container" id="main-content">
       
       <!-- ===== SECTION GAUCHE : TITRE PRINCIPAL + CTA ===== -->
-      <section class="meteo-left-column">
+      <section class="meteo-left-column" role="region" aria-label="Présentation et recherche de météo">
         <div class="meteo-illustration-hero">
           <img src="assets/images/svg/main_meteo.svg" data-file="main_meteo.svg" alt="Illustration de localisation pour la recherche de météo" class="meteo-icon-main" loading="lazy">
         </div>
@@ -152,12 +152,18 @@
       </section>
 
       <!-- ===== SUGGESTIONS DE VILLES (ASIDE) ===== -->
-      <aside id="suggestions" class="meteo-list-random" aria-label="Suggestions de météo par ville">
+      <aside 
+        id="suggestions" 
+        class="meteo-list-random" 
+        role="region"
+        aria-label="Suggestions de météo par ville"
+        aria-live="polite"
+        aria-atomic="true">
         <h2 class="meteo-h2">Suggestions de <strong>météo</strong></h2>
-        <ul class="meteo-list-random-list">
+        <ul class="meteo-list-random-list" role="list">
           
           <!-- Ville 1 -->
-          <li>
+          <li role="listitem">
             <article class="meteo-content">
               <p class="meteo-city">
                 <span title="Nom de la ville">--</span>
@@ -174,7 +180,7 @@
           </li>
 
           <!-- Ville 2 -->
-          <li>
+          <li role="listitem">
             <article class="meteo-content">
               <p class="meteo-city">
                 <span title="Nom de la ville">--</span>
@@ -191,7 +197,7 @@
           </li>
 
           <!-- Ville 3 -->
-          <li>
+          <li role="listitem">
             <article class="meteo-content">
               <p class="meteo-city">
                 <span title="Nom de la ville">--</span>
@@ -208,7 +214,7 @@
           </li>
 
           <!-- Ville 4 -->
-          <li>
+          <li role="listitem">
             <article class="meteo-content">
               <p class="meteo-city">
                 <span title="Nom de la ville">--</span>
@@ -234,17 +240,17 @@
     </main>
 
     <!-- ===== FOOTER ===== -->
-    <footer class="meteo-footer" id="meteo-footer">
+    <footer class="meteo-footer" id="meteo-footer" role="contentinfo">
       <div class="meteo-footer-container">
         
         <!-- Section 1 : À propos -->
-        <section class="meteo-footer-section">
+        <section class="meteo-footer-section" role="region" aria-label="À propos de My Meteo">
           <h3>À propos</h3>
           <p>My Meteo est une <strong>application météo</strong> en temps réel créée en 2026 pour consulter les <strong>prévisions météorologiques</strong> de plus de 18 villes françaises. Découvrez des informations complètes sur la <strong>température</strong>, les <strong>conditions météorologiques</strong> et d'autres indicateurs météorologiques.</p>
         </section>
 
         <!-- Section 2 : Navigation -->
-        <section class="meteo-footer-section">
+        <section class="meteo-footer-section" role="region" aria-label="Navigation du site">
           <h3>Navigation</h3>
           <ul>
             <li><a href="index.html">Accueil</a></li>
@@ -254,7 +260,7 @@
         </section>
 
         <!-- Section 3 : Contact et réseaux -->
-        <section class="meteo-footer-section">
+        <section class="meteo-footer-section" role="region" aria-label="Contact et ressources">
           <h3>Contact</h3>
           <ul>
             <li>

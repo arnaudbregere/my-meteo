@@ -51,7 +51,7 @@
   <div class="meteo-main" id="top">
    
     <!-- ===== EN-TÊTE (HEADER) ===== -->
-     <header class="meteo-header">
+     <header class="meteo-header" role="banner">
       <a href="index.html" class="meteo-logo-link" aria-label="Retour à l'accueil My Meteo - Application météo en temps réel" title="Retour à l'accueil My Meteo">
         <img 
           src="assets/images/svg/logo_mymeteo.svg" 
@@ -64,7 +64,7 @@
         >
       </a>
       <!-- Bouton toggle police dyslexique + Label -->
-      <div class="accessibility-container">
+      <div class="accessibility-container" role="region" aria-label="Accessibilité - Paramètres de police">
         <label for="dyslexia-toggle" class="accessibility-label">Police dyslexique</label>
         <button 
           id="dyslexia-toggle" 
@@ -87,7 +87,7 @@
     </header>
 
     <!-- ===== NAVIGATION PRINCIPALE ===== -->
-    <nav class="meteo-nav" style="display: none;">
+    <nav class="meteo-nav" style="display: none;" role="navigation" aria-label="Menu principal de navigation">
       <div class="meteo-menu-list">
         <ul>
           <li><a href="index.html" title="Retour à l'accueil de l'application météo">Accueil</a></li>
@@ -112,7 +112,13 @@
       </p>
 
       <!-- ===== SECTION HISTORIQUE DES RECHERCHES ===== -->
-      <section id="history" class="meteo-last-search-container">
+      <section 
+        id="history" 
+        class="meteo-last-search-container"
+        role="region"
+        aria-label="Historique des recherches météorologiques"
+        aria-live="polite"
+        aria-atomic="true">
         
         <!-- État vide : message quand aucune recherche n'existe -->
         <div id="meteo-empty-state" class="meteo-empty-state" role="status" aria-live="polite">
@@ -141,17 +147,17 @@
       </p>
     </main>
       <!-- ===== FOOTER ===== -->
-    <footer class="meteo-footer" id="meteo-footer">
+    <footer class="meteo-footer" id="meteo-footer" role="contentinfo">
       <div class="meteo-footer-container">
         
         <!-- Section 1 : À propos -->
-        <section class="meteo-footer-section">
+        <section class="meteo-footer-section" role="region" aria-label="À propos de My Meteo">
           <h3>À propos</h3>
           <p>My Meteo est une <strong>application météo</strong> en temps réel créée en 2026 pour consulter les <strong>prévisions météorologiques</strong> de plus de 18 villes françaises. Découvrez la <strong>température</strong>, les <strong>conditions météorologiques</strong> et d'autres données en temps réel.</p>
         </section>
 
         <!-- Section 2 : Navigation -->
-        <section class="meteo-footer-section">
+        <section class="meteo-footer-section" role="region" aria-label="Navigation du site">
           <h3>Navigation</h3>
           <ul>
             <li><a href="index.html">Accueil</a></li>
@@ -161,7 +167,7 @@
         </section>
 
         <!-- Section 3 : Contact et réseaux -->
-        <section class="meteo-footer-section">
+        <section class="meteo-footer-section" role="region" aria-label="Contact et ressources">
           <h3>Contact</h3>
           <ul>
             <li>
