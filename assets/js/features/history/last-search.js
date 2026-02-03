@@ -1,5 +1,5 @@
-import { updateImageSources } from "./utils/utils.js";
-import { getSearchHistory, removeFromSearchHistory, clearSearchHistory } from "./search-history.js";
+import { updateImageSources } from "../../utils/utils.js";
+import { getSearchHistory, removeFromSearchHistory, clearSearchHistory } from "../../features/history/search-history.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   updateImageSources();

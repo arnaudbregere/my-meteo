@@ -1,4 +1,4 @@
-import { svgPath } from "./config/meteo-config.js";
+import { svgPath } from "../config/meteo-config.js"
 
 export function renderCitiesList(weatherData) {
   const listItems = document.querySelectorAll('.meteo-list-random-list li');

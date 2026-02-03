@@ -35,41 +35,62 @@ Puis ouvre `http://localhost:8080`
 ```
 my-meteo/
 ├── assets/
+│
 │   ├── css/
-│   │   ├── accessibility.css
-│   │   ├── footer.css
-│   │   ├── last-search.css
-│   │   ├── menu.css
-│   │   ├── meteo.css
-│   │   ├── popin.css
-│   │   ├── results.css
-│   │   ├── search.css
-│   │   └── validation.css
-│   ├── images/svg/          # Icônes SVG
+│   │   ├── base/                 # Styles globaux et transverses
+│   │   │   ├── accessibility.css
+│   │   │   ├── popin.css
+│   │   │   └── validation.css
+│   │   │
+│   │   ├── layout/               # Layout commun (header, footer, structure)
+│   │   │   ├── footer.css
+│   │   │   ├── menu.css
+│   │   │   └── meteo.css
+│   │   │
+│   │   ├── pages/                # Styles spécifiques par page
+│   │   │   ├── search.css
+│   │   │   ├── results.css
+│   │   │   └── last-search.css
+│   │   │
+│   │   └── main.css              # Point d’entrée CSS (imports)
+│
+│   ├── images/
+│   │   └── svg/                  # Icônes SVG
+│
 │   └── js/
-│       ├── animations/
+│       ├── animations/           # Animations et interactions UI
 │       │   ├── animations.js
 │       │   └── swipe.js
-│       ├── location/
+│       │
+│       ├── config/               # Configuration globale
+│       │   └── meteo-config.js
+│       │
+│       ├── services/             # Accès aux données (APIs, storage)
 │       │   ├── location-service.js
-│       │   └── location.js
-│       ├── utils/
+│       │   ├── meteo-weather.js
+│       │   └── storage-service.js
+│       │
+│       ├── ui/                   # Manipulation du DOM / affichage
+│       │   ├── meteo-dom.js
 │       │   ├── popin.js
-│       │   ├── storage-service.js
+│       │   └── menu.js
+│       │
+│       ├── features/             # Logique métier par fonctionnalité
+│       │   ├── accessibility.js
+│       │   ├── location.js
+│       │   ├── last-search.js
+│       │   ├── results.js
+│       │   └── search-history.js
+│       │
+│       ├── utils/                # Fonctions utilitaires
 │       │   └── utils.js
-│       ├── accessibility.js
-│       ├── last-search.js
-│       ├── menu.js
-│       ├── meteo-config.js
-│       ├── meteo-dom.js
-│       ├── meteo-weather.js
-│       ├── meteo.js
-│       ├── results.js
-│       └── search-history.js
+│       │
+│       └── meteo.js               # Point d’entrée JS (page accueil)
+│
 ├── index.html
-├── last_search.html
-├── results.html
 ├── search.html
+├── results.html
+├── last_search.html
 └── README.md
 ```
 

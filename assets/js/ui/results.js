@@ -1,9 +1,9 @@
-import { updateImageSources, getCityFromURL } from "./utils/utils.js";
-import { getWeatherByCoordinates } from "./meteo-weather.js";
-import { getLocationCoordinates } from "./location/location-service.js";
+import { updateImageSources, getCityFromURL } from "../utils/utils.js";
+import { getWeatherByCoordinates } from "../features/weather/meteo-weather.js";
+import { getLocationCoordinates } from "../features/location/location-service.js";
 import { renderWeatherResults, renderError } from "./meteo-dom.js";
-import { addToSearchHistory } from "./search-history.js";
-import { showSkeletonLoading, hideSkeletonLoading } from "./animations/animations.js";
+import { addToSearchHistory } from "../features/history/search-history.js";
+import { showSkeletonLoading, hideSkeletonLoading } from "../animations/animations.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const cityName = getCityFromURL();

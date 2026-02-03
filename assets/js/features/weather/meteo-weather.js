@@ -1,5 +1,5 @@
-import { apiKey } from "./config/meteo-config.js";
-import { formatDate } from "./utils/utils.js";
+import { apiKey } from "../../config/meteo-config.js"
+import { formatDate } from "../../utils/utils.js"
 
 const AVAILABLE_CITIES = [
   { name: "Paris", lat: 48.8566, lon: 2.3522, country: "FR" },
