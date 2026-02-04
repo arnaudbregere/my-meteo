@@ -56,6 +56,9 @@ my-meteo/
 │
 │   ├── images/
 │   │   └── svg/                  # Icônes météo SVG
+|
+│   ├── fonts/
+│       └── open-dyslexic.woff    # Open Dyslexic Font (RGAA)
 │
 │   └── js/
 │       ├── animations/           # Animations et interactions UI
