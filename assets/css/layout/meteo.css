@@ -2,7 +2,7 @@
 @import url('../base/accessibility.css');
 @import url('../layout/footer.css');
 
-/* ===== VARIABLES CSS ===== */
+/* VARIABLES CSS */
 :root {
   --color-primary: #667eea;
   --color-secondary: #764ba2;
@@ -56,7 +56,7 @@ body {
   align-items: center;
 }
 
-/* ===== ANIMATIONS GLOBALES ===== */
+/* ANIMATIONS GLOBALES */
 @keyframes float {
   0%, 100% { transform: translateY(0px); -webkit-transform: translateY(0px); }
   50% { transform: translateY(-100px); -webkit-transform: translateY(-100px); }
@@ -106,7 +106,7 @@ body {
   }
 }
 
-/* ===== CLASSES TRANSITION RÉUTILISABLES ===== */
+/* CLASSES TRANSITION RÉUTILISABLES */
 .transition-transform {
   transition: transform var(--transition-fast);
   -webkit-transition: transform var(--transition-fast);
@@ -132,7 +132,7 @@ body {
   -webkit-transition: text-decoration var(--transition-fast);
 }
 
-/* ===== CLASSES HOVER RÉUTILISABLES ===== */
+/* CLASSES HOVER RÉUTILISABLES */
 .hover-scale {
   transform-origin: center;
 }
@@ -162,7 +162,7 @@ body {
   background: #f0f2f5;
 }
 
-/* ===== CLASSES FOCUS RÉUTILISABLES ===== */
+/* CLASSES FOCUS RÉUTILISABLES */
 .focus-outline:focus {
   outline: 2px solid var(--color-white);
   outline-offset: 4px;
@@ -173,7 +173,7 @@ body {
   outline-offset: 4px;
 }
 
-/* ===== COMPOSANTS GLOBAUX ===== */
+/* COMPOSANTS GLOBAUX */
 .btn-primary {
   background-color: var(--color-blue-primary);
   color: white;
@@ -192,7 +192,7 @@ body {
   transform: translateY(-1px);
 }
 
-/* ===== LAYOUT PRINCIPAL ===== */
+/* LAYOUT PRINCIPAL */
 .meteo-main {
   display: flex;
   flex-direction: column;
@@ -229,7 +229,7 @@ body {
   pointer-events: none;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 .meteo-header {
   position: relative;
   display: flex;
@@ -288,7 +288,7 @@ body {
   height: 24px;
 }
 
-/* ===== CONTENU PRINCIPAL ===== */
+/* CONTENU PRINCIPAL */
 .meteo-container {
   width: 100%;
   padding: var(--spacing-2xl);
@@ -449,7 +449,7 @@ body {
   }
 }
 
-/* ===== NAVIGATION MOBILE ===== */
+/* NAVIGATION MOBILE */
 nav {
   position: fixed;
   top: 0;

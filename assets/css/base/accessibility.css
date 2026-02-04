@@ -1,12 +1,10 @@
 /* Police dyslexique : appliquée à body et tous les enfants pour override complet */
-/* Fallback police :
-   si OpenDyslexic non chargée, retour sur Poppins / sans-serif */
 
 @font-face {
   font-family: 'Open-Dyslexic';
   font-style: normal;
   font-weight: 400;
-  src: local('Open-Dyslexic'), url('https://fonts.cdnfonts.com/s/29616/open-dyslexic.woff') format('woff');
+  src: local('Open-Dyslexic'), url('../../fonts/open-dyslexic.woff') format('woff');
 }
 
 .dyslexic-font,
