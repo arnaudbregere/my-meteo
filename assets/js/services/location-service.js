@@ -5,11 +5,14 @@
  * - Standard universel accepté par toutes les APIs
  * - Indépendant des accents/encodages
  */
+
+import { NOMINATIM_API } from '../config/api-endpoints.js';
+
+
 export async function getLocationCoordinates(cityName) {
   try {
-    const response = await fetch(
-      `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(cityName)}&format=json&limit=1&countrycodes=fr`
-    );
+    const url = `${NOMINATIM_API.SEARCH}?q=${encodeURIComponent(cityName)}&format=json&limit=1&countrycodes=fr`;
+    const response = await fetch(url);
 
     // Check response
     if (!response.ok) {
@@ -25,8 +28,8 @@ export async function getLocationCoordinates(cityName) {
     }
 
     const result = data[0];
-    
-    // Return lat & let 
+
+    // Return lat & lon
     return {
       lat: parseFloat(result.lat),
       lon: parseFloat(result.lon),

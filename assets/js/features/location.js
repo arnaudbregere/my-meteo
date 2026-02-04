@@ -2,19 +2,20 @@
  * Gestion de la recherche et autocomplétion de villes
  */
 
+import { NOMINATIM_API } from '../config/api-endpoints.js';
+
 document.addEventListener('DOMContentLoaded', function() {
   const inputSearch = document.getElementById('meteo-search-localisation');
   const submitButton = document.getElementById('meteo-search-city');
   const autocompleteContainer = document.getElementById('meteo-autocomplete');
   const suggestionsContainer = document.getElementById('meteo-suggestions');
-  
+
   PopinManager.init('popin-overlay', 'popin-container', 'popin-close');
 
   let debounceTimer;
   let isValidInput = false;
   let hasSuggestions = false;
 
-  // Regex : minimum 2 caractères, lettres (avec accents)/tirets/apostrophes/espaces uniquement (PAS de chiffres)
   const cityPattern = /^[a-zA-Z\u00C0-\u024F\s\-']{2,}$/;
 
   /**
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
    */
   function updateValidationMessage(message, isValid) {
     let errorMsg = document.getElementById('validation-message');
-    
+
     if (!errorMsg) {
       errorMsg = document.createElement('p');
       errorMsg.id = 'validation-message';
@@ -45,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
   function validateInput(value) {
     const trimmed = value.trim();
 
-    // Vide
     if (!trimmed) {
       updateValidationMessage('Veuillez saisir une ville', false);
       isValidInput = false;
@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    // Moins de 2 caractères
     if (trimmed.length < 2) {
       updateValidationMessage('Minimum 2 caractères requis', false);
       isValidInput = false;
@@ -61,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    // Caractères invalides
     if (!cityPattern.test(trimmed)) {
       updateValidationMessage('Caractères non autorisés. Lettres et tirets uniquement (pas de chiffres)', false);
       isValidInput = false;
@@ -69,15 +67,11 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    // Format valide
     updateValidationMessage('✓ Format valide', true);
     isValidInput = true;
     submitButton.disabled = false;
   }
 
-  /**
-   * Récupère les suggestions depuis Nominatim
-   */
   async function fetchSuggestions(query) {
     if (query.length < 2) {
       autocompleteContainer.classList.remove('active');
@@ -85,9 +79,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     try {
-      const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=50&countrycodes=fr`
-      );
+      const url = `${NOMINATIM_API.SEARCH}?q=${encodeURIComponent(query)}&format=json&limit=50&countrycodes=fr`;
+      const response = await fetch(url);
 
       // Vérifier que réponse HTTP est OK
       if (!response.ok) {
@@ -114,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
    */  function filterCities(suggestions, query) {
     const queryLower = query.toLowerCase();
     const acceptedAddressTypes = ['city', 'town', 'village', 'hamlet', 'locality', 'suburb'];
-    
+
     let cities = suggestions.filter(s => {
       if (!acceptedAddressTypes.includes(s.addresstype)) {
         return false;

@@ -1,5 +1,6 @@
-import { apiKey } from "../../config/meteo-config.js"
-import { formatDate } from "../../utils/utils.js"
+import { apiKey } from "../config/meteo-config.js";
+import { OPENWEATHER_API } from "../config/api-endpoints.js";
+import { formatDate } from "../utils/utils.js";
 
 const AVAILABLE_CITIES = [
   { name: "Paris", lat: 48.8566, lon: 2.3522, country: "FR" },
@@ -22,7 +23,7 @@ const AVAILABLE_CITIES = [
   { name: "Le Havre", lat: 49.4944, lon: 0.1079, country: "FR" },
 ];
 
-// Icônes par catégorie 
+// Icônes par catégorie
 const WEATHER_ICON_MAP = {
   "01d": "sun.svg",
   "01n": "sun.svg",
@@ -49,7 +50,7 @@ const WEATHER_ICON_MAP = {
  */
 function transformWeatherData(data, cityName) {
   if (!data?.weather?.[0] || !data?.main) return null;
-  
+
   const weather = data.weather[0];
   return {
     name: cityName,
@@ -61,11 +62,11 @@ function transformWeatherData(data, cityName) {
 }
 
 /**
- * Transforme les données pour la page résultats 
+ * Transforme les données pour la page résultats
  */
 function transformMainWeatherData(data) {
   if (!data?.weather?.[0] || !data?.main) return null;
-  
+
   const weather = data.weather[0];
   return {
     main: {
@@ -75,7 +76,7 @@ function transformMainWeatherData(data) {
       humidity: data.main.humidity,
       description: weather.description,
       icon: WEATHER_ICON_MAP[weather.icon] || "cloud.svg",
-      iconCode: weather.icon  
+      iconCode: weather.icon,
     },
     wind: data.wind,
     clouds: data.clouds,
@@ -89,12 +90,12 @@ function transformMainWeatherData(data) {
 function getMockWeatherData(cities) {
   const descriptions = ["Ensoleillé", "Nuageux", "Pluvieux", "Neigeux"];
   const icons = ["sun.svg", "cloud.svg", "rain.svg", "snow.svg"];
-  
+
   return cities.map(city => ({
     name: city.name,
     temperature: Math.floor(Math.random() * 30) + 5,
-    description: descriptions[Math.floor(Math.random() * 4)],
-    icon: icons[Math.floor(Math.random() * 4)],
+    description: descriptions[Math.floor(Math.random() * descriptions.length)],
+    icon: icons[Math.floor(Math.random() * icons.length)],
     humidity: Math.floor(Math.random() * 40) + 40,
   }));
 }
@@ -105,17 +106,15 @@ function getMockWeatherData(cities) {
 export async function getWeatherBatch(cities, lang = "fr") {
   try {
     const promises = cities.map(city => {
-      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&appid=${apiKey}&lang=${lang}&units=metric`;
-      
+      const url = `${OPENWEATHER_API.WEATHER}?lat=${city.lat}&lon=${city.lon}&appid=${apiKey}&lang=${lang}&units=metric`;
+
       return fetch(url)
         .then(res => {
-          //  Vérifier réponse HTTP
           if (!res.ok) throw new Error(`API OpenWeather: ${res.status}`);
           return res.json();
         })
         .then(data => transformWeatherData(data, city.name))
         .catch(err => {
-          // Erreur gérée sans bloquer (null = continue)
           console.error(`Erreur ${city.name}: ${err.message}`);
           return null;
         });
@@ -123,8 +122,7 @@ export async function getWeatherBatch(cities, lang = "fr") {
 
     const results = await Promise.all(promises);
     const filtered = results.filter(Boolean);
-    
-    // Fallback gracieux
+
     return filtered.length > 0 ? filtered : getMockWeatherData(cities);
   } catch (err) {
     console.error("Erreur batch météo:", err.message);
@@ -144,24 +142,21 @@ export function getRandomCities(count = 4) {
 
 /**
  * Récupère la météo pour des coordonnées (lat/lon)
-
  */
 export async function getWeatherByCoordinates(lat, lon, cityName) {
   try {
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=fr&appid=${apiKey}`;
+    const url = `${OPENWEATHER_API.WEATHER}?lat=${lat}&lon=${lon}&units=metric&lang=fr&appid=${apiKey}`;
     const res = await fetch(url);
 
-    // Vérifier réponse HTTP
     if (!res.ok) {
       throw new Error(`Erreur OpenWeather: ${res.status}`);
     }
 
     const data = await res.json();
     data.name = cityName;
-    
+
     return transformMainWeatherData(data);
   } catch (err) {
-    // Erreur gérée, ne bloque pas (return null)
     console.error("Erreur API météo:", err.message);
     return null;
   }

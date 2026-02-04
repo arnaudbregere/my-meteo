@@ -1,4 +1,5 @@
 import { svgPath } from "../config/meteo-config.js"
+import { OPENWEATHER_API } from "../config/api-endpoints.js";
 
 export function renderCitiesList(weatherData) {
   const listItems = document.querySelectorAll('.meteo-list-random-list li');
@@ -59,8 +60,8 @@ export function renderWeatherResults(data, cityName) {
   if (humidityEl) humidityEl.textContent = humidity;
 
   // === AFFICHAGE DE L'ICÔNE OFFICIELLE OPENWEATHERMAP ===
-  const iconCode = data.main?.iconCode || '01d'; 
-  const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+  const iconCode = data.main?.iconCode || '01d';
+  const iconUrl = `${OPENWEATHER_API.ICON}/${iconCode}@2x.png`;
   
   const iconEl = document.querySelector('.meteo-h2-weather-icon');
   if (iconEl) {

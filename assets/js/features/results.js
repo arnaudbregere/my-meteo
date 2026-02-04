@@ -1,8 +1,8 @@
-import { updateImageSources, getCityFromURL } from "../utils/utils.js";
-import { getWeatherByCoordinates } from "../features/weather/meteo-weather.js";
-import { getLocationCoordinates } from "../features/location/location-service.js";
-import { renderWeatherResults, renderError } from "./meteo-dom.js";
-import { addToSearchHistory } from "../features/history/search-history.js";
+import { getCityFromURL } from "../utils/utils.js";
+import { getWeatherByCoordinates } from "../services/meteo-weather.js";
+import { getLocationCoordinates } from "../services/location-service.js";
+import { renderWeatherResults, renderError } from "../ui/meteo-dom.js";
+import { addToSearchHistory } from "./search-history.js";
 import { showSkeletonLoading, hideSkeletonLoading } from "../animations/animations.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
