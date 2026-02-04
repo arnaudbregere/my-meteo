@@ -1,0 +1,11 @@
+/* STYLES GLOBAUX - LAYOUT */
+/* Header, footer, menu, conteneur principal, animations */
+@import url('./layout/menu.css');
+@import url('./layout/footer.css');
+@import url('./layout/meteo.css');
+
+/*  STYLES GLOBAUX - BASE  */
+/* Accessibilité, popin, validation */
+@import url('./base/accessibility.css');
+@import url('./base/popin.css');
+@import url('./base/validation.css');
