@@ -1,6 +1,8 @@
 import { svgPath } from "../config/meteo-config.js"
 import { OPENWEATHER_API } from "../config/api-endpoints.js";
 
+
+// UI pour afficher les suggestions en Page d'accueil
 export function renderCitiesList(weatherData) {
   const listItems = document.querySelectorAll('.meteo-list-random-list li');
   
@@ -26,6 +28,8 @@ export function renderCitiesList(weatherData) {
   });
 }
 
+
+// UI pour afficher les suggestions en Page de Résultats
 export function renderWeatherResults(data, cityName) {
   const resultsCityEl = document.getElementById('meteo-results-city');
   if (resultsCityEl) resultsCityEl.textContent = cityName;
@@ -59,7 +63,7 @@ export function renderWeatherResults(data, cityName) {
   if (pressureEl) pressureEl.textContent = pressure;
   if (humidityEl) humidityEl.textContent = humidity;
 
-  // === AFFICHAGE DE L'ICÔNE OFFICIELLE OPENWEATHERMAP ===
+  // AFFICHAGE DE L'ICÔNE OFFICIELLE OPENWEATHERMAP 
   const iconCode = data.main?.iconCode || '01d';
   const iconUrl = `${OPENWEATHER_API.ICON}/${iconCode}@2x.png`;
   
@@ -68,16 +72,16 @@ export function renderWeatherResults(data, cityName) {
     iconEl.src = iconUrl;
     iconEl.alt = data.main?.description || 'Conditions météo';
   }
-
-  console.log("Résultats affichés avec icône OW OK ! :", iconCode);
 }
 
+
+// Gestion Erreur Message
 export function renderError(message = "Impossible de charger les résultats") {
   const resultsCityEl = document.getElementById('meteo-results-city');
   if (resultsCityEl) resultsCityEl.textContent = message || "Non trouvée";
   
   const locEl = document.querySelector('.meteo-h2-localisation');
-  if (locEl) locEl.textContent = "Erreur";
+  if (locEl) locEl.textContent = "Erreur - Pas de données pour cette ville";
   
   console.error(`${message}`);
 }
