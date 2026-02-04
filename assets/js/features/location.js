@@ -1,8 +1,9 @@
 /**
  * Gestion de la recherche et autocomplétion de villes
+ * UI uniquement
  */
 
-import { NOMINATIM_API } from '../config/api-endpoints.js';
+import { searchCities } from '../services/location-service.js';
 
 document.addEventListener('DOMContentLoaded', function() {
   const inputSearch = document.getElementById('meteo-search-localisation');
@@ -14,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   let debounceTimer;
   let isValidInput = false;
-  let hasSuggestions = false;
 
   const cityPattern = /^[a-zA-Z\u00C0-\u024F\s\-']{2,}$/;
 
@@ -78,99 +78,64 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    try {
-      const url = `${NOMINATIM_API.SEARCH}?q=${encodeURIComponent(query)}&format=json&limit=50&countrycodes=fr`;
-      const response = await fetch(url);
+    const data = await searchCities(query);
 
-      // Vérifier que réponse HTTP est OK
-      if (!response.ok) {
-        throw new Error(`Erreur serveur: ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      // Vérifier format réponse
-      if (!Array.isArray(data)) {
-        throw new Error("Format de réponse invalide");
-      }
-
-      displaySuggestions(data, query);
-    } catch (error) {
-      // Erreur gérée, masque div suggestions et continue
-      console.error(`Erreur suggestions: ${error.message}`);
+    if (!data.length) {
       autocompleteContainer.classList.remove('active');
-    }
-  }
-
-  /**
-   * Filtre : accepte les villes et lieux habités
-   */  function filterCities(suggestions, query) {
-    const queryLower = query.toLowerCase();
-    const acceptedAddressTypes = ['city', 'town', 'village', 'hamlet', 'locality', 'suburb'];
-
-    let cities = suggestions.filter(s => {
-      if (!acceptedAddressTypes.includes(s.addresstype)) {
-        return false;
-      }
-      
-      // Le nom doit au moins commencer par les 2 premiers caractères de la recherche
-      // (évite les résultats complètement décalés)
-      if (!s.name.toLowerCase().startsWith(queryLower.substring(0, 2))) {
-        return false;
-      }
-      
-      return true;
-    });
-    
-    // Déduplique par nom (evite Paris / Paris apparaître 2x)
-    const seen = new Set();
-    cities = cities.filter(city => {
-      const nameLower = city.name.toLowerCase();
-      if (seen.has(nameLower)) {
-        return false;
-      }
-      seen.add(nameLower);
-      return true;
-    });
-    
-    console.log(`Recherche: "${query}" | Résultats: ${suggestions.length} | Filtrés: ${cities.length}`);
-    
-    return cities.sort((a, b) => {
-      const aStartsWith = a.name.toLowerCase().startsWith(queryLower);
-      const bStartsWith = b.name.toLowerCase().startsWith(queryLower);
-      
-      if (aStartsWith && !bStartsWith) return -1;
-      if (!aStartsWith && bStartsWith) return 1;
-      return 0;
-    });
-  }
-
-  /**
-   * Affiche les suggestions d'autocomplétion
-   */
-  function displaySuggestions(suggestions, query) {
-    autocompleteContainer.innerHTML = '';
-    
-    if (!suggestions.length) {
-      autocompleteContainer.classList.remove('active');
-      hasSuggestions = false;
       submitButton.disabled = true;
       return;
     }
+
+    displaySuggestions(data, query);
+  }
+
+  /**
+   * Filtre et organise les villes :
+   * - lieux habités uniquement
+   * - pas de doublons
+   * - priorité aux noms commençant par la recherche
+   */
+  function filterCities(suggestions, query) {
+    const queryLower = query.toLowerCase();
+    const acceptedTypes = ['city', 'town', 'village', 'hamlet', 'locality', 'suburb'];
+
+    const results = [];
+    const seenNames = {};
+
+    suggestions.forEach(suggestion => {
+      const name = suggestion.name;
+      const nameLower = name.toLowerCase();
+
+      if (!acceptedTypes.includes(suggestion.addresstype)) return;
+      if (!nameLower.startsWith(queryLower.substring(0, 2))) return;
+      if (seenNames[nameLower]) return;
+
+      seenNames[nameLower] = true;
+
+      if (nameLower.startsWith(queryLower)) {
+        results.unshift(suggestion);
+      } else {
+        results.push(suggestion);
+      }
+    });
+
+    return results;
+  }
+
+  function displaySuggestions(suggestions, query) {
+    autocompleteContainer.innerHTML = '';
 
     const cities = filterCities(suggestions, query);
 
     // Si aucune ville après filtrage, ne rien afficher et bloquer le bouton
     if (!cities.length) {
       autocompleteContainer.classList.remove('active');
-      hasSuggestions = false;
       submitButton.disabled = true;
       updateValidationMessage('Veuillez saisir un nom de ville valide', false);
       return;
     }
 
     // Suggestions trouvées => activer le bouton
-    hasSuggestions = true;
     submitButton.disabled = false;
 
     cities.forEach(city => {
