@@ -1,6 +1,4 @@
-/**
- * Gestion de la police dyslexique avec fallback
- */
+/* Gestion de la police dyslexique avec fallback */
 
 import { getFromStorage, saveToStorage } from '../services/storage-service.js';
 
@@ -10,9 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!toggleBtn) return;
 
-  /**
-   * Applique le mode dyslexique au DOM
-   */
+  /*  Applique le mode dyslexique au DOM */
   function applyDyslexiaMode(isEnabled) {
     if (isEnabled) {
       body.classList.add('dyslexic-font');
@@ -27,11 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ===== INITIALISATION =====
+  //  INITIALISATION 
   const savedMode = getFromStorage('dyslexiaMode', false);
   applyDyslexiaMode(savedMode);
 
-  // ===== GESTION DU CLIC =====
+  //  GESTION DU CLIC 
   toggleBtn.addEventListener('click', () => {
     const isCurrentlyEnabled = body.classList.contains('dyslexic-font');
     const newState = !isCurrentlyEnabled;
@@ -40,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     saveToStorage('dyslexiaMode', newState);
   });
 
-  // ===== GESTION CLAVIER (Enter / Space) =====
+  //  GESTION CLAVIER (Enter / Space) 
   toggleBtn.setAttribute('tabindex', '0');
   toggleBtn.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') {

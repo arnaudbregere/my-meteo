@@ -5,8 +5,7 @@ import { initSwipeGestures } from "./animations/swipe.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    console.log("Chargement des suggestions météo...");
-    
+  
     // Récupération de 4 villes aléatoires
     const randomCities = getRandomCities(4);
     
@@ -23,7 +22,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     // UPDATE DES IMAGES (une seule fois au chargement global)
     updateImageSources();
     
-    console.log("Suggestions météo chargées OK !");
   } catch (err) {
     console.error("Erreur initialisation:", err);
   }

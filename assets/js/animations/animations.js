@@ -1,3 +1,5 @@
+// Skeleton pendant le temps de chargement sur la page results.html
+
 export function showSkeletonLoading() {
   const title = document.querySelector('.meteo-results-title');
   if (title) {

@@ -1,5 +1,4 @@
-/**
- * Service de gestion de l'historique des recherches
+/* Service de gestion de l'historique des recherches
  * Utilise storage-service.js pour localStorage
  */
 
@@ -8,16 +7,12 @@ import { getFromStorage, saveToStorage, removeFromStorage } from '../services/st
 const STORAGE_KEY = 'meteo_search_history';
 const MAX_SEARCHES = 50;
 
-/**
- * Récupère tout l'historique
- */
+/*  Récupère tout l'historique */
 export function getSearchHistory() {
   return getFromStorage(STORAGE_KEY, []);
 }
 
-/**
- * Ajoute une ville à l'historique
- */
+/*  Ajoute une ville à l'historique */
 export function addToSearchHistory(cityName) {
   if (!cityName || typeof cityName !== 'string') return false;
 
@@ -48,16 +43,12 @@ export function addToSearchHistory(cityName) {
   }
 }
 
-/**
- * Vide l'historique
- */
+/* Vide l'historique */
 export function clearSearchHistory() {
   return removeFromStorage(STORAGE_KEY);
 }
 
-/**
- * Supprime une entrée par ID
- */
+/* Supprime une entrée par ID */
 export function removeFromSearchHistory(entryId) {
   try {
     let history = getSearchHistory();

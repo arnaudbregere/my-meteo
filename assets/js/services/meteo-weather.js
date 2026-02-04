@@ -2,6 +2,8 @@ import { apiKey } from "../config/meteo-config.js";
 import { OPENWEATHER_API } from "../config/api-endpoints.js";
 import { formatDate } from "../utils/utils.js";
 
+
+// Villes Random 
 const AVAILABLE_CITIES = [
   { name: "Paris", lat: 48.8566, lon: 2.3522, country: "FR" },
   { name: "Lyon", lat: 45.7640, lon: 4.8357, country: "FR" },
@@ -45,9 +47,7 @@ const WEATHER_ICON_MAP = {
   "50n": "cloud.svg",
 };
 
-/**
- * Transforme les données API en objet simple
- */
+/* Transforme les données API en objet simple */
 function transformWeatherData(data, cityName) {
   if (!data?.weather?.[0] || !data?.main) return null;
 
@@ -61,9 +61,7 @@ function transformWeatherData(data, cityName) {
   };
 }
 
-/**
- * Transforme les données pour la page résultats
- */
+/* Transforme les données pour la page résultats */
 function transformMainWeatherData(data) {
   if (!data?.weather?.[0] || !data?.main) return null;
 
@@ -84,9 +82,7 @@ function transformMainWeatherData(data) {
   };
 }
 
-/**
- * Données mock pour fallback
- */
+/* Données mock pour fallback */
 function getMockWeatherData(cities) {
   const descriptions = ["Ensoleillé", "Nuageux", "Pluvieux", "Neigeux"];
   const icons = ["sun.svg", "cloud.svg", "rain.svg", "snow.svg"];
@@ -100,9 +96,7 @@ function getMockWeatherData(cities) {
   }));
 }
 
-/**
- * Récupère la météo pour plusieurs villes en parallèle
- */
+/* Récupère la météo pour plusieurs villes en parallèle */
 export async function getWeatherBatch(cities, lang = "fr") {
   try {
     const promises = cities.map(city => {
@@ -130,9 +124,7 @@ export async function getWeatherBatch(cities, lang = "fr") {
   }
 }
 
-/**
- * Sélectionne N villes aléatoires
- */
+/*  Sélectionne N villes aléatoires */
 export function getRandomCities(count = 4) {
   const shuffled = [...AVAILABLE_CITIES].sort(() => Math.random() - 0.5);
   const selected = shuffled.slice(0, Math.min(count, AVAILABLE_CITIES.length));
@@ -140,9 +132,7 @@ export function getRandomCities(count = 4) {
   return selected;
 }
 
-/**
- * Récupère la météo pour des coordonnées (lat/lon)
- */
+/* Récupère la météo pour des coordonnées (lat/lon) */
 export async function getWeatherByCoordinates(lat, lon, cityName) {
   try {
     const url = `${OPENWEATHER_API.WEATHER}?lat=${lat}&lon=${lon}&units=metric&lang=fr&appid=${apiKey}`;

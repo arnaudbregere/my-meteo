@@ -1,6 +1,4 @@
-/**
- * Service centralisé pour localStorage
- */
+/*  Service centralisé pour localStorage */
 
 function isLocalStorageAvailable() {
   try {
@@ -33,9 +31,9 @@ export function getFromStorage(key, defaultValue = null) {
   }
 }
 
+// Sauvegarde dans le Local Storage
 export function saveToStorage(key, value) {
   if (!isLocalStorageAvailable()) {
-    console.warn(`Storage indisponible - "${key}" non sauvegardé`);
     return false;
   }
   
@@ -49,6 +47,7 @@ export function saveToStorage(key, value) {
   }
 }
 
+// Supprime du Local Storage
 export function removeFromStorage(key) {
   if (!isLocalStorageAvailable()) return false;
   
@@ -57,25 +56,6 @@ export function removeFromStorage(key) {
     return true;
   } catch (error) {
     console.error(`Erreur suppression storage [${key}]:`, error.message);
-    return false;
-  }
-}
-
-export function clearStorage(prefix = null) {
-  if (!isLocalStorageAvailable()) return false;
-  
-  try {
-    if (prefix) {
-      // Nettoyer uniquement les clés avec ce préfixe
-      const keys = Object.keys(localStorage).filter(k => k.startsWith(prefix));
-      keys.forEach(k => localStorage.removeItem(k));
-    } else {
-      // Nettoyer tout
-      localStorage.clear();
-    }
-    return true;
-  } catch (error) {
-    console.error('Erreur nettoyage storage:', error.message);
     return false;
   }
 }

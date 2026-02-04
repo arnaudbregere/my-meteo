@@ -1,3 +1,6 @@
+
+// Gestion du Menu
+
 document.addEventListener('DOMContentLoaded', () => {
   const menuBtn = document.querySelector('.meteo-menu-button');
   const closeBtn = document.querySelector('.meteo-menu-close-button');

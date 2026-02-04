@@ -12,9 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialisation de la popin de confirmation
   PopinManager.init('popin-overlay-clear', 'popin-container-clear', 'popin-cancel-clear');
 
-  /**
-   * Affiche l'historique des recherches
-   */
+  /*  Affiche l'historique des recherches */
   function displaySearchHistory() {
     const history = getSearchHistory();
 
@@ -37,9 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(`${history.length} recherche(s) affichée(s)`);
   }
 
-  /**
-   * Crée un élément de recherche
-   */
+  /*Crée un élément de recherche*/
   function createSearchItem(entry) {
     const li = document.createElement('li');
     li.className = 'meteo-search-item';

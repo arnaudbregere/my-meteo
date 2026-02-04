@@ -1,7 +1,7 @@
-/**
+/*
  * Gestion de la recherche et autocomplétion de villes
  * UI uniquement
- */
+*/
 
 import { searchCities } from '../services/location-service.js';
 
@@ -18,9 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const cityPattern = /^[a-zA-Z\u00C0-\u024F\s\-']{2,}$/;
 
-  /**
-   * Crée ou met à jour le message d'erreur/succès
-   */
+  /* Crée ou met à jour le message d'erreur/succès */
   function updateValidationMessage(message, isValid) {
     let errorMsg = document.getElementById('validation-message');
 
@@ -40,9 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     inputSearch.setAttribute('aria-invalid', !isValid);
   }
 
-  /**
-   * Valide le format
-   */
+  /* Valide le format */
   function validateInput(value) {
     const trimmed = value.trim();
 
@@ -90,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
     displaySuggestions(data, query);
   }
 
-  /**
+  /*
    * Filtre et organise les villes :
    * - lieux habités uniquement
    * - pas de doublons

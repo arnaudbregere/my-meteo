@@ -5,14 +5,11 @@
 
 /**
  * Charge Hammer.js depuis CDN (seulement si nécessaire)
- * 
  * Fonctionnement :
  * 1. Vérifie si Hammer est déjà en mémoire (typeof Hammer)
  * 2. Si oui : résout la Promise immédiatement (déjà chargée)
  * 3. Si non : crée un <script> et le charge dynamiquement
  * 4. Quand le script est chargé, résout la Promise
- * 
- * @returns {Promise} Résout quand Hammer.js est disponible
  */
 function loadHammerLibrary() {
   return new Promise((resolve) => {
@@ -47,11 +44,8 @@ function loadHammerLibrary() {
 
 /**
  * Initialise les gestes de swipe sur les villes
- * 
  * - Swipe = glisser rapidement le doigt (velocity >= 0.3 pixels/ms)
  * - Distance minimum = 10 pixels pour valider le geste
- * 
- * @param {NodeList} elements - Liste des éléments swipables (les villes)
  */
 export async function initSwipeGestures(elements) {
   // Attendre que Hammer.js soit chargée
@@ -88,7 +82,6 @@ export async function initSwipeGestures(elements) {
 
 /**
  * Supprime une ville avec animation de slide
- * @param {HTMLElement} element - L'élément à supprimer
  */
 function removeCity(element) {
   // Ajouter la classe pour déclencher l'animation CSS

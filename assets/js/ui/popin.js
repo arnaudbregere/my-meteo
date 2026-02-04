@@ -8,13 +8,8 @@ const PopinManager = (() => {
   let currentContainer;
   let currentCloseButton;
 
-  /**
-   * Initialise une popin avec ses éléments
-   * @param {string} overlayId - ID de l'overlay
-   * @param {string} containerId - ID du conteneur
-   * @param {string} closeButtonId - ID du bouton de fermeture
-   * @returns {boolean} Succès de l'initialisation
-   */
+
+  // Initialisation de la Popin
   function init(overlayId = 'popin-overlay', containerId = 'popin-container', closeButtonId = 'popin-close') {
     currentOverlay = document.getElementById(overlayId);
     currentContainer = document.getElementById(containerId);
@@ -41,9 +36,7 @@ const PopinManager = (() => {
     return true;
   }
 
-  /**
-   * Affiche la popin
-   */
+  /* Affiche la popin */
   function show() {
     if (!currentOverlay || !currentContainer) {
       console.error('Popin non initialisée');
