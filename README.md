@@ -38,11 +38,11 @@ my-meteo/
 │
 │   ├── css/
 │   │   ├── base/                 # Styles globaux et transverses
-│   │   │   ├── accessibility.css
-│   │   │   ├── popin.css
-│   │   │   └── validation.css
+│   │   │   ├── accessibility.css # Accessibilité (focus, contrastes, dyslexie)
+│   │   │   ├── popin.css         # Modales et popins
+│   │   │   └── validation.css    # États de validation / erreurs
 │   │   │
-│   │   ├── layout/               # Layout commun (header, footer, structure)
+│   │   ├── layout/               # Structure commune (header, footer, layout)
 │   │   │   ├── footer.css
 │   │   │   ├── menu.css
 │   │   │   └── meteo.css
@@ -55,37 +55,38 @@ my-meteo/
 │   │   └── main.css              # Point d’entrée CSS (imports)
 │
 │   ├── images/
-│   │   └── svg/                  # Icônes SVG
+│   │   └── svg/                  # Icônes météo SVG
 │
 │   └── js/
 │       ├── animations/           # Animations et interactions UI
-│       │   ├── animations.js
-│       │   └── swipe.js
+│       │   ├── animations.js     # Animations visuelles
+│       │   └── swipe.js          # Gestes tactiles (Hammer.js)
 │       │
 │       ├── config/               # Configuration globale
-│       │   └── meteo-config.js
+│       │   ├── meteo-config.js   # Clés API, paramètres globaux
+│       │   └── api-endpoints.js  # URLs des APIs externes
 │       │
-│       ├── services/             # Accès aux données (APIs, storage)
-│       │   ├── location-service.js
-│       │   ├── meteo-weather.js
-│       │   └── storage-service.js
+│       ├── services/             # Accès aux données 
+│       │   ├── location-service.js # Géolocalisation (Nominatim / OSM)
+│       │   ├── meteo-weather.js    # API météo + transformation des données
+│       │   └── storage-service.js  # localStorage
 │       │
 │       ├── ui/                   # Manipulation du DOM / affichage
-│       │   ├── meteo-dom.js
-│       │   ├── popin.js
-│       │   └── menu.js
+│       │   ├── meteo-dom.js      # Rendu météo
+│       │   ├── popin.js          # Gestion des popins
+│       │   └── menu.js           # Menu et navigation
 │       │
 │       ├── features/             # Logique métier par fonctionnalité
-│       │   ├── accessibility.js
-│       │   ├── location.js
-│       │   ├── last-search.js
-│       │   ├── results.js
-│       │   └── search-history.js
+│       │   ├── accessibility.js  # Navigation clavier, ARIA
+│       │   ├── location.js       # Recherche et sélection de ville
+│       │   ├── last-search.js    # Dernières recherches
+│       │   ├── results.js        # Page résultats météo
+│       │   └── search-history.js # Historique et suggestions
 │       │
-│       ├── utils/                # Fonctions utilitaires
+│       ├── utils/                # Fonctions utilitaires 
 │       │   └── utils.js
 │       │
-│       └── meteo.js               # Point d’entrée JS (page accueil)
+│       └── meteo.js              # Point d’entrée JS (page accueil)
 │
 ├── index.html
 ├── search.html
