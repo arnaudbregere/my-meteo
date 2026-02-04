@@ -63,7 +63,7 @@
 <body>
   
   <!-- ===== CONTENEUR PRINCIPAL ===== -->
-  <div class="meteo-main">
+  <div class="meteo-main"  id="top">
     
     <!-- ===== EN-TÊTE (HEADER) ===== -->
     <header class="meteo-header" role="banner">
@@ -116,7 +116,7 @@
     </nav>
 
     <!-- ===== CONTENU PRINCIPAL (MAIN) ===== -->
-    <main class="meteo-results-main" id="top">
+    <main class="meteo-results-main">
       
       <!-- Titre avec localisation -->
       <h1 class="meteo-results-h1">Résultats de <strong>météo</strong> pour <span id="meteo-results-city" title="Ville pour laquelle les prévisions sont affichées">--</span></h1>
@@ -186,6 +186,14 @@
           </div>
         </section>
       </article>
+       <a
+        href="search.html"
+        class="meteo-cta-button hover-translate-up transition-all focus-outline"
+        title="Faire une nouvelle recherche pour la météo d'une ville"
+        >
+          Faire une nouvelle recherche
+      </a>
+
       <!-- Lien retour haut de page -->
       <p class="meteo-back-top">
         <a href="#top" class="hover-underline focus-outline transition-text-decoration" title="Retour en haut de la page">Retour en haut</a>

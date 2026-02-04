@@ -256,6 +256,7 @@ body {
 
 .meteo-h1 {
   text-align: center;
+  font-size: 32px;
   color: var(--color-white);
   border-bottom: 1px solid var(--color-white);
   margin-bottom: var(--spacing-2xl);
@@ -422,8 +423,21 @@ body {
 
 .meteo-see-suggestions, 
 .meteo-back-top {
+  display: block;
   margin: var(--spacing-lg) auto;
   text-align: center;
+  font-size: 16px;
+}
+
+
+.meteo-back-top.homepage {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .meteo-back-top.homepage {
+    display: none;
+  }
 }
 
 .meteo-see-suggestions a, 
