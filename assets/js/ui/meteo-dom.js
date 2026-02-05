@@ -91,7 +91,6 @@ export function createSuggestionSkeleton(count = 4) {
     li.innerHTML = `
       <article class="meteo-content">
         <p class="meteo-city">
-          <span title="Nom de la ville" class="meteo-city-suggestions">--</span>
           <span>
             <img src="assets/images/svg/localisation.svg"
                  alt="Icône de localisation de la ville"
@@ -100,6 +99,7 @@ export function createSuggestionSkeleton(count = 4) {
                  class="meteo-icon"
                  loading="lazy">
           </span>
+          <span title="Nom de la ville" class="meteo-city-suggestions">--</span>
         </p>
         <p class="meteo-temperature">--</p>
       </article>
