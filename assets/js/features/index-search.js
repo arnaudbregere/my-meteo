@@ -10,26 +10,28 @@ import { getLocationCoordinates } from '../services/location-service.js';
 import { renderWeatherResults, renderError } from '../ui/meteo-dom.js';
 import { addToSearchHistory } from './search-history.js';
 import { showSkeletonLoading, hideSkeletonLoading } from '../animations/animations.js';
-import { getCityFromURL, updateImageSources } from '../utils/utils.js';
+import { updateImageSources } from '../utils/utils.js';
 
 document.addEventListener('DOMContentLoaded', function() {
+
+  // Récupération des éléments HTML
   const inputSearch = document.getElementById('meteo-search-localisation');
   const submitButton = document.getElementById('meteo-search-city');
   const autocompleteContainer = document.getElementById('meteo-autocomplete');
   const searchForm = document.getElementById('meteo-search-form');
   const searchResultsSection = document.getElementById('search-results-section');
-  const suggestionsSection = document.getElementById('suggestions');
-  const suggestionsAnchor = document.getElementById('suggestions-anchor');
   const newSearchBtn = document.getElementById('new-search-btn');
 
+  // Initialisation Popin
   PopinManager.init('popin-overlay', 'popin-container', 'popin-close');
 
   let debounceTimer;
   let isValidInput = false;
 
+  // Regex : accepte les lettres (avec accents), espaces et tirets, minimum 2 caractères
   const cityPattern = /^[a-zA-Z\u00C0-\u024F\s\-']{2,}$/;
 
-  /* Crée ou met à jour le message d'erreur/succès */
+  /* Crée ou met à jour le message d'erreur/succès d'après la validation */
   function updateValidationMessage(message, isValid) {
     let errorMsg = document.getElementById('validation-message');
 
@@ -49,10 +51,11 @@ document.addEventListener('DOMContentLoaded', function() {
     inputSearch.setAttribute('aria-invalid', !isValid);
   }
 
-  /* Valide le format */
+  /* Valide le format du champ saisie et met à jour l'état isValidInput */
   function validateInput(value) {
     const trimmed = value.trim();
 
+    // Champ vide
     if (!trimmed) {
       updateValidationMessage('Veuillez saisir une ville', false);
       isValidInput = false;
@@ -60,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
+    // Moins de 2 caractères
     if (trimmed.length < 2) {
       updateValidationMessage('Minimum 2 caractères requis', false);
       isValidInput = false;
@@ -67,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
+    // Caractères non autorisés (regex cityPattern)
     if (!cityPattern.test(trimmed)) {
       updateValidationMessage('Caractères non autorisés. Lettres et tirets uniquement (pas de chiffres)', false);
       isValidInput = false;
@@ -74,11 +79,13 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
+    // Format valide
     updateValidationMessage('✓ Format valide', true);
     isValidInput = true;
     submitButton.disabled = false;
   }
 
+  /* Récupère les suggestions de villes depuis Nominatim */
   async function fetchSuggestions(query) {
     if (query.length < 2) {
       autocompleteContainer.classList.remove('active');
@@ -99,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   /*
    * Filtre et organise les villes :
-   * - lieux habités uniquement
+   * - lieux habités uniquement (ville, commune, village, etc.)
    * - pas de doublons
    * - priorité aux noms commençant par la recherche
    */
@@ -114,12 +121,16 @@ document.addEventListener('DOMContentLoaded', function() {
       const name = suggestion.name;
       const nameLower = name.toLowerCase();
 
+      // Filtrer par type (habitations uniquement)
       if (!acceptedTypes.includes(suggestion.addresstype)) return;
+      // Ne pas afficher si ne correspond pas au début
       if (!nameLower.startsWith(queryLower.substring(0, 2))) return;
+      // Ne pas afficher les doublons
       if (seenNames[nameLower]) return;
 
       seenNames[nameLower] = true;
 
+      // Priorité aux noms commençant exactement par la recherche
       if (nameLower.startsWith(queryLower)) {
         results.unshift(suggestion);
       } else {
@@ -130,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return results;
   }
 
+  /* Affiche les suggestions dans le dropdown d'autocomplétion */
   function displaySuggestions(suggestions, query) {
     autocompleteContainer.innerHTML = '';
 
@@ -151,6 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
       div.className = 'meteo-autocomplete-item';
       div.textContent = city.name;
       
+      // Au clic sur une suggestion, la remplir dans l'input
       div.addEventListener('click', () => {
         inputSearch.value = city.name;
         autocompleteContainer.classList.remove('active');
@@ -160,20 +173,19 @@ document.addEventListener('DOMContentLoaded', function() {
       autocompleteContainer.appendChild(div);
     });
 
+    // Afficher le dropdown
     autocompleteContainer.classList.add('active');
   }
 
-  /* ===== AFFICHAGE DES RÉSULTATS ===== */
+  /* Affiche les résultats météo dans la section dédiée (sous le bouton, colonne gauche) */
   async function displayWeatherResults(cityName) {
     try {
-      console.log(`Recherche de: ${cityName}`);
 
       // Afficher le skeleton loader
       showSkeletonLoading();
 
-      // Masquer les suggestions et le formulaire
-      suggestionsSection.style.display = 'none';
-      suggestionsAnchor.style.display = 'none';
+      // Afficher la section résultats (elle s'affiche sous le bouton dans la colonne gauche)
+      searchResultsSection.style.display = 'block';
 
       // Étape 1: Récupérer les coordonnées via Nominatim
       const location = await getLocationCoordinates(cityName);
@@ -181,7 +193,6 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!location) {
         console.error("Ville non trouvée");
         renderError("Ville non trouvée");
-        searchResultsSection.style.display = 'block';
         hideSkeletonLoading();
         return;
       }
@@ -194,14 +205,12 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!data?.main) {
         console.error("Données météo invalides");
         renderError();
-        searchResultsSection.style.display = 'block';
         hideSkeletonLoading();
         return;
       }
 
       // Étape 3: Afficher les résultats
       renderWeatherResults(data, location.displayName);
-      searchResultsSection.style.display = 'block';
 
       // Masquer le skeleton loader
       hideSkeletonLoading();
@@ -209,20 +218,19 @@ document.addEventListener('DOMContentLoaded', function() {
       // Étape 4: Ajouter à l'historique
       addToSearchHistory(cityName);
 
-      // Scroll vers les résultats
+      // Étape 5: Scroll vers les résultats
       searchResultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       
     } catch (err) {
       console.error("Erreur lors du chargement:", err);
       renderError();
-      searchResultsSection.style.display = 'block';
       hideSkeletonLoading();
     }
   }
 
   /* ===== GESTION DES ÉVÉNEMENTS DU FORMULAIRE ===== */
 
-  // Autocomplétion avec debounce
+  // Autocomplétion avec debounce (300ms)
   inputSearch.addEventListener('input', (e) => {
     clearTimeout(debounceTimer);
     const query = e.target.value;
@@ -230,6 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Validation en temps réel (saisie)
     validateInput(query);
     
+    // Recherche avec debounce (évite trop d'appels API)
     debounceTimer = setTimeout(() => {
       if (isValidInput) {
         fetchSuggestions(query);
@@ -243,31 +252,32 @@ document.addEventListener('DOMContentLoaded', function() {
       autocompleteContainer.classList.remove('active');
     }
   });
-
-  // Validation et recherche au submit
+  // Validation et recherche au submit du formulaire
   searchForm.addEventListener('submit', (event) => {
+    debugger
     event.preventDefault();
+    
+    // Valider l'input
     validateInput(inputSearch.value);
     
+    // Si invalide, afficher la popin via PopinManager (pas de duplication)
     if (!isValidInput) {
       PopinManager.show();
       return;
     }
 
-    // Afficher les résultats
+    // Afficher les résultats (sous le bouton, dans la colonne gauche)
     const cityName = inputSearch.value.trim();
     displayWeatherResults(cityName);
   });
 
-  // Bouton nouvelle recherche
+  // Bouton nouvelle recherche : réinitialiser le formulaire et les résultats
   newSearchBtn.addEventListener('click', (event) => {
     event.preventDefault();
     inputSearch.value = '';
     autocompleteContainer.innerHTML = '';
     autocompleteContainer.classList.remove('active');
     searchResultsSection.style.display = 'none';
-    suggestionsSection.style.display = 'block';
-    suggestionsAnchor.style.display = 'block';
     updateValidationMessage('', false);
     submitButton.disabled = true;
     inputSearch.focus();
