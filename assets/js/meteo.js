@@ -1,6 +1,6 @@
 import { updateImageSources } from "./utils/utils.js";
 import { getWeatherBatch, getRandomCities } from "./services/meteo-weather.js";
-import { renderCitiesList } from "./ui/meteo-dom.js";
+import { renderCitiesList, createSuggestionSkeleton } from "./ui/meteo-dom.js";
 import { initSwipeGestures } from "./animations/swipe.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     // Récupération des données météo pour ces villes
     const weatherData = await getWeatherBatch(randomCities, 'fr');
+    
+    // Génère 4 blocs UI vides
+    createSuggestionSkeleton(4);
     
     // Affichage des suggestions
     renderCitiesList(weatherData);

@@ -75,6 +75,53 @@ export function renderWeatherResults(data, cityName) {
 }
 
 
+export function createSuggestionSkeleton(count = 4) {
+  const list = document.querySelector('.meteo-list-random-list');
+  if (!list) return;
+
+  list.innerHTML = "";
+  // Limite count 
+  for (let i = 0; i < count; i++) {
+    // Creation et custom du li
+    const li = document.createElement("li");
+    li.className = "hover-bg-change transition-opacity";
+    li.setAttribute("role", "listitem");
+
+    // LE HTML que l'on met dans le <li>
+    li.innerHTML = `
+      <article class="meteo-content">
+        <p class="meteo-city">
+          <span title="Nom de la ville" class="meteo-city-suggestions">--</span>
+          <span>
+            <img src="assets/images/svg/localisation.svg"
+                 alt="Icône de localisation de la ville"
+                 width="20"
+                 height="20"
+                 class="meteo-icon"
+                 loading="lazy">
+          </span>
+        </p>
+        <p class="meteo-temperature">--</p>
+      </article>
+      <div class="meteo-weather">
+        <img src="assets/images/svg/cloud.svg"
+             alt="Conditions météo"
+             width="20"
+             height="20"
+             class="meteo-icon"
+             loading="lazy">
+        <p>--</p>
+      </div>
+    `;
+
+    // On ajoute dans l'élement <ul>
+
+    list.appendChild(li);
+  }
+}
+
+
+
 // Gestion Erreur Message
 export function renderError(message = "Impossible de charger les résultats") {
   const resultsCityEl = document.getElementById('meteo-results-city');
