@@ -254,7 +254,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   // Validation et recherche au submit du formulaire
   searchForm.addEventListener('submit', (event) => {
-    debugger
     event.preventDefault();
     
     // Valider l'input
