@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Regex : accepte les lettres (avec accents), espaces et tirets, minimum 2 caractères
   const cityPattern = /^[a-zA-Z\u00C0-\u024F\s\-']{2,}$/;
 
-  /* Crée ou met à jour le message d'erreur/succès d'après la validation */
-  function updateValidationMessage(message, isValid) {
+  /* Affiche ou masque le message d'erreur/succès d'après la validation */
+  function updateValidationMessage(message = '', isValid = false, show = true) {
     let errorMsg = document.getElementById('validation-message');
 
     if (!errorMsg) {
@@ -44,8 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
       inputSearch.parentNode.insertBefore(errorMsg, inputSearch.nextSibling);
     }
 
+    // Afficher et mettre à jour le message
     errorMsg.textContent = message;
     errorMsg.className = `meteo-validation-message ${isValid ? 'valid' : 'invalid'}`;
+    errorMsg.style.display = 'block';
     inputSearch.classList.toggle('has-error', !isValid);
     inputSearch.classList.toggle('has-success', isValid);
     inputSearch.setAttribute('aria-invalid', !isValid);
@@ -57,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Champ vide
     if (!trimmed) {
-      updateValidationMessage('Veuillez saisir une ville', false);
+      updateValidationMessage('Veuillez saisir une ville', false, true);
       isValidInput = false;
       submitButton.disabled = true;
       return;
@@ -65,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Moins de 2 caractères
     if (trimmed.length < 2) {
-      updateValidationMessage('Minimum 2 caractères requis', false);
+      updateValidationMessage('Minimum 2 caractères requis', false, true);
       isValidInput = false;
       submitButton.disabled = true;
       return;
@@ -73,14 +75,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Caractères non autorisés (regex cityPattern)
     if (!cityPattern.test(trimmed)) {
-      updateValidationMessage('Caractères non autorisés. Lettres et tirets uniquement (pas de chiffres)', false);
+      updateValidationMessage('Caractères non autorisés. Lettres et tirets uniquement (pas de chiffres)', false, true);
       isValidInput = false;
       submitButton.disabled = true;
       return;
     }
 
     // Format valide
-    updateValidationMessage('✓ Format valide', true);
+    updateValidationMessage('✓ Format valide', true, true);
     isValidInput = true;
     submitButton.disabled = false;
   }
@@ -96,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (!data.length) {
       autocompleteContainer.classList.remove('active');
-      updateValidationMessage('Veuillez saisir un nom de ville valide', false);
+      updateValidationMessage('Veuillez saisir un nom de ville valide', false, true);
       submitButton.disabled = true;
       return;
     }
@@ -151,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!cities.length) {
       autocompleteContainer.classList.remove('active');
       submitButton.disabled = true;
-      updateValidationMessage('Veuillez saisir un nom de ville valide', false);
+      updateValidationMessage('Veuillez saisir un nom de ville valide', false, true);
       return;
     }
 
@@ -180,7 +182,6 @@ document.addEventListener('DOMContentLoaded', function() {
   /* Affiche les résultats météo dans la section dédiée (sous le bouton, colonne gauche) */
   async function displayWeatherResults(cityName) {
     try {
-
       // Afficher le skeleton loader
       showSkeletonLoading();
 
@@ -193,7 +194,6 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!location) {
         console.error("Ville non trouvée");
         renderError("Ville non trouvée");
-        hideSkeletonLoading();
         return;
       }
 
@@ -205,15 +205,11 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!data?.main) {
         console.error("Données météo invalides");
         renderError();
-        hideSkeletonLoading();
         return;
       }
 
       // Étape 3: Afficher les résultats
       renderWeatherResults(data, location.displayName);
-
-      // Masquer le skeleton loader
-      hideSkeletonLoading();
 
       // Étape 4: Ajouter à l'historique
       addToSearchHistory(cityName);
@@ -224,7 +220,12 @@ document.addEventListener('DOMContentLoaded', function() {
     } catch (err) {
       console.error("Erreur lors du chargement:", err);
       renderError();
+    } finally {
+      // Masquer le skeleton loader 
       hideSkeletonLoading();
+
+      // Masquer le message de validation (toujours, après la requête)
+      updateValidationMessage(undefined, undefined, false);
     }
   }
 
@@ -252,6 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
       autocompleteContainer.classList.remove('active');
     }
   });
+
   // Validation et recherche au submit du formulaire
   searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -277,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
     autocompleteContainer.innerHTML = '';
     autocompleteContainer.classList.remove('active');
     searchResultsSection.style.display = 'none';
-    updateValidationMessage('', false);
+    updateValidationMessage(undefined, undefined, false); 
     submitButton.disabled = true;
     inputSearch.focus();
     window.scrollTo({ top: 0, behavior: 'smooth' });
