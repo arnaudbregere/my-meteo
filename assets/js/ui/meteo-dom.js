@@ -11,7 +11,7 @@ export function renderCitiesList(weatherData) {
     
     const city = weatherData[index];
     
-    const nameEl = item.querySelector('.meteo-city span:first-child');
+    const nameEl = item.querySelector('.meteo-city-suggestions');
     if (nameEl) nameEl.textContent = city.name;
     
     const tempEl = item.querySelector('.meteo-temperature');

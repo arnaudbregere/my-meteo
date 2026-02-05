@@ -418,7 +418,7 @@ body {
 
 .meteo-weather {
   font-size: 12px;
-  text-align: center;
+  text-align: right;
 }
 
 .meteo-see-suggestions, 
