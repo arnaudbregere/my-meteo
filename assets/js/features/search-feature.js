@@ -9,7 +9,7 @@ import { getWeatherByCoordinates } from '../services/weather-service.js';
 import { getLocationCoordinates } from '../services/location-service.js';
 import { renderWeatherResults, renderError } from '../ui/meteo-dom.js';
 import { addToSearchHistory } from './search-history.js';
-import { showSkeletonLoading, hideSkeletonLoading } from '../animations/animations.js';
+import { showSkeletonLoading, hideSkeletonLoading } from '../animations/skeleton-loader.js';
 import { updateImageSources } from '../utils/utils.js';
 
 document.addEventListener('DOMContentLoaded', function() {
