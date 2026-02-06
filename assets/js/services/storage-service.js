@@ -1,6 +1,7 @@
-/*  Service centralisé pour localStorage */
+// Service pour le Local Storage
 
-function isLocalStorageAvailable() {
+// Vérifie si localStorage est disponible (pas en nav privée)
+const isLocalStorageAvailable = () => {
   try {
     const test = '__storage_test__';
     localStorage.setItem(test, test);
@@ -10,9 +11,10 @@ function isLocalStorageAvailable() {
     console.warn('localStorage indisponible (mode privé ou restriction)', e.message);
     return false;
   }
-}
+};
 
-export function getFromStorage(key, defaultValue = null) {
+// Récupère une valeur du localStorage
+export const getStorageItem = (key, defaultValue = null) => {
   if (!isLocalStorageAvailable()) return defaultValue;
   
   try {
@@ -29,10 +31,10 @@ export function getFromStorage(key, defaultValue = null) {
     console.error(`Erreur lecture storage [${key}]:`, error.message);
     return defaultValue;
   }
-}
+};
 
-// Sauvegarde dans le Local Storage
-export function saveToStorage(key, value) {
+// Sauvegarde une valeur dans le localStorage
+export const setStorageItem = (key, value) => {
   if (!isLocalStorageAvailable()) {
     return false;
   }
@@ -45,10 +47,10 @@ export function saveToStorage(key, value) {
     console.error(`Erreur écriture storage [${key}]:`, error.message);
     return false;
   }
-}
+};
 
-// Supprime du Local Storage
-export function removeFromStorage(key) {
+// Supprime une valeur du localStorage
+export const removeStorageItem = (key) => {
   if (!isLocalStorageAvailable()) return false;
   
   try {
@@ -58,4 +60,4 @@ export function removeFromStorage(key) {
     console.error(`Erreur suppression storage [${key}]:`, error.message);
     return false;
   }
-}
+};

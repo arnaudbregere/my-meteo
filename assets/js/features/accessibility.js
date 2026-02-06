@@ -1,6 +1,6 @@
 /* Gestion de la police dyslexique avec fallback */
 
-import { getFromStorage, saveToStorage } from '../services/storage-service.js';
+import { getStorageItem, setStorageItem } from '../services/storage-service.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   //  INITIALISATION 
-  const savedMode = getFromStorage('dyslexiaMode', false);
+  const savedMode = getStorageItem('dyslexiaMode', false);
   applyDyslexiaMode(savedMode);
 
   //  GESTION DU CLIC 
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newState = !isCurrentlyEnabled;
     
     applyDyslexiaMode(newState);
-    saveToStorage('dyslexiaMode', newState);
+    setStorageItem('dyslexiaMode', newState);
   });
 
   //  GESTION CLAVIER (Enter / Space) 
