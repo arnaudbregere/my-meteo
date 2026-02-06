@@ -27,6 +27,10 @@
 
   <!-- ===== FEUILLES DE STYLES ===== -->
   <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pages/results.css">
+  <link rel="stylesheet" href="assets/css/pages/search.css">
+  <link rel="stylesheet" href="assets/css/base/validation.css">
+  <link rel="stylesheet" href="assets/css/base/popin.css">
 
   <!-- ===== SCHEMA.ORG - APPLICATION MÉTÉO ===== -->
   <script type="application/ld+json">
@@ -63,6 +67,20 @@
       "email": "arnaud.bregere@gmail.com",
       "contactType": "Customer Support"
     }
+  }
+  </script>
+
+  <!-- ===== SCHEMA.ORG - FORMULAIRE DE RECHERCHE ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://mymeteo.fr/index.html?city={search_term_string}"
+    },
+    "query-input": "required name=meteo-search-localisation",
+    "description": "Recherchez la météo d'une ville française"
   }
   </script>
 
@@ -118,7 +136,6 @@
       <div class="meteo-menu-list">
         <ul>
           <li><a href="index.html" class="hover-underline focus-outline transition-text-decoration" title="Retour à l'accueil de l'application météo">Accueil</a></li>
-          <li><a href="search.html" class="hover-underline focus-outline transition-text-decoration" title="Effectuer une nouvelle recherche de ville pour connaître la météo">Nouvelle recherche</a></li>
           <li><a href="last_search.html" class="hover-underline focus-outline transition-text-decoration" title="Consulter l'historique de vos recherches météorologiques">Mes dernières recherches</a></li>
           <li><a href="#meteo-footer" class="hover-underline focus-outline transition-text-decoration" title="Informations à propos de MyMeteo et coordonnées de contact">À propos - Navigation - Contact</a></li>
         </ul>
@@ -128,7 +145,7 @@
     <!-- ===== CONTENU PRINCIPAL (MAIN) ===== -->
     <main class="meteo-container" id="main-content">
       
-      <!-- ===== SECTION GAUCHE : TITRE PRINCIPAL + CTA ===== -->
+      <!-- ===== COLONNE GAUCHE : TITRE + FORMULAIRE + RÉSULTATS ===== -->
       <section class="meteo-left-column" role="region" aria-label="Présentation et recherche de météo">
         <div class="meteo-illustration-hero">
           <img src="assets/images/svg/main_meteo.svg" data-file="main_meteo.svg" alt="Illustration de localisation pour la recherche de météo" class="meteo-icon-main" loading="lazy">
@@ -144,16 +161,156 @@
           My Meteo vous offre les <strong>prévisions météorologiques</strong> actualisées pour plus de 18 villes françaises. 
           Découvrez la <strong>température</strong>, le <strong>vent</strong>, la <strong>pression atmosphérique</strong> et l'<strong>humidité</strong> en quelques clics.
         </p>
-        
-        <a id="meteo-new-search" href="search.html" class="meteo-cta-button hover-translate-up transition-all focus-outline" title="Rechercher la météo d'une ville">Rechercher une ville</a>
+
+        <!-- ===== SECTION SAISIE ET FORMULAIRE DE RECHERCHE ===== -->
+        <div class="meteo-search-main">
+          <article class="meteo-search-input" role="region" aria-label="Formulaire de recherche de météo">
+
+            <!-- Wrapper pour l'icône et l'input -->
+            <div class="meteo-search-input-wrapper">
+              <form id="meteo-search-form">
+                <!-- Fieldset pour accessibilité : regroupe logiquement les champs -->
+                <fieldset>
+                  <legend>Rechercher une ville pour consulter sa météo</legend>
+                  <label class="meteo-search-label" for="meteo-search-localisation">Où souhaitez-vous consulter la <strong>météo</strong> ?</label>
+         
+                  
+                  <!-- Champ de saisie avec validation en temps réel  -->
+                  <input 
+                    id="meteo-search-localisation"
+                    class="meteo-search-main__input"
+                    placeholder="Entrez le nom d'une ville (ex: Paris, Lyon)"
+                    autocomplete="off" 
+                    name="meteo-search-localisation" 
+                    type="text"
+                    minlength="2"
+                    maxlength="100"
+                    pattern="[a-zA-ZÀ-ÿ\s\-']+"
+                    aria-describedby="search-help validation-message"
+                    title="Saisissez le nom d'une ville française (minimum 2 caractères, lettres et tirets uniquement)"
+                    >
+
+                  <!-- Dropdown d'autocomplétion (ARIA accessible) avec aria-live -->
+                  <div 
+                    id="meteo-autocomplete" 
+                    class="meteo-autocomplete" 
+                    role="listbox" 
+                    aria-label="Suggestions de villes pour la recherche météo"
+                    aria-live="polite"
+                    aria-atomic="true">
+                  </div>
+
+                  <!-- Aide contextuelle pour l'input -->
+                  <p id="search-help" class="meteo-search-help">Exemple: Paris, Lyon, Marseille, Toulouse, Bordeaux, Lille</p>
+                  
+                  <!-- Bouton de recherche -->
+                  <button type="submit" id="meteo-search-city" class="meteo-search-city transition-all hover-translate-up focus-outline" title="Lancer la recherche de météo pour la ville saisie">Rechercher</button>
+                </fieldset>
+              </form>
+            </div>
+          </article>
+        </div>
 
         <!-- Ancre interne pour navigation -->
-        <p class="meteo-see-suggestions">
+        <p class="meteo-see-suggestions" id="suggestions-anchor">
           <a href="#suggestions" class="hover-underline focus-outline transition-text-decoration" title="Aller aux suggestions météorologiques">Ou consultez nos suggestions ci-dessous</a>
         </p>
+
+        <!-- ===== SECTION RÉSULTATS DE RECHERCHE (CACHÉ PAR DÉFAUT) ===== -->
+        <aside 
+          id="search-results-section" 
+          class="meteo-search-results-section" 
+          role="region"
+          aria-label="Résultats de la recherche météo"
+          aria-live="polite"
+          aria-atomic="true"
+          style="display: none;">
+          
+          <!-- Titre avec localisation -->
+          <h2 class="meteo-results-h1">Résultats de <strong>météo</strong> pour <span id="meteo-results-city" title="Ville pour laquelle les prévisions sont affichées">--</span></h2>
+
+          <!-- Article résultats météo -->
+          <article 
+            class="meteo-results-city"
+            role="region"
+            aria-label="Résultats météorologiques détaillés">
+            
+            <!-- En-tête avec localisation, date, température et conditions -->
+            <h3 class="meteo-results-title">
+              <span class="meteo-h2-localisation" title="Localisation de la ville recherchée">--</span>
+              <span class="meteo-h2-date" title="Date et heure de la prévision">--</span>
+              <span class="meteo-h2-temperature" title="Température actuelle en degrés Celsius">--</span>
+
+              <!-- Icône météo avec attributs optimisés -->
+              <img src="assets/images/svg/weather-placeholder.svg" alt="Icône représentant les conditions météorologiques actuelles" class="meteo-h2-weather-icon" width="80" height="80" loading="lazy">
+
+              <span class="meteo-h2-weather" title="Description des conditions météorologiques actuelles">--</span>
+            </h3>
+
+            <!-- ===== SECTION DÉTAILS MÉTÉOROLOGIQUES ===== -->
+            <section class="meteo-results-details" role="region" aria-label="Détails des conditions météorologiques">
+              <h4>Détails des <strong>conditions météorologiques</strong> actuelles</h4>
+              
+              <!-- Grille des indicateurs météo -->
+              <div class="meteo-results-details-content">
+                
+                <!-- Indicateur 1 : Vitesse du vent -->
+                <div class="meteo-results-details-item" role="region" aria-label="Vitesse du vent en kilomètres par heure">
+                  <img src="assets/images/svg/wind.svg" data-file="wind.svg" alt="Icône représentant la vitesse du vent" width="20" height="20" class="meteo-icon" loading="lazy">
+                  <div class="meteo-results-item-infos">
+                    <p><strong>Vitesse du vent</strong></p>
+                    <p class="meteo-wind-value" title="Vitesse du vent en km/h">--</p>
+                  </div>
+                </div>
+
+                <!-- Indicateur 2 : Couverture nuageuse -->
+                <div class="meteo-results-details-item" role="region" aria-label="Pourcentage de couverture nuageuse">
+                  <img src="assets/images/svg/rain.svg" data-file="rain.svg" alt="Icône représentant la couverture nuageuse" width="20" height="20" class="meteo-icon" loading="lazy">
+                  <div class="meteo-results-item-infos">
+                    <p><strong>Couverture</strong> nuageuse</p>
+                    <p class="meteo-rain-value" title="Pourcentage de couverture nuageuse en %">--</p>
+                  </div>
+                </div>
+
+                <!-- Indicateur 3 : Pression atmosphérique -->
+                <div class="meteo-results-details-item" role="region" aria-label="Pression atmosphérique en hectopascals">
+                  <img src="assets/images/svg/pressure.svg" data-file="pressure.svg" alt="Icône représentant la pression atmosphérique" width="20" height="20" class="meteo-icon" loading="lazy">
+                  <div class="meteo-results-item-infos">
+                    <p><strong>Pression</strong> atmosphérique</p>
+                    <p class="meteo-pressure-value" title="Pression atmosphérique en hPa">--</p>
+                  </div>
+                </div>
+
+                <!-- Indicateur 4 : Taux d'humidité -->
+                <div class="meteo-results-details-item" role="region" aria-label="Taux d'humidité en pourcentage">
+                  <img src="assets/images/svg/humidity.svg" data-file="humidity.svg" alt="Icône représentant le taux d'humidité" width="20" height="20" class="meteo-icon" loading="lazy">
+                  <div class="meteo-results-item-infos">
+                    <p><strong>Taux</strong> d'humidité</p>
+                    <p class="meteo-humidity-value" title="Taux d'humidité en pourcentage (%)">--</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </article>
+
+          <!-- CTA pour nouvelle recherche -->
+          <a
+            href="#top"
+            class="meteo-cta-button hover-translate-up transition-all focus-outline"
+            id="new-search-btn"
+            title="Faire une nouvelle recherche pour la météo d'une ville"
+            >
+              Faire une nouvelle recherche
+          </a>
+
+          <!-- Lien retour haut de page -->
+          <p class="meteo-back-top">
+            <a href="#top" class="hover-underline focus-outline transition-text-decoration" title="Retour en haut de la page">Retour en haut</a>
+          </p>
+        </aside>
       </section>
 
-      <!-- ===== SUGGESTIONS DE VILLES (ASIDE) ===== -->
+      <!-- ===== COLONNE DROITE : SUGGESTIONS DE VILLES ===== -->
       <aside 
         id="suggestions" 
         class="meteo-list-random" 
@@ -162,7 +319,9 @@
         aria-live="polite"
         aria-atomic="true">
         <h2 class="meteo-h2">Suggestions de <strong>météo</strong></h2>
-        <ul class="meteo-list-random-list" role="list"></ul>
+        <!-- Génère 4 blocs UI vides dynamiquement via createSuggestionSkeleton(4) dans meteo.js -->
+        <ul class="meteo-list-random-list" role="list">
+        </ul>
 
         <!-- Retour haut de page -->
         <p class="meteo-back-top homepage">
@@ -186,7 +345,6 @@
           <h3>Navigation</h3>
           <ul>
             <li><a href="index.html" class="hover-underline focus-outline transition-text-decoration">Accueil</a></li>
-            <li><a href="search.html" class="hover-underline focus-outline transition-text-decoration">Nouvelle recherche</a></li>
             <li><a href="last_search.html" class="hover-underline focus-outline transition-text-decoration">Mes dernières recherches</a></li>
           </ul>
         </section>
@@ -217,8 +375,29 @@
     </footer>
   </div>
 
+  <!-- ===== DIALOG D'ERREUR DE VALIDATION (MODAL ACCESSIBLE) ===== -->
+  <div class="popin-overlay" id="popin-overlay"></div>
+
+  <dialog class="popin-container" id="popin-container"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="popin-title">
+    <div class="popin-content">
+      <div class="popin-icon" aria-hidden="true"></div>
+      <h2 class="popin-title" id="popin-title">Champ obligatoire</h2>
+      <p class="popin-message">
+        Veuillez saisir le nom d'une ville pour continuer votre recherche <strong>météo</strong>.
+      </p>
+      <button class="popin-button hover-translate-up transition-all focus-outline" id="popin-close" title="Fermer la fenêtre d'erreur">
+        Fermer
+      </button>
+    </div>
+  </dialog>
+
   <!-- ===== SCRIPTS ===== -->
   <script type="module" src="./assets/js/meteo.js" defer></script>
+  <script type="module" src="./assets/js/features/index-search.js" defer></script>
+  <script src="assets/js/ui/popin.js" defer></script>
   <script type="module" src="assets/js/features/accessibility.js" defer></script>
   
 </body>
