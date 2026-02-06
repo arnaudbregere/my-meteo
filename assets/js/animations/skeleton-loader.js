@@ -1,4 +1,4 @@
-// Masquer le Skeleton 
+// Afficher le Skeleton 
 export function showSkeletonLoading() {
   const title = document.querySelector('.meteo-results-title');
   if (title) {
@@ -12,7 +12,7 @@ export function showSkeletonLoading() {
   });
 }
 
-// Afficher le Skeleton 
+// Masquer le Skeleton 
 export function hideSkeletonLoading() {
   document.querySelector('.meteo-results-title')?.classList.remove('skeleton');
   document.querySelectorAll('.meteo-results-details-item').forEach(el => {
