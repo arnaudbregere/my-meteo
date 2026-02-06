@@ -57,12 +57,28 @@
 
 /* ===== BOUTON FERMETURE ===== */
 .meteo-menu-close-button {
-  background: none;
-  border: none;
-  cursor: pointer;
+  padding: 0;
+}
+.meteo-menu-button,
+.meteo-menu-close-button {
   top: 1.5rem;
   right: 1.5rem;
-  padding: 0;
+  background-color: transparent;
+  outline: none;
+  border: none;
+    padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  
+}
+
+.meteo-menu,
+.meteo-menu-close {
+  width: 24px;
+  height: 24px;
 }
 
 .meteo-menu-close {
