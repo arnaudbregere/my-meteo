@@ -1,4 +1,4 @@
-import { apiKey } from "../config/meteo-config.js";
+import { API_KEY } from "../config/weather-config.js";
 import { OPENWEATHER_API } from "../config/api-endpoints.js";
 import { formatDate } from "../utils/utils.js";
 
@@ -100,7 +100,7 @@ function getMockWeatherData(cities) {
 export async function getWeatherBatch(cities, lang = "fr") {
   try {
     const promises = cities.map(city => {
-      const url = `${OPENWEATHER_API.WEATHER}?lat=${city.lat}&lon=${city.lon}&appid=${apiKey}&lang=${lang}&units=metric`;
+      const url = `${OPENWEATHER_API.WEATHER}?lat=${city.lat}&lon=${city.lon}&appid=${API_KEY}&lang=${lang}&units=metric`;
 
       return fetch(url)
         .then(res => {
@@ -135,7 +135,7 @@ export function getRandomCities(count = 4) {
 /* Récupère la météo pour des coordonnées (lat/lon) */
 export async function getWeatherByCoordinates(lat, lon, cityName) {
   try {
-    const url = `${OPENWEATHER_API.WEATHER}?lat=${lat}&lon=${lon}&units=metric&lang=fr&appid=${apiKey}`;
+    const url = `${OPENWEATHER_API.WEATHER}?lat=${lat}&lon=${lon}&units=metric&lang=fr&appid=${API_KEY}`;
     const res = await fetch(url);
 
     if (!res.ok) {

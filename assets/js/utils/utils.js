@@ -1,9 +1,9 @@
-import { svgPath } from "../config/meteo-config.js";
+import { SVG_PATH } from "../config/weather-config.js";
 
 /* Met à jour les sources des images basées sur data-file */
 export function updateImageSources() {
   document.querySelectorAll("img[data-file]").forEach(img => {
-    img.src = svgPath + img.dataset.file;
+    img.src = SVG_PATH + img.dataset.file;
   });
 }
 
