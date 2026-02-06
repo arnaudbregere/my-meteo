@@ -293,4 +293,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // UPDATE DES IMAGES (une seule fois au chargement global)
   updateImageSources();
+
+  // Récupère la ville depuis l'URL et effectue la recherche si présente
+  const urlParams = new URLSearchParams(window.location.search);
+  const cityFromUrl = urlParams.get('meteo-search-localisation');
+  
+  if (cityFromUrl) {
+    inputSearch.value = decodeURIComponent(cityFromUrl);
+    displayWeatherResults(inputSearch.value);
+  }
 });

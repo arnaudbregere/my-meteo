@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Lien vers la page résultat
     const link = document.createElement('a');
-    link.href = `results.html?meteo-search-localisation=${encodeURIComponent(entry.city)}`;
+    link.href = `index.html?meteo-search-localisation=${encodeURIComponent(entry.city)}`;
     link.className = 'meteo-search-item-link';
     link.textContent = entry.city;
 
