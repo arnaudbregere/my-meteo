@@ -22,13 +22,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const listItems = document.querySelectorAll('.meteo-list-random-list li');
     await initSwipeGestures(listItems);
     
-    // Au click sur une ville →  vers results.html avec URL formatté, exemple : /results.html?meteo-search-localisation=Paris
+    // Au click sur une ville → remplir l'input de recherche
     const suggestionItems = document.querySelectorAll('.meteo-list-random-list li');
     suggestionItems.forEach((item) => {
       item.addEventListener('click', () => {
-        const cityName = item.querySelector('.meteo-city span:first-child').textContent;
+        const cityName = item.querySelector('.meteo-city-suggestions').textContent;
         if (cityName && cityName !== '--') {
-          window.location.href = `results.html?meteo-search-localisation=${encodeURIComponent(cityName)}`;
+          document.getElementById('meteo-search-localisation').value = cityName;
         }
       });
     });

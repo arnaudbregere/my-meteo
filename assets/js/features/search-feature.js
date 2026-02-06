@@ -47,10 +47,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Afficher et mettre à jour le message
     errorMsg.textContent = message;
     errorMsg.className = `meteo-validation-message ${isValid ? 'valid' : 'invalid'}`;
-    errorMsg.style.display = 'block';
-    inputSearch.classList.toggle('has-error', !isValid);
-    inputSearch.classList.toggle('has-success', isValid);
-    inputSearch.setAttribute('aria-invalid', !isValid);
+    errorMsg.style.display = show ? 'block' : 'none';
+    
+    if (show) {
+      inputSearch.classList.toggle('has-error', !isValid);
+      inputSearch.classList.toggle('has-success', isValid);
+      inputSearch.setAttribute('aria-invalid', !isValid);
+    } else {
+      inputSearch.classList.remove('has-error', 'has-success');
+      inputSearch.setAttribute('aria-invalid', 'false');
+    }
   }
 
   /* Valide le format du champ saisie et met à jour l'état isValidInput */
@@ -225,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
       hideSkeletonLoading();
 
       // Masquer le message de validation (toujours, après la requête)
-      updateValidationMessage(undefined, undefined, false);
+      updateValidationMessage('', false, false);
     }
   }
 
