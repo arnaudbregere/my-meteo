@@ -5,7 +5,7 @@
 */
 
 import { searchCities } from '../services/location-service.js';
-import { getWeatherByCoordinates } from '../services/meteo-weather.js';
+import { getWeatherByCoordinates } from '../services/weather-service.js';
 import { getLocationCoordinates } from '../services/location-service.js';
 import { renderWeatherResults, renderError } from '../ui/meteo-dom.js';
 import { addToSearchHistory } from './search-history.js';

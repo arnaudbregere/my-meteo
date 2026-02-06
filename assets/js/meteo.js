@@ -1,5 +1,5 @@
 import { updateImageSources } from "./utils/utils.js";
-import { getWeatherBatch, getRandomCities } from "./services/meteo-weather.js";
+import { getWeatherBatch, getRandomCities } from "./services/weather-service.js";
 import { renderCitiesList, createSuggestionSkeleton } from "./ui/meteo-dom.js";
 import { initSwipeGestures } from "./animations/swipe.js";
 
