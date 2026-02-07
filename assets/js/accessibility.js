@@ -1,6 +1,6 @@
 /* Gestion de la police dyslexique avec fallback */
 
-import { getStorageItem, setStorageItem } from '../services/storage-service.js';
+import { getStorageItem, setStorageItem } from './services/storage-service.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;

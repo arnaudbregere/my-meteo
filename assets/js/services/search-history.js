@@ -2,7 +2,7 @@
  * Utilise storage-service.js pour localStorage
  */
 
-import { getStorageItem, setStorageItem, removeStorageItem } from '../services/storage-service.js';
+import { getStorageItem, setStorageItem, removeStorageItem } from './storage-service.js';
 
 const STORAGE_KEY = 'meteo_search_history';
 const MAX_SEARCHES = 50;
