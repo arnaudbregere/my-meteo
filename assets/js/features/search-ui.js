@@ -4,7 +4,7 @@
 import { validateCityInput, fetchCitySuggestions, fetchWeatherForCity } from './search-manager.js';
 import { renderWeatherResults, renderError } from '../ui/meteo-dom.js';
 import { showSkeletonLoading, hideSkeletonLoading } from '../animations/skeleton-loader.js';
-import { updateImageSources } from '../utils/utils.js';
+import { updateImageSources, getCityFromURL } from '../utils/utils.js';
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -181,11 +181,11 @@ document.addEventListener('DOMContentLoaded', function() {
   updateImageSources();
 
   // Récupère la ville depuis l'URL et effectue la recherche si présente
-  const urlParams = new URLSearchParams(window.location.search);
-  const cityFromUrl = urlParams.get('meteo-search-localisation');
+  const cityFromUrl = getCityFromURL()
   
   if (cityFromUrl) {
     inputSearch.value = decodeURIComponent(cityFromUrl);
     displayWeatherResults(inputSearch.value);
+    searchResultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 });

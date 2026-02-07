@@ -27,8 +27,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     suggestionItems.forEach((item) => {
       item.addEventListener('click', () => {
         const cityName = item.querySelector('.meteo-city-suggestions').textContent;
+        const inputLocationElement = document.getElementById('meteo-search-form')
         if (cityName && cityName !== '--') {
           document.getElementById('meteo-search-localisation').value = cityName;
+          inputLocationElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          
         }
       });
     });
