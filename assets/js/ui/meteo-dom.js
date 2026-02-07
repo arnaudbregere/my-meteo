@@ -1,4 +1,4 @@
-import { svgPath } from "../config/meteo-config.js"
+import { SVG_PATH } from "../config/weather-config.js"
 import { OPENWEATHER_API } from "../config/api-endpoints.js";
 
 
@@ -19,7 +19,7 @@ export function renderCitiesList(weatherData) {
     
     const iconEl = item.querySelector('.meteo-weather img');
     if (iconEl) {
-      iconEl.src = `${svgPath}${city.icon}`;
+      iconEl.src = `${SVG_PATH}${city.icon}`;
       iconEl.setAttribute('alt', city.description);
     }
     
@@ -29,7 +29,7 @@ export function renderCitiesList(weatherData) {
 }
 
 
-// UI pour afficher les suggestions en Page de Résultats
+// UI pour afficher les suggestions 
 export function renderWeatherResults(data, cityName) {
   const resultsCityEl = document.getElementById('meteo-results-city');
   if (resultsCityEl) resultsCityEl.textContent = cityName;

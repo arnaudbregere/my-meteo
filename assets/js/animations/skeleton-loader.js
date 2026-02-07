@@ -1,5 +1,4 @@
-// Skeleton pendant le temps de chargement sur la page results.html
-
+// Afficher le Skeleton 
 export function showSkeletonLoading() {
   const title = document.querySelector('.meteo-results-title');
   if (title) {
@@ -13,6 +12,7 @@ export function showSkeletonLoading() {
   });
 }
 
+// Masquer le Skeleton 
 export function hideSkeletonLoading() {
   document.querySelector('.meteo-results-title')?.classList.remove('skeleton');
   document.querySelectorAll('.meteo-results-details-item').forEach(el => {

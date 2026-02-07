@@ -1,32 +1,34 @@
-/**
- * Gestion de la modal d'erreur de validation
- * Module popin
- */
+// Gestionnaire de popins/modales
 
 const PopinManager = (() => {
+  // État privé (non accessible de l'extérieur)
   let currentOverlay;
   let currentContainer;
   let currentCloseButton;
 
-
-  // Initialisation de la Popin
-  function init(overlayId = 'popin-overlay', containerId = 'popin-container', closeButtonId = 'popin-close') {
+// Initialise une popin avec ses éléments DOM
+  const init = (
+    overlayId = 'popin-overlay',
+    containerId = 'popin-container',
+    closeButtonId = 'popin-close'
+  ) => {
     currentOverlay = document.getElementById(overlayId);
     currentContainer = document.getElementById(containerId);
     currentCloseButton = document.getElementById(closeButtonId);
 
+    // Vérification sécurité
     if (!currentOverlay || !currentContainer || !currentCloseButton) {
       console.error(`Erreur popin: éléments manquants (${overlayId}, ${containerId}, ${closeButtonId})`);
       return false;
     }
 
-    // Fermer en cliquant le bouton
+    // Fermer au clic bouton close
     currentCloseButton.addEventListener('click', close);
 
-    // Fermer en cliquant sur l'overlay
+    // Fermer au clic overlay (fond sombre)
     currentOverlay.addEventListener('click', close);
 
-    // Fermer avec Escape
+    // Fermer à la touche Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && currentOverlay.classList.contains('active')) {
         close();
@@ -34,27 +36,27 @@ const PopinManager = (() => {
     });
 
     return true;
-  }
+  };
 
-  /* Affiche la popin */
-  function show() {
+// Affiche la popin
+  const show = () => {
     if (!currentOverlay || !currentContainer) {
       console.error('Popin non initialisée');
-      return;
+      return false;
     }
     currentOverlay.classList.add('active');
     currentContainer.classList.add('active');
-    currentCloseButton?.focus();
-  }
+    currentCloseButton?.focus(); // Focus pour accessibilité
+    return true;
+  };
 
-  /**
-   * Ferme la popin
-   */
-  function close() {
-    if (currentOverlay) currentOverlay.classList.remove('active');
-    if (currentContainer) currentContainer.classList.remove('active');
-  }
+// Ferme la popin
+  const close = () => {
+    currentOverlay?.classList.remove('active');
+    currentContainer?.classList.remove('active');
+  };
 
+  // Retourner API publique (pattern IIFE)
   return {
     init,
     show,

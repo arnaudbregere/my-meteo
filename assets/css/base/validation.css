@@ -4,9 +4,9 @@
  * Message de validation
  */
 .meteo-validation-message {
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 75px;
+  top: -40px;
   margin-top: 0.5rem;
   font-size: 0.875rem;
   font-weight: 500;

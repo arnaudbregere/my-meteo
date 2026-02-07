@@ -2,14 +2,14 @@
  * Utilise storage-service.js pour localStorage
  */
 
-import { getFromStorage, saveToStorage, removeFromStorage } from '../services/storage-service.js';
+import { getStorageItem, setStorageItem, removeStorageItem } from './storage-service.js';
 
 const STORAGE_KEY = 'meteo_search_history';
 const MAX_SEARCHES = 50;
 
 /*  Récupère tout l'historique */
 export function getSearchHistory() {
-  return getFromStorage(STORAGE_KEY, []);
+  return getStorageItem(STORAGE_KEY, []);
 }
 
 /*  Ajoute une ville à l'historique */
@@ -34,7 +34,7 @@ export function addToSearchHistory(cityName) {
     // Limiter à 50
     history = history.slice(0, MAX_SEARCHES);
     
-    saveToStorage(STORAGE_KEY, history);
+    setStorageItem(STORAGE_KEY, history);
     console.log(`Recherche ajoutée: ${trimmedCityName}`);
     return true;
   } catch (err) {
@@ -45,7 +45,7 @@ export function addToSearchHistory(cityName) {
 
 /* Vide l'historique */
 export function clearSearchHistory() {
-  return removeFromStorage(STORAGE_KEY);
+  return removeStorageItem(STORAGE_KEY);
 }
 
 /* Supprime une entrée par ID */
@@ -53,7 +53,7 @@ export function removeFromSearchHistory(entryId) {
   try {
     let history = getSearchHistory();
     history = history.filter(entry => entry.id !== entryId);
-    return saveToStorage(STORAGE_KEY, history);
+    return setStorageItem(STORAGE_KEY, history);
   } catch (err) {
     console.error('Erreur lors de la suppression:', err);
     return false;
