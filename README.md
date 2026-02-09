@@ -1,114 +1,142 @@
 # My Meteo 🌤️
 
-Application météo simple pour consulter les conditions en France.
-
-## Installation
-
-Aucune dépendance à installer. Juste un serveur HTTP :
-
-```bash
-npx http-server
-```
-
-Puis ouvre `http://localhost:8080`
-
-## Fonctionnalités
-
-- **Accueil** : Météo actuelle + 4 villes aléatoires
-- **Recherche** : Autocomplétion intelligente avec Nominatim/OSM
-- **Résultats** : Température, vent, pression, humidité
-- **Historique** : Sauvegarde en localStorage
-- **Mobile** : Swipe pour supprimer les suggestions (Hammer.js)
-- **Accessible** : Police dyslexique, navigation clavier, aria-labels
-
-## Stack technique
-
-- HTML5 / CSS3
-- JavaScript ES6 Modules (pas de build tool)
-- **APIs externes** :
-  - OpenWeatherMap (données météo)
-  - Nominatim/OSM (géolocalisation)
-- **Librairie** : Hammer.js pour gestes tactiles (CDN)
-
-## Architecture
-
-```
-my-meteo/
-├── assets/
-│
-│   ├── css/
-│   │   ├── base/                 # Styles globaux et transverses
-│   │   │   ├── accessibility.css # Accessibilité (focus, contrastes, dyslexie)
-│   │   │   ├── popin.css         # Modales et popins
-│   │   │   └── validation.css    # États de validation / erreurs
-│   │   │
-│   │   ├── layout/               # Structure commune (header, footer, layout)
-│   │   │   ├── footer.css
-│   │   │   ├── menu.css
-│   │   │   └── meteo.css
-│   │   │
-│   │   ├── pages/                # Styles spécifiques par page
-│   │   │   ├── search.css
-│   │   │   ├── results.css
-│   │   │   └── last-search.css
-│   │   │
-│   │   └── main.css              # Point d’entrée CSS (imports)
-│
-│   ├── images/
-│   │   └── svg/                  # Icônes météo SVG
-|
-│   ├── fonts/
-│       └── open-dyslexic.woff    # Open Dyslexic Font (RGAA)
-│
-│   └── js/
-│       ├── animations/           # Animations et interactions UI
-│       │   ├── animations.js     # Animations visuelles
-│       │   └── swipe.js          # Gestes tactiles (Hammer.js)
-│       │
-│       ├── config/               # Configuration globale
-│       │   ├── meteo-config.js   # Clés API, paramètres globaux
-│       │   └── api-endpoints.js  # URLs des APIs externes
-│       │
-│       ├── services/             # Accès aux données 
-│       │   ├── location-service.js # Géolocalisation (Nominatim / OSM)
-│       │   ├── meteo-weather.js    # API météo + transformation des données
-│       │   └── storage-service.js  # localStorage
-│       │
-│       ├── ui/                   # Manipulation du DOM / affichage
-│       │   ├── meteo-dom.js      # Rendu météo
-│       │   ├── popin.js          # Gestion des popins
-│       │   └── menu.js           # Menu et navigation
-│       │
-│       ├── features/             # Logique métier par fonctionnalité
-│       │   ├── accessibility.js  # Navigation clavier, ARIA
-│       │   ├── location.js       # Recherche et sélection de ville
-│       │   ├── last-search.js    # Dernières recherches
-│       │   ├── results.js        # Page résultats météo
-│       │   └── search-history.js # Historique et suggestions
-│       │
-│       ├── utils/                # Fonctions utilitaires 
-│       │   └── utils.js
-│       │
-│       └── meteo.js              # Point d’entrée JS (page accueil)
-│
-├── index.html
-├── search.html
-├── results.html
-├── last_search.html
-└── README.md
-```
-
-## Design
-
-- ✅ Responsive (mobile, tablet, desktop)
-- ✅ Accessible (WCAG, ARIA, clavier)
-- ✅ SEO optimisé (schema.org, meta tags)
-- ✅ Performance (SVG, lazy loading)
-
-## Navigateurs
-
-Chrome, Firefox, Safari, Edge (versions récentes).
+Application météo en temps réel pour les villes françaises. Vanilla JavaScript, accessible WCAG 2.1 AA.
 
 ---
 
-**Notes** : Application légère sans npm, facile à déployer. Code modulaire et commenté.
+## Fonctionnalités
+
+- **Recherche intelligente** : Autocomplétion Nominatim/OpenStreetMap
+- **Données en temps réel** : Température, vent, pression, humidité (OpenWeatherMap)
+- **Historique** : Sauvegarde des 50 dernières recherches (localStorage)
+- **Mobile** : Gestes swipe, responsive design (Hammer.js)
+- **Accessibilité** : WCAG 2.1 AA, police dyslexique, navigation clavier
+
+---
+
+## Installation
+
+```bash
+npm start
+# Ou : npx http-server
+```
+
+Ouvre `http://localhost:8080`
+
+---
+
+## Architecture du Projet
+
+```
+my-meteo/
+├── index.html                    # Page d'accueil
+├── about.html                    # À propos
+├── last_search.html              # Historique des recherches
+├── package.json
+├── .gitignore
+│
+├── assets/
+│   ├── css/
+│   │   ├── base/
+│   │   │   ├── accessibility.css
+│   │   │   ├── popin.css
+│   │   │   └── validation.css
+│   │   ├── layout/
+│   │   │   ├── footer.css
+│   │   │   ├── header.css
+│   │   │   ├── menu.css
+│   │   │   └── meteo.css
+│   │   ├── pages/
+│   │   │   ├── about.css
+│   │   │   ├── last-search.css
+│   │   │   ├── results.css
+│   │   │   └── search.css
+│   │   └── main.css
+│   │
+│   ├── images/
+│   │   └── svg/                  # Icônes météo
+│   │
+│   └── js/
+│       ├── animations/
+│       │   ├── skeleton-loader.js
+│       │   └── swipe-gestures.js
+│       │
+│       ├── config/
+│       │   ├── api-endpoints.js
+│       │   └── weather-config.js
+│       │
+│       ├── services/
+│       │   ├── location-service.js      # Nominatim/OSM
+│       │   ├── weather-service.js       # OpenWeatherMap
+│       │   ├── search-history.js        # Historique
+│       │   └── storage-service.js       # localStorage
+│       │
+│       ├── features/
+│       │   ├── search-manager.js        # Logique recherche
+│       │   ├── search-ui.js             # UI recherche
+│       │   ├── history-manager.js       # Logique historique
+│       │   └── history-ui.js            # UI historique
+│       │
+│       ├── ui/
+│       │   ├── meteo-dom.js             # Rendu météo
+│       │   ├── popin-manager.js         # Popins
+│       │   └── menu.js                  # Menu
+│       │
+│       ├── utils/
+│       │   └── utils.js
+│       │
+│       ├── accessibility.js             # Police dyslexique
+│       ├── home.js                      # Point d'entrée accueil
+│       └── menu.js
+```
+
+---
+
+## Architecture Modulaire
+
+4 couches bien séparées :
+
+| Couche | Responsabilité | Fichiers |
+|--------|---|---|
+| **UI Layer** | Interactions & DOM | search-ui.js, history-ui.js, meteo-dom.js |
+| **Features Layer** | Logique métier | search-manager.js, history-manager.js |
+| **Services Layer** | APIs & données | weather-service.js, location-service.js, storage-service.js |
+| **Config & Utils** | Constantes & helpers | api-endpoints.js, weather-config.js, utils.js |
+
+---
+
+## Stack
+
+- **Frontend** : HTML5, CSS3, Vanilla JavaScript (ES6 modules)
+- **APIs** : OpenWeatherMap, Nominatim/OpenStreetMap
+- **Storage** : localStorage (côté client)
+- **Library** : Hammer.js (gestes tactiles) 
+- **Accessibilité** : WCAG 2.1 AA, ARIA labels, Open Dyslexic font
+
+---
+
+## Flux Utilisateur
+
+```
+User tape "Paris" (search-ui.js)
+  ↓ Validation (search-manager.js)
+  ↓ API Nominatim (location-service.js)
+  ↓ Affichage suggestions (search-ui.js)
+User clique "Paris"
+  ↓ API OpenWeatherMap (weather-service.js)
+  ↓ Historique localStorage (search-history.js)
+  ↓ Rendu résultat (meteo-dom.js)
+  ↓ Affichage final ✓
+```
+
+---
+
+## Auteur
+
+Arnaud Brégère  
+arnaud.bregere@gmail.com  
+https://github.com/arnaudbregere/my-meteo
+
+---
+
+**Licence** : MIT
