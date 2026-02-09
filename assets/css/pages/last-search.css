@@ -1,15 +1,22 @@
 /* ===== Page Dernières recherches ===== */
 
 .meteo-last-search-main {
+  max-width: 800px;
   padding: 2rem 1.5rem;
-  margin: 6rem auto 0;
+  margin: 2rem auto 0;
+  font-size: 14px;
+  color: #ffffff;
 }
 
-.meteo-last-search-h1 {
+.meteo-last-search-h1, .meteo-last-search-h2 {
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 2rem;
   color: var(--color-white); 
+}
+
+.meteo-last-search-h2 {
+    font-size: 1.rem;
 }
 
 .meteo-last-search-container {
