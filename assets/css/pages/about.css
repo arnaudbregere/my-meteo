@@ -1,0 +1,34 @@
+/* Page A propos de  */
+.meteo-about-page {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #ffffff;
+
+}
+
+.meteo-about-page .meteo-illustration-hero {
+    margin: 10px auto;
+    text-align: center;
+}
+
+.meteo-about-page h2 {
+    margin: var(--spacing-lg) auto;
+} 
+
+.meteo-about-page ul {
+    list-style: none;
+}
+
+.meteo-about-page ul li::before{
+    content:'- ';
+}
+
+.meteo-about-page a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.meteo-about-page a:hover {
+    text-decoration: underline;
+}

@@ -4,7 +4,7 @@
   <!-- ===== MÉTADONNÉES ET CONFIGURATION ===== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="My Meteo - Consultez la météo en temps réel pour Paris et villes françaises. Obtenez la température, le vent, la pression atmosphérique et l'humidité actualisés. Application météo gratuite pour plus de 18 villes.">
+  <meta name="description" content="My Meteo - Consultez la météo en temps réel pour Paris et villes françaises. Obtenez la température, le vent, la pression atmosphérique et l'humidité actualisés. Application météo gratuite pour les villes françaises.">
   <meta name="keywords" content="météo, météo en temps réel, prévisions météorologiques, température France, météo Paris, application météo, prévisions météo, conditions météorologiques">
   <meta name="author" content="My Meteo">
   <meta name="robots" content="index, follow">
@@ -137,7 +137,8 @@
         <ul>
           <li><a href="index.html" class="hover-underline focus-outline transition-text-decoration" title="Retour à l'accueil de l'application météo">Accueil</a></li>
           <li><a href="last_search.html" class="hover-underline focus-outline transition-text-decoration" title="Consulter l'historique de vos recherches météorologiques">Mes dernières recherches</a></li>
-          <li><a href="#meteo-footer" class="hover-underline focus-outline transition-text-decoration" title="Informations à propos de MyMeteo et coordonnées de contact">À propos - Navigation - Contact</a></li>
+          <li><a href="about.html" class="hover-underline focus-outline transition-text-decoration" title="Informations à propos de MyMeteo">À propos</a></li>
+          <li><a href="#meteo-footer" class="hover-underline focus-outline transition-text-decoration" title="Informations à propos de MyMeteo et coordonnées de contact">Navigation - Contact</a></li>
         </ul>
       </div>
     </nav>
@@ -151,15 +152,13 @@
           <img src="assets/images/svg/main_meteo.svg" data-file="main_meteo.svg" alt="Illustration de localisation pour la recherche de météo" class="meteo-icon-main" loading="lazy">
         </div>
 
-        <!-- Titre principal et introduction -->
+       <!-- Titre principal et introduction -->
         <h1 class="meteo-h1">
-          Consultez la <strong>météo en temps réel</strong><br>
-          <span class="meteo-subtitle">pour <strong>Paris</strong> et villes <strong>françaises</strong></span>
+          <strong>Votre Météo en temps réel</strong>
         </h1>
         
         <p class="meteo-intro">
-          My Meteo vous offre les <strong>prévisions météorologiques</strong> actualisées pour plus de 18 villes françaises. 
-          Découvrez la <strong>température</strong>, le <strong>vent</strong>, la <strong>pression atmosphérique</strong> et l'<strong>humidité</strong> en quelques clics.
+          Cherchez une ville pour découvrir sa <strong>météo actuelle</strong>.
         </p>
 
         <!-- ===== SECTION SAISIE ET FORMULAIRE DE RECHERCHE ===== -->
@@ -171,7 +170,7 @@
               <form id="meteo-search-form">
                 <!-- Fieldset pour accessibilité : regroupe logiquement les champs -->
                 <fieldset>
-                  <legend>Rechercher une ville pour consulter sa météo</legend>
+                  <legend>Votre recherche Météo</legend>
                   <label class="meteo-search-label" for="meteo-search-localisation">Où souhaitez-vous consulter la <strong>météo</strong> ?</label>
          
                   
@@ -179,7 +178,7 @@
                   <input 
                     id="meteo-search-localisation"
                     class="meteo-search-main__input"
-                    placeholder="Entrez le nom d'une ville (ex: Paris, Lyon)"
+                    placeholder="Entrez une ville (ex: Paris, Lyon..)"
                     autocomplete="off" 
                     name="meteo-search-localisation" 
                     type="text"
@@ -337,15 +336,40 @@
         <!-- Section 1 : À propos -->
         <section class="meteo-footer-section" role="region" aria-label="À propos de My Meteo">
           <h3>À propos</h3>
-          <p>My Meteo est une <strong>application météo</strong> en temps réel créée en 2026 pour consulter les <strong>prévisions météorologiques</strong> de plus de 18 villes françaises. Découvrez des informations complètes sur la <strong>température</strong>, les <strong>conditions météorologiques</strong> et d'autres indicateurs météorologiques.</p>
+          <p>My Meteo est une <strong>application météo</strong> en temps réel créée en 2026 pour consulter les <strong>prévisions météorologiques</strong> pour les villes françaises. Découvrez des informations complètes sur la <strong>température</strong>, les <strong>conditions météorologiques</strong> et d'autres indicateurs météorologiques.</p>
         </section>
 
         <!-- Section 2 : Navigation -->
         <section class="meteo-footer-section" role="region" aria-label="Navigation du site">
           <h3>Navigation</h3>
           <ul>
-            <li><a href="index.html" class="hover-underline focus-outline transition-text-decoration">Accueil</a></li>
-            <li><a href="last_search.html" class="hover-underline focus-outline transition-text-decoration">Mes dernières recherches</a></li>
+            <li>
+              <a
+              href="index.html"
+              class="hover-underline focus-outline transition-text-decoration"
+              title="Page d'accueil"
+              >
+              Accueil
+            </a>
+          </li>
+            <li>
+              <a
+              href="last_search.html"
+              class="hover-underline focus-outline transition-text-decoration"
+              title="Mes dernière recherches"
+              >
+              Mes dernières recherches
+            </a>
+          </li>
+          <li>
+              <a
+              href="about.html"
+              class="hover-underline focus-outline transition-text-decoration"
+              title="A propos de MyMeteo ?"
+              >
+              A propos de MyMeteo
+            </a>
+          </li>
           </ul>
         </section>
 
@@ -354,12 +378,19 @@
           <h3>Contact</h3>
           <ul>
             <li>
-              <a href="mailto:arnaud.bregere@gmail.com" class="hover-underline focus-outline transition-text-decoration" aria-label="Envoyer un email à arnaud.bregere@gmail.com pour contacter My Meteo">
+              <a href="mailto:arnaud.bregere@gmail.com"
+              class="hover-underline focus-outline transition-text-decoration"
+              aria-label="Envoyer un email à arnaud.bregere@gmail.com pour contacter My Meteo"
+              title="Envoyer un email à arnaud.bregere@gmail.com pour contacter My Meteo">
                 arnaud.bregere@gmail.com
               </a>
             </li>
             <li>
-              <a href="https://github.com/arnaudbregere/my-meteo" target="_blank" rel="noopener noreferrer" class="hover-underline focus-outline transition-text-decoration" aria-label="Voir le projet My Meteo sur GitHub (ouverture dans un nouvel onglet)">
+              <a href="https://github.com/arnaudbregere/my-meteo"
+              target="_blank"
+              class="hover-underline focus-outline transition-text-decoration"
+              aria-label="Voir le projet My Meteo sur GitHub (ouverture dans un nouvel onglet)"
+              title="Voir le projet My Meteo sur GitHub (ouverture dans un nouvel onglet)">
                 GitHub - Projet My Meteo
               </a>
             </li>
