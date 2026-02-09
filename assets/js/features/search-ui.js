@@ -107,8 +107,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // Afficher les résultats
       renderWeatherResults(result.data, result.location);
-      // Scroll vers les résultats
-      searchResultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       
     } finally {
       // Masquer le skeleton loader et le message de validation
@@ -161,7 +159,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Afficher les résultats
     const cityName = inputSearch.value.trim();
-    displayWeatherResults(cityName);
+    displayWeatherResults(cityName).then(() => {
+      searchResultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   });
 
   // Bouton nouvelle recherche : réinitialiser le formulaire et les résultats
@@ -186,6 +186,5 @@ document.addEventListener('DOMContentLoaded', function() {
   if (cityFromUrl) {
     inputSearch.value = decodeURIComponent(cityFromUrl);
     displayWeatherResults(inputSearch.value);
-    searchResultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 });

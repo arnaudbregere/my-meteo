@@ -2,6 +2,7 @@ import { updateImageSources } from "./utils/utils.js";
 import { getWeatherBatch, getRandomCities } from "./services/weather-service.js";
 import { renderCitiesList, createSuggestionSkeleton } from "./ui/meteo-dom.js";
 import { initSwipeGestures } from "./animations/swipe-gestures.js";
+import { validateCityInput } from "./features/search-manager.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -27,11 +28,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     suggestionItems.forEach((item) => {
       item.addEventListener('click', () => {
         const cityName = item.querySelector('.meteo-city-suggestions').textContent;
-        const inputLocationElement = document.getElementById('meteo-search-form')
+        const inputLocationElement = document.getElementById('meteo-search-localisation');
+        const submitButton = document.getElementById('meteo-search-city');
+        
         if (cityName && cityName !== '--') {
-          document.getElementById('meteo-search-localisation').value = cityName;
-          inputLocationElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          inputLocationElement.value = cityName;
+          submitButton.disabled = false;
           
+          // Afficher le message de validation
+          const validation = validateCityInput(cityName);
+          let errorMsg = document.getElementById('validation-message');
+          if (!errorMsg) {
+            errorMsg = document.createElement('p');
+            errorMsg.id = 'validation-message';
+            errorMsg.className = 'meteo-validation-message';
+            inputLocationElement.parentNode.insertBefore(errorMsg, inputLocationElement.nextSibling);
+          }
+          errorMsg.textContent = validation.message;
+          errorMsg.className = `meteo-validation-message ${validation.valid ? 'valid' : 'invalid'}`;
+          inputLocationElement.classList.toggle('has-success', validation.valid);
+          
+          inputLocationElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
