@@ -27,11 +27,10 @@
 
   <!-- ===== FEUILLES DE STYLES ===== -->
   <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/base/validation.css">
-  <link rel="stylesheet" href="assets/css/base/popin.css">
   <link rel="stylesheet" href="assets/css/pages/about.css">
-
-  <!-- ===== SCHEMA.ORG - ARTICLE ABOUT ===== -->
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- ===== SCHEMA.ORG ===== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -126,71 +125,46 @@
     <!-- ===== CONTENU PRINCIPAL ===== -->
     <main class="meteo-container" id="main-content">
       
-      <!-- ===== PAGE À PROPOS ===== -->
-      <section class="meteo-about-page" role="region" aria-label="À propos de My Meteo">
-        <div class="meteo-illustration-hero">
-          <img src="assets/images/svg/main_meteo.svg" data-file="main_meteo.svg" alt="Illustration de localisation pour la recherche de météo" class="meteo-icon-main" loading="lazy">
+      <section class="meteo-about-page max-w-3xl mx-auto text-white text-sm px-4" role="region" aria-label="À propos de My Meteo">     
+        <div class="meteo-illustration-hero text-center my-3">
+          <img src="assets/images/svg/main_meteo.svg" class="meteo-icon-main">
         </div>
-        <!-- Titre principal -->
         <h1 class="meteo-h1">
           À propos de <strong>My Meteo</strong>
         </h1>
-
-        <!-- Introduction -->
         <article class="meteo-about-content">
-          <h2>Qui sommes-nous ?</h2>
-          <p>
-            My Meteo est une <strong>application météo gratuite</strong> en temps réel créée en 2026. 
-            Notre mission : vous offrir les <strong>prévisions météorologiques</strong> les plus précises 
-            et accessibles pour <strong>les villes françaises</strong>.
-          </p>
-
-          <h2>Nos fonctionnalités</h2>
-          <ul>
+        <h2 class="my-6 text-lg font-semibold">Qui sommes-nous ?</h2>
+        <p>
+        My Meteo est une <strong>application météo gratuite</strong> en temps réel créée en 2026.
+        Notre mission : vous offrir les <strong>prévisions météorologiques</strong> les plus précises
+        et accessibles pour <strong>les villes françaises</strong>.
+        </p>
+        <h2 class="my-6 text-lg font-semibold">Nos fonctionnalités</h2>
+          <ul class="list-none">
             <li><strong>Recherche intelligente</strong> : Autocomplétion rapide des villes françaises</li>
             <li><strong>Données en temps réel</strong> : Température, vent, pression, humidité actualisés</li>
             <li><strong>Historique</strong> : Sauvegarde automatique de vos dernières recherches</li>
             <li><strong>Interface tactile</strong> : Gestes swipe pour une meilleure expérience mobile</li>
-            <li><strong>Accessibilité premium</strong> : Police dyslexique Open Dyslexic, navigation clavier complète</li>
+            <li><strong>Accessibilité premium</strong> : Police dyslexique Open Dyslexic</li>
           </ul>
-
-          <h2>Accessibilité</h2>
-          <p>
-            My Meteo respecte les normes <strong>WCAG 2.1 niveau AA</strong>. 
-            Nous offrons une <strong>police dyslexique</strong> (Open Dyslexic), 
-            une navigation <strong>entièrement accessible au clavier</strong>, 
-            et des <strong>labels ARIA</strong> pour les lecteurs d'écran.
-          </p>
-
-          <h2>Données et APIs</h2>
-          <p>
-            Nos données proviennent de sources fiables :
-          </p>
-          <ul>
-            <li><strong>OpenWeatherMap</strong> : Données météorologiques en temps réel</li>
-            <li><strong>Nominatim/OpenStreetMap</strong> : Géolocalisation et recherche de villes</li>
+        <h2 class="my-6 text-lg font-semibold">Accessibilité</h2>
+        <p>
+        My Meteo respecte les normes <strong>WCAG 2.1 niveau AA</strong>.
+        </p>
+        <h2 class="my-6 text-lg font-semibold">Données et APIs</h2>
+        <ul class="list-none">
+        <li><strong>OpenWeatherMap</strong></li>
+        <li><strong>Nominatim/OpenStreetMap</strong></li>
+        </ul>
+        <h2 class="my-6 text-lg font-semibold">Confidentialité</h2>
+        <p>
+        My Meteo ne sauvegarde <strong>aucune donnée personnelle</strong>.
+        </p>
+        <h2 class="my-6 text-lg font-semibold">Contact</h2>
+          <ul class="list-none">
+            <li>Email : <a href="mailto:arnaud.bregere@gmail.com" class="underline">arnaud.bregere@gmail.com</a></li>
+            <li>GitHub : <a href="https://github.com/arnaudbregere/my-meteo" class="underline">Projet</a></li>
           </ul>
-
-          <h2>Confidentialité</h2>
-          <p>
-            My Meteo ne sauvegarde <strong>aucune donnée personnelle</strong> sur nos serveurs. 
-            Vos recherches sont stockées <strong>localement</strong> sur votre appareil via localStorage. 
-            Vous contrôlez entièrement vos données.
-          </p>
-
-          <h2>Contact</h2>
-          <p>
-            Des questions ? Besoin de nous contacter ?
-          </p>
-          <ul>
-            <li>Email : <a href="mailto:arnaud.bregere@gmail.com" class="hover-underline focus-outline">arnaud.bregere@gmail.com</a></li>
-            <li>GitHub : <a href="https://github.com/arnaudbregere/my-meteo" target="_blank" rel="noopener noreferrer" class="hover-underline focus-outline">Consulter le projet</a></li>
-          </ul>
-
-          <!-- Retour haut de page -->
-          <p class="meteo-back-top">
-            <a href="#top" class="hover-underline focus-outline transition-text-decoration" title="Retour en haut de la page">Retour en haut</a>
-          </p>
         </article>
       </section>
 
