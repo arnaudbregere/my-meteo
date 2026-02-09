@@ -4,14 +4,14 @@
   <!-- ===== MÉTADONNÉES ET CONFIGURATION ===== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Consultez votre historique de recherches météorologiques. Accédez rapidement à vos dernières consultations de prévisions météo, température et conditions météorologiques avec My Meteo.">
-  <meta name="keywords" content="historique recherche, dernières recherches, météo consultée, prévisions sauvegardées, historique météo, application météo">
+  <meta name="description" content="À propos de My Meteo - Découvrez notre application météo en temps réel. Nous offrons des prévisions météorologiques précises pour 18+ villes françaises avec température, vent, pression et humidité.">
+  <meta name="keywords" content="à propos, météo, application météo, prévisions météorologiques, My Meteo, contact, accessibilité">
   <meta name="author" content="My Meteo">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#FFFFFF">
-  <link rel="canonical" href="https://mymeteo.fr/last_search.html">
+  <link rel="canonical" href="https://mymeteo.fr/about.html">
   
-  <title>Mes dernières recherches - My Meteo | Historique météo</title>
+  <title>À propos de My Meteo - Application météo en temps réel | Fonctionnalités et accessibilité</title>
 
   <!-- ===== POLICES GOOGLE ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,18 +27,40 @@
 
   <!-- ===== FEUILLES DE STYLES ===== -->
   <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/base/validation.css">
   <link rel="stylesheet" href="assets/css/base/popin.css">
-  <link rel="stylesheet" href="assets/css/pages/last-search.css">
+  <link rel="stylesheet" href="assets/css/pages/about.css">
 
-  <!-- ===== SCHEMA.ORG - APPLICATION MÉTÉO ===== -->
+  <!-- ===== SCHEMA.ORG - ARTICLE ABOUT ===== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "My Meteo - Historique de Recherches",
-    "description": "Accédez à votre historique de recherches météorologiques et consultez vos dernières prévisions météo",
-    "url": "https://mymeteo.fr/last_search.html",
-    "applicationCategory": "WeatherApplication"
+    "@type": "AboutPage",
+    "name": "À propos de My Meteo",
+    "description": "Découvrez My Meteo, une application météo en temps réel pour consulter les prévisions météorologiques en France",
+    "url": "https://mymeteo.fr/about.html",
+    "author": {
+      "@type": "Organization",
+      "name": "My Meteo",
+      "url": "https://mymeteo.fr"
+    }
+  }
+  </script>
+
+  <!-- ===== SCHEMA.ORG - ORGANISATION ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "My Meteo",
+    "url": "https://mymeteo.fr",
+    "logo": "https://mymeteo.fr/assets/images/svg/logo_mymeteo.svg",
+    "description": "Application météo en temps réel pour prévisions météorologiques en France",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "arnaud.bregere@gmail.com",
+      "contactType": "Customer Support"
+    }
   }
   </script>
 
@@ -46,10 +68,10 @@
   <script src="assets/js/ui/menu.js"></script>
 </head>
 <body>
-  
+
   <!-- ===== CONTENEUR PRINCIPAL ===== -->
   <div class="meteo-main" id="top">
-   
+    
     <!-- ===== EN-TÊTE (HEADER) ===== -->
     <header class="meteo-header" role="banner">
       <a href="index.html" class="meteo-logo-link hover-scale focus-outline transition-transform" 
@@ -65,6 +87,7 @@
           loading="lazy"
         >
       </a>
+
       <!-- Bouton toggle police dyslexique + Label -->
       <div class="accessibility-container" role="region" aria-label="Accessibilité - Paramètres de police">
         <label for="dyslexia-toggle" class="accessibility-label">Police dyslexique</label>
@@ -76,8 +99,9 @@
           title="Toggle police dyslexique"
         ></button>
       </div>
+
       <!-- Burger button -->
-      <button aria-label="Ouvrir le menu de navigation" class="meteo-menu-button hover-opacity focus-outline">
+      <button aria-label="Ouvrir le menu de navigation" class="meteo-menu-button">
         <img src="assets/images/svg/menu.svg" data-file="menu.svg" alt="Icône du menu de navigation" class="meteo-menu" loading="lazy">
       </button>
 
@@ -90,7 +114,7 @@
     <!-- ===== NAVIGATION PRINCIPALE ===== -->
     <nav class="meteo-nav" style="display: none;" role="navigation" aria-label="Menu principal de navigation">
       <div class="meteo-menu-list">
-     <ul>
+          <ul>
           <li><a href="index.html" class="hover-underline focus-outline transition-text-decoration" title="Retour à l'accueil de l'application météo">Accueil</a></li>
           <li><a href="last_search.html" class="hover-underline focus-outline transition-text-decoration" title="Consulter l'historique de vos recherches météorologiques">Mes dernières recherches</a></li>
           <li><a href="about.html" class="hover-underline focus-outline transition-text-decoration" title="Informations à propos de MyMeteo">À propos</a></li>
@@ -100,53 +124,76 @@
     </nav>
 
     <!-- ===== CONTENU PRINCIPAL (MAIN) ===== -->
-    <main class="meteo-last-search-main">
+    <main class="meteo-container" id="main-content">
       
-      <!-- Titre principal -->
-      <h1 class="meteo-last-search-h1">Mes <strong>dernières recherches</strong> <strong>météo</strong></h1>
-
-      <!-- Lien d'accès rapide -->
-      <p class="meteo-back-top">
-        <a href="#history" class="hover-underline focus-outline transition-text-decoration" title="Aller à l'historique des recherches de météo">
-          Aller à l'historique
-        </a>
-      </p>
-
-      <!-- ===== SECTION HISTORIQUE DES RECHERCHES ===== -->
-      <section 
-        id="history" 
-        class="meteo-last-search-container"
-        role="region"
-        aria-label="Historique des recherches météorologiques"
-        aria-live="polite"
-        aria-atomic="true">
+      <!-- ===== PAGE À PROPOS ===== -->
+      <section class="meteo-about-page" role="region" aria-label="À propos de My Meteo">
         
-        <!-- État vide : message quand aucune recherche n'existe -->
-        <div id="meteo-empty-state" class="meteo-empty-state" role="status" aria-live="polite">
-          <p>Aucune recherche <strong>météo</strong> enregistrée pour le moment.</p>
-          <a href="index.html" class="meteo-empty-state-link hover-translate-up transition-all focus-outline" title="Effectuer une recherche de météo">Effectuer une recherche</a>
-        </div>
+        <!-- Titre principal -->
+        <h1 class="meteo-h1">
+          À propos de <strong>My Meteo</strong>
+        </h1>
 
-        <!-- Liste des recherches historisées -->
-        <ul id="meteo-search-list" class="meteo-search-list" aria-label="Historique de vos recherches de prévisions météorologiques"></ul>
+        <!-- Introduction -->
+        <article class="meteo-about-content">
+          <h2>Qui sommes-nous ?</h2>
+          <p>
+            My Meteo est une <strong>application météo gratuite</strong> en temps réel créée en 2026. 
+            Notre mission : vous offrir les <strong>prévisions météorologiques</strong> les plus précises 
+            et accessibles pour <strong>les villes françaises</strong>.
+          </p>
 
-        <!-- Actions : bouton pour effacer tout l'historique -->
-        <div id="meteo-clear-actions" class="meteo-clear-actions" style="display: none;">
-          <button 
-            id="meteo-clear-all" 
-            class="meteo-clear-all-btn btn-danger hover-translate-up transition-all focus-outline" 
-            title="Supprimer toutes vos recherches météo enregistrées"
-          >
-            Effacer tout l'historique
-          </button>
-        </div>
+          <h2>Nos fonctionnalités</h2>
+          <ul>
+            <li><strong>Recherche intelligente</strong> : Autocomplétion rapide des villes françaises</li>
+            <li><strong>Données en temps réel</strong> : Température, vent, pression, humidité actualisés</li>
+            <li><strong>Historique</strong> : Sauvegarde automatique de vos dernières recherches</li>
+            <li><strong>Interface tactile</strong> : Gestes swipe pour une meilleure expérience mobile</li>
+            <li><strong>Accessibilité premium</strong> : Police dyslexique Open Dyslexic, navigation clavier complète</li>
+          </ul>
+
+          <h2>Accessibilité</h2>
+          <p>
+            My Meteo respecte les normes <strong>WCAG 2.1 niveau AA</strong>. 
+            Nous offrons une <strong>police dyslexique</strong> (Open Dyslexic), 
+            une navigation <strong>entièrement accessible au clavier</strong>, 
+            et des <strong>labels ARIA</strong> pour les lecteurs d'écran.
+          </p>
+
+          <h2>Données et APIs</h2>
+          <p>
+            Nos données proviennent de sources fiables :
+          </p>
+          <ul>
+            <li><strong>OpenWeatherMap</strong> : Données météorologiques en temps réel</li>
+            <li><strong>Nominatim/OpenStreetMap</strong> : Géolocalisation et recherche de villes</li>
+          </ul>
+
+          <h2>Confidentialité</h2>
+          <p>
+            My Meteo ne sauvegarde <strong>aucune donnée personnelle</strong> sur nos serveurs. 
+            Vos recherches sont stockées <strong>localement</strong> sur votre appareil via localStorage. 
+            Vous contrôlez entièrement vos données.
+          </p>
+
+          <h2>Contact</h2>
+          <p>
+            Des questions ? Besoin de nous contacter ?
+          </p>
+          <ul>
+            <li>Email : <a href="mailto:arnaud.bregere@gmail.com" class="hover-underline focus-outline">arnaud.bregere@gmail.com</a></li>
+            <li>GitHub : <a href="https://github.com/arnaudbregere/my-meteo" target="_blank" rel="noopener noreferrer" class="hover-underline focus-outline">Consulter le projet</a></li>
+          </ul>
+
+          <!-- Retour haut de page -->
+          <p class="meteo-back-top">
+            <a href="#top" class="hover-underline focus-outline transition-text-decoration" title="Retour en haut de la page">Retour en haut</a>
+          </p>
+        </article>
       </section>
 
-      <!-- Lien retour haut de page -->
-      <p class="meteo-back-top">
-        <a href="#top" class="hover-underline focus-outline transition-text-decoration" title="Retour en haut de la page">Retour en haut</a>
-      </p>
     </main>
+
     <!-- ===== FOOTER ===== -->
     <footer class="meteo-footer" id="meteo-footer" role="contentinfo">
       <div class="meteo-footer-container">
@@ -224,32 +271,7 @@
     </footer>
   </div>
 
-   <!-- Popin pour supprimer tout l'historique des recherches  -->
-  <div class="popin-overlay" id="popin-overlay-clear"></div>
-  <dialog class="popin-container" id="popin-container-clear"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="popin-title-clear">
-    <div class="popin-content">
-      <div class="popin-icon" aria-hidden="true"></div>
-      <h2 class="popin-title" id="popin-title-clear">Supprimer l'historique</h2>
-      <p class="popin-message">
-        Voulez-vous supprimer tout l'historique de recherche <strong>météo</strong> ? Cette action est <strong>irréversible</strong>.
-      </p>
-      <div class="popin-actions">
-        <button class="popin-button popin-button-confirm hover-translate-up transition-all focus-outline" id="popin-confirm-clear" title="Confirmer la suppression de tout l'historique météo">
-          Supprimer
-        </button>
-        <button class="popin-button popin-button-cancel hover-translate-up transition-all focus-outline" id="popin-cancel-clear" title="Annuler la suppression de l'historique">
-          Annuler
-        </button>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- ===== SCRIPTS ===== -->
-  <script src="assets/js/ui/popin-manager.js" defer></script>
-  <script type="module" src="assets/js/features/history-ui.js" defer></script>
+  <!-- Hammer.js (librairie de gestes tactiles) -->
   <script type="module" src="assets/js/accessibility.js" defer></script>
 </body>
 </html>
