@@ -10,6 +10,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 99;
   animation: fadeIn var(--transition-normal);
+  -webkit-animation: fadeIn var(--transition-normal);
 }
 
 .popin-overlay.active {
@@ -30,6 +31,7 @@
   max-width: 90%;
   width: 400px;
   animation: slideUp var(--transition-normal);
+  -webkit-animation: slideUp var(--transition-normal);
 }
 
 .popin-container.active {
@@ -53,6 +55,7 @@
   align-items: center;
   justify-content: center;
   animation: bounce 0.5s ease-in-out;
+  -webkit-animation: bounce 0.5s ease-in-out;
 }
 
 .popin-icon::before {
@@ -98,11 +101,13 @@
 .popin-button:hover {
   background-color: #5568d3;
   transform: translateY(-2px);
+  -webkit-transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
 .popin-button:active {
   transform: translateY(0);
+  -webkit-transform: translateY(0);;
 }
 
 /* Animations */

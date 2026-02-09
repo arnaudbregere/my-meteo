@@ -156,6 +156,7 @@ body {
 
 .hover-translate-up:hover {
   transform: translateY(-1px);
+  -webkit-transform: translateY(-1px);;
 }
 
 .hover-bg-change:hover {

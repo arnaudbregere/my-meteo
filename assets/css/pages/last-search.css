@@ -1,15 +1,22 @@
 /* ===== Page Dernières recherches ===== */
 
 .meteo-last-search-main {
+  max-width: 800px;
   padding: 2rem 1.5rem;
-  margin: 6rem auto 0;
+  margin: 2rem auto 0;
+  font-size: 14px;
+  color: #ffffff;
 }
 
-.meteo-last-search-h1 {
+.meteo-last-search-h1, .meteo-last-search-h2 {
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 2rem;
   color: var(--color-white); 
+}
+
+.meteo-last-search-h2 {
+    font-size: 1.rem;
 }
 
 .meteo-last-search-container {
@@ -66,6 +73,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   transition: all var(--transition-normal);
+  -webkit-transition: all var(--transition-normal);
 }
 
 .meteo-search-item:hover {
@@ -76,6 +84,7 @@
 .meteo-search-item.removing {
   opacity: 0;
   transform: translateX(20px);
+  -webkit-transform: translateX(20px);
 }
 
 .meteo-search-item-link {
@@ -85,6 +94,7 @@
   font-weight: 500;
   font-size: 1rem;
   transition: color var(--color-purple-accent);
+  -webkit-transition: color var(--color-purple-accent);
 }
 
 .meteo-search-item-link:hover {
@@ -128,12 +138,14 @@
   font-weight: 600;
   cursor: pointer;
   transition: background var(--transition-normal), transform var(--transition-fast);
+  -webkit-transition: background var(--transition-normal), transform var(--transition-fast);
   min-height: 44px;
 }
 
 .meteo-clear-all-btn:hover {
   background-color: var(--color-red-delete);
   transform: translateY(-1px);
+  -webkit-transform: translateY(-1px);
 }
 
 /* Responsive */

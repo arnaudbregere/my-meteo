@@ -9,6 +9,7 @@
   padding: 1.5rem 2rem;
   overflow-y: auto;
   animation: slideInFromTop 0.3s ease-out;
+  -webkit-animation: slideInFromTop 0.3s ease-out;
   height: auto;
   max-height: fit-content;
 }

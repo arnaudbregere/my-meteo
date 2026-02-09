@@ -64,6 +64,7 @@
   border-radius: 15px;
   cursor: pointer;
   transition: background var(--transition-normal), border-color var(--transition-normal);
+  -webkit-transition: background var(--transition-normal), border-color var(--transition-normal);
   padding: 0;
   flex-shrink: 0;
   outline: none;
@@ -91,6 +92,7 @@
   background: white;
   border-radius: var(--radius-full);
   transition: left var(--transition-normal);
+  -webkit-transition: left var(--transition-normal);
   left: 3px;
   top: 3px;
   box-shadow: var(--shadow-sm);
