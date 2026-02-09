@@ -1,0 +1,11 @@
+{
+  "name": "my-meteo",
+  "version": "1.0.0",
+  "description": "Application météo en temps réel",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server"
+  },
+  "author": "Arnaud BREGERE",
+  "license": "MIT"
+}
