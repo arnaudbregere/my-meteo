@@ -62,6 +62,7 @@
   font-size: 14px;
   display: inline-block;
   transition: opacity var(--transition-fast), text-decoration var(--transition-fast); 
+  -webkit-transition: opacity var(--transition-fast), text-decoration var(--transition-fast);
 }
 
 .meteo-footer-section a:hover {

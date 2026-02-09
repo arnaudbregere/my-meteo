@@ -1,4 +1,6 @@
     /* ===== Page de recherche ===== */
+
+    /* Conteneur pricipal */
     .meteo-search-main {
       width: 100%;
       display: flex;
@@ -15,6 +17,7 @@
       font-weight: 700;
     }
 
+    /* Formulaire de recherche */
     .meteo-search-main label {
       color: var(--color-white);
       font-size: 20px;
@@ -84,6 +87,7 @@
       font-weight: 700;
     }
 
+    /* Suggestions */
     .meteo-search-suggestions {
       display: flex;
       flex-wrap: wrap; 
@@ -121,6 +125,7 @@
       font-weight: 600;
       cursor: pointer;
       transition: background var(--transition-normal), transform var(--transition-fast);
+      -webkit-transition: background var(--transition-normal), transform var(--transition-fast);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -132,6 +137,7 @@
       color: var(--color-white);
       border-color: var(--color-white);
       transform: translateY(-1px);
+      -webkit-transform: translateY(-1px);
     }
 
     /* Styles pour l'autocomplétion */

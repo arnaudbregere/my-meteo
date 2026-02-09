@@ -156,6 +156,11 @@
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
+
+@-webkit-keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
  
 .skeleton {
   background: linear-gradient(90deg,
@@ -167,6 +172,7 @@
   );
   background-size: 200% 100%;
   animation: shimmer 3s infinite linear;
+  -webkit-animation: shimmer 3s infinite linear;
   border-radius: var(--radius-md); /* Optimisé : variable radius */
   position: relative;
   overflow: hidden;

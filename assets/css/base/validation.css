@@ -13,6 +13,7 @@
   padding: 0.5rem;
   border-radius: 4px;
   transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
 }
 
 /**
@@ -36,6 +37,7 @@
 .meteo-search-main__input {
   margin-bottom: 40px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  -webkit-transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /**
