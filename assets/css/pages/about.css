@@ -7,6 +7,11 @@
 
 }
 
+.meteo-about-page .meteo-illustration-hero {
+    margin: 10px auto;
+    text-align: center;
+}
+
 .meteo-about-page h2 {
     margin: var(--spacing-lg) auto;
 } 
