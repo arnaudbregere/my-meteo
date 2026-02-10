@@ -1,6 +1,7 @@
 /* Page A propos */
 
 .meteo-about-page {
+    min-width: 800px;
     color: #ffffff;
 }
 
