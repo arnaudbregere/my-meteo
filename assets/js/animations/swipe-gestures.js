@@ -31,7 +31,7 @@ export async function initSwipeGestures(elements) {
     // Écouter les événements 'swipeleft' et 'swiperight'
     // Ces événements sont générés automatiquement par Hammer quand
     // un geste match les critères (distance + vitesse)
-    hammer.on('swipeleft swiperight', (event) => {
+    hammer.on('swiperight', (event) => {
       removeCity(item);
     });
   });

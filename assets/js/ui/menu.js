@@ -34,5 +34,24 @@ document.addEventListener('DOMContentLoaded', () => {
         body.style.overflow = 'auto';
       });
     });
+    // Fermer au clic extérieur
+    document.addEventListener('click', (e) => {
+      if (nav.style.display === 'block' && !nav.contains(e.target) && e.target !== menuBtn) {
+        nav.style.display = 'none';
+        menuBtn.style.display = 'block';
+        closeBtn.style.display = 'none';
+        body.style.overflow = 'auto';
+      }
+    });
+
+    // Fermer avec Échap
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.style.display === 'block') {
+        nav.style.display = 'none';
+        menuBtn.style.display = 'block';
+        closeBtn.style.display = 'none';
+        body.style.overflow = 'auto';
+      }
+    });
   }
 });
