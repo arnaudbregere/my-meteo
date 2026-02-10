@@ -1,185 +1,186 @@
-    /* ===== Page de recherche ===== */
+/* ===== Page de recherche ===== */
 
-    /* Conteneur pricipal */
-    .meteo-search-main {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-bottom: 2rem;
-      position: relative;
-      margin: 0 auto 1rem;
-    }
+/* Conteneur principal */
+.meteo-search-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  position: relative;
+  margin: 0 auto 16px;
+}
 
-    .meteo-search-main .meteo-search-h1 {
-      color: var(--color-white);
-      font-size: 20px;
-      font-weight: 700;
-    }
+.meteo-search-main .meteo-search-h1 {
+  color: var(--color-white);
+  font-size: 20px;
+  font-weight: 700;
+}
 
-    /* Formulaire de recherche */
-    .meteo-search-main label {
-      color: var(--color-white);
-      font-size: 20px;
-      font-weight: bolder;
-      margin: 0 0 5px;
-      text-align: left;
-      font-weight: 400;
-    }
+/* Formulaire de recherche */
+.meteo-search-main label {
+  color: var(--color-white);
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 5px;
+  text-align: left;
+}
 
-    .meteo-search-input {
-      width: 100%;
-      border-bottom: 1px solid var(--color-white);
-      margin-bottom: 40px;
-      padding-bottom: 40px;
-    }
+.meteo-search-input {
+  width: 100%;
+  border-bottom: 1px solid var(--color-white);
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+}
 
-    .meteo-search-main input {
-      z-index: 0;
-      align-items: center;
-      background-color: #fff;
-      background-image:  url('../../images/svg/search.svg');
-      background-repeat: no-repeat;
-      background-position: 15px center;
-      background-size: 20px 20px;
-      border-radius: var( --spacing-xs);
-      display: flex;
-      flex-wrap: wrap;
-      font-size: 16px;
-      width: 100%;
-      min-height: 55px;
-      position: relative;
-      border: none;
-      padding: 15px 15px 15px 50px;
-    }
+.meteo-search-main input {
+  z-index: 0;
+  align-items: center;
+  background-color: #fff;
+  background-image: url('../../images/svg/search.svg');
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  background-size: 20px 20px;
+  border-radius: var(--spacing-xs);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 16px;
+  width: 100%;
+  min-height: 55px;
+  position: relative;
+  border: none;
+  padding: 15px 15px 15px 50px;
+  font-family: 'Poppins', sans-serif;
+}
 
-    .meteo-search-main input:hover,
-    .meteo-search-main input:active,
-    .meteo-search-main input:focus,
-    .meteo-search-main input:focus-visible {
-      border: none;
-      outline: none;
-    }
+.meteo-search-main input:hover,
+.meteo-search-main input:active,
+.meteo-search-main input:focus,
+.meteo-search-main input:focus-visible {
+  border: none;
+  outline: none;
+}
 
-    .meteo-search-input-wrapper {
-      position: relative;
-      width: 100%;
-    }
+.meteo-search-input-wrapper {
+  position: relative;
+  width: 100%;
+}
 
-    .meteo-search-input-wrapper fieldset {
-      position: relative;
-      border: none;
-    }
+.meteo-search-input-wrapper fieldset {
+  position: relative;
+  border: none;
+}
 
-    .meteo-search-input-wrapper legend, 
-    .meteo-search-input-wrapper p {
-      margin: var(--spacing-sm) 0px; 
-      color: var(--color-white);
-    }
+.meteo-search-input-wrapper legend, 
+.meteo-search-input-wrapper p {
+  margin: var(--spacing-sm) 0; 
+  color: var(--color-white);
+}
 
-    .meteo-icon-search {
-      display: none;
-    }
+.meteo-icon-search {
+  display: none;
+}
 
-    .meteo-search-h2 {
-      color: var(--color-white);
-      font-size: 20px;
-      font-weight: 700;
-    }
+.meteo-search-h2 {
+  color: var(--color-white);
+  font-size: 20px;
+  font-weight: 700;
+}
 
-    /* Suggestions */
-    .meteo-search-suggestions {
-      display: flex;
-      flex-wrap: wrap; 
-      list-style: none;
-      line-height: 50px;
-      cursor: pointer;
-    }
+/* Suggestions */
+.meteo-search-suggestions {
+  display: flex;
+  flex-wrap: wrap; 
+  list-style: none;
+  line-height: 50px;
+  cursor: pointer;
+}
 
-    .meteo-search-suggestions a {
-      border: 1px solid var(--color-white);
-      color: var(--color-white); 
-      font-weight: 400;
-      border-radius: 5px;
-      margin-right: var(--spacing-sm);
-      padding: 5px;
-      text-decoration: none;
-    }
+.meteo-search-suggestions a {
+  border: 1px solid var(--color-white);
+  color: var(--color-white); 
+  font-weight: 400;
+  border-radius: 5px;
+  margin-right: var(--spacing-sm);
+  padding: 5px;
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  -webkit-transition: all var(--transition-normal);
+}
 
-    .meteo-search-suggestions a:hover {
-      border: 1px solid var(--color-white);
-      background-color: var(--color-white);
-      color: var(--color-dark-gray);
-    }
+.meteo-search-suggestions a:hover {
+  border: 1px solid var(--color-white);
+  background-color: var(--color-white);
+  color: var(--color-dark-gray);
+}
 
-    .meteo-search-city {
-      margin: 0 auto var(--spacing-lg);
-      width: 100%;
-      min-height: 55px;
-      background-color: var(--color-white);
-      color: var(--color-purple-accent);
-      border: 1px solid var(--color-purple-accent);
-      border-radius: var(--radius-sm);
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background var(--transition-normal), transform var(--transition-fast);
-      -webkit-transition: background var(--transition-normal), transform var(--transition-fast);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
+.meteo-search-city {
+  margin: 0 auto var(--spacing-lg);
+  width: 100%;
+  min-height: 55px;
+  background-color: var(--color-white);
+  color: var(--color-purple-accent);
+  border: 1px solid var(--color-purple-accent);
+  border-radius: var(--radius-sm);
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition-normal), transform var(--transition-fast);
+  -webkit-transition: background var(--transition-normal), transform var(--transition-fast);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .meteo-search-city:hover {
-      background-color: var(--color-purple-accent);
-      color: var(--color-white);
-      border-color: var(--color-white);
-      transform: translateY(-1px);
-      -webkit-transform: translateY(-1px);
-    }
+.meteo-search-city:hover {
+  background-color: var(--color-purple-accent);
+  color: var(--color-white);
+  border-color: var(--color-white);
+  transform: translateY(-1px);
+  -webkit-transform: translateY(-1px);
+}
 
-    /* Styles pour l'autocomplétion */
-    
-    .meteo-autocomplete {
-      display: none;
-      position: absolute;
-      top: 115px;
-      left: 0;
-      right: 0;
-      background: white;
-      border: 1px solid #ddd;
-      border-top: none;
-      border-radius: var( --spacing-xs);
-      max-height: 300px;
-      overflow-y: auto;
-      z-index: 10;
-      box-shadow: var(--shadow-sm); 
-    }
+/* Styles pour l'autocomplétion */
+.meteo-autocomplete {
+  display: none;
+  position: absolute;
+  top: 115px;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: var(--spacing-xs);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 10;
+  box-shadow: var(--shadow-sm);
+}
 
-    @media (min-width: 768px) {
-        .meteo-autocomplete {
-        top: 85px;
-      }
-    }
-    
-    .meteo-autocomplete.active {
-      display: block;
-    }
-    
-    .meteo-autocomplete-item {
-      padding: 12px 16px;
-      cursor: pointer;
-      border-bottom: 1px solid #f0f0f0;
-      transition: background var(--transition-fast);
-      font-size: 14px;
-    }
-    
-    .meteo-autocomplete-item:hover {
-      background: var(--color-gray-hover);
-    }
-    
-    .meteo-autocomplete-item:last-child {
-      border-bottom: none;
-    }
+@media (min-width: 768px) {
+  .meteo-autocomplete {
+    top: 85px;
+  }
+}
+
+.meteo-autocomplete.active {
+  display: block;
+}
+
+.meteo-autocomplete-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background var(--transition-fast);
+  font-size: 14px;
+}
+
+.meteo-autocomplete-item:hover {
+  background: var(--color-gray-hover);
+}
+
+.meteo-autocomplete-item:last-child {
+  border-bottom: none;
+}

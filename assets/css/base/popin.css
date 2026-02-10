@@ -82,7 +82,7 @@
   line-height: 1.5;
 }
 
-/* Bouton de fermeture */
+/* Bouton de la popin */
 .popin-button {
   background-color: var(--color-primary);
   color: white;

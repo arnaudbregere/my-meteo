@@ -156,7 +156,7 @@ body {
 
 .hover-translate-up:hover {
   transform: translateY(-1px);
-  -webkit-transform: translateY(-1px);;
+  -webkit-transform: translateY(-1px);
 }
 
 .hover-bg-change:hover {
@@ -240,7 +240,7 @@ body {
 }
 
 @media (min-width: 768px) { 
-.meteo-h1 {
+  .meteo-h1 {
     text-align: left;
     padding-bottom: var(--spacing-lg);
 
@@ -343,12 +343,13 @@ body {
 }
 
 .meteo-illustration-hero {
-  margin: 0 auto;
+  margin: 0 auto 40px auto;
 }
 
 .meteo-icon-main {
   width: 167px; 
   height: 113px;
+  margin: 0 auto;
 }
 
 .meteo-content {
