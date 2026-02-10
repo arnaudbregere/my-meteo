@@ -20,7 +20,7 @@
 /* Formulaire de recherche */
 .meteo-search-main label {
   color: var(--color-white);
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
   margin: 0 0 5px;
   text-align: left;
@@ -71,7 +71,6 @@
   border: none;
 }
 
-.meteo-search-input-wrapper legend, 
 .meteo-search-input-wrapper p {
   margin: var(--spacing-sm) 0; 
   color: var(--color-white);

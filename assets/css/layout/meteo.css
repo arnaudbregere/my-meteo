@@ -356,7 +356,6 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin-left: var(--spacing-md);
 }
 
 .meteo-city {
@@ -416,6 +415,7 @@ body {
   color: #ffffff;
   margin-bottom: var(--spacing-sm);
 }
+
 
 .meteo-list-random-list li.swipe-remove {
   animation: slideOut var(--transition-normal);
