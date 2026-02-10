@@ -18,6 +18,7 @@
 }
  
 .meteo-results-h2 {
+  text-align: center;
     color: var(--color-white);
     font-size: 20px;
     font-weight: 700;

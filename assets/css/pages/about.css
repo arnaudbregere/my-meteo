@@ -8,3 +8,10 @@
 .meteo-about-page ul li::before {
     content: "- ";
 }
+
+
+@media (max-width: 768px) {
+.meteo-about-page {
+    min-width: 100%;
+}
+}
