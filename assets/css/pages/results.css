@@ -72,8 +72,8 @@
 }
  
 .meteo-h2-temperature {
-  text-shadow: none;
   position: relative;
+  font-size: 80px;
 }
  
  
@@ -94,7 +94,7 @@
  
 .meteo-results-details {
     width: 100%;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-sm);
     background-color: var(--color-white); 
     border-radius: var(--radius-lg);
     color: #8B6BC8;
@@ -111,8 +111,7 @@
 .meteo-results-details-content {
     display: grid;
     grid-template-columns: 2fr 2fr;
-    gap: var(--spacing-lg); 
-    padding: var(--spacing-md); 
+    gap:  var(--spacing-sm); 
 }
  
 /* Fallback navigateur : si CSS Grid non supporté, retour en Flexbox */

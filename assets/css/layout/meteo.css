@@ -251,7 +251,7 @@ body {
 /* CONTENU PRINCIPAL */
 .meteo-container {
   width: 100%;
-  padding: var(--spacing-2xl);
+  padding: 24px 16px;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-2xl);
