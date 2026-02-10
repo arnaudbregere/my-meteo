@@ -240,7 +240,7 @@ body {
 
 @media (min-width: 768px) { 
   .meteo-h1 {
-    text-align: left;
+    text-align: center;
     padding-bottom: var(--spacing-lg);
 
   }
@@ -259,7 +259,7 @@ body {
 @media (min-width: 768px) { 
   .meteo-container {
     flex-direction: row;
-    gap: var(--spacing-2xl);
+    gap: var(--spacing-lg);
     align-items: flex-start;
   }
 }
