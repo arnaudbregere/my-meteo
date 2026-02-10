@@ -275,7 +275,7 @@ body {
 @media (min-width: 768px) {
   .meteo-left-column {
     border-right: 1px solid var(--color-white);
-    padding-right: var(--spacing-2xl);
+    padding-right: var(--spacing-lg);
   }
 }
 

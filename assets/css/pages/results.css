@@ -95,7 +95,7 @@
  
 .meteo-results-details {
     width: 100%;
-    padding: var(--spacing-sm);
+    padding: var(--spacing-lg);
     background-color: var(--color-white); 
     border-radius: var(--radius-lg);
     color: #8B6BC8;
@@ -108,11 +108,15 @@
     text-align: left;
     border-bottom: 1px solid #8B6BC8;
 }
+
+.meteo-results-details h4 {
+  margin-bottom:  var(--spacing-xl);
+}
  
 .meteo-results-details-content {
     display: grid;
     grid-template-columns: 2fr 2fr;
-    gap:  var(--spacing-sm); 
+    gap:  var(--spacing-lg); 
 }
  
 /* Fallback navigateur : si CSS Grid non supporté, retour en Flexbox */
@@ -127,7 +131,6 @@
  
 .meteo-results-details-item {
     display: flex;
-    align-items: center;
     gap: 12px;
 }
  
