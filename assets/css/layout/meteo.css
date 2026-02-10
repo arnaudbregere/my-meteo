@@ -222,8 +222,7 @@ body {
   height: 100%;
   background-image: url('../../images/svg/meteo-background.svg');
   background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-position: top;
   animation: float 4s ease-in-out infinite;
   -webkit-animation: float 4s ease-in-out infinite;
   z-index: 0;
@@ -343,7 +342,7 @@ body {
 }
 
 .meteo-illustration-hero {
-  margin: 0 auto 40px auto;
+  margin: 0 auto;
 }
 
 .meteo-icon-main {
