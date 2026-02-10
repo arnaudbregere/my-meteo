@@ -29,7 +29,7 @@
   display: none;
 }
 
-/* ===== LISTE MENU ===== */
+/* LISTE MENU */
 .meteo-menu-list {
   width: 100%;
 }
@@ -56,7 +56,7 @@
   border-bottom-color: #ffffff;
 }
 
-/* ===== BOUTON FERMETURE ===== */
+/* BOUTON FERMETURE */
 .meteo-menu-close-button {
   padding: 0;
 }

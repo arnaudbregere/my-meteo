@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- ===== MÉTADONNÉES ET CONFIGURATION ===== -->
+  <!-- MÉTADONNÉES ET CONFIGURATION -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="My Meteo : Application météo gratuite pour consulter la météo en temps réel à Paris et en France. Température, vent, pression, humidité actualisés.">  <meta name="keywords" content="météo, météo en temps réel, prévisions météorologiques, température France, météo Paris, application météo, prévisions météo, conditions météorologiques">
@@ -12,26 +12,26 @@
   
   <title>My Meteo - Météo en temps réel | Prévisions météo</title>
 
-  <!-- ===== POLICES GOOGLE ===== -->
+  <!-- POLICES GOOGLE -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- ===== FAVICONS MULTIPLES FORMATS ===== -->
+  <!-- FAVICONS MULTIPLES FORMATS -->
   <link rel="icon" type="image/svg+xml" href="assets/images/svg/favicon.svg">
   <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
   <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <link rel="manifest" href="assets/images/site.webmanifest">
 
-  <!-- ===== FEUILLES DE STYLES ===== -->
+  <!-- FEUILLES DE STYLES -->
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/pages/results.css">
   <link rel="stylesheet" href="assets/css/pages/search.css">
   <link rel="stylesheet" href="assets/css/base/validation.css">
   <link rel="stylesheet" href="assets/css/base/popin.css">
 
-  <!-- ===== SCHEMA.ORG - APPLICATION MÉTÉO ===== -->
+  <!-- SCHEMA.ORG - APPLICATION MÉTÉO -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -52,7 +52,7 @@
   }
   </script>
 
-  <!-- ===== SCHEMA.ORG - ORGANISATION ===== -->
+  <!-- SCHEMA.ORG - ORGANISATION -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -69,7 +69,7 @@
   }
   </script>
 
-  <!-- ===== SCHEMA.ORG - FORMULAIRE DE RECHERCHE ===== -->
+  <!-- SCHEMA.ORG - FORMULAIRE DE RECHERCHE -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -98,15 +98,15 @@
 }
 </script>
 
-  <!-- ===== MENU BURGER SCRIPT ===== -->
+  <!-- MENU BURGER SCRIPT -->
   <script src="assets/js/ui/menu.js"></script>
 </head>
 <body>
 
-  <!-- ===== CONTENEUR PRINCIPAL ===== -->
+  <!-- CONTENEUR PRINCIPAL -->
   <div class="meteo-main" id="top">
     
-    <!-- ===== EN-TÊTE (HEADER) ===== -->
+    <!-- EN-TÊTE (HEADER) -->
     <header class="meteo-header" role="banner">
       <a href="index.html" class="meteo-logo-link hover-scale focus-outline transition-transform" 
          aria-label="Retour à l'accueil My Meteo - Application météo en temps réel" 
@@ -145,7 +145,7 @@
       </button>
     </header>
 
-    <!-- ===== NAVIGATION PRINCIPALE ===== -->
+    <!-- NAVIGATION PRINCIPALE -->
     <nav class="meteo-nav" style="display: none;" role="navigation" aria-label="Menu principal de navigation">
       <div class="meteo-menu-list">
         <ul>
@@ -157,10 +157,10 @@
       </div>
     </nav>
 
-    <!-- ===== CONTENU PRINCIPAL (MAIN) ===== -->
+    <!-- CONTENU PRINCIPAL (MAIN) -->
     <main class="meteo-container" id="main-content">
       
-      <!-- ===== COLONNE GAUCHE : TITRE + FORMULAIRE + RÉSULTATS ===== -->
+      <!-- COLONNE GAUCHE : TITRE + FORMULAIRE + RÉSULTATS -->
       <section class="meteo-left-column" role="region" aria-label="Présentation et recherche de météo">
         <div class="meteo-illustration-hero">
           <img src="assets/images/svg/main_meteo.svg" data-file="main_meteo.svg" alt="Illustration de localisation pour la recherche de météo" class="meteo-icon-main" loading="lazy">
@@ -175,7 +175,7 @@
           Cherchez une ville pour découvrir sa <strong>météo actuelle</strong>.
         </p>
 
-        <!-- ===== SECTION SAISIE ET FORMULAIRE DE RECHERCHE ===== -->
+        <!-- SECTION SAISIE ET FORMULAIRE DE RECHERCHE -->
         <div class="meteo-search-main">
           <article class="meteo-search-input" role="region" aria-label="Formulaire de recherche de météo">
 
@@ -229,7 +229,7 @@
           <a href="#suggestions" class="hover-underline focus-outline transition-text-decoration" title="Aller aux suggestions météorologiques">Ou consultez nos suggestions ci-dessous</a>
         </p>
 
-        <!-- ===== SECTION RÉSULTATS DE RECHERCHE (CACHÉ PAR DÉFAUT) ===== -->
+        <!-- SECTION RÉSULTATS DE RECHERCHE (CACHÉ PAR DÉFAUT) -->
         <aside 
           id="search-results-section" 
           class="meteo-search-results-section" 
@@ -260,7 +260,7 @@
               <span class="meteo-h2-weather" title="Description des conditions météorologiques actuelles">--</span>
             </h3>
 
-            <!-- ===== SECTION DÉTAILS MÉTÉOROLOGIQUES ===== -->
+            <!-- SECTION DÉTAILS MÉTÉOROLOGIQUES -->
             <section class="meteo-results-details" role="region" aria-label="Détails des conditions météorologiques">
               <h4>Détails des <strong>conditions météorologiques</strong> actuelles</h4>
               
@@ -323,7 +323,7 @@
         </aside>
       </section>
 
-      <!-- ===== COLONNE DROITE : SUGGESTIONS DE VILLES ===== -->
+      <!-- COLONNE DROITE : SUGGESTIONS DE VILLES -->
       <aside 
         id="suggestions" 
         class="meteo-list-random" 
@@ -343,7 +343,7 @@
       </aside>
     </main>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- FOOTER -->
     <footer class="meteo-footer" id="meteo-footer" role="contentinfo">
       <div class="meteo-footer-container">
         
@@ -420,7 +420,7 @@
     </footer>
   </div>
 
-  <!-- ===== DIALOG D'ERREUR DE VALIDATION (MODAL ACCESSIBLE) ===== -->
+  <!-- DIALOG D'ERREUR DE VALIDATION (MODAL ACCESSIBLE) -->
   <div class="popin-overlay" id="popin-overlay"></div>
 
   <dialog class="popin-container" id="popin-container"

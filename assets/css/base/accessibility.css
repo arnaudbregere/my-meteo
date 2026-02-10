@@ -15,7 +15,7 @@
   letter-spacing: 0.5px !important;
 }
 
-/* ===== CONTRASTE ===== */
+/* CONTRASTE */
 .dyslexic-font .meteo-city,
 .dyslexic-font .meteo-temperature,
 .dyslexic-font .meteo-weather p {
@@ -34,7 +34,7 @@
   color: #1a1a1a;
 }
 
-/* ===== CONTENEUR TOGGLE + LABEL ===== */
+/* CONTENEUR TOGGLE + LABEL */
 .accessibility-container {
   display: flex;
   align-items: center;
@@ -113,7 +113,7 @@
   left: calc(100% - 23px);
 }
 
-/* ===== DESKTOP - Media query ===== */
+/* DESKTOP - Media query */
 @media (min-width: 768px) {
   .accessibility-container {
     margin-left: auto;

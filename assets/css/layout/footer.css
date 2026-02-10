@@ -21,7 +21,7 @@
   }
 }
 
-/* ===== SECTIONS DU FOOTER ===== */
+/* SECTIONS DU FOOTER */
 .meteo-footer-section {
   display: block;
 }
@@ -55,7 +55,7 @@
   margin-bottom: 0;
 }
 
-/* ===== LIENS DU FOOTER ===== */
+/* LIENS DU FOOTER */
 .meteo-footer-section a {
   color: var(--color-white);
   text-decoration: none;
@@ -80,7 +80,7 @@
   opacity: 0.6;
 }
 
-/* ===== COPYRIGHT ===== */
+/* COPYRIGHT */
 .meteo-footer-bottom {
   text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -95,14 +95,14 @@
   margin: 0;
 }
 
-/* ===== ACCESSIBILITÉ : RESPECT DES PRÉFÉRENCES UTILISATEUR ===== */
+/* ACCESSIBILITÉ : RESPECT DES PRÉFÉRENCES UTILISATEUR */
 @media (prefers-reduced-motion: reduce) {
   .meteo-footer-section a {
     transition: none !important;
   }
 }
 
-/* ===== RESPONSIVE MOBILE ===== */
+/* RESPONSIVE MOBILE */
 @media (max-width: 767px) {
   .meteo-footer {
     padding: var(--spacing-xl) var(--spacing-md) var(--spacing-md); 
