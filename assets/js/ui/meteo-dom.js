@@ -29,7 +29,7 @@ export function renderCitiesList(weatherData) {
 }
 
 
-// UI pour afficher les suggestions 
+// UI pour afficher les résulats 
 export function renderWeatherResults(data, cityName) {
   const resultsCityEl = document.getElementById('meteo-results-city');
   if (resultsCityEl) resultsCityEl.textContent = cityName;

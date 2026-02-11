@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!suggestions.length) {
       autocompleteContainer.classList.remove('active');
       submitButton.disabled = true;
-      updateValidationMessage('Veuillez saisir un nom de ville valide', false, true);
+      updateValidationMessage('Veuillez saisir un nom de ville française valide', false, true);
       return;
     }
 

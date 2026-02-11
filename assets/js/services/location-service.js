@@ -59,6 +59,9 @@ export async function getLocationCoordinates(cityName) {
     }
 
     const result = data[0];
+    if (!['city', 'town', 'village', 'hamlet'].includes(result.addresstype)) {
+      return null;
+    }
 
     // Return lat & lon
     return {

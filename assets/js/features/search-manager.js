@@ -36,7 +36,7 @@ export async function fetchCitySuggestions(query) {
 // Filtre et organise les villes : lieux habités uniquement, pas de doublons, priorité aux noms commençant par la recherche
 function filterCities(suggestions, query) {
   const queryLower = query.toLowerCase();
-  const acceptedTypes = ['city', 'town', 'village', 'hamlet', 'locality', 'suburb'];
+  const acceptedTypes = ['city', 'town', 'village', 'hamlet'];
 
   const results = [];
   const seenNames = {};
