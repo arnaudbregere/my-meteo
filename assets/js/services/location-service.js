@@ -34,15 +34,10 @@ export async function searchCities(query, limit = 50) {
 
 /**
  * Récupère les coordonnées d'une ville via Nominatim
- * Utilise les coordonnées (lat/lon) plutôt que le nom car :
- * - Unicité garantie (évite les ambiguïtés de noms)
- * - Standard universel accepté par toutes les APIs
- * - Indépendant des accents/encodages
-
  */
 export async function getLocationCoordinates(cityName) {
   try {
-    const url = `${NOMINATIM_API.SEARCH}?q=${encodeURIComponent(cityName)}&format=json&limit=1&countrycodes=fr`;
+    const url = `${NOMINATIM_API.SEARCH}?q=${encodeURIComponent(cityName)}&format=json&limit=5&countrycodes=fr`;
     const response = await fetch(url);
 
     // Check response
@@ -58,8 +53,14 @@ export async function getLocationCoordinates(cityName) {
       return null;
     }
 
-    const result = data[0];
-    if (!['city', 'town', 'village', 'hamlet'].includes(result.addresstype)) {
+  
+    const validTypes = ['city', 'town', 'village', 'hamlet', 'suburb'];
+
+    const result = data.find(item =>
+      validTypes.includes(item.addresstype)
+    );
+
+    if (!result) {
       return null;
     }
 
