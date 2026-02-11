@@ -3,7 +3,7 @@
 .meteo-footer {
   background: var(--color-gradient);
   color: var(--color-white);
-  padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-lg); 
+  padding: var(--spacing-2xl); 
   width: 100%;
   margin-top: auto;
   flex-shrink: 0;

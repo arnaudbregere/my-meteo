@@ -4,8 +4,8 @@
   <!-- MÉTADONNÉES ET CONFIGURATION -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Historique de vos recherches météo avec My Meteo. Accédez rapidement à vos dernières consultations de prévisions et conditions météorologiques.">
-  <meta name="keywords" content="historique recherche, dernières recherches, météo consultée, prévisions sauvegardées, historique météo, application météo">
+  <meta name="description" content="Historique de vos recherches météo avec My Meteo. Accédez rapidement à vos dernières consultations de conditions météorologiques.">
+  <meta name="keywords" content="historique recherche, dernières recherches, météo consultée, conditions sauvegardées, historique météo, application météo">
   <meta name="author" content="My Meteo">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#FFFFFF">
@@ -36,9 +36,31 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "My Meteo - Historique de Recherches",
-    "description": "Accédez à votre historique de recherches météorologiques et consultez vos dernières prévisions météo",
+    "description": "Accédez à votre historique de recherches météorologiques et consultez vos dernières conditions météo",
     "url": "https://mymeteo.fr/last_search.html",
     "applicationCategory": "WeatherApplication"
+  }
+  </script>
+
+  <!-- SCHEMA.ORG - BREADCRUMB -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://mymeteo.fr/index.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Mes dernières recherches",
+        "item": "https://mymeteo.fr/last_search.html"
+      }
+    ]
   }
   </script>
 
@@ -129,7 +151,7 @@
         </div>
 
         <!-- Liste des recherches historisées -->
-        <ul id="meteo-search-list" class="meteo-search-list" aria-label="Historique de vos recherches de prévisions météorologiques"></ul>
+        <ul id="meteo-search-list" class="meteo-search-list" aria-label="Historique de vos recherches de conditions météorologiques"></ul>
 
         <!-- Actions : bouton pour effacer tout l'historique -->
         <div id="meteo-clear-actions" class="meteo-clear-actions" style="display: none;">
@@ -155,7 +177,7 @@
         <!-- Section 1 : À propos -->
         <section class="meteo-footer-section" role="region" aria-label="À propos de My Meteo">
           <h3>À propos</h3>
-          <p>My Meteo est une <strong>application météo</strong> en temps réel créée en 2026 pour consulter les <strong>prévisions météorologiques</strong> pour les villes françaises. Découvrez des informations complètes sur la <strong>température</strong>, les <strong>conditions météorologiques</strong> et d'autres indicateurs météorologiques.</p>
+          <p>My Meteo est une <strong>application météo</strong> en temps réel créée en 2026 pour consulter les <strong>conditions météorologiques</strong> actuelles pour les villes françaises. Découvrez des informations complètes sur la <strong>température</strong>, le <strong>vent</strong>, la <strong>pression</strong> et l'<strong>humidité</strong>.</p>
         </section>
 
         <!-- Section 2 : Navigation -->
@@ -220,7 +242,7 @@
 
       <!-- Copyright -->
       <div class="meteo-footer-bottom">
-        <p>&copy; 2026 My Meteo. Tous droits réservés. Application de prévisions météorologiques en temps réel.</p>
+        <p>&copy; 2026 My Meteo. Tous droits réservés. Application de conditions météorologiques en temps réel.</p>
       </div>
     </footer>
   </div>

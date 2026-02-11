@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Découvrez My Meteo : application météo en temps réel. Prévisions précises, interface accessible, navigation tactile. Météo pour les villes françaises.">
-  <meta name="keywords" content="à propos, météo, application météo, prévisions météorologiques, My Meteo, contact, accessibilité">
+  <meta name="keywords" content="à propos, météo, application météo, conditions météorologiques, My Meteo, contact, accessibilité">
   <meta name="author" content="My Meteo">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#FFFFFF">
@@ -36,7 +36,7 @@
     "@context": "https://schema.org",
     "@type": "AboutPage",
     "name": "À propos de My Meteo",
-    "description": "Découvrez My Meteo, une application météo en temps réel pour consulter les prévisions météorologiques en France",
+    "description": "Découvrez My Meteo, une application météo en temps réel pour consulter les conditions météorologiques actuelles en France",
     "url": "https://mymeteo.fr/about.html",
     "author": {
       "@type": "Organization",
@@ -54,12 +54,34 @@
     "name": "My Meteo",
     "url": "https://mymeteo.fr",
     "logo": "https://mymeteo.fr/assets/images/svg/logo_mymeteo.svg",
-    "description": "Application météo en temps réel pour prévisions météorologiques en France",
+    "description": "Application météo en temps réel pour conditions météorologiques actuelles en France",
     "contactPoint": {
       "@type": "ContactPoint",
       "email": "arnaud.bregere@gmail.com",
       "contactType": "Customer Support"
     }
+  }
+  </script>
+
+  <!-- SCHEMA.ORG - BREADCRUMB -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://mymeteo.fr/index.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "À propos",
+        "item": "https://mymeteo.fr/about.html"
+      }
+    ]
   }
   </script>
 
@@ -125,19 +147,24 @@
     <!-- CONTENU PRINCIPAL -->
     <main class="meteo-container" id="main-content">
       
-      <section class="meteo-about-page max-w-3xl mx-auto text-white text-base px-4" role="region" aria-label="À propos de My Meteo">     
+      <article class="meteo-about-page max-w-3xl mx-auto text-white text-base px-4">     
         <div class="meteo-illustration-hero text-center mb-8">
-          <img src="assets/images/svg/main_meteo.svg" class="meteo-icon-main">
+          <img 
+            src="assets/images/svg/main_meteo.svg" 
+            alt="Illustration de My Meteo - Application météo"
+            class="meteo-icon-main"
+            loading="lazy"
+          >
         </div>
         <h1 class="meteo-h1 text-3xl leading-8">
           À propos de <strong>My Meteo</strong>
         </h1>
-        <article class="meteo-about-content">
+        <section class="meteo-about-content" role="region" aria-label="À propos de My Meteo">
         <h2 class="my-6 text-lg font-semibold">Qui sommes-nous ?</h2>
         <p>
         My Meteo est une <strong>application météo gratuite</strong> en temps réel créée en 2026.
-        Notre mission : vous offrir les <strong>prévisions météorologiques</strong> les plus précises
-        et accessibles pour <strong>les villes françaises</strong>.
+        Notre mission : vous offrir les <strong>conditions météorologiques</strong> actuelles
+        les plus précises et accessibles pour <strong>les villes françaises</strong>.
         </p>
         <h2 class="my-6 text-lg font-semibold">Nos fonctionnalités</h2>
           <ul class="list-none">
@@ -183,8 +210,8 @@
               </a>
             </li>
           </ul>
-        </article>
-      </section>
+        </section>
+      </article>
 
     </main>
 
@@ -195,7 +222,7 @@
         <!-- Section 1 : À propos -->
         <section class="meteo-footer-section" role="region" aria-label="À propos de My Meteo">
           <h3>À propos</h3>
-          <p>My Meteo est une <strong>application météo</strong> en temps réel créée en 2026 pour consulter les <strong>prévisions météorologiques</strong> pour les villes françaises. Découvrez des informations complètes sur la <strong>température</strong>, les <strong>conditions météorologiques</strong> et d'autres indicateurs météorologiques.</p>
+          <p>My Meteo est une <strong>application météo</strong> en temps réel créée en 2026 pour consulter les <strong>conditions météorologiques</strong> actuelles pour les villes françaises. Découvrez des informations complètes sur la <strong>température</strong>, le <strong>vent</strong>, la <strong>pression</strong> et l'<strong>humidité</strong>.</p>
         </section>
 
         <!-- Section 2 : Navigation -->
@@ -260,7 +287,7 @@
 
       <!-- Copyright -->
       <div class="meteo-footer-bottom">
-        <p>&copy; 2026 My Meteo. Tous droits réservés. Application de prévisions météorologiques en temps réel.</p>
+        <p>&copy; 2026 My Meteo. Tous droits réservés. Application de conditions météorologiques en temps réel.</p>
       </div>
     </footer>
   </div>
