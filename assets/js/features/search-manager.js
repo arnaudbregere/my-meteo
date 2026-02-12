@@ -2,6 +2,7 @@ import { searchCities } from '../services/location-service.js';
 import { getWeatherByCoordinates } from '../services/weather-service.js';
 import { getLocationCoordinates } from '../services/location-service.js';
 import { addToSearchHistory } from '../services/search-history.js';
+import { normalize, ACCEPTED_TYPES } from '../utils/utils.js';
 
 // Regex : accepte les lettres (avec accents), espaces et tirets, minimum 2 caractères
 const cityPattern = /^[a-zA-Z\u00C0-\u024F\s\-']{2,}$/;
@@ -35,23 +36,21 @@ export async function fetchCitySuggestions(query) {
 
 // Filtre et organise les villes : lieux habités uniquement, pas de doublons, priorité aux noms commençant par la recherche
 function filterCities(suggestions, query) {
-  const queryLower = query.toLowerCase();
-  const acceptedTypes = ['city', 'town', 'village', 'hamlet'];
+  const queryNorm = normalize(query);
 
   const results = [];
   const seenNames = {};
 
   suggestions.forEach(suggestion => {
-    const name = suggestion.name;
-    const nameLower = name.toLowerCase();
+    const nameNorm = normalize(suggestion.name);
 
-    if (!acceptedTypes.includes(suggestion.addresstype)) return;
-    if (!nameLower.startsWith(queryLower.substring(0, 2))) return;
-    if (seenNames[nameLower]) return;
+    if (!ACCEPTED_TYPES.includes(suggestion.addresstype)) return;
+    if (!nameNorm.startsWith(queryNorm.substring(0, 2))) return;
+    if (seenNames[nameNorm]) return;
 
-    seenNames[nameLower] = true;
+    seenNames[nameNorm] = true;
 
-    if (nameLower.startsWith(queryLower)) {
+    if (nameNorm.startsWith(queryNorm)) {
       results.unshift(suggestion);
     } else {
       results.push(suggestion);

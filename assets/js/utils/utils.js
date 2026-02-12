@@ -1,5 +1,10 @@
 import { SVG_PATH } from "../config/weather-config.js";
 
+/* Normalise une chaîne : minuscules sans accents */
+export const normalize = (str) => str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+export const ACCEPTED_TYPES = ['city', 'town', 'village', 'hamlet', 'suburb']
+
 /* Met à jour les sources des images basées sur data-file */
 export function updateImageSources() {
   document.querySelectorAll("img[data-file]").forEach(img => {

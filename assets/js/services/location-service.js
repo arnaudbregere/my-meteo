@@ -5,6 +5,8 @@
  * - Gérer les erreurs et cas limites
  */
 
+import { ACCEPTED_TYPES } from '../utils/utils.js';
+
 import { NOMINATIM_API } from '../config/api-endpoints.js';
 
 
@@ -53,11 +55,10 @@ export async function getLocationCoordinates(cityName) {
       return null;
     }
 
-  
-    const validTypes = ['city', 'town', 'village', 'hamlet', 'suburb'];
+
 
     const result = data.find(item =>
-      validTypes.includes(item.addresstype)
+      ACCEPTED_TYPES.includes(item.addresstype)
     );
 
     if (!result) {
