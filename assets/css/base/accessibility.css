@@ -16,9 +16,18 @@
 }
 
 /* CONTRASTE */
+.dyslexic-font .meteo-main {
+  background: var(--color-purple-dark);
+}
+
 .dyslexic-font .meteo-city,
 .dyslexic-font .meteo-temperature,
-.dyslexic-font .meteo-weather p {
+.dyslexic-font .meteo-weather p,
+.dyslexic-font .meteo-results-details,
+.dyslexic-font .meteo-search-city,
+.dyslexic-font .meteo-search-item-link,
+.dyslexic-font .meteo-search-item-delete,
+.dyslexic-font .meteo-clear-all-btn {
   color: #1a1a1a !important;
 }
 
