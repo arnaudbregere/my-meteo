@@ -48,16 +48,13 @@
   width: 100%;
   min-height: 55px;
   position: relative;
-  border: none;
+  border: 2px solid var(--color-secondary);
   padding: 15px 15px 15px 50px;
   font-family: 'Poppins', sans-serif;
 }
 
-.meteo-search-main input:hover,
-.meteo-search-main input:active,
 .meteo-search-main input:focus,
 .meteo-search-main input:focus-visible {
-  border: none;
   outline: none;
 }
 
